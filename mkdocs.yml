@@ -56,7 +56,7 @@ markdown_extensions:
   - md_in_html
 
 nav:
-  - 操作系统:
+  - xv6-book:
       - 0. 前言和致谢: "S081/0. 前言和致谢.md"
       - 1. 操作系统接口: "S081/1. 操作系统接口.md"
       - 2. 操作系统架构: "S081/2. 操作系统架构.md"
@@ -68,7 +68,7 @@ nav:
       - 8. 文件系统: "S081/8. 文件系统.md"
       - 9. 再次探讨并发性: "S081/9. 再次探讨并发性.md"
   
-  - 编译原理:
+  - craftinginterpreters:
       - 0.00.contents: "craftinginterpreters/0_00.contents/contents.md"
       - 0.01.acknowledgements: "craftinginterpreters/0_01.acknowledgements/acknowledgements.md"
       - 1.01.Introduction: "craftinginterpreters/1_01.Introduction/Introduction.md"
