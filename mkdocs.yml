@@ -71,7 +71,7 @@ nav:
   - craftinginterpreters:
       - 0.00.contents: "craftinginterpreters/0_00.contents/contents.md"
       - 0.01.acknowledgements: "craftinginterpreters/0_01.acknowledgements/acknowledgements.md"
-      - 一、WELCOME: "craftinginterpreters/1_00.WELCOME/WELCOME.md"
+      - 一、WELCOME: "craftinginterpreters/1_00.Welcome/Welcome.md"
       - 1.01.Introduction: "craftinginterpreters/1_01.Introduction/Introduction.md"
       - 1.02.A Map of the Territory: "craftinginterpreters/1_02.A Map of the Territory/A Map of the Territory.md"
       - 1.03.The Lox Language: "craftinginterpreters/1_03.The Lox Language/The Lox Language.md"
