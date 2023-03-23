@@ -1,7 +1,7 @@
-site_name: xv6-Chinese
+site_name: doc-zh
 
-repo_name: xv6-book-Chinese
-repo_url: https://github.com/Misaka-9982-coder/xv6-book-Chinese
+repo_name: doc-zh
+repo_url: https://github.com/Misaka-9982-coder/doc-zh
 
 theme:
   name: material
