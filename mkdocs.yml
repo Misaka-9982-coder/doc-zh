@@ -55,7 +55,7 @@ markdown_extensions:
   - attr_list
   - md_in_html
   - pymdownx.arithmatex:
-    generic: true
+      generic: true
 
 extra_javascript:
   - https://polyfill.io/v3/polyfill.min.js?features=es6
