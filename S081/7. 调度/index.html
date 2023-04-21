@@ -1,0 +1,1479 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-7.3.6">
+    
+    
+      
+        <title>7. 调度 - doc-zh</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.a57b2b03.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.3f5d1f46.min.css">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font-family:"Roboto";--md-code-font-family:"Roboto Mono"}</style>
+      
+    
+    
+    
+    
+      
+
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="light-blue" data-md-color-accent="deep-purple">
+  
+    
+    <script>function __prefix(e){return new URL("../..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+    
+      <script>var palette=__get("__palette");if(null!==palette&&"object"==typeof palette.color)for(var key in palette.color)document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#7" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="doc-zh" class="md-header__button md-logo" aria-label="doc-zh" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            doc-zh
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              7. 调度
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="light-blue" data-md-color-accent="deep-purple"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+          
+            <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5c-.84 0-1.65.15-2.39.42L12 2M3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29L3.34 7m.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14L3.36 17M20.65 7l-1.77 3.79a7.023 7.023 0 0 0-2.38-4.15l4.15.36m-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29L20.64 17M12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44L12 22z"/></svg>
+            </label>
+          
+        
+          
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="cyan" data-md-color-accent="deep-purple"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
+          
+            <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3 3.19.09m3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95 2.06.05m-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31z"/></svg>
+            </label>
+          
+        
+      </form>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7 0-.24-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91 1.61 0 2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08z"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        
+<a href="https://github.com/Misaka-9982-coder/doc-zh" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    doc-zh
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="doc-zh" class="md-nav__button md-logo" aria-label="doc-zh" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    doc-zh
+  </label>
+  
+    <div class="md-nav__source">
+      
+<a href="https://github.com/Misaka-9982-coder/doc-zh" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    doc-zh
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1" type="checkbox" id="__nav_1" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_1">
+          xv6-book
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="xv6-book" data-md-level="1">
+        <label class="md-nav__title" for="__nav_1">
+          <span class="md-nav__icon md-icon"></span>
+          xv6-book
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../0.%20%E5%89%8D%E8%A8%80%E5%92%8C%E8%87%B4%E8%B0%A2/" class="md-nav__link">
+        0. 前言和致谢
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1.%20%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E6%8E%A5%E5%8F%A3/" class="md-nav__link">
+        1. 操作系统接口
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2.%20%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84/" class="md-nav__link">
+        2. 操作系统架构
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3.%20%E9%A1%B5%E8%A1%A8/" class="md-nav__link">
+        3. 页表
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../4.%20trap%20%E4%B8%8E%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8/" class="md-nav__link">
+        4. trap 与系统调用
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5.%20%E4%B8%AD%E6%96%AD%E5%92%8C%E8%AE%BE%E5%A4%87%E9%A9%B1%E5%8A%A8%E7%A8%8B%E5%BA%8F/" class="md-nav__link">
+        5. 中断和设备驱动程序
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../6.%20%E9%94%81/" class="md-nav__link">
+        6. 锁
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          7. 调度
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        7. 调度
+      </a>
+      
+        
+
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    多路复用
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    代码：上下文切换
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    代码：调度
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mycpumyproc" class="md-nav__link">
+    代码：mycpu和myproc
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    睡眠和唤醒
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sleep-wakeup" class="md-nav__link">
+    代码：Sleep 和 wakeup
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    代码：管道
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#waitexit-kill" class="md-nav__link">
+    代码：Wait、exit 和 kill
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    进程锁定
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    现实世界
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../8.%20%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/" class="md-nav__link">
+        8. 文件系统
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../9.%20%E5%86%8D%E6%AC%A1%E6%8E%A2%E8%AE%A8%E5%B9%B6%E5%8F%91%E6%80%A7/" class="md-nav__link">
+        9. 再次探讨并发性
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2">
+          craftinginterpreters
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="craftinginterpreters" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          craftinginterpreters
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../craftinginterpreters/0_00.contents/contents/" class="md-nav__link">
+        0.00.contents
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../craftinginterpreters/0_01.acknowledgements/acknowledgements/" class="md-nav__link">
+        0.01.acknowledgements
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../craftinginterpreters/1_00.Welcome/Welcome/" class="md-nav__link">
+        一、WELCOME
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../craftinginterpreters/1_01.Introduction/Introduction/" class="md-nav__link">
+        1.01.Introduction
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../craftinginterpreters/1_02.A%20Map%20of%20the%20Territory/A%20Map%20of%20the%20Territory/" class="md-nav__link">
+        1.02.A Map of the Territory
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../craftinginterpreters/1_03.The%20Lox%20Language/The%20Lox%20Language/" class="md-nav__link">
+        1.03.The Lox Language
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../craftinginterpreters/2_00.A%20TREE-WALK%20INTERPRETER/A%20TREE-WALK%20INTERPRETER/" class="md-nav__link">
+        二、A TREE-WALK INTERPRETER
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../craftinginterpreters/2_04.Scanning/Scanning/" class="md-nav__link">
+        2.04.Scanning
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../craftinginterpreters/2_05.Representing%20Code/Representing%20Code/" class="md-nav__link">
+        2.05.Representing Code
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../craftinginterpreters/2_06.Parsing%20Expressions/Parsing%20Expressions/" class="md-nav__link">
+        2.06.Parsing Expressions
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../craftinginterpreters/2_07.Evaluating%20Expressions/Evaluating%20Expressions/" class="md-nav__link">
+        2.07.Evaluating Expressions
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../craftinginterpreters/2_08.Statements%20and%20State/Statements%20and%20State/" class="md-nav__link">
+        2.08.Statements and State
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../craftinginterpreters/2_09.Control%20Flow/Control%20Flow/" class="md-nav__link">
+        2.09.Control Flow
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../craftinginterpreters/2_10.Functions/Functions/" class="md-nav__link">
+        2.10.Functions
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../craftinginterpreters/2_11.Resolving%20and%20Binding/Resolving%20and%20Binding/" class="md-nav__link">
+        2.11.Resolving and Binding
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../craftinginterpreters/2_12.Classes/Classes/" class="md-nav__link">
+        2.12.Classes
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../craftinginterpreters/2_13.Inheritance/Inheritance/" class="md-nav__link">
+        2.13.Inheritance
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../craftinginterpreters/3_00.A%20BYTECODE%20VIRTUAL%20MACHINE/A%20BYTECODE%20VIRTUAL%20MACHINE/" class="md-nav__link">
+        三、A BYTECODE VIRTUAL MACHINE
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../craftinginterpreters/3_14.Chunks%20of%20Bytecode/Chunks%20of%20Bytecode/" class="md-nav__link">
+        3.14.Chunks of Bytecode
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../craftinginterpreters/3_15.A%20Virtual%20Machine/A%20Virtual%20Machine/" class="md-nav__link">
+        3.15.A Virtual Machine
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../craftinginterpreters/3_16.Scanning%20on%20Demand/Scanning%20on%20Demand/" class="md-nav__link">
+        3.16.Scanning on Demand
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../craftinginterpreters/3_17.Compiling%20Expressions/Compiling%20Expressions/" class="md-nav__link">
+        3.17.Compiling Expressions
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../craftinginterpreters/3_18.Types%20of%20Values/Types%20of%20Values/" class="md-nav__link">
+        3.18.Types of Values
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../craftinginterpreters/3_19.Strings/Strings/" class="md-nav__link">
+        3.19.Strings
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../craftinginterpreters/3_20.Hash%20Tables/Hash%20Tables/" class="md-nav__link">
+        3.20.Hash Tables
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../craftinginterpreters/3_21.Global%20Variables/Global%20Variables/" class="md-nav__link">
+        3.21.Global Variables
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../craftinginterpreters/3_22.Local%20Variables/Local%20Variables/" class="md-nav__link">
+        3.22.Local Variables
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../craftinginterpreters/3_23.Jumping%20Back%20and%20Forth/Jumping%20Back%20and%20Forth/" class="md-nav__link">
+        3.23.Jumping Back and Forth
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../craftinginterpreters/3_24.Calls%20and%20Functions/Calls%20and%20Functions/" class="md-nav__link">
+        3.24.Calls and Functions
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../craftinginterpreters/3_25.Closures/Closures/" class="md-nav__link">
+        3.25.Closures
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../craftinginterpreters/3_26.Garbage%20Collection/Garbage%20Collection/" class="md-nav__link">
+        3.26.Garbage Collection
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../craftinginterpreters/3_27.Classes%20and%20Instances/Classes%20and%20Instances/" class="md-nav__link">
+        3.27.Classes and Instances
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../craftinginterpreters/3_28.Methods%20and%20Initializers/Methods%20and%20Initializers/" class="md-nav__link">
+        3.28.Methods and Initializers
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../craftinginterpreters/3_29.Superclasses/Superclasses/" class="md-nav__link">
+        3.29.Superclasses
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../craftinginterpreters/3_30.Optimization/Optimization/" class="md-nav__link">
+        3.30.Optimization
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../craftinginterpreters/4_01.A1.Appendix%20I%20Lox%20Grammar/A1.Appendix%20I%20Lox%20Grammar/" class="md-nav__link">
+        A1.Appendix I Lox Grammar
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../craftinginterpreters/4_02.A2.Appendix%20II%20Generated%20Syntax%20Tree%20Classes/A2.Appendix%20II%20Generated%20Syntax%20Tree%20Classes/" class="md-nav__link">
+        A2.Appendix II Generated Syntax Tree Classes
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    多路复用
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    代码：上下文切换
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    代码：调度
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mycpumyproc" class="md-nav__link">
+    代码：mycpu和myproc
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    睡眠和唤醒
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sleep-wakeup" class="md-nav__link">
+    代码：Sleep 和 wakeup
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    代码：管道
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#waitexit-kill" class="md-nav__link">
+    代码：Wait、exit 和 kill
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    进程锁定
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    现实世界
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/Misaka-9982-coder/doc-zh/edit/master/docs/S081/7. 调度.md" title="编辑此页" class="md-content__button md-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
+                  </a>
+                
+                
+                <h1 id="7">7. 调度</h1>
+<p>任何操作系统都可能在计算机拥有的CPU数量之上运行更多的进程，因此需要一个计划来在进程之间共享CPU时间。理想情况下，共享对用户进程来说是透明的。一种常见的方法是通过 <strong>多路复用</strong> 将进程复用到硬件CPU上，为每个进程提供拥有自己的虚拟CPU的错觉。本章将解释xv6如何实现这种多路复用。</p>
+<h2 id="_1">多路复用</h2>
+<p>Xv6通过在两种情况下将每个CPU从一个进程切换到另一个进程来实现多路复用。首先，当进程等待设备或管道I/O完成，或等待子进程退出，或在<code>sleep</code> 系统调用中等待时，xv6 的<code>sleep</code> 和<code>wakeup</code> 机制会进行切换。其次，为了应对长时间计算而不休眠的进程，xv6 会定期强制切换。这种多路复用创造了每个进程都拥有自己的CPU的错觉，就像 xv6 使用内存分配器和硬件页表来创造每个进程拥有自己的内存的错觉一样。</p>
+<p>实现多路复用需要面对一些挑战。</p>
+<ol>
+<li>首先，如何从一个进程切换到另一个进程？虽然上下文切换的概念很简单，但在xv6 中，它的实现是最不透明的代码之一。</li>
+<li>其次，如何以对用户进程透明的方式强制切换？xv6 采用了标准技术，即硬件定时器的中断驱动上下文切换。</li>
+<li>第三，所有的 CPU 在相同的共享进程集之间进行切换，需要一个锁定计划以避免竞争。</li>
+<li>第四，当进程退出时，必须释放进程的内存和其他资源，但它不能完全自己完成这些工作，因为（例如）它不能在仍在使用时释放自己的内核栈。</li>
+<li>第五，多核机器的每个核心都必须记住它正在执行的进程，以便系统调用影响正确的进程内核状态。</li>
+<li>最后，<code>sleep</code> 和 <code>wakeup</code> 允许进程放弃CPU并等待被另一个进程或中断唤醒。需要小心避免导致唤醒通知丢失的竞争。尽管 xv6 试图以尽可能简单的方式解决这些问题，但结果代码仍然是棘手的。</li>
+</ol>
+<h2 id="_2">代码：上下文切换</h2>
+<p><img alt="" src="http://xv6.dgs.zone/tranlate_books/book-riscv-rev1/images/c7/p1.png" /></p>
+<p>图 7.1 描述了从一个用户进程切换到另一个用户进程所涉及的步骤：</p>
+<ol>
+<li>用户-内核转换（系统调用或中断）到旧进程的内核线程，</li>
+<li>上下文切换到当前CPU的调度器线程，</li>
+<li>上下文切换到新进程的内核线程，</li>
+<li>以及陷阱返回到用户级进程。</li>
+</ol>
+<p>xv6 调度器为每个 CPU 分配一个专用线程（保存的寄存器和堆栈），因为调度器在旧进程的内核堆栈上执行是不安全的：其他内核可能会唤醒进程并运行它，而在两个不同的内核上使用相同的堆栈将是一场灾难。在本节中，我们将研究在内核线程和调度器线程之间切换的机制。</p>
+<p>从一个线程切换到另一个线程涉及保存旧线程的CPU寄存器，并恢复新线程先前保存的寄存器；事实上，堆栈指针和程序计数器被保存和恢复意味着CPU将切换堆栈并切换正在执行的代码。</p>
+<p>函数<code>swtch</code>执行内核线程切换的保存和恢复。<code>swtch</code> 并不直接了解线程；它只是保存和恢复一组 32 个 RISC-V 寄存器，称为<strong>上下文</strong> (<em>contexts</em>)。当一个进程需要放弃CPU时，进程的内核线程调用 <code>swtch</code> 来保存它自己的上下文并返回到调度器上下文。每个上下文包含在一个<code>struct context</code> (kernel/proc.h:2)中，它本身包含在一个进程的<code>struct proc</code> 或一个CPU的 <code>struct cpu</code> 中。<code>swtch</code> 接受两个参数：<code>struct context *old</code> 和 <code>struct context *new</code>。它将当前寄存器保存在 <code>old</code> 中，从 <code>new</code> 中加载寄存器，并返回。</p>
+<p>让我们跟随一个进程通过 <code>swtch</code> 进入调度器。我们在第 4 章中看到，在中断结束时，一种可能性是 <code>usertrap</code> 调用 <code>yield</code> 。<code>yield</code> 反过来又调用 <code>sched</code> ，它调用 <code>swtch</code> 将当前上下文保存在 <code>p-&gt;context</code>中，并切换到以前保存在 <code>cpu-&gt;context</code>  (kernel/proc.c:497) 中的调度器上下文。</p>
+<p><code>swtch</code> (kernel/swtch.S:3) 仅保存被调用方保存的寄存器(callee)；C 编译器在调用者(caller)中生成将调用者保存的寄存器保存在堆栈上的代码。<code>swtch</code> 知道每个寄存器的字段在 <code>struct context</code> 中的偏移量。它不保存程序计数器。相反，<code>swtch</code> 保存 <code>ra</code> 寄存器，其中包含从 <code>swtch</code> 被调用的返回地址。现在，<code>swtch</code> 从新上下文中恢复寄存器，该上下文保存了之前 <code>swtch</code> 保存的寄存器值。当 <code>swtch</code> 返回时，它返回到由恢复的 <code>ra</code> 寄存器指向的指令，即新线程之前调用 <code>swtch</code> 的指令。此外，它返回到新线程的堆栈上，因为这就是恢复的 <code>sp</code> 所指向的地方。</p>
+<p>在我们的例子中，<code>sched</code> 调用 <code>swtch</code> 切换到 <code>cpu-&gt;context</code>，即每个CPU的调度器上下文。该上下文在过去的某个时刻保存，即当 <code>scheduler</code> 调用 <code>swtch</code> (kernel/proc.c:463) 切换到现在放弃CPU的进程时。当我们一直在追踪的 <code>swtch</code> 返回时，它不是返回到 <code>sched</code>，而是返回到 <code>scheduler</code>，当前 CPU 的调度器堆栈中的堆栈指针。</p>
+<h2 id="_3">代码：调度</h2>
+<p>上一节我们讨论了 <code>swtch</code> 的底层细节；现在让我们把 <code>swtch</code> 当作一个已知的函数，检查从一个进程的内核线程通过调度器切换到另一个进程的过程。调度器以每个CPU上的一个特殊线程的形式存在，每个线程都运行 <code>scheduler</code> 函数。这个函数负责选择下一个要运行的进程。想要放弃CPU的进程必须获取自己的进程锁 <code>p-&gt;lock</code>，释放它持有的其他锁，更新自己的状态（<code>p-&gt;state</code>），然后调用 <code>sched</code>。您可以在 <code>yield</code>(kernel/proc.c:503)、<code>sleep</code> 和 <code>exit</code> 中看到这个序列。<code>sched</code> 对这些要求进行双重检查(kernel/proc.c:487-492)，然后检查一个含义：由于锁被持有，中断应该被禁用。最后，<code>sched</code> 调用 <code>swtch</code> 将当前上下文保存在 <code>p-&gt;context</code> 中，并切换到 <code>cpu-&gt;context</code> 中的调度器上下文。<code>swtch</code> 在调度器的堆栈上返回，就像 <code>scheduler</code> 的 <code>swtch</code> 已经返回(kernel/proc.c:463)。调度器继续执行 <code>for</code> 循环，找到要运行的进程，切换到它，然后循环重复。</p>
+<p>我们刚刚看到xv6在调用 <code>swtch</code> 时保持 <code>p-&gt;lock</code>：<code>swtch</code> 的调用者必须已经持有锁，并且锁的控制权传递给被切换到的代码。这个约定对于锁来说是不寻常的；通常情况下，获取锁的线程也负责释放锁，这样更容易推理正确性。对于上下文切换，由于<code>p-&gt;lock</code> 在执行 <code>swtch</code> 时保护进程的 <code>state</code> 和 <code>context</code> 字段上的不变式，所以有必要打破这个约定。如果在 <code>swtch</code> 期间不持有 <code>p-&gt;lock</code>，可能会出现的一个问题是：在 <code>yield</code> 将其状态设置为 <code>RUNNABLE</code> 之后，但在 <code>swtch</code> 导致它停止使用自己的内核栈之前，另一个CPU可能决定运行该进程。结果将是两个CPU在同一个栈上运行，这将导致混乱。</p>
+<p>内核线程放弃其CPU的唯一地方是在<code>sched</code>中，它总是切换到<code>scheduler</code>中的相同位置，这（几乎）总是切换到先前调用<code>sched</code>的某个内核线程。因此，如果要打印出xv6切换线程的行号，会观察到以下简单的模式：(kernel/proc.c:463)，(kernel/proc.c:497)，(kernel/proc.c:463)，(kernel/proc.c:497)等等。有意通过线程切换将控制权传递给对方的过程有时被称为<strong>coroutines</strong>；在这个例子中，<code>sched</code>和<code>scheduler</code>是彼此的协程。</p>
+<p>调度器调用<code>swtch</code>的一个情况不会在<code>sched</code>中结束。<code>allocproc</code>将新进程的上下文<code>ra</code>寄存器设置为<code>forkret</code>(kernel/proc.c:515)，以便它的第一个<code>swtch</code>“返回”到该函数的开头。<code>forkret</code>的存在是为了释放<code>p-&gt;lock</code>；否则，由于新进程需要返回到用户空间，就好像从<code>fork</code>返回一样，它可以在<code>usertrapret</code>处开始。</p>
+<p><code>scheduler</code>(kernel/proc.c:445)运行一个循环：找到要运行的进程，运行它直到它放弃CPU，然后重复。调度器遍历进程表，寻找一个可运行的进程，即 <code>p-&gt;state == RUNNABLE</code> 的进程。一旦找到一个进程，它设置每个CPU当前进程变量 <code>c-&gt;proc</code>，将进程标记为 <code>RUNNING</code>，然后调用 <code>swtch</code> 开始运行它(kernel/proc.c:458-463)。</p>
+<p>关于调度代码结构的一种思考方式是，它强制执行关于每个进程的一组不变式，并在这些不变式不成立时持有 <code>p-&gt;lock</code>。一个不变式是，如果一个进程处于 <code>RUNNING</code> 状态，定时器中断的 <code>yield</code> 必须能够安全地切换离开该进程；这意味着CPU寄存器必须保存进程的寄存器值（即<code>swtch</code>尚未将它们移动到一个<code>context</code>），并且<code>c-&gt;proc</code>必须引用该进程。另一个不变式是，如果一个进程是<code>RUNNABLE</code>，那么对于一个空闲的CPU的<code>scheduler</code>来说，运行它是安全的；这意味着<code>p-&gt;context</code>必须保存进程的寄存器（即它们实际上不在真正的寄存器中），没有CPU在进程的内核栈上执行，并且没有CPU的<code>c-&gt;proc</code>引用该进程。请注意，当<code>p-&gt;lock</code>被持有时，这些属性通常不成立。</p>
+<p>维护上述不变式是xv6经常在一个线程中获取<code>p-&gt;lock</code>并在另一个线程中释放它的原因，例如在<code>yield</code>中获取并在<code>scheduler</code>中释放。一旦<code>yield</code>开始修改一个正在运行的进程的状态，使其变为<code>RUNNABLE</code>，锁必须保持锁定状态，直到恢复不变式：最早的正确释放点是在<code>scheduler</code>（在其自己的堆栈上运行）清除<code>c-&gt;proc</code>之后。类似地，一旦<code>scheduler</code>开始将一个<code>RUNNABLE</code>进程转换为<code>RUNNING</code>，在内核线程完全运行之前（例如在<code>swtch</code>之后，在<code>yield</code>中）不能释放锁。</p>
+<h2 id="mycpumyproc">代码：mycpu和myproc</h2>
+<p>Xv6经常需要指向当前进程的<code>proc</code>结构的指针。在单处理器上，可以有一个全局变量指向当前的<code>proc</code>。这在多核机器上行不通，因为每个核心执行不同的进程。解决这个问题的方法是利用每个核心都有自己的寄存器集的事实；我们可以使用其中一个寄存器来帮助查找每个核心的信息。</p>
+<p>Xv6为每个CPU维护一个<code>struct cpu</code>(kernel/proc.h:22)，记录当前在该CPU上运行的进程（如果有的话）、保存CPU调度器线程的寄存器以及管理中断禁用所需的嵌套自旋锁计数。函数<code>mycpu</code>(kernel/proc.c:74)返回指向当前CPU的<code>struct cpu</code>的指针。RISC-V为其CPU编号，为每个CPU分配一个 <strong>hartid</strong>。Xv6确保每个CPU的 <strong>hartid</strong> 在内核中存储在该CPU的<code>tp</code>寄存器中。这允许<code>mycpu</code>使用<code>tp</code>对<code>cpu</code>结构的数组进行索引，以找到正确的结构。</p>
+<p>确保CPU的<code>tp</code>始终保存CPU的 <strong>hartid</strong> 有点复杂。在CPU引导序列的早期，<code>start</code>会在机器模式下设置<code>tp</code>寄存器(kernel/start.c:51)。<code>usertrapret</code>将<code>tp</code>保存在弹簧页(trampoline page)中，因为用户进程可能会修改<code>tp</code>。最后，当从用户空间进入内核时，<code>uservec</code>会恢复保存的<code>tp</code>(kernel/trampoline.S:77)。编译器保证从不使用<code>tp</code>寄存器。如果xv6可以在需要时要求RISC-V硬件提供当前的 <strong>hartid</strong>，那将更方便，但RISC-V只允许在机器模式下进行，而不是在监督器模式下。</p>
+<p><code>cpuid</code>和<code>mycpu</code>的返回值是脆弱的：如果计时器中断并导致线程让步，然后移动到不同的CPU，以前返回的值将不再正确。为避免这个问题，xv6要求调用者禁用中断，并在使用完返回的<code>struct cpu</code>之后启用它们。</p>
+<p>函数<code>myproc</code>(kernel/proc.c:83)返回当前CPU上运行的进程的<code>struct proc</code>指针。<code>myproc</code>禁用中断，调用<code>mycpu</code>，从<code>struct cpu</code>中获取当前进程指针（<code>c-&gt;proc</code>），然后启用中断。即使中断被启用，<code>myproc</code>的返回值也是安全的：如果计时器中断将调用进程移动到不同的CPU，其<code>struct proc</code>指针将保持不变。</p>
+<h2 id="_4">睡眠和唤醒</h2>
+<p>调度和锁有助于将一个线程的操作对另一个线程隐藏，但我们还需要抽象来帮助线程有意地互动。例如，xv6中的管道读取器可能需要等待写入进程产生数据；父进程的<code>wait</code>调用可能需要等待子进程退出；处理读取磁盘的进程需要等待磁盘硬件完成读取。在这些情况（以及其他许多情况）下，xv6内核使用一种称为睡眠和唤醒的机制。睡眠允许内核线程等待特定的事件；另一个线程可以调用唤醒来指示等待某个事件的线程应该恢复。睡眠和唤醒通常被称为<strong>顺序协调</strong>或<strong>条件同步</strong>机制。</p>
+<p>睡眠和唤醒提供了一个相对较低级别的同步接口。为了激发它们在xv6中的工作方式，我们将使用它们构建一个更高级别的同步机制，称为<strong>信号量</strong>，用于协调生产者和消费者（xv6并未使用信号量）。信号量维护一个计数，并提供两个操作。"V"操作（对于生产者）增加计数。"P"操作（对于消费者）等待计数为非零，然后减少计数并返回。如果只有一个生产者线程和一个消费者线程，它们在不同的CPU上执行，并且编译器不会过于激进地优化，那么这个实现将是正确的：</p>
+<p>```c
+struct semaphore {
+    struct spinlock lock;
+    int count;
+};</p>
+<p>void
+  V(struct semaphore *s)
+  {
+     acquire(&amp;s-&gt;lock);
+     s-&gt;count += 1;
+     release(&amp;s-&gt;lock);
+  }</p>
+<p>void
+  P(struct semaphore *s)
+  {
+     while(s-&gt;count == 0)
+       ;
+     acquire(&amp;s-&gt;lock);
+     s-&gt;count -= 1;
+     release(&amp;s-&gt;lock);
+  }
+  ```</p>
+<p>上面的实现代价昂贵。如果生产者行为很少，消费者将花费大部分时间在<code>while</code>循环中等待非零计数。消费者的CPU可能比<strong>忙等待</strong>通过重复<strong>轮询</strong><code>s-&gt;count</code>找到更有成效的工作。避免忙等待需要一种方法让消费者放弃CPU，并在<code>V</code>增加计数之后才恢复。</p>
+<p>这是朝这个方向迈出的一步，尽管我们会发现这还不够。让我们想象一对调用，<code>sleep</code>和<code>wakeup</code>，它们的工作方式如下。<code>sleep(chan)</code>在任意值<code>chan</code>上睡眠，称为<strong>等待通道</strong>。<code>sleep</code>使调用进程进入睡眠状态，为其他工作释放CPU。<code>wakeup(chan)</code>唤醒所有在<code>chan</code>上睡眠的进程（如果有），导致它们的<code>sleep</code>调用返回。如果没有进程在<code>chan</code>上等待，<code>wakeup</code>什么也不做。我们可以将信号量实现更改为使用<code>sleep</code>和<code>wakeup</code>（突出显示的更改为黄色）：</p>
+<p>```c
+void
+  V(struct semaphore *s)
+  {
+     acquire(&amp;s-&gt;lock);
+     s-&gt;count += 1;
+     wakeup(s);
+     release(&amp;s-&gt;lock);
+  }</p>
+<p>void
+  P(struct semaphore *s)
+  {
+    while(s-&gt;count == 0)
+      sleep(s);
+    acquire(&amp;s-&gt;lock);
+    s-&gt;count -= 1;
+    release(&amp;s-&gt;lock);
+  }
+  ```</p>
+<p>现在，<code>P</code>放弃CPU而不是旋转，这很好。然而，事实证明，要设计<code>sleep</code>和<code>wakeup</code>这样的接口，而不受到所谓的<strong>丢失唤醒</strong>问题的困扰，并不简单。假设<code>P</code>发现在第212行<code>s-&gt;count==0</code>。当<code>P</code>在第212行和第213行之间时，<code>V</code>在另一个CPU上运行：它将<code>s-&gt;count</code>更改为非零并调用<code>wakeup</code>，后者发现没有进程在睡眠，因此什么也不做。现在<code>P</code>继续在第213行执行：它调用<code>sleep</code>并进入睡眠状态。这会导致一个问题：<code>P</code>在等待一个已经发生的<code>V</code>调用。除非我们走运，生产者再次调用<code>V</code>，否则消费者将永远等待，即使计数为非零。</p>
+<p>这个问题的根源是，由于<code>V</code>在错误的时刻运行，<code>P</code>仅在<code>s-&gt;count == 0</code>时睡眠的不变式被破坏了。一个不正确的保护不变式的方法是将<code>P</code>中的锁获取（在下面以黄色高亮）移动，使其对计数的检查和对<code>sleep</code>的调用是原子的：</p>
+<p>```c
+void
+  V(struct semaphore *s)
+  {
+    acquire(&amp;s-&gt;lock);
+    s-&gt;count += 1;
+    wakeup(s);
+    release(&amp;s-&gt;lock);
+}</p>
+<p>void
+  P(struct semaphore *s)
+  {
+    acquire(\&amp;s-&gt;lock);
+    while(s-&gt;count == 0)
+      sleep(s);
+    s-&gt;count -= 1;
+    release(&amp;s-&gt;lock);
+  }
+  ```</p>
+<p>人们可能希望这个版本的<code>P</code>可以避免丢失唤醒，因为锁阻止<code>V</code>在第 313 行和第 314行之间执行。它确实做到了这一点，但它也陷入了死锁：<code>P</code>在睡眠时持有锁，所以<code>V</code>将永远阻塞等待锁。</p>
+<p>我们将通过更改<code>sleep</code>的接口来修复前面的方案：调用者必须将<strong>条件锁</strong> 传递给<code>sleep</code>，以便在调用进程被标记为在睡眠通道上睡眠和等待之后释放锁。锁将强制并发的<code>V</code>等待，直到<code>P</code>完成将自己置于睡眠状态，这样<code>wakeup</code>就会发现正在睡眠的消费者并唤醒它。一旦消费者再次醒来，<code>sleep</code>在返回之前重新获取锁。我们的新正确的睡眠/唤醒方案可用如下（突出显示的更改为黄色）：</p>
+<p>```c
+void
+  V(struct semaphore *s)
+  {
+    acquire(&amp;s-&gt;lock);
+    s-&gt;count += 1;
+    wakeup(s);
+    release(&amp;s-&gt;lock);
+    }</p>
+<p>void
+  P(struct semaphore *s)
+  {
+    acquire(&amp;s-&gt;lock);
+    while(s-&gt;count == 0)
+       sleep(s, \&amp;s-&gt;lock);
+    s-&gt;count -= 1;
+    release(&amp;s-&gt;lock);
+  }
+  ```</p>
+<p>事实上，<code>P</code>持有<code>s-&gt;lock</code>可以防止<code>V</code>在<code>P</code>检查<code>s-&gt;count</code>和调用<code>sleep</code>之间尝试唤醒它。然而，需要注意的是，为了避免丢失唤醒，我们需要<code>sleep</code>原子地释放<code>s-&gt;lock</code>并使消费进程进入睡眠状态。</p>
+<h2 id="sleep-wakeup">代码：Sleep 和 wakeup</h2>
+<p>Xv6 的 <code>sleep</code> (kernel/proc.c:536) 和 <code>wakeup</code> (kernel/proc.c:567) 提供了上面最后一个示例中展示的接口，它们的实现（加上如何使用它们的规则）确保没有丢失唤醒。基本思路是让 <code>sleep</code> 将当前进程标记为 <code>SLEEPING</code>，然后调用 <code>sched</code> 以释放 CPU；<code>wakeup</code> 查找在给定等待通道上睡眠的进程，并将其标记为 <code>RUNNABLE</code>。调用 <code>sleep</code> 和 <code>wakeup</code> 的程序可以使用任何相互方便的数字作为通道。Xv6 通常使用与等待有关的内核数据结构的地址。</p>
+<p><code>sleep</code> 获取 <code>p-&gt;lock</code> (kernel/proc.c:547)。现在，进入睡眠的进程同时持有 <code>p-&gt;lock</code> 和 <code>lk</code>。在调用方（在示例中为 <code>P</code>）中持有 <code>lk</code> 是必要的：它确保没有其他进程（在示例中，运行 <code>V</code> 的进程）可以开始调用 <code>wakeup(chan)</code>。现在 <code>sleep</code> 持有 <code>p-&gt;lock</code>，释放 <code>lk</code> 是安全的：其他进程可能开始调用 <code>wakeup(chan)</code>，但 <code>wakeup</code> 将等待获取 <code>p-&gt;lock</code>，因此将等待 <code>sleep</code> 完成使进程进入睡眠，使得 <code>wakeup</code> 不会错过 <code>sleep</code>。</p>
+<p>现在，<code>sleep</code> 持有 <code>p-&gt;lock</code>，而没有其他锁，它可以通过记录睡眠通道，将进程状态更改为 <code>SLEEPING</code>，并调用 <code>sched</code> (kernel/proc.c:551-554) 将进程置于睡眠状态。过一会儿将清楚为什么在进程标记为 <code>SLEEPING</code> 之后，<code>p-&gt;lock</code> 不被释放（由 <code>scheduler</code>）是至关重要的。</p>
+<p>在某个时候，一个进程将获得条件锁，设置等待睡眠进程的条件，并调用 <code>wakeup(chan)</code>。在持有条件锁的情况下调用 <code>wakeup</code> 是很重要的.</p>
+<blockquote>
+<p>严格来说，如果 <code>wakeup</code> 仅在 <code>acquire</code> 之后（也就是说，可以在 <code>release</code> 之后调用 <code>wakeup</code>）就足够了。</p>
+</blockquote>
+<p><code>wakeup</code> 在进程表上循环 (kernel/proc.c:567)。它会获取每个检查过的进程的 <code>p-&gt;lock</code>，因为它可能会操作该进程的状态，而且 <code>p-&gt;lock</code> 确保 <code>sleep</code> 和 <code>wakeup</code> 不会错过彼此。当 <code>wakeup</code> 发现一个处于 <code>SLEEPING</code> 状态并且具有匹配的 <code>chan</code> 的进程时，它会将该进程的状态更改为 <code>RUNNABLE</code>。下次调度程序运行时，它将看到该进程已准备好运行。</p>
+<p>为什么 <code>sleep</code> 和 <code>wakeup</code> 的锁定规则可以确保睡眠进程不会错过唤醒？睡眠进程在检查条件之前的某个时间点持有条件锁或其自身的 <code>p-&gt;lock</code>，或者在标记为 <code>SLEEPING</code> 之后的某个时间点持有这两者。在 <code>wakeup</code> 的循环中，调用 <code>wakeup</code> 的进程持有这两个锁中的每一个。因此，唤醒者要么在消费者线程检查条件之前使条件变为真实，要么唤醒者的 <code>wakeup</code> 在被标记为 <code>SLEEPING</code> 之后严格地检查睡眠线程。然后，<code>wakeup</code> 将看到睡眠进程并唤醒它（除非其他事物先将其唤醒）。</p>
+<p>有时候，多个进程会在同一个通道上睡眠；例如，多个进程从管道中读取数据。单个调用 <code>wakeup</code> 将唤醒它们所有。其中一个进程将首先运行并获取 <code>sleep</code> 被调用时的锁，然后（在管道的情况下）读取管道中等待的数据。其他进程会发现，尽管被唤醒了，但没有数据可读。从它们的角度来看，唤醒是“虚假的”，它们必须再次睡眠。因此，<code>sleep</code> 总是在检查条件的循环中被调用。</p>
+<p>如果两个使用 sleep/wakeup 的进程不小心选择了相同的通道，也不会造成任何损害：它们会看到虚假的唤醒，但如上所述的循环将容忍这个问题。sleep/wakeup 的魅力在于它既轻量级（无需创建特殊的数据结构充当睡眠通道），又提供了一个间接层（调用者无需知道它们正在与哪个特定的进程交互）。</p>
+<h2 id="_5">代码：管道</h2>
+<p>一个更复杂的示例，使用 <code>sleep</code> 和 <code>wakeup</code> 来同步生产者和消费者，是 xv6 对管道的实现。我们在第 1章中看到了管道的接口：写入管道一端的字节被复制到内核缓冲区，然后可以从管道的另一端读取。后续章节将研究围绕管道的文件描述符支持，但让我们现在看看 <code>pipewrite</code> 和 <code>piperead</code> 的实现。</p>
+<p>每个管道由一个 <code>struct pipe</code> 表示，其中包含一个 <code>lock</code> 和一个 <code>data</code> 缓冲区。字段 <code>nread</code> 和 <code>nwrite</code> 分别计算从缓冲区读取和写入的总字节数。缓冲区是环绕的：在 <code>buf[PIPESIZE-1]</code> 之后写入的下一个字节是 <code>buf[0]</code>。计数不回绕。这种约定让实现区分满缓冲区（<code>nwrite == nread+PIPESIZE</code>）和空缓冲区（<code>nwrite == nread</code>），但这意味着索引到缓冲区必须使用 <code>buf[nread % PIPESIZE]</code> 而不是仅使用 <code>buf[nread]</code>（对于 <code>nwrite</code> 也是类似的）。</p>
+<p>假设对 <code>piperead</code> 和 <code>pipewrite</code> 的调用同时发生在两个不同的 CPU 上。 <code>pipewrite</code> (kernel/pipe.c:77) 首先获取管道的锁，该锁保护计数、数据及其关联的不变式。<code>piperead</code> (kernel/pipe.c:106) 然后尝试获取锁，但无法获取。它在 <code>acquire</code> (kernel/spinlock.c:22) 中自旋，等待锁。在 <code>piperead</code> 等待时，<code>pipewrite</code> 对要写入的字节（<code>addr[0..n-1]</code>）进行循环，依次将每个字节添加到管道中 (kernel/pipe.c:95)。在这个循环中，缓冲区可能会被填满 (kernel/pipe.c:88)。在这种情况下，<code>pipewrite</code> 调用 <code>wakeup</code> 以提醒任何正在休眠的读者缓冲区中有等待的数据，然后在 <code>&amp;pi-&gt;nwrite</code> 上休眠，等待读者从缓冲区中取出一些字节。<code>sleep</code> 作为将 <code>pipewrite</code> 的进程置于休眠状态的一部分，释放 <code>pi-&gt;lock</code>。</p>
+<p>现在 <code>pi-&gt;lock</code> 可用，<code>piperead</code> 成功获取到它并进入临界区：它发现 <code>pi-&gt;nread != pi-&gt;nwrite</code> (kernel/pipe.c:113)（<code>pipewrite</code> 休眠是因为 <code>pi-&gt;nwrite == pi-&gt;nread+PIPESIZE</code> (kernel/pipe.c:88)），所以它执行了 <code>for</code> 循环，从管道中复制数据 (kernel/pipe.c:120)，并将 <code>nread</code> 增加复制的字节数。现在有这么多字节可以写入，所以 <code>piperead</code> 调用 <code>wakeup</code> (kernel/pipe.c:127) 在返回之前唤醒任何正在休眠的写者。<code>wakeup</code> 发现一个在 <code>&amp;pi-&gt;nwrite</code> 上休眠的进程，即执行 <code>pipewrite</code> 但在缓冲区填满时停止的进程。它将该进程标记为 <code>RUNNABLE</code>。</p>
+<p>管道代码对读者和写者使用了单独的睡眠通道（<code>pi-&gt;nread</code> 和 <code>pi-&gt;nwrite</code>）；如果同一个管道有许多读者和写者在等待，这可能会使系统在不太可能的情况下更加高效。管道代码在检查睡眠条件的循环中休眠；如果有多个读者或写者，除第一个唤醒的进程外，其他进程都会发现条件仍然为假并再次休眠。</p>
+<h2 id="waitexit-kill">代码：Wait、exit 和 kill</h2>
+<p><code>sleep</code> 和 <code>wakeup</code> 可用于许多类型的等待。一个有趣的例子是在第 1 章中引入的子进程的 <code>exit</code> 与其父进程的 <code>wait</code> 之间的交互。在子进程死亡时，父进程可能已经在 <code>wait</code> 中睡眠，或者正在做其他事情；在后一种情况下，后续对 <code>wait</code> 的调用必须观察到子进程的死亡，也许在 <code>exit</code> 调用很久之后。xv6 记录子进程死亡直到 <code>wait</code> 观察到它的方式是让 <code>exit</code> 将调用者置于 <code>ZOMBIE</code> 状态，在父进程的 <code>wait</code> 注意到它，将子进程的状态更改为 <code>UNUSED</code>，复制子进程的退出状态，并将子进程的进程 ID 返回给父进程之前，子进程一直保持在该状态。如果父进程在子进程之前退出，父进程会将子进程交给 <code>init</code> 进程，后者会持续调用 <code>wait</code>；因此，每个子进程都有一个父进程来清理它。挑战是避免在同时发生的父进程和子进程之间的 <code>wait</code> 和 <code>exit</code> 以及同时发生的 <code>exit</code> 和 <code>exit</code> 之间的竞争和死锁。</p>
+<p><code>wait</code> 首先获取 <code>wait_lock</code> (kernel/proc.c:391)。原因是 <code>wait_lock</code> 充当条件锁，有助于确保父进程不会错过退出子进程的 <code>wakeup</code>。然后 <code>wait</code> 扫描进程表。如果找到处于 <code>ZOMBIE</code> 状态的子进程，它会释放该子进程的资源和其 <code>proc</code> 结构，将子进程的退出状态复制到提供给 <code>wait</code> 的地址（如果不为 0），并返回子进程的进程 ID。如果 <code>wait</code> 找到子进程但没有退出，它会调用 <code>sleep</code> 等待其中任何一个退出 (kernel/proc.c:433)，然后再次扫描。在 <code>wait_lock</code> 和某个进程的 <code>pp-&gt;lock</code> 之间，<code>wait</code> 通常持有两个锁；避免死锁的顺序是先 <code>wait_lock</code> 然后是 <code>pp-&gt;lock</code>。</p>
+<p><code>exit</code> (kernel/proc.c:347) 记录退出状态，释放一些资源，调用 <code>reparent</code> 将其子进程交给 <code>init</code> 进程，唤醒父进程以防其处于 <code>wait</code>，将调用者标记为僵尸，并永久放弃 CPU。在这个过程中，<code>exit</code> 保持着 <code>wait_lock</code> 和 <code>p-&gt;lock</code>。它保持 <code>wait_lock</code> 是因为它是 <code>wakeup(p-&gt;parent)</code> 的条件锁，防止 <code>wait</code> 中的父进程丢失唤醒。在这个过程中，<code>exit</code> 也必须保持 <code>p-&gt;lock</code>，以防止 <code>wait</code> 中的父进程在子进程最终调用 <code>swtch</code> 之前看到子进程处于 <code>ZOMBIE</code> 状态。<code>exit</code> 按照与 <code>wait</code> 相同的顺序获取这些锁，以避免死锁。</p>
+<p><code>exit</code> 在将其状态设置为 <code>ZOMBIE</code> 之前唤醒父进程看起来可能是错误的，但实际上是安全的：尽管 <code>wakeup</code> 可能导致父进程运行，但是 <code>wait</code> 中的循环在子进程的 <code>p-&gt;lock</code> 被  <code>scheduler</code> 释放之前无法检查子进程，因此在 <code>exit</code> 将其状态设置为 <code>ZOMBIE</code> 很久之后，<code>wait</code> 才能查看退出的进程 (kernel/proc.c:379)。</p>
+<p>虽然 <code>exit</code> 允许进程终止自身，但 <code>kill</code> (kernel/proc.c:586) 让一个进程请求另一个进程终止。如果 <code>kill</code> 直接销毁受害进程将过于复杂，因为受害者可能在另一个 CPU 上执行，也许是在对内核数据结构进行敏感的更新序列中间。因此，<code>kill</code> 做得非常少：它只是设置受害者的 <code>p-&gt;killed</code>，如果它处于睡眠状态，就唤醒它。最终，受害者将进入或离开内核，此时，如果设置了 <code>p-&gt;killed</code>，<code>usertrap</code> 中的代码将调用 <code>exit</code>（通过调用 <code>killed</code> 进行检查 (kernel/proc.c:615)）。如果受害者正在用户空间中运行，那么很快会通过发起系统调用或因计时器（或其他设备）中断进入内核。</p>
+<p>如果受害进程处于 <code>sleep</code> 状态，<code>kill</code> 对 <code>wakeup</code> 的调用将导致受害进程从 <code>sleep</code> 返回。这可能是危险的，因为可能等待的条件并不成立。然而，xv6 对 <code>sleep</code> 的调用总是用一个 <code>while</code> 循环包装起来，在 <code>sleep</code> 返回后重新测试条件。一些调用 <code>sleep</code> 的循环还检查 <code>p-&gt;killed</code>，如果设置了该值，它们将放弃当前的活动。只有在放弃正确的情况下才会这样做。例如，管道读写代码如果设置了 killed 标志，则返回；最终代码将返回到陷阱，再次检查 <code>p-&gt;killed</code> 并退出。</p>
+<p>一些 xv6 的 <code>sleep</code> 循环没有检查 <code>p-&gt;killed</code>，因为代码处于一个多步骤的系统调用中，这个系统调用应该是原子的。virtio 驱动程序 (kernel/virtio_disk.c:285) 就是一个例子：它没有检查 <code>p-&gt;killed</code>，因为磁盘操作可能是一组写操作中的一个，所有这些写操作都需要使文件系统保持在正确的状态。在等待磁盘 I/O 时被杀死的进程将在完成当前的系统调用并且 <code>usertrap</code> 看到 killed 标志后退出。</p>
+<h2 id="_6">进程锁定</h2>
+<p>与每个进程关联的锁（<code>p-&gt;lock</code>）是 xv6 中最复杂的锁。简单地认为，<code>p-&gt;lock</code> 在读取或写入以下 <code>struct proc</code> 字段时必须被持有：<code>p-&gt;state</code>，<code>p-&gt;chan</code>，<code>p-&gt;killed</code>，<code>p-&gt;xstate</code> 和 <code>p-&gt;pid</code>。这些字段可以被其他进程或其他内核线程使用，因此它们必须受到锁的保护。</p>
+<p>然而，大多数使用 <code>p-&gt;lock</code> 的地方都在保护 xv6 的进程数据结构和算法的更高级别方面。以下是 <code>p-&gt;lock</code> 所做的全部事情：</p>
+<ul>
+<li>和 <code>p-&gt;state</code> 一起，防止在为新进程分配 <code>proc[]</code> 插槽时发生竞争。</li>
+<li>在进程被创建或销毁时，将其从视图中隐藏。使分配、销毁的所有步骤原子化。</li>
+<li>
+<p>防止父进程的 <code>wait</code> 收集已将其状态设置为 <code>ZOMBIE</code> 但尚未放弃 CPU 的进程。</p>
+</li>
+<li>
+<p>防止另一个内核的调度器在进程将其状态设置为 <code>RUNNABLE</code> 但尚未完成 <code>swtch</code> 之前决定运行正在让出的进程。</p>
+</li>
+<li>确保只有一个内核的调度器决定运行 <code>RUNNABLE</code> 进程。</li>
+<li>防止定时器中断导致进程在 <code>swtch</code> 中让出。</li>
+<li>和条件锁一起，有助于防止 <code>wakeup</code> 忽略一个正在调用 <code>sleep</code> 但尚未完成放弃 CPU 的进程。</li>
+<li>防止 <code>kill</code> 的受害进程在 <code>kill</code> 检查 <code>p-&gt;pid</code> 和设置 <code>p-&gt;killed</code> 之间退出并可能被重新分配。</li>
+<li>使 <code>kill</code> 对 <code>p-&gt;state</code> 的检查和写入原子化。</li>
+</ul>
+<p><code>p-&gt;parent</code> 字段由全局锁 <code>wait_lock</code> 保护，而不是由 <code>p-&gt;lock</code> 保护。只有进程的父进程修改 <code>p-&gt;parent</code>，尽管该字段既被进程本身读取，也被其他进程在搜索其子进程时读取。 <code>wait_lock</code> 的目的是在 <code>wait</code> 睡眠等待任何子进程退出时充当条件锁。退出的子进程持有 <code>wait_lock</code> 或 <code>p-&gt;lock</code>，直到它将其状态设置为 <code>ZOMBIE</code>，唤醒其父进程，并放弃 CPU。 <code>wait_lock</code> 还对父进程和子进程的并发 <code>exit</code> 进行序列化，以便保证 <code>init</code> 进程（继承子进程）从其 <code>wait</code> 中被唤醒。<code>wait_lock</code> 是一个全局锁，而不是每个父进程中的每个进程锁，因为在进程获取它之前，它不能知道谁是其父进程。</p>
+<h2 id="_7">现实世界</h2>
+<p>xv6 调度器实现了一个简单的调度策略，依次运行每个进程。这种策略被称为<strong>轮询</strong>。现实中的操作系统实现了更复杂的策略，例如，允许进程具有优先级。这样的想法是，可运行的高优先级进程将优先于可运行的低优先级进程。这些策略很快变得复杂，因为通常有竞争目标：例如，操作系统可能还希望保证公平性和高吞吐量。此外，复杂的策略可能导致意外的相互作用，例如 <strong>优先级反转</strong> 和 <strong>护航</strong>。当低优先级和高优先级的进程都使用特定的锁时，优先级反转可能会发生，这会导致低优先级进程获取锁时，高优先级进程无法取得进展。当许多高优先级进程等待获取共享锁的低优先级进程时，可以形成一个长队列的等待进程；一旦形成护航，它可能会持续很长时间。为了避免这类问题，复杂的调度器中需要额外的机制。</p>
+<p><code>sleep</code> 和 <code>wakeup</code> 是一种简单而有效的同步方法，但还有许多其他方法。它们的第一个挑战是避免我们在本章开头看到的“丢失唤醒”问题。原始 Unix 内核的 <code>sleep</code> 只需禁用中断，因为 Unix 在单 CPU 系统上运行。由于 xv6 在多处理器上运行，它在 <code>sleep</code> 中添加了一个显式锁。FreeBSD 的 <code>msleep</code> 采用相同的方法。Plan 9 的 <code>sleep</code> 使用一个在睡眠前持有调度锁的回调函数；该函数用作最后一刻的睡眠条件检查，以避免丢失唤醒。Linux 内核的 <code>sleep</code> 使用一个显式的进程队列，称为等待队列，而不是等待通道；队列有其自己的内部锁。</p>
+<p>在 <code>wakeup</code> 中扫描所有进程集合是低效的。一个更好的解决方案是用一个保存在该结构上睡眠的进程列表的数据结构替换 <code>sleep</code> 和 <code>wakeup</code> 中的 <code>chan</code>，比如 Linux 的等待队列。Plan 9 的 <code>sleep</code> 和 <code>wakeup</code> 将该结构称为汇合点。许多线程库将相同的结构称为条件变量；在这种情况下，操作 <code>sleep</code> 和 <code>wakeup</code> 分别称为 <code>wait</code> 和 <code>signal</code>。所有这些机制都具有相同的特点：睡眠条件受到某种在睡眠期间原子性丢弃的锁的保护。</p>
+<p><code>wakeup</code> 的实现会唤醒在特定通道上等待的所有进程，可能有许多进程正在等待那个特定的通道。操作系统将调度所有这些进程，它们将争先恐后地检查睡眠条件。有时被称为<strong>雷鸣般的一群</strong> (<em>thundering herd</em>) 的进程以这种方式行为，最好避免。大多数条件变量都有两个 <code>wakeup</code> 原语：<code>signal</code>，唤醒一个进程，和 <code>broadcast</code>，唤醒所有等待的进程。</p>
+<p>信号量通常用于同步。计数通常对应于类似于管道缓冲区中可用字节数或进程具有的僵尸子进程数量之类的东西。将显式计数作为抽象的一部分可以避免“丢失唤醒”(“lost wakeup” )的问题：有一个唤醒次数的显式计数。计数还可以避免虚假唤醒和雷鸣般的一群问题。</p>
+<p>终止进程并清理它们在 xv6 中引入了很多复杂性。在大多数操作系统中，它甚至更加复杂，因为例如，受害进程可能在内核深处睡眠，小心解开其堆栈，因为调用堆栈上的每个函数可能都需要进行一些清理。有些语言通过提供异常机制来提供帮助，但 C 语言没有。此外，还有其他事件可能导致睡眠进程被唤醒，尽管它等待的事件尚未发生。例如，当 Unix 进程处于睡眠状态时，另一个进程可能会向其发送 <code>signal</code>。在这种情况下，进程将从中断的系统调用返回值 -1，并将错误代码设置为 EINTR。应用程序可以检查这些值并决定如何处理。Xv6 不支持信号，因此不会产生这种复杂性。</p>
+<p>Xv6 对 <code>kill</code> 的支持并不完全令人满意：有些睡眠循环可能应该检查 <code>p-&gt;killed</code>。相关问题是，即使对于检查 <code>p-&gt;killed</code> 的 <code>sleep</code> 循环，<code>sleep</code> 和 <code>kill</code> 之间也存在竞争；后者可能在受害者循环检查 <code>p-&gt;killed</code> 之后，但在调用 <code>sleep</code> 之前设置 <code>p-&gt;killed</code> 并尝试唤醒受害者。如果出现这个问题，受害者在等待的条件发生之前都不会注意到 <code>p-&gt;killed</code>。这可能会相当晚，甚至可能永远不会发生（例如，如果受害者正在等待来自控制台的输入，但用户没有输入任何内容）。</p>
+<p>一个真正的操作系统将使用显式的空闲列表在常量时间内查找空闲的 <code>proc</code> 结构，而不是在 <code>allocproc</code> 中的线性时间搜索；xv6 使用线性扫描来简化。</p>
+                
+              
+              
+<script src="https://giscus.app/client.js" data-repo="PKUFlyingPig/cs-self-learning" data-repo-id="R_kgDOGP67ng"
+    data-category="Announcements" data-category-id="DIC_kwDOGP67ns4COM9Q" data-mapping="title"
+    data-reactions-enabled="1" data-emit-metadata="0" data-input-position="top" data-theme="light_protanopia"
+    data-lang="zh-CN" data-loading="lazy" crossorigin="anonymous" async>
+</script>
+
+<script>
+    var palette = __get("__palette")
+    if (palette && typeof palette.color === "object") {
+        if (palette.color.scheme === "slate") {
+            const giscus = document.querySelector("script[src*=giscus]")
+            giscus.setAttribute("data-theme", "dark_protanopia")
+        }
+    }
+
+    document.addEventListener("DOMContentLoaded", function () {
+        const ref = document.querySelector("[data-md-component=palette]")
+        ref.addEventListener("change", function () {
+            var palette = __get("__palette")
+            if (palette && typeof palette.color === "object") {
+                const theme = palette.color.scheme === "slate" ? "dark_protanopia" : "light_protanopia"
+                const frame = document.querySelector(".giscus-frame")
+                frame.contentWindow.postMessage({
+                    giscus: { setConfig: { theme } }
+                }, "https://giscus.app")
+            }
+        })
+    })
+</script>
+
+            </article>
+          </div>
+        </div>
+        
+          <a href="#" class="md-top md-icon" data-md-component="top" data-md-state="hidden">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"/></svg>
+            Back to top
+          </a>
+        
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href="../6.%20%E9%94%81/" class="md-footer__link md-footer__link--prev" aria-label="上一页: 6. 锁" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                上一页
+              </span>
+              6. 锁
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../8.%20%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/" class="md-footer__link md-footer__link--next" aria-label="下一页: 8. 文件系统" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                下一页
+              </span>
+              8. 文件系统
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        
+          Made with
+          <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+            Material for MkDocs
+          </a>
+        
+        
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["header.autohide", "navigation.tracking", "navigation.top", "search.highlight", "search.share", "search.suggest", "content.code.annotate"], "search": "../../assets/javascripts/workers/search.fcfe8b6d.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\uff0c\\u3002]+", "search.placeholder": "\u641c\u7d22", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.b1047164.min.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+      
+    
+  </body>
+</html>

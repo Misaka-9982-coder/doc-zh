@@ -1,0 +1,2339 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-7.3.6">
+    
+    
+      
+        <title>2.08.Statements and State - doc-zh</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.a57b2b03.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.3f5d1f46.min.css">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font-family:"Roboto";--md-code-font-family:"Roboto Mono"}</style>
+      
+    
+    
+    
+    
+      
+
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="light-blue" data-md-color-accent="deep-purple">
+  
+    
+    <script>function __prefix(e){return new URL("../../..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+    
+      <script>var palette=__get("__palette");if(null!==palette&&"object"==typeof palette.color)for(var key in palette.color)document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="doc-zh" class="md-header__button md-logo" aria-label="doc-zh" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            doc-zh
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              2.08.Statements and State
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="light-blue" data-md-color-accent="deep-purple"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+          
+            <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5c-.84 0-1.65.15-2.39.42L12 2M3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29L3.34 7m.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14L3.36 17M20.65 7l-1.77 3.79a7.023 7.023 0 0 0-2.38-4.15l4.15.36m-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29L20.64 17M12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44L12 22z"/></svg>
+            </label>
+          
+        
+          
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="cyan" data-md-color-accent="deep-purple"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
+          
+            <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3 3.19.09m3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95 2.06.05m-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31z"/></svg>
+            </label>
+          
+        
+      </form>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7 0-.24-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91 1.61 0 2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08z"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        
+<a href="https://github.com/Misaka-9982-coder/doc-zh" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    doc-zh
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="doc-zh" class="md-nav__button md-logo" aria-label="doc-zh" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    doc-zh
+  </label>
+  
+    <div class="md-nav__source">
+      
+<a href="https://github.com/Misaka-9982-coder/doc-zh" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    doc-zh
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1" type="checkbox" id="__nav_1" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_1">
+          xv6-book
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="xv6-book" data-md-level="1">
+        <label class="md-nav__title" for="__nav_1">
+          <span class="md-nav__icon md-icon"></span>
+          xv6-book
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../S081/0.%20%E5%89%8D%E8%A8%80%E5%92%8C%E8%87%B4%E8%B0%A2/" class="md-nav__link">
+        0. 前言和致谢
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../S081/1.%20%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E6%8E%A5%E5%8F%A3/" class="md-nav__link">
+        1. 操作系统接口
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../S081/2.%20%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84/" class="md-nav__link">
+        2. 操作系统架构
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../S081/3.%20%E9%A1%B5%E8%A1%A8/" class="md-nav__link">
+        3. 页表
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../S081/4.%20trap%20%E4%B8%8E%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8/" class="md-nav__link">
+        4. trap 与系统调用
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../S081/5.%20%E4%B8%AD%E6%96%AD%E5%92%8C%E8%AE%BE%E5%A4%87%E9%A9%B1%E5%8A%A8%E7%A8%8B%E5%BA%8F/" class="md-nav__link">
+        5. 中断和设备驱动程序
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../S081/6.%20%E9%94%81/" class="md-nav__link">
+        6. 锁
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../S081/7.%20%E8%B0%83%E5%BA%A6/" class="md-nav__link">
+        7. 调度
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../S081/8.%20%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/" class="md-nav__link">
+        8. 文件系统
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../S081/9.%20%E5%86%8D%E6%AC%A1%E6%8E%A2%E8%AE%A8%E5%B9%B6%E5%8F%91%E6%80%A7/" class="md-nav__link">
+        9. 再次探讨并发性
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2">
+          craftinginterpreters
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="craftinginterpreters" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          craftinginterpreters
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../0_00.contents/contents/" class="md-nav__link">
+        0.00.contents
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../0_01.acknowledgements/acknowledgements/" class="md-nav__link">
+        0.01.acknowledgements
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1_00.Welcome/Welcome/" class="md-nav__link">
+        一、WELCOME
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1_01.Introduction/Introduction/" class="md-nav__link">
+        1.01.Introduction
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1_02.A%20Map%20of%20the%20Territory/A%20Map%20of%20the%20Territory/" class="md-nav__link">
+        1.02.A Map of the Territory
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1_03.The%20Lox%20Language/The%20Lox%20Language/" class="md-nav__link">
+        1.03.The Lox Language
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2_00.A%20TREE-WALK%20INTERPRETER/A%20TREE-WALK%20INTERPRETER/" class="md-nav__link">
+        二、A TREE-WALK INTERPRETER
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2_04.Scanning/Scanning/" class="md-nav__link">
+        2.04.Scanning
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2_05.Representing%20Code/Representing%20Code/" class="md-nav__link">
+        2.05.Representing Code
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2_06.Parsing%20Expressions/Parsing%20Expressions/" class="md-nav__link">
+        2.06.Parsing Expressions
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2_07.Evaluating%20Expressions/Evaluating%20Expressions/" class="md-nav__link">
+        2.07.Evaluating Expressions
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          2.08.Statements and State
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        2.08.Statements and State
+      </a>
+      
+        
+
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#81-statements" class="md-nav__link">
+    8.1 语句statements
+  </a>
+  
+    <nav class="md-nav" aria-label="8.1 语句statements">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#811" class="md-nav__link">
+    8.1.1 语句语法树
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#812" class="md-nav__link">
+    8.1.2 解析语句
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#813" class="md-nav__link">
+    8.1.3 执行语句
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#82" class="md-nav__link">
+    8.2 全局变量
+  </a>
+  
+    <nav class="md-nav" aria-label="8.2 全局变量">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#821" class="md-nav__link">
+    8.2.1 变量语法
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#822" class="md-nav__link">
+    8.2.2 解析变量
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#83" class="md-nav__link">
+    8.3 环境
+  </a>
+  
+    <nav class="md-nav" aria-label="8.3 环境">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#831" class="md-nav__link">
+    8.3.1 解释全局变量
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#84-assignment" class="md-nav__link">
+    8.4 赋值assignment
+  </a>
+  
+    <nav class="md-nav" aria-label="8.4 赋值assignment">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#841-assignment-syntax" class="md-nav__link">
+    8.4.1 赋值语法(Assignment syntax)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#842" class="md-nav__link">
+    8.4.2 赋值语义
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#85-scope" class="md-nav__link">
+    8.5 作用域 scope
+  </a>
+  
+    <nav class="md-nav" aria-label="8.5 作用域 scope">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#851-nesting-and-shadowing" class="md-nav__link">
+    8.5.1  嵌套和遮蔽 Nesting and shadowing
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#852" class="md-nav__link">
+    8.5.2 块语法和语义
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    挑战
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    设计说明：隐式变量声明
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2_09.Control%20Flow/Control%20Flow/" class="md-nav__link">
+        2.09.Control Flow
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2_10.Functions/Functions/" class="md-nav__link">
+        2.10.Functions
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2_11.Resolving%20and%20Binding/Resolving%20and%20Binding/" class="md-nav__link">
+        2.11.Resolving and Binding
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2_12.Classes/Classes/" class="md-nav__link">
+        2.12.Classes
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2_13.Inheritance/Inheritance/" class="md-nav__link">
+        2.13.Inheritance
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3_00.A%20BYTECODE%20VIRTUAL%20MACHINE/A%20BYTECODE%20VIRTUAL%20MACHINE/" class="md-nav__link">
+        三、A BYTECODE VIRTUAL MACHINE
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3_14.Chunks%20of%20Bytecode/Chunks%20of%20Bytecode/" class="md-nav__link">
+        3.14.Chunks of Bytecode
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3_15.A%20Virtual%20Machine/A%20Virtual%20Machine/" class="md-nav__link">
+        3.15.A Virtual Machine
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3_16.Scanning%20on%20Demand/Scanning%20on%20Demand/" class="md-nav__link">
+        3.16.Scanning on Demand
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3_17.Compiling%20Expressions/Compiling%20Expressions/" class="md-nav__link">
+        3.17.Compiling Expressions
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3_18.Types%20of%20Values/Types%20of%20Values/" class="md-nav__link">
+        3.18.Types of Values
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3_19.Strings/Strings/" class="md-nav__link">
+        3.19.Strings
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3_20.Hash%20Tables/Hash%20Tables/" class="md-nav__link">
+        3.20.Hash Tables
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3_21.Global%20Variables/Global%20Variables/" class="md-nav__link">
+        3.21.Global Variables
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3_22.Local%20Variables/Local%20Variables/" class="md-nav__link">
+        3.22.Local Variables
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3_23.Jumping%20Back%20and%20Forth/Jumping%20Back%20and%20Forth/" class="md-nav__link">
+        3.23.Jumping Back and Forth
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3_24.Calls%20and%20Functions/Calls%20and%20Functions/" class="md-nav__link">
+        3.24.Calls and Functions
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3_25.Closures/Closures/" class="md-nav__link">
+        3.25.Closures
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3_26.Garbage%20Collection/Garbage%20Collection/" class="md-nav__link">
+        3.26.Garbage Collection
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3_27.Classes%20and%20Instances/Classes%20and%20Instances/" class="md-nav__link">
+        3.27.Classes and Instances
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3_28.Methods%20and%20Initializers/Methods%20and%20Initializers/" class="md-nav__link">
+        3.28.Methods and Initializers
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3_29.Superclasses/Superclasses/" class="md-nav__link">
+        3.29.Superclasses
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3_30.Optimization/Optimization/" class="md-nav__link">
+        3.30.Optimization
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../4_01.A1.Appendix%20I%20Lox%20Grammar/A1.Appendix%20I%20Lox%20Grammar/" class="md-nav__link">
+        A1.Appendix I Lox Grammar
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../4_02.A2.Appendix%20II%20Generated%20Syntax%20Tree%20Classes/A2.Appendix%20II%20Generated%20Syntax%20Tree%20Classes/" class="md-nav__link">
+        A2.Appendix II Generated Syntax Tree Classes
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#81-statements" class="md-nav__link">
+    8.1 语句statements
+  </a>
+  
+    <nav class="md-nav" aria-label="8.1 语句statements">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#811" class="md-nav__link">
+    8.1.1 语句语法树
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#812" class="md-nav__link">
+    8.1.2 解析语句
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#813" class="md-nav__link">
+    8.1.3 执行语句
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#82" class="md-nav__link">
+    8.2 全局变量
+  </a>
+  
+    <nav class="md-nav" aria-label="8.2 全局变量">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#821" class="md-nav__link">
+    8.2.1 变量语法
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#822" class="md-nav__link">
+    8.2.2 解析变量
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#83" class="md-nav__link">
+    8.3 环境
+  </a>
+  
+    <nav class="md-nav" aria-label="8.3 环境">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#831" class="md-nav__link">
+    8.3.1 解释全局变量
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#84-assignment" class="md-nav__link">
+    8.4 赋值assignment
+  </a>
+  
+    <nav class="md-nav" aria-label="8.4 赋值assignment">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#841-assignment-syntax" class="md-nav__link">
+    8.4.1 赋值语法(Assignment syntax)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#842" class="md-nav__link">
+    8.4.2 赋值语义
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#85-scope" class="md-nav__link">
+    8.5 作用域 scope
+  </a>
+  
+    <nav class="md-nav" aria-label="8.5 作用域 scope">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#851-nesting-and-shadowing" class="md-nav__link">
+    8.5.1  嵌套和遮蔽 Nesting and shadowing
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#852" class="md-nav__link">
+    8.5.2 块语法和语义
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    挑战
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    设计说明：隐式变量声明
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/Misaka-9982-coder/doc-zh/edit/master/docs/craftinginterpreters/2_08.Statements and State/Statements and State.md" title="编辑此页" class="md-content__button md-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
+                  </a>
+                
+                
+                <h1 id="_1">语句和状态</h1>
+<blockquote>
+<p>我的一生，我的心一直渴望着一种我无法说出的东西。--André Breton,Mad Love</p>
+</blockquote>
+<p>到目前为止，我们使用的解释器感觉不像是在编写真正的语言，而更像是在计算器上点击按钮。“编程”对我来说意味着用小的部件构建一个系统。我们暂时无法完成，因为没有办法将名称绑定到某些数据或函数。如果没有引用片段的方法，就无法编写软件。</p>
+<p>为了支持绑定，解释器需要内部状态。当在程序开头定义一个变量并在后边使用它时，解释器必须同时保留该变量的值。因此在本章中，我们将为解释器提供一个不仅可以处理，而且可以<em>记忆</em>的大脑。</p>
+<p><img alt="" src="../assets/da07515fa25755bf48963f4d7f72ad5771f88e81.png" /></p>
+<p>状态和语句必须一块处理。由于根据定义，语句不会计算出一个值，因此它们需要做一些其他事情才能发挥作用。那东西叫做</p>
+<p>副作用 (side effect) 。这可能意味着产生用户可见的输出或修改的某些状态，而这些状态可以在解释器的后边看到。后者使它们非常适合定义变量或其他命名实体。</p>
+<blockquote>
+<p>您可以创建一种将变量声明视为既创建绑定又生成值的表达式的语言。我所知道的唯一能做到这一点的语言是 Tcl。Scheme 似乎是一个竞争者，但请注意，在对<code>let</code>表达式求值后，它绑定的变量会被遗忘。<code>define</code>语法不是表达式。</p>
+</blockquote>
+<p>在本章中，我们将完成所有这些。我们将定义产生输出 (<code>print</code>) 和创建状态 (<code>var</code>) 的语句。将添加表达式来访问和分配给变量。最后，我们将添加块(block)和本地作用域(local scope)。一章要塞的东西很多，但我们会一口气搞定。</p>
+<h2 id="81-statements">8.1 语句statements</h2>
+<p>首先用语句扩展 Lox 的语法。它们与表达式没有太大区别。我们从最简单的两种开始：</p>
+<ol>
+<li><strong>表达式语句</strong>  可以在需要语句的地方放置一个表达式。它们的存在是为了计算有副作用的表达式。你可能没有注意到它们，但你在C、 Java 和其他语言中一直在使用它们。任何时候您看到函数或方法调用后跟一个<code>;</code>，您都在查看表达式语句。</li>
+</ol>
+<blockquote>
+<p>Pascal是例外。它区分<em>过程</em>和<em>函数</em>。函数返回值，但过程不能。调用过程有语句形式，但函数只能在需要表达式的地方调用。Pascal 中没有表达式语句。</p>
+</blockquote>
+<ol>
+<li><strong>print语句</strong>    计算表达式并将结果显示给用户。我承认将打印直接融入语言而不是将其作为库函数是很奇怪的。这样做是对这样一个事实的让步：我们一次构建这个解释器一章，并希望能够在它全部完成之前使用它。要使 print 成为一个库函数，必须等到拥有定义和调用函数的所有机制，然后才能看到任何副作用。</li>
+</ol>
+<blockquote>
+<p>我会略带防御性地指出，BASIC 和 Python 有专门<code>print</code>的语句，它们是真正的语言。诚然，Python 确实也有<code>print</code>，但在 3.0 中删除了它们...</p>
+</blockquote>
+<p>新语法意味着新语法规则。在本章中，我们终于获得了解析整个 Lox 脚本的能力。由于 Lox 是一种命令式的动态类型语言，因此脚本的“顶层”只是一个语句列表。新规则是：</p>
+<pre><code>program        → statement* EOF ;
+
+statement      → exprStmt
+               | printStmt ;
+
+exprStmt       → expression &quot;;&quot; ;
+printStmt      → &quot;print&quot; expression &quot;;&quot; ;
+</code></pre>
+<p>第一条规则是 now?<code>program</code>，它是语法的起点，代表一个完整的 Lox 脚本或 REPL 条目。程序是一个语句列表，后跟特殊的“文件结尾”标记。强制结束标记确保解析器消耗整个输入，并且不会在脚本末尾默默地忽略错误的未消耗标记。</p>
+<p>目前，<code>statement</code>我们描述的两种陈述只有两种情况。我们将在本章后面和后面的章节中填写更多内容。下一步是将这种语法转化为我们可以存储在内存中的东西——语法树。</p>
+<h3 id="811">8.1.1 语句语法树</h3>
+<p>语法中没有允许同时使用表达式和语句的地方。例如，操作数<code>+</code>始终是表达式，而不是语句。循环体<code>while</code>始终是一个语句。</p>
+<p>由于这两种语法是不相交的，因此不需要它们都继承自单个基类。将表达式和语句拆分为单独的类层次结构使 Java 编译器能够帮助我们发现愚蠢的错误，例如将语句传递给需要表达式的 Java 方法。</p>
+<p>这意味着一个新的语句基类。正如我们的前辈在之前所做的那样，我们将使用神秘的名称“Stmt”。凭着远见，我设计了我们的小 AST 元编程脚本来预测这一点。这就是为什么我们将“Expr”作为参数传递给<code>defineAst()</code>.现在我们添加另一个调用来定义 Stmt 及其子类。</p>
+<blockquote>
+<p>算不上先见之明：在将本书分成章节之前，我已经编写了本书的所有代码。</p>
+</blockquote>
+<pre><code class="language-java">       &quot;Unary    : Token operator, Expr right&quot;
+    ));
+
+    defineAst(outputDir, &quot;Stmt&quot;, Arrays.asList(
+      &quot;Expression : Expr expression&quot;,
+      &quot;Print      : Expr expression&quot;
+    ));
+  }
+// tool/GenerateAst.java, in main()
+</code></pre>
+<blockquote>
+<p>为新节点生成的代码见<a href="http://craftinginterpreters.com/appendix-ii.html">附录二</a>：<a href="http://craftinginterpreters.com/appendix-ii.html#expression-statement">表达式语句</a>，<a href="http://craftinginterpreters.com/appendix-ii.html#print-statement">打印语句</a>。</p>
+</blockquote>
+<p>运行 AST 生成器脚本并查看生成的“Stmt.java”文件，其中包含表达式和<code>print</code>语句所需的语法树类。不要忘记将文件添加到您的 IDE 项目或 makefile 或其他文件中。</p>
+<h3 id="812">8.1.2 解析语句</h3>
+<p><code>parse()</code>解析并返回单个表达式的解析器方法是零时的处理方式，用于启动和运行后边步骤。现在我们的语法有了正确的起始规则，<code>program</code>，我们就可以<code>parse()</code>开始真正的工作了。</p>
+<pre><code class="language-java">  List&lt;Stmt&gt; parse() {
+    List&lt;Stmt&gt; statements = new ArrayList&lt;&gt;();
+    while (!isAtEnd()) {
+      statements.add(statement());
+    }
+
+    return statements; 
+  }
+// lox/Parser.java, method parse(), replace 7 lines  
+</code></pre>
+<blockquote>
+<p>我们在此处用于捕获<code>ParseError</code>异常的代码怎么样？当我们添加对其他语句类型的支持时，我们将尽快实施更好的解析错误处理。</p>
+</blockquote>
+<p>这会解析一系列语句，尽可能多地找到它，直到到达输入的末尾。这是<code>program</code>规则到递归下降风格的非常直接的翻译。我们必须向 Java祈祷，因为我们现在正在使用 ArrayList。</p>
+<pre><code class="language-java">package com.craftinginterpreters.lox;
+
+import java.util.ArrayList;
+import java.util.List;
+// lox/Parser.java
+</code></pre>
+<p>程序是语句列表，我们使用此方法解析其中一个语句：</p>
+<pre><code class="language-java">  private Stmt statement() {
+    if (match(PRINT)) return printStatement();
+
+    return expressionStatement();
+  }
+// lox/Parser.java, add after expression()  
+</code></pre>
+<p>有点简单，但稍后会用更多的语句类型填充它。我们通过查看当前token来确定匹配哪个特定语句规则。<code>print</code> token意味着它显然是一个声明<code>print</code>。</p>
+<p>如果下一个token看起来不像任何已知类型的语句，我们假设它一定是表达式语句。这是解析语句时典型的最终失败案例，因为很难从第一个标记主动识别表达式。</p>
+<p>每个语句类型都有自己的方法。第一个是<code>print</code>：</p>
+<pre><code class="language-java">  private Stmt printStatement() {
+    Expr value = expression();
+    consume(SEMICOLON, &quot;Expect ';' after value.&quot;);
+    return new Stmt.Print(value);
+  }
+// lox/Parser.java, add after statement()
+</code></pre>
+<p>由于我们已经匹配并使用了<code>print</code>  token本身，因此不需要在这里执行此操作。我们解析后续表达式，使用终止分号，并生成语法树。</p>
+<p>如果我们没有匹配<code>print</code>语句，我们必须有以下之一：</p>
+<pre><code class="language-java">private Stmt expressionStatement() {
+    Expr expr = expression();
+    consume(SEMICOLON, &quot;Expect ';' after expression.&quot;);
+    return new Stmt.Expression(expr);
+  }
+// lox/Parser.java, add after printStatement()
+</code></pre>
+<p>与前面的方法类似，解析一个表达式后跟着一个分号。并将该 Expr 包装在正确类型的 Stmt 中并返回它。</p>
+<h3 id="813">8.1.3 执行语句</h3>
+<p>我们正在微观世界中浏览前几章，从前端开始。我们的解析器现在可以生成语句语法树，所以下一步也是最后一步是解释它们。与在表达式中一样，使用访问者模式，但有一个新的访问者接口 Stmt.Visitor 来实现，因为语句有自己的基类。</p>
+<p>我们将其添加到解释器实现的接口列表中。</p>
+<pre><code class="language-java">class Interpreter implements Expr.Visitor&lt;Object&gt;,
+                             Stmt.Visitor&lt;Void&gt; {
+  void interpret(Expr expression) { 
+// lox/Interpreter.java, replace 1 line
+</code></pre>
+<blockquote>
+<p>Java 不允许您使用小写的“void”作为泛型类型参数，原因不明，与类型擦除和堆栈有关。相反，有一个单独的“Void”类型专门用于此用途。有点像“boxed void”，比如“Integer”代表“int”。</p>
+</blockquote>
+<p>与表达式不同，语句不产生任何值，因此访问方法的返回类型是 Void，而不是 Object。现在有两种语句类型，每种类型都需要一个访问方法。最简单的是表达式语句。</p>
+<pre><code class="language-java">  @Override
+  public Void visitExpressionStmt(Stmt.Expression stmt) {
+    evaluate(stmt.expression);
+    return null;
+  }
+// lox/Interpreter.java, add after evaluate()
+</code></pre>
+<p>我们使用现有<code>evaluate()</code>方法评估内部表达式并丢弃该值。然后我们返回<code>null</code>。Java 要求满足特殊的大写 Void 返回类型。很奇怪，但是只能这样？</p>
+<blockquote>
+<p>刚好，我们将<em>Java</em>表达式语句结果作为参数并传给<code>evaluate()</code>并不返回结果。</p>
+</blockquote>
+<p>该<code>print</code>语句的访问方法没有太大区别。</p>
+<pre><code class="language-java">  @Override
+  public Void visitPrintStmt(Stmt.Print stmt) {
+    Object value = evaluate(stmt.expression);
+    System.out.println(stringify(value));
+    return null;
+  }
+// lox/Interpreter.java, add after visitExpressionStmt()
+</code></pre>
+<p>在丢弃表达式的值之前，我们使用上一章介绍的方法<code>stringify()</code>将其转换为字符串，然后将其输出。</p>
+<p>解释器现在可以访问语句了，但是还需要做一些工作才能将语句提供给它。首先，修改 Interpreter 类中的旧<code>interpret()</code>方法以接受语句列表——换句话说，一个程序。</p>
+<pre><code class="language-java">  void interpret(List&lt;Stmt&gt; statements) {
+    try {
+      for (Stmt statement : statements) {
+        execute(statement);
+      }
+    } catch (RuntimeError error) {
+      Lox.runtimeError(error);
+    }
+  }
+// lox/Interpreter.java, method interpret(), replace 8 lines
+</code></pre>
+<p>这取代了采用单个表达式的旧代码。新代码依赖于这个工具函数：</p>
+<pre><code class="language-java">  private void execute(Stmt stmt) {
+    stmt.accept(this);
+  }
+// lox/Interpreter.java, add after evaluate()
+</code></pre>
+<p>这是类似于用于表达式的<code>evaluate()</code>方法。因为现在需要处理列表，所以需要导入 Java 一些包。</p>
+<pre><code class="language-java">package com.craftinginterpreters.lox;
+
+import java.util.List;
+
+class Interpreter implements Expr.Visitor&lt;Object&gt;,
+// lox/Interpreter.java
+</code></pre>
+<p>Lox 主类仍在尝试解析单个表达式并将其传递给解释器。像下边这样修该解析行：</p>
+<pre><code class="language-java">    Parser parser = new Parser(tokens);
+    List&lt;Stmt&gt; statements = parser.parse();
+
+    // Stop if there was a syntax error.
+//lox/Lox.java, in run(), replace 1 line
+</code></pre>
+<p>然后用这个替换对解释器的调用：</p>
+<pre><code class="language-java">    if (hadError) return;
+
+    interpreter.interpret(statements);
+  }
+// lox/Lox.java, in run(), replace 1 line
+</code></pre>
+<p>基本上只是试探新的语法。好的，启动解释器并试一试。此时，可以在文本文件中草拟一个 Lox 小程序以作为脚本运行。就像是：</p>
+<pre><code class="language-java">print &quot;one&quot;;
+print true;
+print 2 + 1;
+</code></pre>
+<p>它几乎看起来像一个真正的程序！请注意，REPL 现在也要求您输入完整的语句而不是简单的表达式。不要忘记你的分号。</p>
+<h2 id="82">8.2 全局变量</h2>
+<p>现在有了语句，可以开始处理状态了。在深入了解词法作用域的所有复杂性之前，将从最简单的变量类型开始——全局变量。这需要两个新结构。</p>
+<ol>
+<li><strong>变量声明</strong>语句将一个新变量带入世界。</li>
+</ol>
+<p><code>java
+   var  beverage = "espresso" ;</code></p>
+<p>这将创建一个新绑定，将名称（此处为“beverage 饮料”）与值（此处为字符串<code>"espresso"</code>）相关联。</p>
+<ol>
+<li>完成后，<strong>变量表达式</strong>将访问该绑定。当标识符“beverage”用作表达式时，它会查找绑定到该名称的值并返回它。</li>
+</ol>
+<p><code>java
+   print beverage; // "espresso".</code></p>
+<p>稍后，我们将添加赋值和块作用域，但这已经足够了。</p>
+<blockquote>
+<p>全局状态名声不好。当然，大量的全局状态——尤其是<em>可变</em>状态——使得维护大型程序变得困难。减少使用量是很好的软件工程。</p>
+<p>但是，当您正在拼凑一种简单的编程语言，或者，甚至是学习您的第一个语言时，全局变量的简单性会有所帮助。我的第一门语言是 BASIC，虽然我最终长大了，但很高兴在我可以让计算机做有趣的事情之前我不必围绕范围规则来思考。</p>
+</blockquote>
+<h3 id="821">8.2.1 变量语法</h3>
+<p>和以前一样，我们将从头到尾完成实现，从语法开始。变量声明是语句，但它不同于其他语句，我们将把语句语法一分为二来处理。那是因为语法限制了允许使用某些类型的语句的位置。</p>
+<p>控制流语句中的子句——想想<code>if</code>语句的 then 和 else 分支或 <code>while</code>循环体——每个都是一个语句。这些语句不允许在其中含有声明变量的语句。这样是可行的：</p>
+<pre><code class="language-c">if (monday) print &quot;Ugh, already?&quot;;
+</code></pre>
+<p>但这样不行：</p>
+<pre><code class="language-c">if (monday) var beverage = &quot;espresso&quot;;
+</code></pre>
+<p>理论上我们可以允许后者，但它令人困惑。<code>beverage</code>该变量的范围是什么 ？在<code>if</code>语句后是否仍然存在？如果是这样，它在monday以外值是多少？除monday以外变量是否存在？</p>
+<p>像这样的代码很奇怪，所以 C、Java 和朋友们都不允许这样做。就好像语句有两个级别的“优先级”。一些允许语句的地方——比如块内或顶层允许任何类型的语句，包括声明。其他地方只允许“更高”优先级语句，但不能包含变量声明语句。</p>
+<blockquote>
+<p>在这个类比中，块语句的作用有点像括号对表达式的作用。块本身处于“更高”的优先级别，可以在任何地方使用，比如在<code>if</code>语句的子句中。但是它<em>包含</em>的语句可以是较低的优先级。您可以在块内声明变量和其他名称。大括号{} 让你从一个只允许一些语句的地方逃回完整的语句语法。</p>
+</blockquote>
+<p>为了适应这种区别，我们为声明名称的语句类型添加了另一条规则。</p>
+<pre><code class="language-java">program        → declaration* EOF ;
+
+declaration    → varDecl
+               | statement ;
+
+statement      → exprStmt
+               | printStmt ;
+</code></pre>
+<p>变量声明语句符合新的<code>declaration</code>规则。现在，它只是变量，但以后它将包括函数和类。任何允许声明的地方也允许非声明语句，因此该<code>declaration</code>规则穿过<code>statement</code>.显然，您可以在脚本的顶层声明内容，以便<code>program</code>路由到新规则。</p>
+<p>声明变量的规则如下：</p>
+<pre><code class="language-c">varDecl        → &quot;var&quot; IDENTIFIER ( &quot;=&quot; expression )? &quot;;&quot; ;
+</code></pre>
+<p>与大多数语句一样，它以前导关键字开头。在这种情况下，<code>var</code>。然后是要声明的变量名称的标识符标记，后跟可选的初始化表达式。最后，用分号结束。</p>
+<p>为了访问一个变量，我们定义了一种新的基本表达式。</p>
+<pre><code class="language-c">primary        → &quot;true&quot; | &quot;false&quot; | &quot;nil&quot;
+               | NUMBER | STRING
+               | &quot;(&quot; expression &quot;)&quot;
+               | IDENTIFIER ;
+</code></pre>
+<p><code>IDENTIFIER</code>子句匹配单个标识符token，该标识符被理解为被访问的变量的名称。</p>
+<p>这些新的语法规则得到了它们对应的语法树。在 AST 生成器中，我们为变量声明添加了一个新的语句节点。</p>
+<pre><code class="language-java">      &quot;Expression : Expr expression&quot;,
+      &quot;Print      : Expr expression&quot;,
+      &quot;Var        : Token name, Expr initializer&quot;  //&lt;&lt;new add
+    ));
+// tool/GenerateAst.java, in main(), add “,” to previous line
+</code></pre>
+<blockquote>
+<p>为新节点生成的代码在<a href="http://craftinginterpreters.com/appendix-ii.html#variable-statement">附录 II</a>中。</p>
+</blockquote>
+<p>它存储token 名称，以便知道它在声明什么，以及初始化表达式。（如果没有初始值设定项，则该字段为<code>null</code>.）</p>
+<p>然后我们添加一个用于访问变量的表达式节点。</p>
+<pre><code class="language-java">      &quot;Literal  : Object value&quot;,
+      &quot;Unary    : Token operator, Expr right&quot;,
+      &quot;Variable : Token name&quot;   //&lt;&lt;new add
+    ));
+// tool/GenerateAst.java, in main(), add “,” to previous line
+</code></pre>
+<p>它只是变量名token的包装器。就是这样。与往常一样，不要忘记运行 AST 生成器脚本，以便更新“Expr.java”和“Stmt.java”文件。</p>
+<blockquote>
+<p>为新节点生成的代码在<a href="http://craftinginterpreters.com/appendix-ii.html#variable-expression">附录 II</a>中。</p>
+</blockquote>
+<h3 id="822">8.2.2 解析变量</h3>
+<p>在解析变量语句之前，需要移动一些代码来为<code>declaration</code>语法中的新规则腾出空间。程序的顶层现在是一个声明(declaration)列表，因此解析器的入口点方法发生了变化。</p>
+<pre><code class="language-java">  List&lt;Stmt&gt; parse() {
+    List&lt;Stmt&gt; statements = new ArrayList&lt;&gt;();
+    while (!isAtEnd()) {
+      statements.add(declaration());
+    }
+
+    return statements; 
+  }
+// lox/Parser.java, in parse(), replace 1 line 
+</code></pre>
+<p>这调用了这个新方法：</p>
+<pre><code class="language-java">  private Stmt declaration() {
+    try {
+      if (match(VAR)) return varDeclaration();
+
+      return statement();
+    } catch (ParseError error) {
+      synchronize();
+      return null;
+    }
+  }
+// lox/Parser.java, add after expression() 
+</code></pre>
+<p>OK，您还记得我们将基础架构部署到位以进行错误恢复的那一<a href="http://craftinginterpreters.com/parsing-expressions.html">章吗？</a>我们终于准备好接通它了。</p>
+<p>此<code>declaration()</code>方法是我们在解析块或脚本中的一系列语句时重复调用的方法，因此当解析器进入恐慌模式时，它是同步的正确位置。此方法的整个主体都包含在一个 try 块中，以捕获解析器开始错误恢复时抛出的异常。这让它回到尝试解析下一个语句或声明的开头。</p>
+<p>真正的解析发生在 try 块中。首先，它通过查找前导<code>var</code>关键字来查看我们是否处于变量声明中。如果不是，它会落入现有<code>statement()</code>的解析<code>print</code>和表达式语句的方法。</p>
+<p>还记得<code>statement()</code>如果没有其他语句匹配时如何尝试解析表达式语句吗？如果<code>expression()</code>它无法解析当前标记处的表达式，则报告语法错误？如果未解析有效的声明或语句，该调用链可确保我们报告错误。</p>
+<p>当解析器匹配一个<code>var</code>标记时，它执行：</p>
+<pre><code class="language-java">  private Stmt varDeclaration() {
+    Token name = consume(IDENTIFIER, &quot;Expect variable name.&quot;);
+
+    Expr initializer = null;
+    if (match(EQUAL)) {
+      initializer = expression();
+    }
+
+    consume(SEMICOLON, &quot;Expect ';' after variable declaration.&quot;);
+    return new Stmt.Var(name, initializer);
+  }
+// lox/Parser.java, add after printStatement()  
+</code></pre>
+<p>一如既往，递归下降代码遵循语法规则。解析器已经匹配了<code>var</code> token，因此接下来它需要并使用变量名称的标识符token。</p>
+<p>然后，如果它看到一个<code>=</code>标记，它就知道有一个初始化表达式并解析它。否则，它初始化为<code>null</code>。最后，它在语句末尾使用所需的分号。所有这些都包含在 Stmt.Var 语法树节点中，我们很时髦。</p>
+<p>解析变量表达式甚至更容易。在<code>primary()</code>中，我们寻找标识符token。</p>
+<pre><code class="language-java">      return new Expr.Literal(previous().literal);
+    }
+
+    if (match(IDENTIFIER)) {
+      return new Expr.Variable(previous());
+    }
+
+    if (match(LEFT_PAREN)) {
+// lox/Parser.java, in primary()
+</code></pre>
+<p>这为我们提供了一个用于声明和使用变量的工作前端。剩下的就是将它输入解释器。在开始之前，需要讨论变量在内存中的位置。</p>
+<h2 id="83">8.3 环境</h2>
+<p>将变量与值关联绑定到一起需要存储在某个地方。自从 Lisp 的人发明了括号，这个数据结构就被称为<strong>环境</strong>。</p>
+<p><img alt="" src="../assets/d96a46cca3552e96d624df0280a06eb2a3d8e9f1.png" /></p>
+<blockquote>
+<p>我喜欢从字面上想象环境，就像一个森林仙境，变量和值在其中嬉戏。</p>
+</blockquote>
+<p>你可以把它想象成一个映射，其中键是变量名，值是变量的值。事实上，这就是将如何在 Java 中实现它。可以将该映射和管理它的代码直接塞入 Interpreter 中，但由于它形成了一个很好描述的独立概念，我们将它单独放到一个类中。</p>
+<blockquote>
+<p>Java 称它们为<strong>maps</strong>或<strong>hashmaps</strong>。其他语言称它们为<strong>哈希表</strong>、<strong>字典</strong>（Python 和 C#）、<strong>哈希</strong>（Ruby 和 Perl）、?<strong>表</strong>(Lua) 或<strong>关联数组</strong>(PHP)。很久以前，它们被称为<strong>散点表</strong>。</p>
+</blockquote>
+<p>开始一个新文件并添加：</p>
+<pre><code class="language-java">package com.craftinginterpreters.lox;
+
+import java.util.HashMap;
+import java.util.Map;
+
+class Environment {
+  private final Map&lt;String, Object&gt; values = new HashMap&lt;&gt;();
+}
+// lox/Environment.java, create new file
+</code></pre>
+<p>那里有一个 Java Map 来存储绑定变量。它使用字符串作为键，而不是token。token表示源文本中特定位置的代码单元，但是在查找变量时，所有具有相同名称的标识符标记都应该引用相同的变量（暂时忽略范围）。使用原始字符串确保所有这些标记都引用相同的键。</p>
+<p>我们需要支持两个操作。首先，变量定义将一个新名称绑定到一个值。</p>
+<pre><code class="language-java">  void define(String name, Object value) {
+    values.put(name, value);
+  }
+// lox/Environment.java, in class Environment  
+</code></pre>
+<p>不完全是脑部手术，但我们做出了一个有趣的语义选择。当我们将键添加到Map时，不会检查它是否已经存在。这意味着该程序有效：</p>
+<pre><code class="language-java">var a = &quot;before&quot;;
+print a; // &quot;before&quot;.
+var a = &quot;after&quot;;
+print a; // &quot;after&quot;.
+</code></pre>
+<p>变量语句不只是定义一个<em>新</em>的变量，它也可以用来<em>重新</em>定义一个现有的变量。我们可以选择将其设为错误。用户可能不打算重新定义现有变量。（如果他们确实有意这样做，他们可能会使用赋值，而不是<code>var</code>.）。将重新定义定义为错误将有助于他们找到该错误。</p>
+<p>但是，这样做与 REPL 的交互效果很差。在 REPL 会话的中间，不必在脑海中跟踪您已经定义了哪些变量是件好事。我们可以允许在 REPL 中重新定义，但不允许在脚本中重新定义，但是用户将不得不学习两套规则，并且从一种形式复制粘贴到另一种形式的代码可能无法正常工作。</p>
+<blockquote>
+<p>我关于变量和作用域的规则是，“当有疑问时，做 Scheme 做的事”。Scheme 的人可能比我们花更多的时间思考变量作用域——Scheme的主要目标之一是向世界介绍词法作用域——所以如果你追随他们的脚步就很难出错。</p>
+<p>Scheme 允许在顶层重新定义变量。</p>
+</blockquote>
+<p>所以，为了保持两种模式的一致性，我们将允许它——至少对于全局变量。一旦变量存在，我们就需要一种方法来查找它。</p>
+<pre><code class="language-java">class Environment {
+  private final Map&lt;String, Object&gt; values = new HashMap&lt;&gt;();
+
+  Object get(Token name) {
+    if (values.containsKey(name.lexeme)) {
+      return values.get(name.lexeme);
+    }
+
+    throw new RuntimeError(name,
+        &quot;Undefined variable '&quot; + name.lexeme + &quot;'.&quot;);
+  }
+
+  void define(String name, Object value) {
+// lox/Environment.java, in class Environment
+</code></pre>
+<p>这在语义上更有趣一点。如果找到变量，它只返回绑定到它的值。但如果不是呢？同样，我们有一个选择：</p>
+<ul>
+<li>
+<p>使其成为语法错误。</p>
+</li>
+<li>
+<p>使其成为运行时错误。</p>
+</li>
+<li>
+<p>允许它并返回一些默认值，例如<code>nil</code>.</p>
+</li>
+</ul>
+<p>Lox 相当宽松，但最后一个选项对我来说有点<em>太</em>宽容了。让它成为语法错误——编译时错误——似乎是一个明智的选择。使用未定义的变量是一个错误，越早发现错误越好。</p>
+<p>问题是<em>使用</em>变量与<em>引用</em>它不同。如果代码块包含在函数中，您可以在代码块中引用变量而无需立即对其求值。如果我们将在声明变量之前<em>提及变量作为静态错误，那么定义递归函数就会变得更加困难。</em></p>
+<p>我们可以通过在检查函数体之前声明函数自己的名称来适应单一递归——一个调用自身的函数。但这对相互调用的相互递归过程没有帮助。考虑：</p>
+<pre><code class="language-java">fun isOdd(n) {
+  if (n == 0) return false;
+  return isEven(n - 1);
+}
+
+fun isEven(n) {
+  if (n == 0) return true;
+  return isOdd(n - 1);
+}
+</code></pre>
+<blockquote>
+<p>诚然，这可能不是判断数字是偶数还是奇数的最有效方法（更不用说如果将非整数或负数传递给它们会发生的坏事）。原谅我吧。</p>
+</blockquote>
+<p>当我们查看<code>isOdd()</code>函数体时，函数<code>isEven()</code>并未定义。如果交换这两个函数的顺序，那么在我们查看<code>isEven()</code>函数体时isOdd()没有定义。`</p>
+<blockquote>
+<p>某些静态类型语言（如 Java 和 C#）通过指定程序的顶层不是一系列命令式语句来解决此问题。相反，一个程序是一组同时产生的声明。<em>该实现在查看任何</em>函数的主体之前声明<em>了所有名称。</em></p>
+<p>C 和 Pascal 等较早的语言不是这样工作的。相反，它们会强制您添加显式<em>前向声明</em>以在名称完全定义之前对其进行声明。那是对当时有限的计算能力的让步。他们希望能够一次性通过文本编译源文件，因此那些编译器无法在处理函数体之前先收集所有声明。</p>
+</blockquote>
+<p>由于将其设为<em>静态</em>错误会使递归声明变得非常困难，因此我们将错误推迟到运行时。只要您不<em>评估</em>引用，就可以在定义变量之前引用它。这使得偶数和奇数的程序可以工作，但你会在以下位置遇到运行时错误：</p>
+<pre><code class="language-c">print a;
+var a = &quot;too late!&quot;;
+</code></pre>
+<p>对于表达式求值代码中的类型错误，我们通过抛出异常来报告运行时错误。异常包含变量的token，因此我们可以告诉用户他们在代码中的什么地方搞砸了。</p>
+<h3 id="831">8.3.1 解释全局变量</h3>
+<p>Interpreter 类拥有新环境类的一个实例。</p>
+<pre><code class="language-java">class Interpreter implements Expr.Visitor&lt;Object&gt;,
+                             Stmt.Visitor&lt;Void&gt; {
+  private Environment environment = new Environment();
+
+  void interpret(List&lt;Stmt&gt; statements) {
+// lox/Interpreter.java, in class Interpreter
+</code></pre>
+<p>我们将其作为字段直接存储在解释器中，以便只要解释器仍在运行，变量就会保留在内存中。</p>
+<p>我们有两个新的语法树，所以这是两个新的访问方法。第一个是声明语句。</p>
+<pre><code class="language-java">  @Override
+  public Void visitVarStmt(Stmt.Var stmt) {
+    Object value = null;
+    if (stmt.initializer != null) {
+      value = evaluate(stmt.initializer);
+    }
+
+    environment.define(stmt.name.lexeme, value);
+    return null;
+  }
+// lox/Interpreter.java, add after visitPrintStmt()
+</code></pre>
+<p>如果变量有初始值设定项，我们就评估它。如果没有，我们还有另一个选择。我们本可以通过<em>要求</em>初始化程序使它成为解析器中的语法错误。不过，大多数语言都没有，所以在 Lox 中这样做感觉有点苛刻。</p>
+<p>我们可以将其设为运行时错误。我们会让您定义一个未初始化的变量，但如果您在分配给它之前访问它，就会发生运行时错误。这不是一个坏主意，但大多数动态类型语言不会这样做。相反，我们将保持简单，并假设 Lox 将一个变量设置为<code>nil</code>如果它没有显式初始化。</p>
+<pre><code class="language-c">var a;
+print a; // &quot;nil&quot;.
+</code></pre>
+<p>因此，如果没有初始化器，我们将值设置为<code>null</code>，这是 Lox<code>nil</code>值的 Java 表示。然后我们告诉环境将变量绑定到该值。</p>
+<p>接下来，我们评估一个变量表达式。</p>
+<pre><code class="language-java">  @Override
+  public Object visitVariableExpr(Expr.Variable expr) {
+    return environment.get(expr.name);
+  }
+// lox/Interpreter.java, add after visitUnaryExpr()  
+</code></pre>
+<p>这只是转发到执行繁重工作以确保变量已定义的环境。这样，我们就有了基本的变量。试试这个：</p>
+<pre><code class="language-c">var a = 1;
+var b = 2;
+print a + b;
+</code></pre>
+<p>我们还不能重用<em>code</em>，但我们可以开始构建重用<em>data</em>的程序。</p>
+<h2 id="84-assignment">8.4 赋值assignment</h2>
+<p>可以创建一种具有变量但不允许重新分配或<strong>改变</strong>它们的语言。Haskell就是一个例子。SML 仅支持可变引用和数组——不能重新分配变量。Rust 通过要求<code>mut</code>修饰符来启用赋值来引导您远离突变。</p>
+<p>改变一个变量是一种副作用，顾名思义，一些语言专家认为副作用是肮脏的或不雅的。代码应该是产生价值的纯数学——结晶的、不变的值——就像神圣创造的行为。不是一些肮脏的自动机将数据块打成形状，一次发出一个命令式的咕哝声。</p>
+<blockquote>
+<p>我感到很高兴的是，同一群以冷静的逻辑为荣的人也无法抗拒对他们的工作充满感情的术语：“纯粹”、“副作用”、“懒惰”、“执着”、“头等舱”，“高阶”。</p>
+</blockquote>
+<p>Lox 并不那么简朴。Lox 是一种命令式语言，变异与生俱来。添加对赋值(assignment)的支持不需要太多工作。全局变量已经支持重新定义，所以现在大部分机制都已经号了。主要是，还缺少显式赋值符号。</p>
+<h3 id="841-assignment-syntax">8.4.1 赋值语法(Assignment syntax)</h3>
+<p>这个小<code>=</code>语法比看起来要复杂得多。与大多数 C 派生语言一样，赋值是一个表达式而不是语句。与在 C 中一样，它是最低优先级的表达式形式。这意味着规则位于<code>expression</code>和<code>equality</code>（下一个最低优先级表达式）之间。</p>
+<blockquote>
+<p>在其他一些语言中，如 Pascal、Python 和 Go，赋值是一个语句。</p>
+</blockquote>
+<pre><code class="language-c">expression     → assignment ;
+assignment     → IDENTIFIER &quot;=&quot; assignment
+               | equality ;
+</code></pre>
+<p>这表示 <code>assignment</code>要么是一个标识符后跟一个 <code>=</code>和一个值的表达式，要么是一个<code>equality</code>（以及任何其他）表达式。稍后，<code>assignment</code>当我们给对象设置属性时，会变得更加复杂，例如：</p>
+<pre><code class="language-java">instance.field = &quot;value&quot;;
+</code></pre>
+<p>简单的部分是添加新的语法树节点。</p>
+<pre><code class="language-java">    defineAst(outputDir, &quot;Expr&quot;, Arrays.asList(
+      &quot;Assign   : Token name, Expr value&quot;,
+      &quot;Binary   : Expr left, Token operator, Expr right&quot;,
+// tool/GenerateAst.java, in main()
+</code></pre>
+<blockquote>
+<p>为新节点生成的代码在<a href="http://craftinginterpreters.com/appendix-ii.html#assign-expression">附录 II</a>中。</p>
+</blockquote>
+<p>它有一个用于分配给变量的token，以及一个用于新值的表达式。运行 AstGenerator 以获取新的 Expr.Assign 类后，替换解析器现有<code>expression()</code>方法内容以匹配更新后的规则。</p>
+<pre><code class="language-java">  private Expr expression() {
+    return assignment();
+  }
+// lox/Parser.java, in expression(), replace 1 line  
+</code></pre>
+<p>这就是它变得棘手的地方。向前看单个token的递归下降解析器无法看得足够远，无法判断它正在解析赋值，直到<em>它</em>通过左侧并偶然发现<code>=</code>.你可能想知道为什么需要这个<code>=</code>。因为,在完成对左操作数的解析之后,不能确定是否正在解析一个 <code>+</code>表达式(还是一个<code>=</code>表达式)。</p>
+<p>不同之处在于赋值(assignment)的左侧不是计算结果的表达式。它是一种伪表达式，可以评估为可以赋值给的“事物”。考虑：</p>
+<pre><code class="language-java">var a = &quot;before&quot;;
+a = &quot;value&quot;;
+</code></pre>
+<p>在第二行，我们不评估(evaluate)<code>a</code>（这将返回字符串“before”）。为了弄清楚变量<code>a</code>指的是什么，所以得知道在哪里存储右侧表达式的值。这两个构造的<a href="https://en.wikipedia.org/wiki/Value_(computer_science)#lrvalue">经典术语</a>是<strong>l-value</strong>和<strong>r-value</strong>。到目前为止，我们看到的所有产生值的表达式都是右值。左值“评估”到您可以分配到的存储位置。</p>
+<blockquote>
+<p>事实上，名称来自赋值表达式：<em>l</em>值出现在赋值<code>=</code>的<em>左侧</em>，<em>r 值</em>出现在<em>右侧</em>。</p>
+</blockquote>
+<p>我们希望语法树反映左值(?l-value)不像普通表达式那样求值。这就是为什么 Expr.Assign 节点的左侧有一个Token ，而不是 Expr。问题是解析器没有遇到<code>=</code>号之前解析器不知道它正在解析一个左值.在复杂的左值中，这(=号)可能会在 许多token 之后出现。</p>
+<pre><code class="language-java">makeList().head.next = node;
+</code></pre>
+<blockquote>
+<p>由于字段赋值的接收者可以是任何表达式，并且表达式可以是任意长度，因此可能需要<em>无限</em>数量的先行标记才能找到<code>=</code>.</p>
+</blockquote>
+<p>我们只有一个前瞻token，那么该怎么办？我们使用了一个小技巧，看起来像这样：</p>
+<pre><code class="language-java">  private Expr assignment() {
+    Expr expr = equality();
+
+    if (match(EQUAL)) {
+      Token equals = previous();
+      Expr value = assignment();
+
+      if (expr instanceof Expr.Variable) {
+        Token name = ((Expr.Variable)expr).name;
+        return new Expr.Assign(name, value);
+      }
+
+      error(equals, &quot;Invalid assignment target.&quot;); 
+    }
+
+    return expr;
+  }
+// lox/Parser.java, add after expressionStatement() 
+</code></pre>
+<p>解析赋值表达式的大部分代码看起来与其他二元运算符（如<code>+</code>.我们解析左侧，它可以是更高优先级的任何表达式。如果找到<code>=</code>，将解析右侧，然后将其全部包装在一个赋值表达式树节点中。</p>
+<blockquote>
+<p>如果左侧不是有效的赋值目标，会报告一个错误，但不会抛出它，因为解析器没有处于需要进入恐慌模式并同步的混乱状态。</p>
+</blockquote>
+<p>与二元运算符的一个细微差别是不会循环构建相同运算符的序列。由于赋值是右结合的，改为递归调用<code>assignment()</code>以解析右侧。</p>
+<p>诀窍是在创建赋值表达式节点之前，查看左侧表达式并弄清楚它是哪种赋值目标。将右值表达式节点转换为左值表示。</p>
+<p>这种转换之所以有效，是因为事实证明每个有效的赋值目标恰好也是作为普通表达式的有效语法。考虑一个复杂的字段分配，例如：</p>
+<blockquote>
+<p>即使存在不是有效表达式的赋值目标，您仍然可以使用此技巧。定义<strong>覆盖语法</strong>，一种接受所有有效表达式<em>和</em>赋值目标语法的更宽松的语法。当您点击 时<code>=</code>，如果左侧不在有效的赋值目标语法内，则报告错误。相反，如果您<em>没有</em>点击<code>=</code>，如果左侧不是有效<em>表达式</em>，则报告错误。</p>
+</blockquote>
+<pre><code class="language-java">newPoint(x + 2, 0).y = 3;
+</code></pre>
+<p>该赋值的左侧也可以用作有效表达式。</p>
+<pre><code class="language-java">newPoint(x + 2, 0).y;
+</code></pre>
+<p>第一个示例设置字段，第二个示例获取它。</p>
+<p>这意味着可以将左侧<em>作为</em>表达式来解析，然后在事后生成将其转换为赋值目标的语法树。如果左侧表达式不是有效的 赋值目标，我们将因语法错误而失败。这确保我们报告这样的代码错误：</p>
+<pre><code class="language-java">a + b = c;
+</code></pre>
+<blockquote>
+<p>回到解析章节，我说过在语法树中表示带括号的表达式，因为稍后会需要它们。这就是为什么。我们需要能够区分这些情况：</p>
+<p><code>c
+a = 3;   // OK.
+(a) = 3; // Error.</code></p>
+</blockquote>
+<p>现在，唯一有效的赋值目标是一个简单的变量表达式，但我们稍后会添加字段。这个技巧的最终结果是一个赋值表达式树节点，它知道它要赋值给什么，并且有一个表达式子树用于赋值。所有这些都只有一个前瞻标记，没有回溯。</p>
+<h3 id="842">8.4.2 赋值语义</h3>
+<p>我们有一个新的语法树节点，因此解释器获得了一个新的访问方法。</p>
+<pre><code class="language-java">  @Override
+  public Object visitAssignExpr(Expr.Assign expr) {
+    Object value = evaluate(expr.value);
+    environment.assign(expr.name, value);
+    return value;
+  }
+// lox/Interpreter.java, add after visitVarStmt()
+</code></pre>
+<p>出于显而易见的原因，它类似于变量声明。它评估右侧以获取值，然后将其存储在命名变量中。它不是<code>define()</code>在 Environment 上使用，而是调用这个新方法：</p>
+<pre><code class="language-java">  void assign(Token name, Object value) {
+    if (values.containsKey(name.lexeme)) {
+      values.put(name.lexeme, value);
+      return;
+    }
+
+    throw new RuntimeError(name,
+        &quot;Undefined variable '&quot; + name.lexeme + &quot;'.&quot;);
+  }
+// lox/Environment.java, add after get() 
+</code></pre>
+<p><strong>赋值和定义之间的主要区别在于赋值不允许创建新变量</strong>。就我们的实现而言，这意味着如果key不存在于环境的变量映射中，则会出现运行时错误。</p>
+<blockquote>
+<p>与 Python 和 Ruby 不同，Lox 不进行<a href="http://craftinginterpreters.com/statements-and-state.html#design-note">隐式变量声明</a>。</p>
+</blockquote>
+<p>该<code>visit()</code>方法做的最后一件事是返回分配的值。那是因为赋值是一个可以嵌套在其他表达式中的表达式，如下所示：</p>
+<pre><code class="language-c">var a = 1;
+print a = 2; // &quot;2&quot;.
+</code></pre>
+<p>解释器现在可以创建、读取和修改变量。它与早期的BASIC一样复杂。全局变量很简单，但是当任何两块代码可能不小心踩到彼此的状态时编写大型程序并不好玩。我们需要<em>局部</em>变量，这意味着是时候使用<em>scope</em>了。</p>
+<blockquote>
+<p>也许比那好一点。与一些旧的 BASIC 不同，Lox 可以处理超过两个字符的变量名。</p>
+</blockquote>
+<h2 id="85-scope">8.5 作用域 scope</h2>
+<p><strong>作用域</strong>定义名称映射到特定实体的区域。多个作用域使相同的名称可以在不同的上下文中引用不同的事物。在我家，“Bob”通常指的是我。但也许在您所在的城镇，您认识一个不同的 Bob。相同的名字，意义不同是因为你说的地方不同。</p>
+<p><strong>词法作用域</strong>（或不太常见的<strong>静态作用域</strong>）是一种特定的作用域样式，是以程序本身的文本显示作用域的开始和结束位置。在 Lox 中，就像在大多数现代语言中一样，变量是词法范围的。当您看到一个使用某个变量的表达式时，您可以通过静态阅读代码来找出它引用的是哪个变量声明。</p>
+<blockquote>
+<p>“Lexical”来自希腊语“lexikos”，意思是“与词有关 related to words”。当我们在编程语言中使用它时，它通常意味着您无需执行任何操作就可以从源代码本身弄清楚的事情。</p>
+<p>词法范围随着 ALGOL 出现。早期的语言通常是动态范围的。当时的计算机科学家认为动态范围执行起来更快。今天，感谢早期的 Scheme 黑客，我们知道这不是真的。如果有的话，情况恰恰相反。</p>
+<p>变量的动态范围存在于某些角落。Emacs Lisp 默认为变量的动态作用域。Clojure 中的<a href="http://clojuredocs.org/clojure.core/binding"><code>binding</code></a>宏提供了它。JavaScript 中广泛不喜欢的<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/with"><code>with</code>语句</a>将对象的属性转换为动态范围的变量。</p>
+</blockquote>
+<p>例如：</p>
+<pre><code class="language-java">{
+  var a = &quot;first&quot;;
+  print a; // &quot;first&quot;.
+}
+
+{
+  var a = &quot;second&quot;;
+  print a; // &quot;second&quot;.
+}
+</code></pre>
+<p>在这里，我们有两个块，每个块中都声明了一个变量<code>a</code>。你我只要看一下代码就可以知道，第一个语句中的<code>print</code>的是第一个<code>a</code>，而第二个语句指的<code>a</code>是第二个。</p>
+<p><img alt="" src="../assets/be713ae98ef11418f196a9cfa7a689c916eb458b.png" /></p>
+<p>这与动态作用域相反，<strong>动态作用域</strong>在执行代码之前不知道名称指的是什么。Lox 没有动态范围的<em>变量</em>，但对象上的方法和字段是动态范围的。</p>
+<pre><code class="language-java">class Saxophone {
+  play() {
+    print &quot;Careless Whisper&quot;;
+  }
+}
+
+class GolfClub {
+  play() {
+    print &quot;Fore!&quot;;
+  }
+}
+
+fun playIt(thing) {
+  thing.play();
+}
+</code></pre>
+<p><code>playIt()</code>调用<code>thing.play()</code>时，我们不知道会输出“Careless Whisper”还是“Fore!” , 这取决于您将 Saxophone 还是 GolfClub 传递给该函数，直到运行时才知道。</p>
+<p>作用域(Scope)和环境(environments)是近亲。前者是理论概念，后者是实现它的机制。当我们的解释器通过代码工作时，影响范围的语法树节点将改变环境(environments)。在像 Lox 的 C-ish 语法中，范围由花括号块控制。（这就是为什么我们称它为<strong>block scope</strong>。）</p>
+<pre><code class="language-java">{
+  var a = &quot;in block&quot;;
+}
+print a; // Error! No more &quot;a&quot;.
+</code></pre>
+<p>块的开头引入了一个新的本地作用域，并且该作用域在执行通过<code>}</code>结束时结束。块内声明的任何变量都会消失。</p>
+<h3 id="851-nesting-and-shadowing">8.5.1  嵌套和遮蔽 Nesting and shadowing</h3>
+<p>实现块作用域的第一步可能是这样的：</p>
+<ol>
+<li>
+<p>当我们访问块内的每个语句时，跟踪声明的所有变量。</p>
+</li>
+<li>
+<p>执行最后一条语句后，告诉环境删除所有这些变量。</p>
+</li>
+</ol>
+<p>这适用于前面的示例。但请记住，局部作用域的一个动机是封装——程序一个角落的代码块不应干扰其他块。看一下这个：</p>
+<pre><code class="language-java">// How loud?
+var volume = 11;
+
+// Silence.
+volume = 0;
+
+// Calculate size of 3x4x5 cuboid.
+{
+  var volume = 3 * 4 * 5;
+  print volume;
+}
+</code></pre>
+<p>查看使用 的局部声明计算长方体体积的块<code>volume</code>。块退出后，解释器将删除<em>全局</em><code>volume</code>变量。那是不对的。当退出块时，应该删除在块内声明的任何变量，但是如果在块外声明了一个同名变量，<em>那就是一个不同的变量</em>。它不应该被触动。</p>
+<p>当局部变量与封闭范围内的变量同名时，它会<strong>遮蔽 shadows</strong>外部变量。块内的代码无法再看到它——它隐藏在内部块投射的“阴影”中——但它仍然存在。</p>
+<p>当进入一个新的块作用域时，需要保留在外部作用域中定义的变量，以便在退出内部块时它们仍然存在。通过为每个只包含在该范围内定义的变量的块定义一个新环境来做到这一点。当退出块时，丢弃它的环境并恢复之前的环境。</p>
+<p>我们还需要处理<em>未</em>隐藏的封闭变量。</p>
+<pre><code class="language-java">var global = &quot;outside&quot;;
+{
+  var local = &quot;inside&quot;;
+  print global + local;
+}
+</code></pre>
+<p>在这里，<code>global</code>生活在外部全球环境中，且<code>local</code>在块的环境中定义。在该<code>print</code>声明中，这两个变量都在范围内。为了找到它们，解释器不仅必须搜索当前最内层的环境，还必须搜索任何封闭(enclosing)的环境。</p>
+<p>通过将环境链接在一起来实现这一点。每个环境都有对直接封闭范围的环境的引用。当查找一个变量时，从最里面向外走那条链，直到找到变量。从内部作用域开始，我们如何使局部变量影响外部作用域。</p>
+<p><img alt="" src="../assets/6fec0093f0a8a4bdc0a8b8200d53892b78b310e9.png" /></p>
+<blockquote>
+<p>当解释器运行时，环境形成一个对象的线性链表，但要考虑在整个执行过程中创建的全套环境。外部作用域可能嵌套有多个块，每个块都指向外部作用域，形成树状结构，尽管树中一次只存在一条路径。</p>
+<p>它的无聊名称是<a href="https://en.wikipedia.org/wiki/Parent_pointer_tree"><strong>父指针树</strong></a>，但我更喜欢令人回味的<strong>仙人掌堆栈</strong>。</p>
+</blockquote>
+<p><img alt="" src="../assets/451f32c1fa4cee144623cdfcf336440f559f47de.png" /></p>
+<p>在向语法添加块语法之前，将通过支持这种嵌套来增强我们的 Environment 类。首先，为每个环境提供对其封闭环境的引用。</p>
+<pre><code class="language-java">class Environment {
+  final Environment enclosing;
+  private final Map&lt;String, Object&gt; values = new HashMap&lt;&gt;();
+// lox/Environment.java, in class Environment
+</code></pre>
+<p>这个字段需要初始化，所以添加了几个构造函数。</p>
+<pre><code class="language-java">  Environment() {
+    enclosing = null;
+  }
+
+  Environment(Environment enclosing) {
+    this.enclosing = enclosing;
+  }
+// lox/Environment.java, in class Environment  
+</code></pre>
+<p>无参数构造函数用于全局范围的环境，它结束了链。另一个构造函数创建一个嵌套在给定外部范围内的新本地范围。</p>
+<p>我们不必触及该<code>define()</code>方法——一个新变量总是在当前最内层的作用域中声明。但是变量查找和赋值与现有变量一起工作，它们需要遍历链才能找到它们。首先，查找：</p>
+<pre><code class="language-java">     return values.get(name.lexeme);
+    }
+
+    if (enclosing != null) return enclosing.get(name);
+
+    throw new RuntimeError(name,
+        &quot;Undefined variable '&quot; + name.lexeme + &quot;'.&quot;);
+// lox/Environment.java, in get()
+</code></pre>
+<p>如果在此环境中找不到该变量，我们只需尝试在enclosing中查找。这反过来递归地做同样的事情，所以这最终将遍历整个链。如果我们到达一个没有enclosing环境，但仍然没有找到变量，那么我们就会像以前一样放弃并报告错误。</p>
+<p>分配的工作方式相同。</p>
+<blockquote>
+<p>迭代遍历链可能更快，但我认为递归解决方案更漂亮。我们将在 clox 中更快地做一些事情。</p>
+</blockquote>
+<pre><code class="language-java">      values.put(name.lexeme, value);
+      return;
+    }
+
+    if (enclosing != null) {
+      enclosing.assign(name, value);
+      return;
+    }
+
+    throw new RuntimeError(name,
+// lox/Environment.java, in assign()
+</code></pre>
+<p>同样，如果变量不在这个环境中，它会递归地检查外部变量。</p>
+<h3 id="852">8.5.2 块语法和语义</h3>
+<p>现在环境可以嵌套了，我们已经准备好向语言添加块。看语法：</p>
+<pre><code>statement      → exprStmt
+               | printStmt
+               | block ;
+
+block          → &quot;{&quot; declaration* &quot;}&quot; ;
+</code></pre>
+<p>块是一系列（可能是空的）语句或声明，用花括号括起来。块本身就是一条语句，可以出现在任何允许语句的地方。语法树节点如下所示：</p>
+<pre><code class="language-java">    defineAst(outputDir, &quot;Stmt&quot;, Arrays.asList(
+      &quot;Block      : List&lt;Stmt&gt; statements&quot;,
+      &quot;Expression : Expr expression&quot;,
+// tool/GenerateAst.java, in main()
+</code></pre>
+<blockquote>
+<p>为新节点生成的代码在<a href="http://craftinginterpreters.com/appendix-ii.html#block-statement">附录 II</a>中。</p>
+</blockquote>
+<p>它包含块内的语句列表。解析很简单。与其他语句一样，我们通过其前导token检测块的开始——在本例中为<code>{</code>.</p>
+<p>在<code>statement()</code>方法中，我们添加：</p>
+<blockquote>
+<p>与往常一样，不要忘记运行“GenerateAst.java”。</p>
+</blockquote>
+<pre><code class="language-java">    if (match(PRINT)) return printStatement();
+    if (match(LEFT_BRACE)) return new Stmt.Block(block());
+
+    return expressionStatement();
+// lox/Parser.java, in statement()
+</code></pre>
+<p>所有真正的工作都发生在这里：</p>
+<pre><code class="language-java">  private List&lt;Stmt&gt; block() {
+    List&lt;Stmt&gt; statements = new ArrayList&lt;&gt;();
+
+    while (!check(RIGHT_BRACE) &amp;&amp; !isAtEnd()) {
+      statements.add(declaration());
+    }
+
+    consume(RIGHT_BRACE, &quot;Expect '}' after block.&quot;);
+    return statements;
+  }
+// lox/Parser.java, add after expressionStatement()  
+</code></pre>
+<p>我们创建一个空列表，然后解析语句并将它们添加到列表中，直到我们到达块的末尾，以结束标记<code>}</code>。请注意，循环还对 进行显式检查<code>isAtEnd()</code>。我们必须小心避免无限循环，即使在解析无效代码时也是如此。如果用户忘记关闭<code>}</code>，解析器就不会卡住。</p>
+<blockquote>
+<p><code>block()</code>返回原始语句列表并将其留 在Stmt.Block<code>statement()</code>中以将列表包装起来看起来有点奇怪。我这样做是因为我们稍后会重用它<code>block()</code>来解析函数体，我们不希望将该函数体包装在 Stmt.Block 中。</p>
+</blockquote>
+<p>这就是语法。对于语义，我们在 Interpreter 中添加另一个访问方法。</p>
+<pre><code class="language-java">  @Override
+  public Void visitBlockStmt(Stmt.Block stmt) {
+    executeBlock(stmt.statements, new Environment(environment));
+    return null;
+  }
+// lox/Interpreter.java, add after execute()
+</code></pre>
+<p>要执行一个块，我们为块的范围创建一个新环境并将其传递给另一个方法：</p>
+<pre><code class="language-java">  void executeBlock(List&lt;Stmt&gt; statements,
+                    Environment environment) {
+    Environment previous = this.environment;
+    try {
+      this.environment = environment;
+
+      for (Stmt statement : statements) {
+        execute(statement);
+      }
+    } finally {
+      this.environment = previous;
+    }
+  }
+// lox/Interpreter.java, add after execute()
+</code></pre>
+<p>这个新方法在给定环境的上下文中执行一系列语句。到目前为止，Interpreter 中的<code>environment</code>字段始终指向相同的环境——全局环境。现在，该字段代表<em>当前</em>环境。这是对应于包含要执行的代码的最内层作用域的环境。</p>
+<p>为了在给定范围内执行代码，此方法更新解释器的?<code>environment</code>字段，访问所有语句，然后恢复以前的值。作为 Java 中的一贯良好做法，它使用 finally 子句恢复以前的环境。这样即使抛出异常它也会恢复。</p>
+<blockquote>
+<p>手动更改和恢复可变<code>environment</code>字段感觉不雅。另一种经典方法是将环境作为参数显式传递给每个访问方法。要“改变”环境，您在向下递归树时传递一个不同的环境。您不必恢复旧的，因为新的存在于 Java 堆栈中，并且当解释器从块的访问方法返回时被隐式丢弃。</p>
+<p>我考虑过 jlox，但是向每个访问方法添加环境参数有点乏味和冗长。为了使本书更简单一些，我使用了可变字段。</p>
+</blockquote>
+<p>令人惊讶的是，为了完全支持局部变量、嵌套和遮蔽，我们需要做的就是这些。继续尝试一下：</p>
+<pre><code class="language-c">var a = &quot;global a&quot;;
+var b = &quot;global b&quot;;
+var c = &quot;global c&quot;;
+{
+  var a = &quot;outer a&quot;;
+  var b = &quot;outer b&quot;;
+  {
+    var a = &quot;inner a&quot;;
+    print a;
+    print b;
+    print c;
+  }
+  print a;
+  print b;
+  print c;
+}
+print a;
+print b;
+print c;
+</code></pre>
+<p>我们的解释器现在可以记住事情了。我们正在逐渐接近类似于功能齐全的编程语言的东西。</p>
+<hr />
+<h2 id="_2"><a href="http://craftinginterpreters.com/statements-and-state.html#challenges">挑战</a></h2>
+<ol>
+<li>
+<p>REPL 不再支持输入单个表达式并自动打印其结果值。那是一个拖累。添加对 REPL 的支持，让用户可以输入语句和表达式。如果他们输入语句，则执行它。如果他们输入一个表达式，对其求值并显示结果值。</p>
+</li>
+<li>
+<p>也许您希望 Lox 对变量初始化更明确一些。不要将变量隐式初始化为<code>nil</code>，而是将访问尚未初始化或分配给的变量设为运行时错误，如：</p>
+</li>
+</ol>
+<p>```c
+   // No initializers.
+   var a;
+   var b;</p>
+<p>a = "assigned";
+   print a; // OK, was assigned first.</p>
+<p>print b; // Error!
+   ```</p>
+<ol>
+<li>下面的程序是做什么的？</li>
+</ol>
+<p><code>c
+   var a = 1;
+   {
+     var a = a + 2;
+     print a;
+   }</code></p>
+<p>你<em>期望</em>它做什么？这是你认为它应该做的吗？您熟悉的其他语言的类似代码有什么作用？您认为用户会期望这样做吗？</p>
+<h2 id="_3"><a href="http://craftinginterpreters.com/statements-and-state.html#design-note">设计说明：隐式变量声明</a></h2>
+<p>Lox 具有用于声明新变量和分配给现有变量的独特语法。有些语言将它们合并为仅赋值语法。分配给一个不存在的变量会自动使它存在。这称为<strong>隐式变量声明</strong>，存在于 Python、Ruby 和 CoffeeScript 等语言中。JavaScript 有明确的语法来声明变量，但也可以在赋值时创建新变量。Visual Basic 具有<a href="https://msdn.microsoft.com/en-us/library/xe53dz5w(v=vs.100).aspx">启用或禁用隐式变量的选项</a>。</p>
+<p>当相同的语法可以分配或创建变量时，每种语言都必须决定在不清楚用户想要哪种行为时会发生什么。特别是，每种语言都必须选择隐式声明如何与阴影交互，以及隐式声明的变量进入哪个范围。</p>
+<ul>
+<li>
+<p>在 Python 中，赋值总是在当前函数的范围内创建一个变量，即使在函数外部声明了一个同名变量。</p>
+</li>
+<li>
+<p>Ruby 通过对局部变量和全局变量使用不同的命名规则来避免一些歧义。但是，Ruby 中的块（更像是闭包而不是 C 中的“块”）有自己的范围，所以它仍然存在问题。如果存在同名变量，则 Ruby 中的赋值会分配给当前块之外的现有变量。否则，它会在当前块的范围内创建一个新变量。</p>
+</li>
+<li>
+<p>在许多方面模仿 Ruby 的 CoffeeScript 是相似的。它通过声明赋值总是分配给外部作用域中的变量（如果有），一直到最外部的全局作用域，明确禁止阴影。否则，它会在当前函数范围内创建变量。</p>
+</li>
+<li>
+<p>在 JavaScript 中，赋值会修改任何封闭范围内的现有变量（如果找到）。<em>如果不是，它会在全局</em>范围内隐式创建一个新变量 。</p>
+</li>
+</ul>
+<p>隐式声明的主要优点是简单。语法更少，无需学习“声明”概念。用户可以开始分配东西，语言会解决它。</p>
+<p>较旧的静态类型语言（如 C）受益于显式声明，因为它们为用户提供了一个位置来告诉编译器每个变量的类型以及为其分配多少存储空间。在动态类型的垃圾收集语言中，这并不是真正必要的，因此您可以隐式声明。感觉有点“脚本化”，更“你知道我的意思”。</p>
+<p>但这是个好主意吗？隐式声明有一些问题。</p>
+<ul>
+<li>
+<p>用户可能打算分配给现有变量，但可能拼写错误。解释器不知道这一点，所以它继续并默默地创建一些新变量，而用户想要分配给的变量仍然有它的旧值。这在 JavaScript 中尤其令人发指，其中拼写错误会创建一个<em>全局</em>变量，这反过来可能会干扰其他代码。</p>
+</li>
+<li>
+<p>JS、Ruby 和 CoffeeScript 使用同名的现有变量（即使在外部作用域中）来确定赋值是创建新变量还是赋值给现有变量。这意味着在周围范围内添加一个新变量可以改变现有代码的含义。曾经是局部变量的东西可能会默默地变成对新外部变量的赋值。</p>
+</li>
+<li>
+<p>在 Python 中，你可能<em>想</em>赋值给当前函数之外的某个变量，而不是在当前函数中创建一个新变量，但你不能这样做。</p>
+</li>
+</ul>
+<p>随着时间的推移，我所知道的带有隐式变量声明的语言最终增加了更多的特性和复杂性来处理这些问题。</p>
+<ul>
+<li>
+<p>在 JavaScript 中隐式声明全局变量在今天被普遍认为是错误的。“严格模式”禁用它并使其成为编译错误。</p>
+</li>
+<li>
+<p>Python 添加了一条<code>global</code>语句，让您可以从函数内显式分配给全局变量。后来，随着函数式编程和嵌套函数越来越流行，他们<code>nonlocal</code>在封闭函数中添加了类似的语句来赋值给变量。</p>
+</li>
+<li>
+<p>Ruby 扩展了它的块语法，允许将某些变量显式声明为块的本地变量，即使在外部作用域中存在相同的名称也是如此。</p>
+</li>
+</ul>
+<p>考虑到这些，我认为简单性论点基本上已经失去了意义。有一种说法认为隐式声明是正确的<em>默认设置</em>，但我个人认为这不太有说服力。</p>
+<p>我的观点是，隐式声明在过去几年是有意义的，当时大多数脚本语言都是命令式的，而且代码非常扁平。随着程序员对深度嵌套、函数式编程和闭包越来越熟悉，想要访问外部作用域中的变量变得越来越普遍。这使得用户更有可能遇到棘手的情况，在这种情况下，他们不清楚他们的分配是要创建一个新变量还是重用周围的变量。</p>
+<p>所以我更喜欢显式声明变量，这就是 Lox 需要它的原因。</p>
+                
+              
+              
+<script src="https://giscus.app/client.js" data-repo="PKUFlyingPig/cs-self-learning" data-repo-id="R_kgDOGP67ng"
+    data-category="Announcements" data-category-id="DIC_kwDOGP67ns4COM9Q" data-mapping="title"
+    data-reactions-enabled="1" data-emit-metadata="0" data-input-position="top" data-theme="light_protanopia"
+    data-lang="zh-CN" data-loading="lazy" crossorigin="anonymous" async>
+</script>
+
+<script>
+    var palette = __get("__palette")
+    if (palette && typeof palette.color === "object") {
+        if (palette.color.scheme === "slate") {
+            const giscus = document.querySelector("script[src*=giscus]")
+            giscus.setAttribute("data-theme", "dark_protanopia")
+        }
+    }
+
+    document.addEventListener("DOMContentLoaded", function () {
+        const ref = document.querySelector("[data-md-component=palette]")
+        ref.addEventListener("change", function () {
+            var palette = __get("__palette")
+            if (palette && typeof palette.color === "object") {
+                const theme = palette.color.scheme === "slate" ? "dark_protanopia" : "light_protanopia"
+                const frame = document.querySelector(".giscus-frame")
+                frame.contentWindow.postMessage({
+                    giscus: { setConfig: { theme } }
+                }, "https://giscus.app")
+            }
+        })
+    })
+</script>
+
+            </article>
+          </div>
+        </div>
+        
+          <a href="#" class="md-top md-icon" data-md-component="top" data-md-state="hidden">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"/></svg>
+            Back to top
+          </a>
+        
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href="../../2_07.Evaluating%20Expressions/Evaluating%20Expressions/" class="md-footer__link md-footer__link--prev" aria-label="上一页: 2.07.Evaluating Expressions" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                上一页
+              </span>
+              2.07.Evaluating Expressions
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../../2_09.Control%20Flow/Control%20Flow/" class="md-footer__link md-footer__link--next" aria-label="下一页: 2.09.Control Flow" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                下一页
+              </span>
+              2.09.Control Flow
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        
+          Made with
+          <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+            Material for MkDocs
+          </a>
+        
+        
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["header.autohide", "navigation.tracking", "navigation.top", "search.highlight", "search.share", "search.suggest", "content.code.annotate"], "search": "../../../assets/javascripts/workers/search.fcfe8b6d.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\uff0c\\u3002]+", "search.placeholder": "\u641c\u7d22", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.b1047164.min.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+      
+    
+  </body>
+</html>

@@ -1,0 +1,1454 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-7.3.6">
+    
+    
+      
+        <title>2. 操作系统架构 - doc-zh</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.a57b2b03.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.3f5d1f46.min.css">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font-family:"Roboto";--md-code-font-family:"Roboto Mono"}</style>
+      
+    
+    
+    
+    
+      
+
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="light-blue" data-md-color-accent="deep-purple">
+  
+    
+    <script>function __prefix(e){return new URL("../..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+    
+      <script>var palette=__get("__palette");if(null!==palette&&"object"==typeof palette.color)for(var key in palette.color)document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#2" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="doc-zh" class="md-header__button md-logo" aria-label="doc-zh" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            doc-zh
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              2. 操作系统架构
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="light-blue" data-md-color-accent="deep-purple"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+          
+            <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5c-.84 0-1.65.15-2.39.42L12 2M3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29L3.34 7m.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14L3.36 17M20.65 7l-1.77 3.79a7.023 7.023 0 0 0-2.38-4.15l4.15.36m-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29L20.64 17M12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44L12 22z"/></svg>
+            </label>
+          
+        
+          
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="cyan" data-md-color-accent="deep-purple"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
+          
+            <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3 3.19.09m3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95 2.06.05m-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31z"/></svg>
+            </label>
+          
+        
+      </form>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7 0-.24-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91 1.61 0 2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08z"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        
+<a href="https://github.com/Misaka-9982-coder/doc-zh" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    doc-zh
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="doc-zh" class="md-nav__button md-logo" aria-label="doc-zh" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    doc-zh
+  </label>
+  
+    <div class="md-nav__source">
+      
+<a href="https://github.com/Misaka-9982-coder/doc-zh" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    doc-zh
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1" type="checkbox" id="__nav_1" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_1">
+          xv6-book
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="xv6-book" data-md-level="1">
+        <label class="md-nav__title" for="__nav_1">
+          <span class="md-nav__icon md-icon"></span>
+          xv6-book
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../0.%20%E5%89%8D%E8%A8%80%E5%92%8C%E8%87%B4%E8%B0%A2/" class="md-nav__link">
+        0. 前言和致谢
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1.%20%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E6%8E%A5%E5%8F%A3/" class="md-nav__link">
+        1. 操作系统接口
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          2. 操作系统架构
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        2. 操作系统架构
+      </a>
+      
+        
+
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    抽象物理资源
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    用户模式、管理模式、系统调用
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    内核组织
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#xv6" class="md-nav__link">
+    代码：xv6组织
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    进程概述
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#xv6_1" class="md-nav__link">
+    代码：启动xv6，第一个进程和系统调用
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    安全模型
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    现实世界
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3.%20%E9%A1%B5%E8%A1%A8/" class="md-nav__link">
+        3. 页表
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../4.%20trap%20%E4%B8%8E%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8/" class="md-nav__link">
+        4. trap 与系统调用
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5.%20%E4%B8%AD%E6%96%AD%E5%92%8C%E8%AE%BE%E5%A4%87%E9%A9%B1%E5%8A%A8%E7%A8%8B%E5%BA%8F/" class="md-nav__link">
+        5. 中断和设备驱动程序
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../6.%20%E9%94%81/" class="md-nav__link">
+        6. 锁
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../7.%20%E8%B0%83%E5%BA%A6/" class="md-nav__link">
+        7. 调度
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../8.%20%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/" class="md-nav__link">
+        8. 文件系统
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../9.%20%E5%86%8D%E6%AC%A1%E6%8E%A2%E8%AE%A8%E5%B9%B6%E5%8F%91%E6%80%A7/" class="md-nav__link">
+        9. 再次探讨并发性
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2">
+          craftinginterpreters
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="craftinginterpreters" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          craftinginterpreters
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../craftinginterpreters/0_00.contents/contents/" class="md-nav__link">
+        0.00.contents
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../craftinginterpreters/0_01.acknowledgements/acknowledgements/" class="md-nav__link">
+        0.01.acknowledgements
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../craftinginterpreters/1_00.Welcome/Welcome/" class="md-nav__link">
+        一、WELCOME
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../craftinginterpreters/1_01.Introduction/Introduction/" class="md-nav__link">
+        1.01.Introduction
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../craftinginterpreters/1_02.A%20Map%20of%20the%20Territory/A%20Map%20of%20the%20Territory/" class="md-nav__link">
+        1.02.A Map of the Territory
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../craftinginterpreters/1_03.The%20Lox%20Language/The%20Lox%20Language/" class="md-nav__link">
+        1.03.The Lox Language
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../craftinginterpreters/2_00.A%20TREE-WALK%20INTERPRETER/A%20TREE-WALK%20INTERPRETER/" class="md-nav__link">
+        二、A TREE-WALK INTERPRETER
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../craftinginterpreters/2_04.Scanning/Scanning/" class="md-nav__link">
+        2.04.Scanning
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../craftinginterpreters/2_05.Representing%20Code/Representing%20Code/" class="md-nav__link">
+        2.05.Representing Code
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../craftinginterpreters/2_06.Parsing%20Expressions/Parsing%20Expressions/" class="md-nav__link">
+        2.06.Parsing Expressions
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../craftinginterpreters/2_07.Evaluating%20Expressions/Evaluating%20Expressions/" class="md-nav__link">
+        2.07.Evaluating Expressions
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../craftinginterpreters/2_08.Statements%20and%20State/Statements%20and%20State/" class="md-nav__link">
+        2.08.Statements and State
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../craftinginterpreters/2_09.Control%20Flow/Control%20Flow/" class="md-nav__link">
+        2.09.Control Flow
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../craftinginterpreters/2_10.Functions/Functions/" class="md-nav__link">
+        2.10.Functions
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../craftinginterpreters/2_11.Resolving%20and%20Binding/Resolving%20and%20Binding/" class="md-nav__link">
+        2.11.Resolving and Binding
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../craftinginterpreters/2_12.Classes/Classes/" class="md-nav__link">
+        2.12.Classes
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../craftinginterpreters/2_13.Inheritance/Inheritance/" class="md-nav__link">
+        2.13.Inheritance
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../craftinginterpreters/3_00.A%20BYTECODE%20VIRTUAL%20MACHINE/A%20BYTECODE%20VIRTUAL%20MACHINE/" class="md-nav__link">
+        三、A BYTECODE VIRTUAL MACHINE
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../craftinginterpreters/3_14.Chunks%20of%20Bytecode/Chunks%20of%20Bytecode/" class="md-nav__link">
+        3.14.Chunks of Bytecode
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../craftinginterpreters/3_15.A%20Virtual%20Machine/A%20Virtual%20Machine/" class="md-nav__link">
+        3.15.A Virtual Machine
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../craftinginterpreters/3_16.Scanning%20on%20Demand/Scanning%20on%20Demand/" class="md-nav__link">
+        3.16.Scanning on Demand
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../craftinginterpreters/3_17.Compiling%20Expressions/Compiling%20Expressions/" class="md-nav__link">
+        3.17.Compiling Expressions
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../craftinginterpreters/3_18.Types%20of%20Values/Types%20of%20Values/" class="md-nav__link">
+        3.18.Types of Values
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../craftinginterpreters/3_19.Strings/Strings/" class="md-nav__link">
+        3.19.Strings
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../craftinginterpreters/3_20.Hash%20Tables/Hash%20Tables/" class="md-nav__link">
+        3.20.Hash Tables
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../craftinginterpreters/3_21.Global%20Variables/Global%20Variables/" class="md-nav__link">
+        3.21.Global Variables
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../craftinginterpreters/3_22.Local%20Variables/Local%20Variables/" class="md-nav__link">
+        3.22.Local Variables
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../craftinginterpreters/3_23.Jumping%20Back%20and%20Forth/Jumping%20Back%20and%20Forth/" class="md-nav__link">
+        3.23.Jumping Back and Forth
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../craftinginterpreters/3_24.Calls%20and%20Functions/Calls%20and%20Functions/" class="md-nav__link">
+        3.24.Calls and Functions
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../craftinginterpreters/3_25.Closures/Closures/" class="md-nav__link">
+        3.25.Closures
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../craftinginterpreters/3_26.Garbage%20Collection/Garbage%20Collection/" class="md-nav__link">
+        3.26.Garbage Collection
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../craftinginterpreters/3_27.Classes%20and%20Instances/Classes%20and%20Instances/" class="md-nav__link">
+        3.27.Classes and Instances
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../craftinginterpreters/3_28.Methods%20and%20Initializers/Methods%20and%20Initializers/" class="md-nav__link">
+        3.28.Methods and Initializers
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../craftinginterpreters/3_29.Superclasses/Superclasses/" class="md-nav__link">
+        3.29.Superclasses
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../craftinginterpreters/3_30.Optimization/Optimization/" class="md-nav__link">
+        3.30.Optimization
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../craftinginterpreters/4_01.A1.Appendix%20I%20Lox%20Grammar/A1.Appendix%20I%20Lox%20Grammar/" class="md-nav__link">
+        A1.Appendix I Lox Grammar
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../craftinginterpreters/4_02.A2.Appendix%20II%20Generated%20Syntax%20Tree%20Classes/A2.Appendix%20II%20Generated%20Syntax%20Tree%20Classes/" class="md-nav__link">
+        A2.Appendix II Generated Syntax Tree Classes
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    抽象物理资源
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    用户模式、管理模式、系统调用
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    内核组织
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#xv6" class="md-nav__link">
+    代码：xv6组织
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    进程概述
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#xv6_1" class="md-nav__link">
+    代码：启动xv6，第一个进程和系统调用
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    安全模型
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    现实世界
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/Misaka-9982-coder/doc-zh/edit/master/docs/S081/2. 操作系统架构.md" title="编辑此页" class="md-content__button md-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
+                  </a>
+                
+                
+                <h1 id="2">2. 操作系统架构</h1>
+<p>操作系统的一个关键要求是支持同时进行多个活动。例如，使用第1章中描述的系统调用接口，进程可以使用 fork 启动新进程。操作系统必须在这些进程之间共享计算机资源。例如，即使有更多的进程而不是硬件 CPU，操作系统也必须确保所有进程都有执行的机会。操作系统还必须安排各个进程之间的隔离。也就是说，如果一个进程出现错误并发生故障，则不应影响不依赖于错误流程的其他流程。然而完全隔离太过头了，因为应该允许流程有意地相互作用；管道就是一个例子。因此，操作系统必须满足三个要求：复用、隔离和交互。 </p>
+<p>本章概述了如何组织操作系统以实现这三个要求。事实证明有很多方法可以做到这一点，但本文重点介绍围绕宏内核设计的主流设计，在许多Unix操作系统中使用该内核。 Xv6 运行在一种多核 RISC-V 微处理器上，并且它的低级功能（例如其过程实现）特定于 RISC-V. RISC-V 是 64 位 CPU，并且 xv6 是用“LP64”的 C 编写 的 ，这意味着 C 语言中 long (L) 和指针(P) 都是 64 位, 而 int 则为 32 位. 这本书假设读者已经对某种体系结构进行了一些机器级编 程，并将在涉及到时介绍 RISC-V 特定思想 。RISC-V 的一个有用参考资料 是 “The RISC -V Reader: An Open Architecture Atlas”  . 用户级 ISA 和特权架构 是官方规格说明。 </p>
+<p>完整计算机中的 CPU 周围都由支持硬件包围 , 其中大部分以 I/O 接口形式存在 。 Xv6 写入 qemu 的 “-machine virt” 选项模拟 的 支持硬件 。 这包括 RAM、ROM 包含引导代码、与用户键盘/屏幕连接和存储磁盘等内容 。</p>
+<h2 id="_1">抽象物理资源</h2>
+<p>当遇到操作系统时，人们可能会问的第一个问题是为什么需要它？也就是说，可以将图1.2 中的系统调用实现为库，并与应用程序链接。在这个计划中，每个应用程序甚至都可以拥有自己量身定制的库以满足其需求。应用程序可以直接与硬件资源交互，并以最佳方式使用这些资源（例如，实现高性能或可预测性）。一些嵌入式设备或实时系统的操作系统就是按照这种方式组织的。 </p>
+<p>这种库函数的缺点在于，如果有多个应用程序运行，则必须使各个应用程序表现良好。例如，每个应用程序必须定期放弃 CPU 以便其他应用程序运行。如果所有应用之间都相互信任且没有错误，则此类协作时间共享方案可能没问题。但更典型的情况是各种不同类型和质量水平、彼此不信任并存在漏洞等因素影响下进行开发，在这种情况下通常需要比合作方案提供更强大隔离措施。 </p>
+<p>要实现强隔离很有帮助：禁止应用直接访问敏感硬件资源，并将资源抽象成服务形式提供给用户使用。例如，在 Unix 上只通过文件系统打开、读取、写入和关闭文件来与存储交互而非直接读写磁盘；这样既为用户提供了路径名等便利功能又允许操作系统（即界面实现者）管理磁盘；即使不存在安全隐患也如此——那些想要相互配合或保持距离地进行交互处理任务的进程通常会发现文件系统比直接使用磁盘更加方便。 </p>
+<p>同样地，在 Unix 上透明地切换硬件 CPU 进程状态并保存/恢复寄存器状态等信息，从而无需考虑时间共享问题；即使某些进程陷入死循环也不会影响整体效率。 </p>
+<p>再举一个例子：Unix 进程使用 exec 构建内存映像而非直接与物理内存交互；由此操作系统可以决定将进程放置在何处——如果内存紧张，则甚至可能将某些过程数据存储在磁盘上；exec 还提供了用户可通过文件系统来存储可执行编译后代码镜像所需内容等优点。 </p>
+<p>Unix 进程之间许多形式化交流均通过文件描述符完成：除了抽象出众多细节外（例如管道或文件中数据所处位置），它们还定义了简化交流方式规范标准。例如，在管道中若其中一个工具失败则核心生成结束信号传递给下一个工具处理任务。 </p>
+<p>图1.2中显示出来得到 API 设计精心考虑到两者之间权衡关系及其对编码人员友好度和是否支持强大隔离措施两方面因素同时考虑得出结果 。 Unix 界面并非唯一抽象资源方法 ，但已被证明是一种非常有效的方法 。</p>
+<h2 id="_2">用户模式、管理模式、系统调用</h2>
+<p>强隔离需要应用程序和操作系统之间有一个硬边界。如果应用程序出现错误，我们不希望操作系统或其他应用程序失败。相反，操作系统应该能够清理失败的应用程序并继续运行其他应用程序。为了实现强隔离，操作系统必须安排使得应用程序无法修改（甚至读取）操作系统的数据结构和指令，并且不能访问其他进程的内存。 </p>
+<p>CPU 提供了对于强隔离的硬件支持。例如，RISC-V 有三种模式可以执行指令：机器模式、监管者模式和用户模式。在机器模式下执行的指令具有完全特权；CPU 在机器模式下启动。机器模式主要是为配置计算机而设计的。Xv6 在机器模式下执行几行代码然后切换到监管者模式。 </p>
+<p>在监管者模式下，CPU 允许执行特权指令：例如启用和禁止中断、读写保存页表地址寄存器等等。如果处于用户态（user mode） 的应用程序尝试执行特权指令，则 CPU 不 执行此指令 ， 而是切换到监管者模式 （supervisor mode），以便监管者级别代码可以终止该应用程序，因为它做了一些不该做的事情 。第 1 章中图 1.1 说明了这个组织方式 。一个应用程序只能执行用户态指令（如加法等），称其正在运行在用户空间 (user space) 中；而运行在监管者级别 (supervisor mode) 的软件也可以执行特权指令，并称其正在运行在内核空间 (kernel space) 中 。 运行在内核空间 ( 或监管员模式 ) 的软件称作内核 (kernel)。 </p>
+<p>想要调度内核函数 (如 xv6 中 read 系统调用)，则必须将一个进程从用户态转变成超级管理员状态 (supervisor mode); 进程不能直接调度内核函数 。 CPU 提供一条专门命名来完成此任务——将 CPU从用户态切换到超级管理员状态并通过由 kernel 规定好入口点(entry point)进入 kernel。(RISC-V提供 ecall 操作码来完成此任务）。一旦 CPU 已经切换到超级管理员状态, 内核就能验证系统调用参数(例如检查传递给系统调用的地址是否属于当前进程),决定是否允许进行请求操作(例如检查当前进程是否被允许写入文件),然后拒绝或执行请求 .重要性质是: 必须由 kernel 控制所有向超级管理员状态转移时所使用 entry point; 如果应用程序可以决定 kernel 入口点, 那么恶意应用程序就可能会跳过参数验证步骤并直接跳转至某个位置引发问题.</p>
+<h2 id="_3">内核组织</h2>
+<p>一个关键的设计问题是操作系统的哪一部分应该在特权模式下运行。一种可能性是整个操作系统都驻留在内核中，以便所有系统调用的实现都在管理模式下运行。这种组织被称为宏内核。</p>
+<p>在这种组织中，整个操作系统都以完全的硬件特权运行。这种组织很方便，因为操作系统设计者不必将操作系统分解成小块，以便它们可以在用户模式下运行。</p>
+<p>决定操作系统哪些部分不需要完全的硬件特权。此外，不同部分的操作系统更容易合作。例如，操作系统可能有一个缓冲区缓存，可以由文件系统和虚拟内存系统共享。</p>
+<p>宏内核的缺点是操作系统不同部分之间的接口通常很复杂，因此操作系统开发人员很容易犯错误。在单体内核中，一个错误是致命的，因为监管模式中的错误通常会导致内核失败。如果内核失败，计算机将停止工作，因此所有应用程序也将失败。计算机必须重新启动才能重新开始。</p>
+<p>为了减少内核中的错误风险，操作系统设计人员可以最小化在监管模式下运行的操作系统代码量，并在用户模式下执行大部分操作系统。这个内核组织被称为微内核。</p>
+<p><img alt="" src="http://xv6.dgs.zone/tranlate_books/book-riscv-rev1/images/c2/p1.png" /></p>
+<p>图 2.1 展示了这种微内核设计。在图中，文件系统作为用户级进程运行。作为进程运行的操作系统服务被称为服务器。为了允许应用程序与文件服务器交互，内核提供了一个进程间通信机制，用于从一个用户模式进程发送消息到另一个进程。例如，如果像shell这样的应用程序想要读取或写入文件，它会发送一个消息到文件服务器并等待响应。</p>
+<p>在微内核中，内核接口由一些低级函数组成，用于启动应用程序、发送消息、访问设备硬件等。这种组织方式使得内核相对简单，因为大部分操作系统都驻留在用户级服务器中。</p>
+<p>在现实世界中，单体内核和微内核都很受欢迎。许多 Unix 内核都是宏内核。例如，Linux 具有单体内核，尽管某些操作系统功能作为用户级服务器运行，例如窗口系统。 Linux 为操作系统密集型应用程序提供高性能，部分原因是内核的子系统可以紧密集成。</p>
+<p>像 Minix、L4 和 QNX 这样的操作系统以服务器为中心的微内核组织方式，在嵌入式环境中得到了广泛应用。 L4 的一个变体 seL4 足够小，已经验证了内存安全性和其他安全属性。</p>
+<p>操作系统开发人员之间存在很多关于哪种组织方式更好的争论，没有定论。此外，这很大程度上取决于“更好”的含义：更快的性能、更小的代码大小、内核的可靠性、包括用户级服务在内的完整操作系统的可靠性等。</p>
+<p>还有一些实际考虑可能比组织形式更重要。一些操作系统具有微内核，但出于性能原因在内核空间运行一些用户级服务。一些操作系统具有单片内核，因为它们最初就是这样的，没有太多的动力去转向纯微内核组织，因为新功能可能比重写现有操作系统以适应微内核设计更重要。</p>
+<p>从这本书的角度来看，微内核和单片内核操作系统共享许多关键思想。它们实现系统调用，使用页表，处理中断，支持进程，使用锁进行并发控制，实现文件系统等。本书重点关注这些核心思想。</p>
+<p>Xv6 实现为单片内核，像大多数 Unix 操作系统一样。因此，xv6 内核接口对应于操作系统接口，内核实现完整的操作系统。</p>
+<p>xv6 并不提供很多服务，它的内核比一些微内核还要小，但从概念上讲，xv6 是单内核的。</p>
+<h2 id="xv6">代码：xv6组织</h2>
+<table>
+<thead>
+<tr>
+<th><strong>File</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>bio.c</td>
+<td>Disk block cache for the file system.</td>
+</tr>
+<tr>
+<td>console.c</td>
+<td>Connect to the user keyboard and screen.</td>
+</tr>
+<tr>
+<td>entry.S</td>
+<td>Very first boot instructions.</td>
+</tr>
+<tr>
+<td>exec.c</td>
+<td>exec() system call.</td>
+</tr>
+<tr>
+<td>file.c</td>
+<td>File descriptor support.</td>
+</tr>
+<tr>
+<td>fs.c</td>
+<td>File system.</td>
+</tr>
+<tr>
+<td>kalloc.c</td>
+<td>Physical page allocator.</td>
+</tr>
+<tr>
+<td>kernelvec.S</td>
+<td>Handle traps from kernel, and timer interrupts.</td>
+</tr>
+<tr>
+<td>log.c</td>
+<td>File system logging and crash recovery.</td>
+</tr>
+<tr>
+<td>main.c</td>
+<td>Control initialization of other modules during boot.</td>
+</tr>
+<tr>
+<td>pipe.c</td>
+<td>Pipes.</td>
+</tr>
+<tr>
+<td>plic.c</td>
+<td>RISC-V interrupt controller.</td>
+</tr>
+<tr>
+<td>printf.c</td>
+<td>Formatted output to the console.</td>
+</tr>
+<tr>
+<td>proc.c</td>
+<td>Processes and scheduling.</td>
+</tr>
+<tr>
+<td>sleeplock.c</td>
+<td>Locks that yield the CPU.</td>
+</tr>
+<tr>
+<td>spinlock.c</td>
+<td>Locks that don't yield the CPU.</td>
+</tr>
+<tr>
+<td>start.c</td>
+<td>Early machine-mode boot code.</td>
+</tr>
+<tr>
+<td>string.c</td>
+<td>C string and byte-array library.</td>
+</tr>
+<tr>
+<td>swtch.S</td>
+<td>Thread switching.</td>
+</tr>
+<tr>
+<td>syscall.c</td>
+<td>Dispatch system calls to handling function.</td>
+</tr>
+<tr>
+<td>sysfile.c</td>
+<td>File-related system calls.</td>
+</tr>
+<tr>
+<td>sysproc.c</td>
+<td>Process-related system calls.</td>
+</tr>
+<tr>
+<td>trampoline.S</td>
+<td>Assembly code to switch between user and kernel.</td>
+</tr>
+<tr>
+<td>trap.c</td>
+<td>C code to handle and return from traps and interrupts.</td>
+</tr>
+<tr>
+<td>uart.c</td>
+<td>Serial-port console device driver.</td>
+</tr>
+<tr>
+<td>virtio_disk.c</td>
+<td>Disk device driver.</td>
+</tr>
+<tr>
+<td>vm.c</td>
+<td>Manage page tables and address spaces.</td>
+</tr>
+</tbody>
+</table>
+<p>xv6 内核源代码位于 kernel/子目录中。该源代码被分成多个文件，遵循大致的模块化概念；图 2.2 列出了这些文件。模块间接口在defs.h（kernel/defs.h）中定义。</p>
+<h2 id="_4">进程概述</h2>
+<p>xv6 中的隔离单元，如其他 Unix 操作系统一样，是一个进程。进程抽象防止一个进程破坏或窥探另一个进程的内存、CPU、文件描述符等。它还防止进程破坏内核本身，以便进程无法破坏内核的隔离机制。</p>
+<p>内核必须小心地实现进程抽象，因为有缺陷或恶意的应用程序可能会欺骗内核或硬件做一些坏事，例如规避隔离。内核用于实现进程的机制包括用户/监管模式标志、地址空间和线程的时间分片。</p>
+<p>为了帮助强制隔离，进程抽象给程序提供了一种错觉，即它有自己的专用机器。进程为程序提供了一个看起来像是私有内存系统或地址空间的东西，其他进程无法读取或写入。进程还为程序提供了一个看起来像是自己的 CPU 来执行程序的指令。</p>
+<p>Xv6 使用由硬件实现的页表为每个进程提供了自己的地址空间。它自己的地址空间。RISC-V 页表将虚拟地址（RISC-V 指令操作的地址）转换或映射为物理地址（CPU 芯片发送到主存储器的地址）。</p>
+<p><img alt="" src="http://xv6.dgs.zone/tranlate_books/book-riscv-rev1/images/c2/p2.png" /></p>
+<p>Xv6 为每个进程维护一个单独的页表，定义该进程的地址空间。如图 2.3 所示，地址空间包括进程的用户内存，从虚拟地址零开始。指令首先出现，然后是全局变量，然后是堆栈，最后是一个“堆”区域，用于 malloc，进程可以根据需要扩展。</p>
+<p>有许多因素限制进程地址空间的最大大小：RISC-V 上的指针宽度为 64 位；硬件仅在查找页表中的虚拟地址时使用低 39 位。因此，最大地址为 <span class="arithmatex">\(2^{38}-1\)</span> = 0x3fffffffff，即MAXVA  (kernel/riscv.h:363).。</p>
+<p>在地址空间的顶部，xv6 保留了一个页面用于 <code>trampoline</code> 和一个页面映射进程的<code>trapframe</code>。Xv6 使用这两个页面来进入和退出内核；<code>trampoline</code> 页面包含用于进入和退出内核的代码，映射 <code>trapframe</code> 是必要的，以保存/恢复用户进程的状态，我们将在第4章中解释。</p>
+<p>xv6 内核为每个进程维护许多状态，它们被收集到一个 <code>struct proc</code> 中。进程最重要的内核状态是其页表、内核堆栈和运行状态。我们将使用 <code>p-&gt;xxx</code> 的符号表示法来引用（proc）结构的元素；例如，<code>p-&gt;pagetable</code> 是指向进程页表的指针。</p>
+<p>每个进程都有一个执行线程，简称线程，用于执行进程的指令。线程可以被暂停，稍后再恢复。为了在进程之间透明地切换，内核会暂停当前正在运行的线程，并恢复另一个进程的线程。线程的许多状态，如本地变量、函数调用返回地址等，都存储在线程的堆栈上。每个进程都有两个堆栈：用户堆栈和内核堆栈 <code>p-&gt;kstack</code>。当进程执行用户指令时，只使用其用户堆栈，内核堆栈为空。当进程进入内核进行系统调用或中断时，内核代码在进程的内核堆栈上执行；当进程在内核中时，其用户堆栈仍包含保存的数据，但不处于活跃状态。进程的线程在使用其用户堆栈和内核堆栈之间交替。内核堆栈与用户代码分开并受保护，以便内核可以执行其任务而不受用户代码的干扰。即使进程已经破坏了其用户栈，内核也可以正常执行。</p>
+<p>进程可以通过执行 RISC-V 的 <code>ecall</code> 指令来进行系统调用。该指令提高了硬件特权级别，并将程序计数器更改为内核定义的入口点。入口点处的代码切换到内核堆栈并执行实现系统调用的内核指令。当系统调用完成时，内核切换回用户栈并通过调用 <code>sret</code> 指令返回到用户空间，该指令降低硬件特权级别并继续执行系统调用指令后的用户指令。进程的线程可以在内核中“阻塞”以等待 I/O，并在 I/O 完成后恢复到离开的位置。</p>
+<p><code>p-&gt;state</code> 指示进程是否已分配、准备运行、正在运行、正在等待 I/O 或正在退出。</p>
+<p><code>p-&gt;pagetable</code> 保存进程的页表，格式符合 RISC-V 硬件的要求。Xv6 使分页硬件在用户空间执行进程时使用该进程的 <code>p-&gt;pagetable</code>。进程的页表还作为记录分配给进程存储内存的物理页面地址的记录。</p>
+<p>总之，进程捆绑了两个设计思想：地址空间为进程提供其自己内存的幻觉，线程为进程提供其自己 CPU 的幻觉。在 xv6 中，一个进程由一个地址空间和一个线程组成。在真正的操作系统中，一个进程可能有多个线程以利用多个 CPU。</p>
+<h2 id="xv6_1">代码：启动xv6，第一个进程和系统调用</h2>
+<p>为了让 xv6 更加具体化，我们将概述内核如何启动和运行第一个进程。随后的章节将详细描述出现在此概述中的机制。 </p>
+<p>当 RISC-V 计算机启动时，它会初始化自身并运行存储在只读存储器中的引导加载程序。引导加载程序将 xv6 内核加载到内存中。然后，在机器模式下，CPU 从 <code>_entry</code>（kernel/entry.S:7）开始执行 xv6。 RISC-V 以禁用分页硬件的状态启动：虚拟地址直接映射到物理地址。 </p>
+<p>加载程序将 xv6 内核加载到物理地址 <code>0x80000000</code> 处的内存中。之所以将内核放置在 <code>0x80000000</code> 而不是 <code>0x0</code> 处是因为地址范围 <code>0x0:  0x80000000</code> 包含 I/O 设备。 </p>
+<p><code>_entry</code> 处的指令设置了一个堆栈，以便使得 XV6 可以运行 C 代码。XV6 在 <code>start.c</code>（kernel/start.c:11）中声明了初始堆栈 <code>stack0</code> 的空间大小，并且 <code>_entry</code> 处代码通过把堆栈顶部 <code>stack0 + 4096</code> 的地址装载入堆栈指针寄存器 <code>sp</code> 中来进行设置, 因为 RISC-V 上的堆栈向下增长. 现在有了一个堆栈之后, <code>_entry</code> 便调用位于 <code>start</code> (kernel/start.c:21) 位置上的 C 代码. </p>
+<p>函数 <code>start</code> 执行一些仅在机器模式下允许的配置, 然后切换到监管者模式. 要进入监管者模式, RISC-V 提供 <code>mret</code> 指令. 这个指令最常用于从监管者模式返回先前对机器模式调用时使用. <code>start</code> 不是从这样一个调用返回, 而是设置好像已经有这样一个调用一样：它将 <code>mstatus</code> 寄存器中的先前特权模式设置为监督器，它通过将 <code>main</code> 的地址写入 <code>mepc</code> 寄存器将返回地址设置为 <code>main</code> ，通过将 0 写入页表寄存器 <code>satp</code> 来禁用监督器模式下的虚拟地址转换，并将所有中断和异常委托给监督器模式。</p>
+<p>跳转至监管者之前, <code>start</code> 还要完成另外一项任务：对时钟芯片进行编程以产生计时器中断。 完成这些杂务之后, start 通过调用 <code>mret</code> "返回" 到监管者模式 . 这会导致程序计数器改变为 <code>main</code> (kernel/main.c:11). </p>
+<p><code>main</code> (kernel/main.c:11) 初始化多个设备和子系统之后,通过调用 <code>userinit</code> (kernel/proc.c :233) 创建第一个进程. </p>
+<p>第一个进程执行由 RISC-V 汇编语言编写的小型程序，并使 xv6 中第一个系统调用 <code>initcode.S</code> (user/initcode.S :3) 将 <code>exec</code> 系统调用号 <code>SYS_EXEC</code> (kernel/syscall.h :8 ) 加载到 <code>a7</code> 寄存器中 ，然后使用 <code>ecall</code> 重新进入 内核. </p>
+<p>操作系统使用 <code>a7</code> 寄存器中的数字在 <code>syscall</code> ( kernel / syscall.c ：132 ) 中调用所需的系统调试 。 系统调试表 （ kernel / syscall.c ：107） 将 <code>SYS_EXEC</code> 映射到 <code>sys_exec</code> ， 内核调用它。正如我们在第1章中看到的，<code>exec</code> 用新程序（本例中为 /init）替换当前进程的内存和寄存器。</p>
+<p>当操作系统内核完成 <code>exec</code> 后，则回归用户空间，在 <code>/init</code> 进程上执行 <code>init</code> ( user/init.c :15 )，如果需要则创建新控制台设备文件，并打开其作为文件描述符 0、1 和 2 。然后，在控制台上启动 shell 。整个系统已经准备好了！</p>
+<h2 id="_5">安全模型</h2>
+<p>你可能会想知道操作系统如何处理有缺陷或恶意代码。因为处理恶意行为比处理意外错误更加困难，所以合理地将这个主题视为与安全有关。以下是操作系统设计中典型安全假设和目标的高层视图。</p>
+<p>操作系统必须假设进程的用户级代码会尽其所能破坏内核或其他进程。用户代码可能会尝试在其允许的地址空间之外引用指针；它可能会...尝试执行任何RISC-V指令，即使这些指令不是为用户代码而设计的；它可能尝试读写任何RISC-V控制寄存器；它可能尝试直接访问设备硬件；并且它可能会传递巧妙的值给系统调用，试图欺骗内核崩溃或做出愚蠢的行为。内核的目标是限制每个用户进程，使其只能读/写/执行自己的用户内存，使用 32 个通用 RISC-V 寄存器，并以系统调用允许的方式影响内核和其他进程。内核必须防止任何其他操作。这通常是内核设计中的绝对要求。</p>
+<p>内核自身代码的期望是完全不同的。内核代码假定是由善意和谨慎的程序员编写的。内核代码应该是无错误的，当然不包含任何恶意代码。这种假设影响了我们分析内核代码的方式。例如，有许多内部内核函数，例如自旋。</p>
+<p>如果内核代码错误地使用它们，锁可能会导致严重问题。在检查任何特定的内核代码时，我们希望确信它的行为是正确的。然而，我们假设内核代码总体上是正确的，并遵循有关使用内核自身函数和数据结构的所有规则。在硬件层面上，RISC-V CPU、RAM、磁盘等被认为是按照文档中所述的方式运行的，没有硬件缺陷。</p>
+<p>当然，在现实生活中事情并不那么简单。很难防止聪明的用户代码通过消耗内核保护资源（磁盘空间、CPU时间、进程表槽等）使系统无法使用或导致它崩溃。编写无缺陷的代码或设计无缺陷的硬件通常是不可能的；如果恶意用户代码的编写者意识到内核或硬件缺陷，他们将利用它们。即使在成熟的、广泛使用的内核中，例如 Linux，人们也会持续不断地发现新的漏洞。</p>
+<p>在内核中设计防护措施以防止出现漏洞是值得的：断言、类型检查、堆栈保护页等。最后，用户和内核代码之间的区别有时会模糊：一些特权用户级进程可能提供必要的服务并有效地成为操作系统的一部分，在一些操作系统中，特权用户代码可以像 Linux 的可加载内核模块一样插入新代码到内核中。</p>
+<h2 id="_6">现实世界</h2>
+<p>大多数操作系统都采用了进程概念，而且大多数进程看起来与 xv6 的相似。然而，现代操作系统支持在一个进程内支持多个线程，以允许单个进程利用多个CPU。在一个进程中支持多个线程涉及到很多机制，在 xv6 中并没有这些机制，包括可能的接口更改（例如 Linux 的 clone，fork 的一种变体），以控制线程共享哪些方面的进程。</p>
+                
+              
+              
+<script src="https://giscus.app/client.js" data-repo="PKUFlyingPig/cs-self-learning" data-repo-id="R_kgDOGP67ng"
+    data-category="Announcements" data-category-id="DIC_kwDOGP67ns4COM9Q" data-mapping="title"
+    data-reactions-enabled="1" data-emit-metadata="0" data-input-position="top" data-theme="light_protanopia"
+    data-lang="zh-CN" data-loading="lazy" crossorigin="anonymous" async>
+</script>
+
+<script>
+    var palette = __get("__palette")
+    if (palette && typeof palette.color === "object") {
+        if (palette.color.scheme === "slate") {
+            const giscus = document.querySelector("script[src*=giscus]")
+            giscus.setAttribute("data-theme", "dark_protanopia")
+        }
+    }
+
+    document.addEventListener("DOMContentLoaded", function () {
+        const ref = document.querySelector("[data-md-component=palette]")
+        ref.addEventListener("change", function () {
+            var palette = __get("__palette")
+            if (palette && typeof palette.color === "object") {
+                const theme = palette.color.scheme === "slate" ? "dark_protanopia" : "light_protanopia"
+                const frame = document.querySelector(".giscus-frame")
+                frame.contentWindow.postMessage({
+                    giscus: { setConfig: { theme } }
+                }, "https://giscus.app")
+            }
+        })
+    })
+</script>
+
+            </article>
+          </div>
+        </div>
+        
+          <a href="#" class="md-top md-icon" data-md-component="top" data-md-state="hidden">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"/></svg>
+            Back to top
+          </a>
+        
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href="../1.%20%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E6%8E%A5%E5%8F%A3/" class="md-footer__link md-footer__link--prev" aria-label="上一页: 1. 操作系统接口" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                上一页
+              </span>
+              1. 操作系统接口
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../3.%20%E9%A1%B5%E8%A1%A8/" class="md-footer__link md-footer__link--next" aria-label="下一页: 3. 页表" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                下一页
+              </span>
+              3. 页表
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        
+          Made with
+          <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+            Material for MkDocs
+          </a>
+        
+        
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["header.autohide", "navigation.tracking", "navigation.top", "search.highlight", "search.share", "search.suggest", "content.code.annotate"], "search": "../../assets/javascripts/workers/search.fcfe8b6d.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\uff0c\\u3002]+", "search.placeholder": "\u641c\u7d22", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.b1047164.min.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+      
+    
+  </body>
+</html>

@@ -1,0 +1,1714 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-7.3.6">
+    
+    
+      
+        <title>3.27.Classes and Instances - doc-zh</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.a57b2b03.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.3f5d1f46.min.css">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font-family:"Roboto";--md-code-font-family:"Roboto Mono"}</style>
+      
+    
+    
+    
+    
+      
+
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="light-blue" data-md-color-accent="deep-purple">
+  
+    
+    <script>function __prefix(e){return new URL("../../..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+    
+      <script>var palette=__get("__palette");if(null!==palette&&"object"==typeof palette.color)for(var key in palette.color)document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="doc-zh" class="md-header__button md-logo" aria-label="doc-zh" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            doc-zh
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              3.27.Classes and Instances
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="light-blue" data-md-color-accent="deep-purple"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+          
+            <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5c-.84 0-1.65.15-2.39.42L12 2M3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29L3.34 7m.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14L3.36 17M20.65 7l-1.77 3.79a7.023 7.023 0 0 0-2.38-4.15l4.15.36m-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29L20.64 17M12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44L12 22z"/></svg>
+            </label>
+          
+        
+          
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="cyan" data-md-color-accent="deep-purple"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
+          
+            <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3 3.19.09m3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95 2.06.05m-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31z"/></svg>
+            </label>
+          
+        
+      </form>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7 0-.24-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91 1.61 0 2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08z"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        
+<a href="https://github.com/Misaka-9982-coder/doc-zh" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    doc-zh
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="doc-zh" class="md-nav__button md-logo" aria-label="doc-zh" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    doc-zh
+  </label>
+  
+    <div class="md-nav__source">
+      
+<a href="https://github.com/Misaka-9982-coder/doc-zh" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    doc-zh
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1" type="checkbox" id="__nav_1" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_1">
+          xv6-book
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="xv6-book" data-md-level="1">
+        <label class="md-nav__title" for="__nav_1">
+          <span class="md-nav__icon md-icon"></span>
+          xv6-book
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../S081/0.%20%E5%89%8D%E8%A8%80%E5%92%8C%E8%87%B4%E8%B0%A2/" class="md-nav__link">
+        0. 前言和致谢
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../S081/1.%20%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E6%8E%A5%E5%8F%A3/" class="md-nav__link">
+        1. 操作系统接口
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../S081/2.%20%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84/" class="md-nav__link">
+        2. 操作系统架构
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../S081/3.%20%E9%A1%B5%E8%A1%A8/" class="md-nav__link">
+        3. 页表
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../S081/4.%20trap%20%E4%B8%8E%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8/" class="md-nav__link">
+        4. trap 与系统调用
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../S081/5.%20%E4%B8%AD%E6%96%AD%E5%92%8C%E8%AE%BE%E5%A4%87%E9%A9%B1%E5%8A%A8%E7%A8%8B%E5%BA%8F/" class="md-nav__link">
+        5. 中断和设备驱动程序
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../S081/6.%20%E9%94%81/" class="md-nav__link">
+        6. 锁
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../S081/7.%20%E8%B0%83%E5%BA%A6/" class="md-nav__link">
+        7. 调度
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../S081/8.%20%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/" class="md-nav__link">
+        8. 文件系统
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../S081/9.%20%E5%86%8D%E6%AC%A1%E6%8E%A2%E8%AE%A8%E5%B9%B6%E5%8F%91%E6%80%A7/" class="md-nav__link">
+        9. 再次探讨并发性
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2">
+          craftinginterpreters
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="craftinginterpreters" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          craftinginterpreters
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../0_00.contents/contents/" class="md-nav__link">
+        0.00.contents
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../0_01.acknowledgements/acknowledgements/" class="md-nav__link">
+        0.01.acknowledgements
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1_00.Welcome/Welcome/" class="md-nav__link">
+        一、WELCOME
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1_01.Introduction/Introduction/" class="md-nav__link">
+        1.01.Introduction
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1_02.A%20Map%20of%20the%20Territory/A%20Map%20of%20the%20Territory/" class="md-nav__link">
+        1.02.A Map of the Territory
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1_03.The%20Lox%20Language/The%20Lox%20Language/" class="md-nav__link">
+        1.03.The Lox Language
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2_00.A%20TREE-WALK%20INTERPRETER/A%20TREE-WALK%20INTERPRETER/" class="md-nav__link">
+        二、A TREE-WALK INTERPRETER
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2_04.Scanning/Scanning/" class="md-nav__link">
+        2.04.Scanning
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2_05.Representing%20Code/Representing%20Code/" class="md-nav__link">
+        2.05.Representing Code
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2_06.Parsing%20Expressions/Parsing%20Expressions/" class="md-nav__link">
+        2.06.Parsing Expressions
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2_07.Evaluating%20Expressions/Evaluating%20Expressions/" class="md-nav__link">
+        2.07.Evaluating Expressions
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2_08.Statements%20and%20State/Statements%20and%20State/" class="md-nav__link">
+        2.08.Statements and State
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2_09.Control%20Flow/Control%20Flow/" class="md-nav__link">
+        2.09.Control Flow
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2_10.Functions/Functions/" class="md-nav__link">
+        2.10.Functions
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2_11.Resolving%20and%20Binding/Resolving%20and%20Binding/" class="md-nav__link">
+        2.11.Resolving and Binding
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2_12.Classes/Classes/" class="md-nav__link">
+        2.12.Classes
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2_13.Inheritance/Inheritance/" class="md-nav__link">
+        2.13.Inheritance
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3_00.A%20BYTECODE%20VIRTUAL%20MACHINE/A%20BYTECODE%20VIRTUAL%20MACHINE/" class="md-nav__link">
+        三、A BYTECODE VIRTUAL MACHINE
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3_14.Chunks%20of%20Bytecode/Chunks%20of%20Bytecode/" class="md-nav__link">
+        3.14.Chunks of Bytecode
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3_15.A%20Virtual%20Machine/A%20Virtual%20Machine/" class="md-nav__link">
+        3.15.A Virtual Machine
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3_16.Scanning%20on%20Demand/Scanning%20on%20Demand/" class="md-nav__link">
+        3.16.Scanning on Demand
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3_17.Compiling%20Expressions/Compiling%20Expressions/" class="md-nav__link">
+        3.17.Compiling Expressions
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3_18.Types%20of%20Values/Types%20of%20Values/" class="md-nav__link">
+        3.18.Types of Values
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3_19.Strings/Strings/" class="md-nav__link">
+        3.19.Strings
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3_20.Hash%20Tables/Hash%20Tables/" class="md-nav__link">
+        3.20.Hash Tables
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3_21.Global%20Variables/Global%20Variables/" class="md-nav__link">
+        3.21.Global Variables
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3_22.Local%20Variables/Local%20Variables/" class="md-nav__link">
+        3.22.Local Variables
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3_23.Jumping%20Back%20and%20Forth/Jumping%20Back%20and%20Forth/" class="md-nav__link">
+        3.23.Jumping Back and Forth
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3_24.Calls%20and%20Functions/Calls%20and%20Functions/" class="md-nav__link">
+        3.24.Calls and Functions
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3_25.Closures/Closures/" class="md-nav__link">
+        3.25.Closures
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3_26.Garbage%20Collection/Garbage%20Collection/" class="md-nav__link">
+        3.26.Garbage Collection
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          3.27.Classes and Instances
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        3.27.Classes and Instances
+      </a>
+      
+        
+
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#271" class="md-nav__link">
+    27.1 类对象
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#272" class="md-nav__link">
+    27.2 类声明
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#273" class="md-nav__link">
+    27.3 类的实例
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#274-getset" class="md-nav__link">
+    27.4 get和set 表达式
+  </a>
+  
+    <nav class="md-nav" aria-label="27.4 get和set 表达式">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#2741-getter-setter" class="md-nav__link">
+    27.4.1 解释 getter 和 setter 表达式
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    挑战
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3_28.Methods%20and%20Initializers/Methods%20and%20Initializers/" class="md-nav__link">
+        3.28.Methods and Initializers
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3_29.Superclasses/Superclasses/" class="md-nav__link">
+        3.29.Superclasses
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3_30.Optimization/Optimization/" class="md-nav__link">
+        3.30.Optimization
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../4_01.A1.Appendix%20I%20Lox%20Grammar/A1.Appendix%20I%20Lox%20Grammar/" class="md-nav__link">
+        A1.Appendix I Lox Grammar
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../4_02.A2.Appendix%20II%20Generated%20Syntax%20Tree%20Classes/A2.Appendix%20II%20Generated%20Syntax%20Tree%20Classes/" class="md-nav__link">
+        A2.Appendix II Generated Syntax Tree Classes
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#271" class="md-nav__link">
+    27.1 类对象
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#272" class="md-nav__link">
+    27.2 类声明
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#273" class="md-nav__link">
+    27.3 类的实例
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#274-getset" class="md-nav__link">
+    27.4 get和set 表达式
+  </a>
+  
+    <nav class="md-nav" aria-label="27.4 get和set 表达式">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#2741-getter-setter" class="md-nav__link">
+    27.4.1 解释 getter 和 setter 表达式
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    挑战
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/Misaka-9982-coder/doc-zh/edit/master/docs/craftinginterpreters/3_27.Classes and Instances/Classes and Instances.md" title="编辑此页" class="md-content__button md-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
+                  </a>
+                
+                
+                <h1 id="_1">类和实例</h1>
+<blockquote>
+<p>过分关心对象会毁了你。只是——如果你足够关心一件事，它就会拥有自己的生命，不是吗？事物的全部意义——美丽的事物——难道不就是它们将你与某种更大的美联系起来吗？</p>
+<p>-- Donna Tartt,<em>The Goldfinch</em></p>
+</blockquote>
+<p>clox 中最后一个需要实现的领域是面向对象编程。OOP是一组相互交织的特性：类、实例、字段、方法、初始化器和继承。使用相对高级的 Java，我们将所有内容打包成两章。现在我们正在用 C 编写代码，这感觉就像用牙签建造埃菲尔铁塔的模型，我们将用三个章节来介绍相同的领域。这使得从容地漫步在实现过程中。<a href="http://craftinginterpreters.com/closures.html">在诸如闭包</a>和<a href="http://craftinginterpreters.com/garbage-collection.html">垃圾收集器</a>之类的艰苦章节之后，您已经获得了休息。事实上，这本书从现在开始应该很容易。</p>
+<blockquote>
+<p>对面向对象编程有强烈看法的人——读作“每个人”——倾向于认为 OOP 意味着一些非常具体的语言特性列表，但实际上有一个完整的探索空间，每种语言都有自己的成分和配方。</p>
+<p>Self 有对象但没有类。CLOS 有方法但不将它们附加到特定类。C++ 最初没有运行时多态性——没有虚拟方法。Python 有多重继承，而 Java 没有。Ruby 将方法附加到类，但您也可以在单个对象上定义方法。</p>
+</blockquote>
+<p>在本章中，我们介绍了前三个特性：类、实例和字段。这是面向对象的状态方面。然后在接下来的两章中，我们将暂停这些对象的行为和代码重用。</p>
+<h2 id="271">27.1 类对象</h2>
+<p>在基于类的面向对象语言中，一切都从类开始。它们定义了程序中存在的对象类型以及用于生成新实例的工厂。自下而上，我们将从它们的运行时表示开始，然后将其连接到语言中。</p>
+<p>至此，我们已经非常熟悉向 VM 添加新对象类型的过程。我们从一个结构开始。</p>
+<pre><code class="language-c">} ObjClosure;
+
+typedef struct {
+  Obj obj;
+  ObjString* name;
+} ObjClass;
+
+ObjClosure* newClosure(ObjFunction* function);
+// object.h, add after struct ObjClosure
+</code></pre>
+<p>在 Obj 头之后，我们存储类的名称。这并不是用户程序所必需的，但它可以在运行时显示堆栈跟踪等内容的名称。</p>
+<p>新类型需要 ObjType 枚举中的相应大小写。</p>
+<pre><code class="language-c">typedef enum {
+  OBJ_CLASS,
+  OBJ_CLOSURE,
+// object.h, in enum ObjType
+</code></pre>
+<p>那个类型得到一对相应的宏。首先，测试一个对象的类型：</p>
+<pre><code class="language-c">#define OBJ_TYPE(value)        (AS_OBJ(value)-&gt;type)
+
+#define IS_CLASS(value)        isObjType(value, OBJ_CLASS)
+#define IS_CLOSURE(value)      isObjType(value, OBJ_CLOSURE)
+// object.h
+</code></pre>
+<p>然后将 Value 转换为 ObjClass 指针：</p>
+<pre><code class="language-c">#define IS_STRING(value)       isObjType(value, OBJ_STRING)
+
+#define AS_CLASS(value)        ((ObjClass*)AS_OBJ(value))
+#define AS_CLOSURE(value)      ((ObjClosure*)AS_OBJ(value))
+// object.h
+</code></pre>
+<p>VM 使用此函数创建新的类对象：</p>
+<pre><code class="language-c">} ObjClass;
+
+ObjClass* newClass(ObjString* name);
+ObjClosure* newClosure(ObjFunction* function);
+// object.h, add after struct ObjClass
+</code></pre>
+<p>实现在这里：</p>
+<pre><code class="language-c">ObjClass* newClass(ObjString* name) {
+  ObjClass* klass = ALLOCATE_OBJ(ObjClass, OBJ_CLASS);
+  klass-&gt;name = name; 
+  return klass;
+}
+// object.c, add after allocateObject()
+</code></pre>
+<p>几乎所有样板。它将类的名称作为字符串接收并存储。每次用户声明一个新类时，VM 都会创建一个新的 ObjClass 结构来表示它。</p>
+<p><img alt="" src="../assets/1637bc0fb529635700d5560480f178b2a5ec773f.png" /></p>
+<blockquote>
+<p>我将变量命名为“klass”，不仅仅是为了给 VM 一种滑稽的学前班“Kidz Korner”感觉。它使得将 clox 编译为 C++ 变得更容易，其中“类”是保留字。</p>
+</blockquote>
+<p>当 VM 不再需要某个类时，它会像这样释放它：</p>
+<pre><code class="language-c">  switch (object-&gt;type) {
+    case OBJ_CLASS: {
+      FREE(ObjClass, object);
+      break;
+    } 
+    case OBJ_CLOSURE: {
+// memory.c, in freeObject()
+</code></pre>
+<blockquote>
+<p>这里的大括号现在毫无意义，但在下一章中我们向 switch case 添加更多代码时会很有用。</p>
+</blockquote>
+<p>我们现在有一个内存管理器，所以我们还需要支持通过类对象进行跟踪。</p>
+<pre><code class="language-c">  switch (object-&gt;type) {
+    case OBJ_CLASS: {
+      ObjClass* klass = (ObjClass*)object;
+      markObject((Obj*)klass-&gt;name);
+      break;
+    }
+    case OBJ_CLOSURE: {
+// memory.c, in blackenObject()
+</code></pre>
+<p>当 GC 到达一个类对象时，它会标记该类的名称以使该字符串也保持活动状态。</p>
+<p>VM 可以对类执行的最后一个操作是打印它。</p>
+<pre><code class="language-c">  switch (OBJ_TYPE(value)) {
+    case OBJ_CLASS:
+      printf(&quot;%s&quot;, AS_CLASS(value)-&gt;name-&gt;chars);
+      break;
+    case OBJ_CLOSURE:
+// object.c, in printObject() 
+</code></pre>
+<p>一个类只是说出它自己的名字。</p>
+<h2 id="272">27.2 类声明</h2>
+<p>运行时表示在手，我们准备为语言添加对类的支持。接下来，我们进入解析器。</p>
+<pre><code class="language-c">static void declaration() {
+  if (match(TOKEN_CLASS)) {
+    classDeclaration();
+  } else if (match(TOKEN_FUN)) {
+    funDeclaration();
+// compiler.c, in declaration(), replace 1 line
+</code></pre>
+<p>类声明是语句，解析器通过前导<code>class</code>关键字识别一个。其余的编译发生在这里：</p>
+<pre><code class="language-c">static void classDeclaration() {
+  consume(TOKEN_IDENTIFIER, &quot;Expect class name.&quot;);
+  uint8_t nameConstant = identifierConstant(&amp;parser.previous);
+  declareVariable();
+
+  emitBytes(OP_CLASS, nameConstant);
+  defineVariable(nameConstant);
+
+  consume(TOKEN_LEFT_BRACE, &quot;Expect '{' before class body.&quot;);
+  consume(TOKEN_RIGHT_BRACE, &quot;Expect '}' after class body.&quot;);
+}
+// compiler.c, add after function()
+</code></pre>
+<p>紧跟在<code>class</code>关键字之后的是类的名称。我们获取该标识符并将其作为字符串添加到周围函数的常量表中。如您所见，打印一个类会显示其名称，因此编译器需要将名称字符串填充到运行时可以找到的某个位置。常量表是做到这一点的方法。</p>
+<p>类名也用于将类对象绑定到同名变量。因此，我们在使用其token后立即声明一个具有该标识符的变量。</p>
+<blockquote>
+<p>我们可以让类声明成为<em>表达式</em>而不是语句——它们本质上是一个产生值的文字。然后用户必须明确地将类绑定到自己的变量，例如：</p>
+<p><code>js
+var Pie = class {}</code></p>
+<p>有点像 lambda 函数，但用于类。但是由于我们通常希望类无论如何都被命名，所以将它们视为声明是有意义的。</p>
+</blockquote>
+<p>接下来，我们发出一条新指令以在运行时实际创建类对象。该指令将类名称的常量表索引作为操作数。</p>
+<p>之后，但在编译类主体之前，我们为类名定义变量。<em>声明</em>变量将它添加到作用域中，但回想一下<a href="http://craftinginterpreters.com/local-variables.html#another-scope-edge-case">前一章</a>我们不能<em>使用</em>变量直到它被<em>定义</em>。对于类，我们在主体之前定义变量。这样，用户可以在其自己的方法体内引用包含类。这对于生成类的新实例的工厂方法之类的东西很有用。</p>
+<p>最后，我们编译主体。我们还没有方法，所以现在它只是一对空括号。Lox 不需要在类中声明字段，所以现在已经完成了主体和解析器。</p>
+<p>编译器正在发出一条新指令，所以让我们定义它。</p>
+<pre><code class="language-c">  OP_RETURN,
+  OP_CLASS,
+} OpCode;
+// chunk.h, in enum OpCode
+</code></pre>
+<p>并将其添加到反汇编程序中：</p>
+<pre><code class="language-c">    case OP_RETURN:
+      return simpleInstruction(&quot;OP_RETURN&quot;, offset);
+    case OP_CLASS:
+      return constantInstruction(&quot;OP_CLASS&quot;, chunk, offset);
+    default:
+// debug.c, in disassembleInstruction()
+</code></pre>
+<p>对于这样一个看起来很大的功能，解释器的支持是最少的。</p>
+<pre><code class="language-c">        break;
+      }
+      case OP_CLASS:
+        push(OBJ_VAL(newClass(READ_STRING())));
+        break;
+    }
+// vm.c, in run()
+</code></pre>
+<p>我们从常量表中加载类名称的字符串并将其传递给<code>newClass()</code>.这将创建一个具有给定名称的新类对象。将其推入栈，我们很好。如果该类绑定到全局变量，则编译器调用<code>defineVariable()</code>将发出代码以将该对象从堆栈存储到全局变量表中。否则，它就在新局部变量需要在堆栈上的位置。</p>
+<blockquote>
+<p>“本地”类——在函数或块内部声明的类，是一个不寻常的概念。许多语言根本不允许它们。但由于 Lox 是一种动态类型的脚本语言，它统一处理程序的顶层以及函数和块的主体。类只是另一种声明，因为您可以在块内声明变量和函数，所以您也可以在其中声明类。</p>
+</blockquote>
+<p>好了，我们的 VM 现在支持类了。你可以运行这个：</p>
+<pre><code class="language-c">class Brioche {}
+print Brioche;
+</code></pre>
+<p>不幸的是，打印几乎是您可以对类进行的<em>所有操作，所以下一步是使它们更有用。</em></p>
+<h2 id="273">27.3 类的实例</h2>
+<p>类在语言中有两个主要目的：</p>
+<ul>
+<li>
+<p><strong>它们是创建新实例的方式</strong>。有时这涉及<code>new</code>关键字，有时它是对类对象的方法调用，通常会以某种方式通过名称提及类以获取新实例。</p>
+</li>
+<li>
+<p><strong>它们包含方法</strong>。这些定义了该类的所有实例的行为方式。</p>
+</li>
+</ul>
+<p>我们要到下一章才会谈到方法，所以现在我们只关心第一部分。在类可以创建实例之前，我们需要它们的表示。</p>
+<pre><code class="language-c">} ObjClass;
+
+typedef struct {
+  Obj obj;
+  ObjClass* klass;
+  Table fields; 
+} ObjInstance;
+
+ObjClass* newClass(ObjString* name);
+// object.h, add after struct ObjClass
+</code></pre>
+<p>实例知道它们的类——每个实例都有一个指向它所属类的指针。我们在本章中不会用到这么多，但是当我们添加方法时它会变得很关键。</p>
+<p>本章更重要的是实例如何存储它们的状态。Lox 允许用户在运行时自由地向实例添加字段。这意味着我们需要一种可以增长的存储机制。可以使用动态数组，但也希望尽快按名称查找字段。有一种数据结构非常适合通过名称快速访问一组值，而且——甚至更方便——我们已经实现了它。每个实例都使用哈希表存储其字段。</p>
+<blockquote>
+<p>能够在运行时自由地向对象添加字段是大多数动态语言和静态语言之间的一个很大的实际区别。静态类型语言通常需要显式声明字段。这样，编译器就可以确切地知道每个实例有哪些字段。它可以使用它来确定每个实例所需的精确内存量以及可以在该内存中找到每个字段的偏移量。</p>
+<p>在 Lox 和其他动态语言中，访问字段通常是哈希表查找。常数时间，但仍然相当重量级。在像 C++ 这样的语言中，访问一个字段就像用一个整数常量偏移一个指针一样快。</p>
+</blockquote>
+<p>我们只需要添加一个包含，就搞定了。</p>
+<pre><code class="language-c">#include &quot;chunk.h&quot;
+#include &quot;table.h&quot;
+#include &quot;value.h&quot;
+// object.h
+</code></pre>
+<p>这个新结构获得了一个新的对象类型。</p>
+<pre><code class="language-c">  OBJ_FUNCTION,
+  OBJ_INSTANCE,
+  OBJ_NATIVE,
+// object.h, in enum ObjType 
+</code></pre>
+<p>我想在这里放慢一点，因为 Lox语言的“类型”概念和 VM<em>实现的</em>“类型”概念以可能令人困惑的方式相互冲突。在生成 clox 的 C 代码中，有许多不同类型的 Obj——?ObjString、ObjClosure 等。每个都有自己的内部表示和语义。</p>
+<p>在 Lox<em>语言中</em>，用户可以定义他们自己的类——比如 Cake 和 Pie——然后创建这些类的实例。从用户的角度来看，Cake 实例与 Pie 实例是不同类型的对象。但是，从 VM 的角度来看，用户定义的每个类都只是 ObjClass 类型的另一个值。同样，用户程序中的每个实例，无论它是哪个类的实例，都是一个 ObjInstance。一个 VM 对象类型涵盖所有类的实例。这两个世界像这样相互映射：</p>
+<p><img alt="" src="../assets/81bdb54ead152d90cb017f66b8348019794a362d.png" /></p>
+<p>知道了？OK，回到实现。我们也得到了我们常用的宏。</p>
+<pre><code class="language-c">#define IS_FUNCTION(value)     isObjType(value, OBJ_FUNCTION)
+#define IS_INSTANCE(value)     isObjType(value, OBJ_INSTANCE)
+#define IS_NATIVE(value)       isObjType(value, OBJ_NATIVE)
+// object.h
+</code></pre>
+<p>和：</p>
+<pre><code class="language-c">#define AS_FUNCTION(value)     ((ObjFunction*)AS_OBJ(value))
+#define AS_INSTANCE(value)     ((ObjInstance*)AS_OBJ(value))
+#define AS_NATIVE(value) \
+// object.h
+</code></pre>
+<p>由于字段是在创建实例后添加的，因此“构造函数”函数只需要知道类。</p>
+<pre><code class="language-c">ObjFunction* newFunction();
+ObjInstance* newInstance(ObjClass* klass);
+ObjNative* newNative(NativeFn function);
+// object.h, add after newFunction()
+</code></pre>
+<p>我们在这里实现该功能：</p>
+<pre><code class="language-c">ObjInstance* newInstance(ObjClass* klass) {
+  ObjInstance* instance = ALLOCATE_OBJ(ObjInstance, OBJ_INSTANCE);
+  instance-&gt;klass = klass;
+  initTable(&amp;instance-&gt;fields);
+  return instance;
+}
+// object.c, add after newFunction()
+</code></pre>
+<p>我们存储对实例类的引用。然后将字段表初始化为一个空的哈希表。一个新的婴儿对象诞生了！</p>
+<p>在实例生命周期的末尾，它会被释放。</p>
+<pre><code class="language-c">      FREE(ObjFunction, object);
+      break;
+    }
+    case OBJ_INSTANCE: {
+      ObjInstance* instance = (ObjInstance*)object;
+      freeTable(&amp;instance-&gt;fields);
+      FREE(ObjInstance, object);
+      break;
+    }
+    case OBJ_NATIVE:
+// memory.c, in freeObject()
+</code></pre>
+<p>该实例拥有其字段表，因此在释放该实例时，我们也释放了该表。我们没有显式释放表中的条目，因为可能还有对这些对象的其他引用。垃圾收集器会为我们处理这些。这里我们只释放表本身的条目数组。</p>
+<p>说到垃圾收集器，它需要支持通过实例进行跟踪。</p>
+<pre><code class="language-c">      markArray(&amp;function-&gt;chunk.constants);
+      break;
+    }
+    case OBJ_INSTANCE: {
+      ObjInstance* instance = (ObjInstance*)object;
+      markObject((Obj*)instance-&gt;klass);
+      markTable(&amp;instance-&gt;fields);
+      break;
+    }
+    case OBJ_UPVALUE:
+// memory.c, in blackenObject()
+</code></pre>
+<p>如果实例还活着，我们需要保留它的类。此外，需要保留实例字段引用的每个对象。大多数不是根的活动对象都是可访问的，因为某些实例引用字段中的对象。幸运的是，我们已经有了一个很好的<code>markTable()</code>函数来使跟踪它们变得容易。</p>
+<p>不太重要但仍然重要的是打印。</p>
+<pre><code class="language-c">      break;
+    case OBJ_INSTANCE:
+      printf(&quot;%s instance&quot;,
+             AS_INSTANCE(value)-&gt;klass-&gt;name-&gt;chars);
+      break;
+    case OBJ_NATIVE:
+// object.c, in printObject()
+</code></pre>
+<p>实例打印其名称后跟“instance”。（“实例”部分主要是为了让类和实例不会打印相同的内容。）</p>
+<blockquote>
+<p>大多数面向对象的语言都让类定义某种<code>toString()</code>?方法，让类指定如何将其实例转换为字符串并打印出来。如果 Lox 不是一种玩具语言，我也会支持它。</p>
+</blockquote>
+<p>真正的乐趣发生在解释器身上。Lox 没有特殊的<code>new</code>关键字。创建类实例的方法是像调用函数一样调用类本身。运行时已经支持函数调用，它会检查被调用对象的类型以确保用户不会尝试调用数字或其他无效类型。</p>
+<p>我们用一个新case 扩展了运行时检查。</p>
+<pre><code class="language-c">    switch (OBJ_TYPE(callee)) {
+      case OBJ_CLASS: {
+        ObjClass* klass = AS_CLASS(callee);
+        vm.stackTop[-argCount - 1] = OBJ_VAL(newInstance(klass));
+        return true;
+      }
+      case OBJ_CLOSURE:
+// vm.c, in callValue()
+</code></pre>
+<p>如果被调用的值——计算左括号左侧的表达式时产生的对象——是一个类，那么我们将其视为构造函数调用。我们创建一个被调用类的新实例并将结果存储在栈中。</p>
+<blockquote>
+<p>我们暂时忽略传递给调用的任何参数。当我们添加对初始化器的支持时，我们将在<a href="http://craftinginterpreters.com/methods-and-initializers.html">下一章</a>重新访问这段代码。</p>
+</blockquote>
+<p>我们更进一步了。现在我们可以定义类并创建它们的实例。</p>
+<pre><code class="language-c">class Brioche {}
+print Brioche();
+</code></pre>
+<p>现在请注意第二行<code>Brioche</code>后面的括号。这将打印“Brioche instance”。</p>
+<h2 id="274-getset">27.4 get和set 表达式</h2>
+<p>实例对象表示已经可以存储状态，所以剩下的就是向用户公开该功能。使用 get 和 set 表达式访问和修改字段。Lox 不打破传统，它使用经典的“点”语法：</p>
+<pre><code class="language-js">eclair.filling = &quot;pastry creme&quot;;
+print eclair.filling;
+</code></pre>
+<p>句点——对我的英国朋友来说是句号——有点像中缀运算符。左边有一个表达式首先被求值并产生一个实例。之后是<code>.</code>字段名称。由于前面有一个操作数，我们将其作为中缀表达式挂接到解析表中。</p>
+<blockquote>
+<p>我说“有点像”是因为在<code>.</code>之后的右侧不是表达式，而是一个标识符，其语义由 get 或 set 表达式本身处理。它真的更接近于后缀表达式。</p>
+</blockquote>
+<pre><code class="language-c">  [TOKEN_COMMA]         = {NULL,     NULL,   PREC_NONE},
+  [TOKEN_DOT]           = {NULL,     dot,    PREC_CALL},
+  [TOKEN_MINUS]         = {unary,    binary, PREC_TERM},
+// compiler.c, replace 1 line
+</code></pre>
+<p>与其他语言一样，<code>.</code>运算符紧密绑定，优先级与函数调用中的括号一样高。解析器使用点token后，它会分派给新的解析函数。</p>
+<pre><code class="language-c">static void dot(bool canAssign) {
+  consume(TOKEN_IDENTIFIER, &quot;Expect property name after '.'.&quot;);
+  uint8_t name = identifierConstant(&amp;parser.previous);
+
+  if (canAssign &amp;&amp; match(TOKEN_EQUAL)) {
+    expression();
+    emitBytes(OP_SET_PROPERTY, name);
+  } else {
+    emitBytes(OP_GET_PROPERTY, name);
+  }
+}
+// compiler.c, add after call()
+</code></pre>
+<p>解析器希望在点之后立即找到一个属性名称。我们将该token的词素作为字符串加载到常量表中，以便该名称在运行时可用。</p>
+<blockquote>
+<p>编译器在这里使用“属性”而不是“字段”，因为请记住，Lox 还允许您使用点语法来访问方法而不调用它。“属性”是我们用来指代您可以在实例上访问的任何命名实体的通用术语。字段是由实例<strong>状态</strong>支持的属性的子集。</p>
+</blockquote>
+<p>我们有两种新的表达式形式——getter和 setter——由这个函数处理。如果我们在字段名称后看到一个等号，它一定是一个赋值给字段的集合表达式。但我们并不<em>总是</em>允许在要编译的字段后使用等号。考虑：</p>
+<pre><code class="language-js">a + b.c = 3
+</code></pre>
+<p>根据 Lox 的语法，这在句法上是无效的，这意味着我们的 Lox 实现有义务检测并报告错误。如果<code>dot()</code>静默解析该<code>= 3</code>部分，我们将错误地解释代码，就好像用户编写了：</p>
+<pre><code class="language-js">a + (b.c = 3)
+</code></pre>
+<p>问题在set表达式中<code>=</code>部分优先级比<code>.</code>部分低得多。解析器可能会在优先级过高而不允许 setter 出现的上下文 中调用<code>dot()</code>。为避免错误地允许，我们仅在<code>canAssign</code>为真时才解析和编译<code>=</code>部分。如果在<code>canAssign</code>为 false时出现等号标记，<code>dot()</code>则不理会它并返回。在这种情况下，编译器最终将展开到<code>parsePrecedence()</code>，如果下一个token 仍然是一个意外的<code>=</code>，编译器会停止并报告错误。</p>
+<p>如果我们在允许的上下文中找到<code>=</code>，那么将编译后面的表达式。之后，发出一条新<code>OP_SET_PROPERTY</code>指令。这需要一个操作数作为常量表中属性名称的索引。如果我们没有编译一个set表达式，我们假设它是一个 getter 并发出一条<code>OP_GET_PROPERTY</code>指令，该指令也接受一个操作数作为属性名称。</p>
+<blockquote>
+<p>您不能<em>设置</em>非字段属性，所以我认为该指令可能是<code>OP_SET_FIELD</code>，但我认为与 get 指令保持一致看起来更好。</p>
+</blockquote>
+<p>现在是定义这两条新指令的好时机。</p>
+<pre><code class="language-c">  OP_SET_UPVALUE,
+  OP_GET_PROPERTY,
+  OP_SET_PROPERTY,
+  OP_EQUAL,
+// chunk.h, in enum OpCode
+</code></pre>
+<p>并添加对反汇编它们的支持：</p>
+<pre><code class="language-c">      return byteInstruction(&quot;OP_SET_UPVALUE&quot;, chunk, offset);
+    case OP_GET_PROPERTY:
+      return constantInstruction(&quot;OP_GET_PROPERTY&quot;, chunk, offset);
+    case OP_SET_PROPERTY:
+      return constantInstruction(&quot;OP_SET_PROPERTY&quot;, chunk, offset);
+    case OP_EQUAL:
+// debug.c, in disassembleInstruction()
+</code></pre>
+<h3 id="2741-getter-setter">27.4.1 解释 getter 和 setter 表达式</h3>
+<p>滑到运行时，我们将从 get 表达式开始，因为它们更简单一些。</p>
+<pre><code class="language-c">      }
+      case OP_GET_PROPERTY: {
+        ObjInstance* instance = AS_INSTANCE(peek(0));
+        ObjString* name = READ_STRING();
+
+        Value value;
+        if (tableGet(&amp;instance-&gt;fields, name, &amp;value)) {
+          pop(); // Instance.
+          push(value);
+          break;
+        }
+      }
+      case OP_EQUAL: {
+// vm.c, in run()
+</code></pre>
+<p>当解释器到达这条指令时，点左边的表达式已经被执行，结果实例在栈顶。我们从常量池中读取字段名，并在实例的字段表中查找。如果哈希表包含具有该名称的条目，我们将弹出该实例并将条目的值作为结果push。</p>
+<p>当然，该字段可能不存在。在 Lox 中，将其定义为运行时错误。因此，我们为此添加了一个检查，如果发生了则中止。</p>
+<pre><code class="language-c">          push(value);
+          break;
+        }
+
+        runtimeError(&quot;Undefined property '%s'.&quot;, name-&gt;chars);
+        return INTERPRET_RUNTIME_ERROR;
+      }
+      case OP_EQUAL: {
+// vm.c, in run()
+</code></pre>
+<p>您可能已经注意到了另一种需要处理的故障模式。上面的代码假设 点左边的表达式计算为一个 ObjInstance。但是没有什么可以阻止用户这样写：</p>
+<pre><code class="language-c">var obj = &quot;not an instance&quot;;
+print obj.field;
+</code></pre>
+<p>用户的程序出错了，但 VM 仍然需要优雅地处理它。现在，它会将 ObjString 的位错误解释为 ObjInstance 并且，我不知道，着火或其他绝对不优雅的事情。</p>
+<p>在 Lox 中，只允许实例有字段。不能将字段填充到字符串或数字上。所以需要在访问它的任何字段之前检查该值是否是一个实例。</p>
+<blockquote>
+<p>Lox<em>可以</em>支持向其他类型的值添加字段。这是我们的语言，我们可以做我们想做的事。但这可能是个坏主意。它以损害性能的方式使实现变得非常复杂——例如，字符串驻留变得更加困难。</p>
+<p>此外，它还提出了围绕价值的相等和同一性的粗糙语义问题。如果我将一个字段附加到 number<code>3</code>，结果是否<code>1 + 2</code>也有该字段？如果是这样，实施如何跟踪？如果不是，那么这两个结果“三”是否仍然被认为是相等的？</p>
+</blockquote>
+<pre><code class="language-c">case OP_GET_PROPERTY: {
+        if (!IS_INSTANCE(peek(0))) {
+          runtimeError(&quot;Only instances have properties.&quot;);
+          return INTERPRET_RUNTIME_ERROR;
+        }
+
+        ObjInstance* instance = AS_INSTANCE(peek(0));
+// vm.c, in run()
+</code></pre>
+<p>如果栈上的值不是实例，我们将报告运行时错误并安全退出。</p>
+<p>当然，当没有实例有任何字段时，get 表达式不是很有用。为此，我们需要二传手</p>
+<pre><code class="language-c">        return INTERPRET_RUNTIME_ERROR;
+      }
+      case OP_SET_PROPERTY: {
+        ObjInstance* instance = AS_INSTANCE(peek(1));
+        tableSet(&amp;instance-&gt;fields, READ_STRING(), peek(0));
+        Value value = pop();
+        pop();
+        push(value);
+        break;
+      }
+      case OP_EQUAL: {
+// vm.c, in run()
+</code></pre>
+<p>这比 <code>OP_GET_PROPERTY</code>稍微复杂一点。执行此操作时，栈顶部具有要设置其字段的实例，其上方是要存储的值。像以前一样，我们读取指令的操作数并找到字段名称字符串。使用它，将栈顶部的值存储到实例的字段表中。</p>
+<p>之后是一些栈杂耍。我们弹出存储的值，然后弹出实例，最后将值推回。换句话说，我们从堆栈中移除<em>第二个</em>元素，同时保留顶部元素。setter 本身是一个表达式，其结果是分配的值，因此我们需要将该值留在堆栈上。这就是我的意思：</p>
+<blockquote>
+<p>堆栈操作是这样的：</p>
+</blockquote>
+<p><img alt="" src="../assets/c52eb31430d84a3ccaab042fc27bbb8c1b178dec.png" /></p>
+<pre><code class="language-js">class Toast {}
+var toast = Toast();
+print toast.jam = &quot;grape&quot;; // Prints &quot;grape&quot;.
+</code></pre>
+<p>与读取字段时不同，我们无需担心哈希表不包含该字段。如果需要，setter 会隐式创建该字段。我们确实需要处理用户错误地尝试将字段存储在不是实例的值上。</p>
+<pre><code class="language-c">      case OP_SET_PROPERTY: {
+        if (!IS_INSTANCE(peek(1))) {
+          runtimeError(&quot;Only instances have fields.&quot;);
+          return INTERPRET_RUNTIME_ERROR;
+        }
+
+        ObjInstance* instance = AS_INSTANCE(peek(1));
+vm.c, in run()
+</code></pre>
+<p>与 get 表达式完全一样，我们检查值的类型并在它无效时报告运行时错误。并且，Lox 对面向对象编程的支持的有状态方面已经到位。试一试：</p>
+<pre><code class="language-js">class Pair {}
+
+var pair = Pair();
+pair.first = 1;
+pair.second = 2;
+print pair.first + pair.second; // 3.
+</code></pre>
+<p>这真的感觉不是很面向<em>对象</em>。它更像是一种奇怪的、动态类型化的 C 变体，其中对象是松散的类似结构的数据包。一种动态过程语言。但这是表现力的一大步。我们的 Lox 实现现在允许用户自由地将数据聚合成更大的单元。在下一章中，我们将为那些惰性的块注入生命。</p>
+<hr />
+<h2 id="_2"><a href="http://craftinginterpreters.com/classes-and-instances.html#challenges">挑战</a></h2>
+<ol>
+<li>尝试访问对象上不存在的字段会立即中止整个 VM。用户无法从此运行时错误中恢复，也无法在尝试访问某个字段之前查看它是否存在。由用户自行确保只读取有效字段。</li>
+</ol>
+<p>其他动态类型语言如何处理缺失的字段？你觉得Lox应该怎么做？实现您的解决方案。</p>
+<ol>
+<li>
+<p>在运行时通过<em>字符串</em>名称访问字段。但该名称必须始终作为标识符token直接出现在源代码中。用户程序不能强制性地构建一个字符串值，然后将其用作字段的名称。你认为他们应该能够吗？设计一种语言功能来实现它并实现它。</p>
+</li>
+<li>
+<p>相反，Lox 没有提供从实例中删除字段的方法。您可以将字段的值设置为<code>nil</code>，但哈希表中的条目仍然存在。其他语言如何处理这个问题？为 Lox 选择并实施策略。</p>
+</li>
+<li>
+<p>因为在运行时按名称访问字段，所以使用实例状态很慢。从技术上讲，这是一个恒定时间的操作——感谢哈希table——但常数因子相对较大。这是动态语言比静态类型语言慢的主要原因。</p>
+</li>
+</ol>
+<p>动态类型语言的复杂实现如何处理和优化它？</p>
+                
+              
+              
+<script src="https://giscus.app/client.js" data-repo="PKUFlyingPig/cs-self-learning" data-repo-id="R_kgDOGP67ng"
+    data-category="Announcements" data-category-id="DIC_kwDOGP67ns4COM9Q" data-mapping="title"
+    data-reactions-enabled="1" data-emit-metadata="0" data-input-position="top" data-theme="light_protanopia"
+    data-lang="zh-CN" data-loading="lazy" crossorigin="anonymous" async>
+</script>
+
+<script>
+    var palette = __get("__palette")
+    if (palette && typeof palette.color === "object") {
+        if (palette.color.scheme === "slate") {
+            const giscus = document.querySelector("script[src*=giscus]")
+            giscus.setAttribute("data-theme", "dark_protanopia")
+        }
+    }
+
+    document.addEventListener("DOMContentLoaded", function () {
+        const ref = document.querySelector("[data-md-component=palette]")
+        ref.addEventListener("change", function () {
+            var palette = __get("__palette")
+            if (palette && typeof palette.color === "object") {
+                const theme = palette.color.scheme === "slate" ? "dark_protanopia" : "light_protanopia"
+                const frame = document.querySelector(".giscus-frame")
+                frame.contentWindow.postMessage({
+                    giscus: { setConfig: { theme } }
+                }, "https://giscus.app")
+            }
+        })
+    })
+</script>
+
+            </article>
+          </div>
+        </div>
+        
+          <a href="#" class="md-top md-icon" data-md-component="top" data-md-state="hidden">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"/></svg>
+            Back to top
+          </a>
+        
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href="../../3_26.Garbage%20Collection/Garbage%20Collection/" class="md-footer__link md-footer__link--prev" aria-label="上一页: 3.26.Garbage Collection" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                上一页
+              </span>
+              3.26.Garbage Collection
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../../3_28.Methods%20and%20Initializers/Methods%20and%20Initializers/" class="md-footer__link md-footer__link--next" aria-label="下一页: 3.28.Methods and Initializers" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                下一页
+              </span>
+              3.28.Methods and Initializers
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        
+          Made with
+          <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+            Material for MkDocs
+          </a>
+        
+        
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["header.autohide", "navigation.tracking", "navigation.top", "search.highlight", "search.share", "search.suggest", "content.code.annotate"], "search": "../../../assets/javascripts/workers/search.fcfe8b6d.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\uff0c\\u3002]+", "search.placeholder": "\u641c\u7d22", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.b1047164.min.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+      
+    
+  </body>
+</html>

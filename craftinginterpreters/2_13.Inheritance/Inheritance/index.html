@@ -1,0 +1,1762 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-7.3.6">
+    
+    
+      
+        <title>2.13.Inheritance - doc-zh</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.a57b2b03.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.3f5d1f46.min.css">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font-family:"Roboto";--md-code-font-family:"Roboto Mono"}</style>
+      
+    
+    
+    
+    
+      
+
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="light-blue" data-md-color-accent="deep-purple">
+  
+    
+    <script>function __prefix(e){return new URL("../../..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+    
+      <script>var palette=__get("__palette");if(null!==palette&&"object"==typeof palette.color)for(var key in palette.color)document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="doc-zh" class="md-header__button md-logo" aria-label="doc-zh" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            doc-zh
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              2.13.Inheritance
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="light-blue" data-md-color-accent="deep-purple"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+          
+            <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5c-.84 0-1.65.15-2.39.42L12 2M3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29L3.34 7m.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14L3.36 17M20.65 7l-1.77 3.79a7.023 7.023 0 0 0-2.38-4.15l4.15.36m-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29L20.64 17M12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44L12 22z"/></svg>
+            </label>
+          
+        
+          
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="cyan" data-md-color-accent="deep-purple"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
+          
+            <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3 3.19.09m3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95 2.06.05m-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31z"/></svg>
+            </label>
+          
+        
+      </form>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7 0-.24-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91 1.61 0 2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08z"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        
+<a href="https://github.com/Misaka-9982-coder/doc-zh" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    doc-zh
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="doc-zh" class="md-nav__button md-logo" aria-label="doc-zh" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    doc-zh
+  </label>
+  
+    <div class="md-nav__source">
+      
+<a href="https://github.com/Misaka-9982-coder/doc-zh" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    doc-zh
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1" type="checkbox" id="__nav_1" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_1">
+          xv6-book
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="xv6-book" data-md-level="1">
+        <label class="md-nav__title" for="__nav_1">
+          <span class="md-nav__icon md-icon"></span>
+          xv6-book
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../S081/0.%20%E5%89%8D%E8%A8%80%E5%92%8C%E8%87%B4%E8%B0%A2/" class="md-nav__link">
+        0. 前言和致谢
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../S081/1.%20%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E6%8E%A5%E5%8F%A3/" class="md-nav__link">
+        1. 操作系统接口
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../S081/2.%20%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84/" class="md-nav__link">
+        2. 操作系统架构
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../S081/3.%20%E9%A1%B5%E8%A1%A8/" class="md-nav__link">
+        3. 页表
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../S081/4.%20trap%20%E4%B8%8E%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8/" class="md-nav__link">
+        4. trap 与系统调用
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../S081/5.%20%E4%B8%AD%E6%96%AD%E5%92%8C%E8%AE%BE%E5%A4%87%E9%A9%B1%E5%8A%A8%E7%A8%8B%E5%BA%8F/" class="md-nav__link">
+        5. 中断和设备驱动程序
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../S081/6.%20%E9%94%81/" class="md-nav__link">
+        6. 锁
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../S081/7.%20%E8%B0%83%E5%BA%A6/" class="md-nav__link">
+        7. 调度
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../S081/8.%20%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/" class="md-nav__link">
+        8. 文件系统
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../S081/9.%20%E5%86%8D%E6%AC%A1%E6%8E%A2%E8%AE%A8%E5%B9%B6%E5%8F%91%E6%80%A7/" class="md-nav__link">
+        9. 再次探讨并发性
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2">
+          craftinginterpreters
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="craftinginterpreters" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          craftinginterpreters
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../0_00.contents/contents/" class="md-nav__link">
+        0.00.contents
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../0_01.acknowledgements/acknowledgements/" class="md-nav__link">
+        0.01.acknowledgements
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1_00.Welcome/Welcome/" class="md-nav__link">
+        一、WELCOME
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1_01.Introduction/Introduction/" class="md-nav__link">
+        1.01.Introduction
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1_02.A%20Map%20of%20the%20Territory/A%20Map%20of%20the%20Territory/" class="md-nav__link">
+        1.02.A Map of the Territory
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1_03.The%20Lox%20Language/The%20Lox%20Language/" class="md-nav__link">
+        1.03.The Lox Language
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2_00.A%20TREE-WALK%20INTERPRETER/A%20TREE-WALK%20INTERPRETER/" class="md-nav__link">
+        二、A TREE-WALK INTERPRETER
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2_04.Scanning/Scanning/" class="md-nav__link">
+        2.04.Scanning
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2_05.Representing%20Code/Representing%20Code/" class="md-nav__link">
+        2.05.Representing Code
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2_06.Parsing%20Expressions/Parsing%20Expressions/" class="md-nav__link">
+        2.06.Parsing Expressions
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2_07.Evaluating%20Expressions/Evaluating%20Expressions/" class="md-nav__link">
+        2.07.Evaluating Expressions
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2_08.Statements%20and%20State/Statements%20and%20State/" class="md-nav__link">
+        2.08.Statements and State
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2_09.Control%20Flow/Control%20Flow/" class="md-nav__link">
+        2.09.Control Flow
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2_10.Functions/Functions/" class="md-nav__link">
+        2.10.Functions
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2_11.Resolving%20and%20Binding/Resolving%20and%20Binding/" class="md-nav__link">
+        2.11.Resolving and Binding
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2_12.Classes/Classes/" class="md-nav__link">
+        2.12.Classes
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          2.13.Inheritance
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        2.13.Inheritance
+      </a>
+      
+        
+
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#131" class="md-nav__link">
+    13.1 超类和子类
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#132" class="md-nav__link">
+    13.2 继承方法
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#133" class="md-nav__link">
+    13.3  调用超类方法
+  </a>
+  
+    <nav class="md-nav" aria-label="13.3  调用超类方法">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1331" class="md-nav__link">
+    13.3.1 语法
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1332" class="md-nav__link">
+    13.3.2 语义
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1333-super" class="md-nav__link">
+    13.3.3 super 的非法使用
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#134" class="md-nav__link">
+    13.4 总结
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    挑战
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3_00.A%20BYTECODE%20VIRTUAL%20MACHINE/A%20BYTECODE%20VIRTUAL%20MACHINE/" class="md-nav__link">
+        三、A BYTECODE VIRTUAL MACHINE
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3_14.Chunks%20of%20Bytecode/Chunks%20of%20Bytecode/" class="md-nav__link">
+        3.14.Chunks of Bytecode
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3_15.A%20Virtual%20Machine/A%20Virtual%20Machine/" class="md-nav__link">
+        3.15.A Virtual Machine
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3_16.Scanning%20on%20Demand/Scanning%20on%20Demand/" class="md-nav__link">
+        3.16.Scanning on Demand
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3_17.Compiling%20Expressions/Compiling%20Expressions/" class="md-nav__link">
+        3.17.Compiling Expressions
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3_18.Types%20of%20Values/Types%20of%20Values/" class="md-nav__link">
+        3.18.Types of Values
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3_19.Strings/Strings/" class="md-nav__link">
+        3.19.Strings
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3_20.Hash%20Tables/Hash%20Tables/" class="md-nav__link">
+        3.20.Hash Tables
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3_21.Global%20Variables/Global%20Variables/" class="md-nav__link">
+        3.21.Global Variables
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3_22.Local%20Variables/Local%20Variables/" class="md-nav__link">
+        3.22.Local Variables
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3_23.Jumping%20Back%20and%20Forth/Jumping%20Back%20and%20Forth/" class="md-nav__link">
+        3.23.Jumping Back and Forth
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3_24.Calls%20and%20Functions/Calls%20and%20Functions/" class="md-nav__link">
+        3.24.Calls and Functions
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3_25.Closures/Closures/" class="md-nav__link">
+        3.25.Closures
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3_26.Garbage%20Collection/Garbage%20Collection/" class="md-nav__link">
+        3.26.Garbage Collection
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3_27.Classes%20and%20Instances/Classes%20and%20Instances/" class="md-nav__link">
+        3.27.Classes and Instances
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3_28.Methods%20and%20Initializers/Methods%20and%20Initializers/" class="md-nav__link">
+        3.28.Methods and Initializers
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3_29.Superclasses/Superclasses/" class="md-nav__link">
+        3.29.Superclasses
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3_30.Optimization/Optimization/" class="md-nav__link">
+        3.30.Optimization
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../4_01.A1.Appendix%20I%20Lox%20Grammar/A1.Appendix%20I%20Lox%20Grammar/" class="md-nav__link">
+        A1.Appendix I Lox Grammar
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../4_02.A2.Appendix%20II%20Generated%20Syntax%20Tree%20Classes/A2.Appendix%20II%20Generated%20Syntax%20Tree%20Classes/" class="md-nav__link">
+        A2.Appendix II Generated Syntax Tree Classes
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#131" class="md-nav__link">
+    13.1 超类和子类
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#132" class="md-nav__link">
+    13.2 继承方法
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#133" class="md-nav__link">
+    13.3  调用超类方法
+  </a>
+  
+    <nav class="md-nav" aria-label="13.3  调用超类方法">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1331" class="md-nav__link">
+    13.3.1 语法
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1332" class="md-nav__link">
+    13.3.2 语义
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1333-super" class="md-nav__link">
+    13.3.3 super 的非法使用
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#134" class="md-nav__link">
+    13.4 总结
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    挑战
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/Misaka-9982-coder/doc-zh/edit/master/docs/craftinginterpreters/2_13.Inheritance/Inheritance.md" title="编辑此页" class="md-content__button md-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
+                  </a>
+                
+                
+                <h1 id="_1">继承</h1>
+<blockquote>
+<p>我们曾经是海中的一团水珠，然后是鱼，然后是蜥蜴和老鼠，然后是猴子，以及介于两者之间的数百种生物。这只手曾经是鳍，这只手曾经是爪子！在我的人嘴里，我有狼的尖牙、兔子的凿牙和牛的磨牙！我们的血液和我们曾经生活的大海一样咸！当我们受到惊吓时，我们皮肤上的毛发会竖起来，就像我们有毛时一样。我们是历史！我们在成为我们的过程中经历过的一切，我们仍然是。</p>
+<p>-- Terry Pratchett,<em>A Hat Full of Sky</em></p>
+</blockquote>
+<p>你相信吗？我们已经到了第二<a href="http://craftinginterpreters.com/a-tree-walk-interpreter.html">部分</a>的最后一章。几乎完成了第一个 Lox 解释器。<a href="http://craftinginterpreters.com/classes.html">上一章</a>是一大堆相互交织的面向对象特性。我无法将它们彼此分开，但我确实设法解开了其中的一部分。在本章中，我们将通过添加继承来完成 Lox 的类支持。</p>
+<p>继承出现在面向对象的语言中，一直追溯到第一个语言，<a href="https://en.wikipedia.org/wiki/Simula">Simula</a>。早期，Kristen Nygaard 和 Ole-Johan Dahl 在他们编写的模拟程序中注意到跨类的共性。继承为他们提供了一种为相似部分重用代码的方法。</p>
+<blockquote>
+<p>你可以说所有其他语言都从 Simula继承了它。*嘿-哦！我会，呃，看看自己。</p>
+</blockquote>
+<h2 id="131">13.1 超类和子类</h2>
+<p>鉴于这个概念是“继承”，你会希望他们选择一个一致的比喻并将它们称为“父类”和“子类”，但这太容易了。很久以前，CAR Hoare 创造了术语“子类”来指代改进另一种类型的记录类型。Simula 借用该术语来指代从另一个继承的<em>类</em>。我不认为是在 Smalltalk 出现之前，有人翻转了拉丁前缀以获得“超类”来指代关系的另一方。在 C++ 中，您还会听到“基类”和“派生类”。我主要坚持使用“超类”和“子类”。</p>
+<blockquote>
+<p>“Super-”和“sub-”在拉丁语中分别表示“上面”和“下面”。将继承树想象成根在顶部的家谱——子类在图中的超类下方。更一般地说，“子”是指提炼或包含在一些更一般的概念中的事物。在动物学中，子类是对更大类生物的更精细分类。</p>
+<p>在集合论中，一个子集包含在一个更大的超集中，该超集具有该子集的所有元素，甚至可能更多。集合论和编程语言在类型论中相遇。在那里，你有“超类型”和“子类型”。</p>
+<p>在静态类型的面向对象语言中，子类通常也是其超类的子类型。假设我们有一个 Donut 超类和一个 BostonCream 子类。每个 BostonCream 也是 Doughnut 的实例，但可能存在不是 BostonCreams 的甜甜圈对象（如 Crullers）。</p>
+<p>将类型视为该类型所有值的集合。所有 Donut 实例的集合包含所有 BostonCream 实例的集合，因为每个 BostonCream 也是一个 Doughnut。所以 BostonCream 是一个子类，一个子类型，它的实例是一个子集。这一切都排成一行。</p>
+</blockquote>
+<p><img alt="" src="../assets/2500bb7fc7900d2f230862180372a43134350d5f.png" /></p>
+<p>我们在 Lox 中支持继承的第一步是在声明类时指定超类的方法。语法有很多种。C++ 和 C#在子类名称后放置 一个<code>:</code>，然后是超类名称。Java 使用<code>extends</code>代替冒号。Python 将超类放在类名后的括号中。Simula 将超类的名称放在关键字<code>class</code>之前。</p>
+<p>在游戏的后期，我宁愿不向词法分析器添加新的保留字或标记。我们没有<code>extends</code>or even<code>:</code>，所以我们将遵循 Ruby 并使用小于号 (<code>&lt;</code>)。</p>
+<pre><code class="language-js">class Doughnut {
+  // General doughnut stuff...
+}
+
+class BostonCream &lt; Doughnut {
+  // Boston Cream-specific stuff...
+}
+</code></pre>
+<p>为了将其纳入语法，我们在现有的<code>classDecl</code>规则中添加了一个新的可选子句。</p>
+<pre><code>classDecl      → &quot;class&quot; IDENTIFIER ( &quot;&lt;&quot; IDENTIFIER )?
+                 &quot;{&quot; function* &quot;}&quot; ;
+</code></pre>
+<p>在类名之后，有一个<code>&lt;</code>后跟着超类的名称。超类子句是可选的，因为您不必<em>拥有</em>超类。与 Java 等其他一些面向对象的语言不同，Lox 没有任何东西都继承自的根“Object”类，因此当您省略超类子句时，该类<em>没有</em>超类，甚至没有隐式超类。</p>
+<p>在类声明的 AST 节点中捕获这个新语法。</p>
+<pre><code class="language-java">      &quot;Block      : List&lt;Stmt&gt; statements&quot;,
+      &quot;Class      : Token name, Expr.Variable superclass,&quot; +
+                  &quot; List&lt;Stmt.Function&gt; methods&quot;,
+      &quot;Expression : Expr expression&quot;,
+// tool/GenerateAst.java, in main(), replace 1 line
+</code></pre>
+<p>您可能会对我们将超类名称存储为 Expr.Variable 而不是token感到惊讶。语法将超类子句限制为单个标识符，但在运行时，该标识符被评估为变量访问。在早期解析器将名称包装在 Expr.Variable 中为我们提供了一个对象，解析器可以将解析信息挂起。</p>
+<p>新的解析器代码直接遵循语法。</p>
+<pre><code class="language-java">    Token name = consume(IDENTIFIER, &quot;Expect class name.&quot;);
+
+    Expr.Variable superclass = null;
+    if (match(LESS)) {
+      consume(IDENTIFIER, &quot;Expect superclass name.&quot;);
+      superclass = new Expr.Variable(previous());
+    }
+
+    consume(LEFT_BRACE, &quot;Expect '{' before class body.&quot;);
+// lox/Parser.java, in classDeclaration()
+</code></pre>
+<p>一旦（可能）解析了一个超类声明，就将它存储在 AST 中。</p>
+<pre><code class="language-java">    consume(RIGHT_BRACE, &quot;Expect '}' after class body.&quot;);
+
+    return new Stmt.Class(name, superclass, methods);
+  }
+// lox/Parser.java, in classDeclaration(), replace 1 line
+</code></pre>
+<p>如果不解析超类子句，则超类表达式将为<code>null</code>.必须确保接下来<em>Resolver</em>过程验证(later passes check)这一点。其中第一个是解析器</p>
+<pre><code class="language-java">    define(stmt.name);
+
+    if (stmt.superclass != null) {
+      resolve(stmt.superclass);
+    }
+
+    beginScope();
+// lox/Resolver.java, in visitClassStmt()
+</code></pre>
+<p>类声明 AST 节点有一个新的子表达式，因此遍历并解析它。由于类通常在顶层声明，超类名称很可能是一个全局变量，所以这通常不会做任何有用的事情。但是，Lox 甚至允许在块内进行类声明，因此超类名称可能引用局部变量。在这种情况下，我们需要确保它已得到解析。</p>
+<p>因为即使是好心的程序员有时也会写出奇怪的代码，所以当我们在这里时，需要担心一个愚蠢的边缘情况。看看这个：</p>
+<pre><code class="language-js">class Oops &lt; Oops {}
+</code></pre>
+<p>这不可能做任何有用的事情，如果我们让 运行时 尝试执行它，它将打破解释器对继承链中没有循环的期望。最安全的做法是静态检测这种情况并将其报告为错误。</p>
+<pre><code class="language-java">    define(stmt.name);
+
+    if (stmt.superclass != null &amp;&amp;
+        stmt.name.lexeme.equals(stmt.superclass.name.lexeme)) {
+      Lox.error(stmt.superclass.name,
+          &quot;A class can't inherit from itself.&quot;);
+    }
+
+    if (stmt.superclass != null) {
+// lox/Resolver.java, in visitClassStmt()
+</code></pre>
+<p>假设代码解析无误，AST 将传送到解释器。</p>
+<pre><code class="language-java">  public Void visitClassStmt(Stmt.Class stmt) {
+    Object superclass = null;
+    if (stmt.superclass != null) {
+      superclass = evaluate(stmt.superclass);
+      if (!(superclass instanceof LoxClass)) {
+        throw new RuntimeError(stmt.superclass.name,
+            &quot;Superclass must be a class.&quot;);
+      }
+    }
+
+    environment.define(stmt.name.lexeme, null);
+// lox/Interpreter.java, in visitClassStmt()
+</code></pre>
+<p>如果该类有一个超类表达式，就评估它。因为这可能会评估为某种其他类型的对象，所以必须在运行时检查想要成为超类的东西实际上是一个类。如果我们允许这样的代码，就会发生不好的事情：</p>
+<pre><code class="language-js">var NotAClass = &quot;I am totally not a class&quot;;
+
+class Subclass &lt; NotAClass {} // ?!
+</code></pre>
+<p>假设检查通过，我们继续。执行类声明会将类的语法表示（其AST 节点）转换为其运行时表示，即 LoxClass 对象。我们也需要访问超类。我们将超类传递给构造函数。</p>
+<pre><code class="language-java">      methods.put(method.name.lexeme, function);
+    }
+
+    LoxClass klass = new LoxClass(stmt.name.lexeme,
+        (LoxClass)superclass, methods);
+
+    environment.assign(stmt.name, klass);
+// lox/Interpreter.java, in visitClassStmt(), replace 1 line
+</code></pre>
+<p>构造函数将其存储在一个字段中。</p>
+<pre><code class="language-java"> LoxClass(String name, LoxClass superclass,
+           Map&lt;String, LoxFunction&gt; methods) {
+    this.superclass = superclass;
+    this.name = name;
+// lox/LoxClass.java, constructor LoxClass(), replace 1 line
+</code></pre>
+<p>我们在这里声明：</p>
+<pre><code class="language-java">  final String name;
+  final LoxClass superclass;
+  private final Map&lt;String, LoxFunction&gt; methods;
+// lox/LoxClass.java, in class LoxClass 
+</code></pre>
+<p>这样，我们就可以定义作为其他类的子类的类。现在，拥有一个超类实际上<em>做了什么？</em></p>
+<h2 id="132">13.2 继承方法</h2>
+<p>从另一个类继承意味着超类的一切都应该或多或少地传给子类。在静态类型语言中，这有很多含义。子<em>类</em>也必须是子<em>类型</em>，<strong>并且内存布局是受控的</strong>，这样你就可以将子类的实例传递给需要超类的函数，它仍然可以正确访问继承的字段。</p>
+<blockquote>
+<p>这个简单易懂的指南的一个更漂亮的名字是<a href="https://en.wikipedia.org/wiki/Liskov_substitution_principle"><em>Liskov 替换原则</em></a>。Barbara Liskov 在面向对象编程形成时期的一次主题演讲中介绍了它。</p>
+</blockquote>
+<p>Lox 是一种动态类型的语言，因此我们的要求要简单得多。基本上，这意味着如果您可以在超类的实例上调用某些方法，则在给定子类的实例时也应该能够调用该方法。换句话说，方法是从超类继承的。</p>
+<p>这符合继承的目标之一——为用户提供一种跨类重用代码的方法。在我们的解释器中实现它非常容易。</p>
+<pre><code class="language-java">     return methods.get(name);
+    }
+
+    if (superclass != null) {
+      return superclass.findMethod(name);
+    }
+
+    return null;
+// lox/LoxClass.java, in findMethod()
+</code></pre>
+<p>这就是它的全部内容。当我们在一个实例上查找一个方法时，如果我们没有在该实例的类中找到它，我们就会递归遍历超类链并在那里查找。试一试：</p>
+<pre><code class="language-js">class Doughnut {
+  cook() {
+    print &quot;Fry until golden brown.&quot;;
+  }
+}
+
+class BostonCream &lt; Doughnut {}
+
+BostonCream().cook();
+</code></pre>
+<p>好了，一半的继承特性只用了三行 Java 代码就完成了。</p>
+<h2 id="133">13.3  调用超类方法</h2>
+<p>在<code>findMethod()</code>沿着超类链向上走<em>之前</em>，我们在当前类上寻找一个方法。如果子类和超类中都存在同名方法，则子类优先或<strong>覆盖</strong>超类方法。有点像内部作用域中的变量如何影响外部作用域。</p>
+<p>如果子类想要完全<em>替换</em>某些超类行为，那就太好了。但是，在实践中，子类通常希望<em>改进</em>超类的行为。他们想做一些特定于子类的工作，但也执行原始超类的行为。</p>
+<p>但是，由于子类已经覆盖了该方法，因此无法引用原始方法。如果子类方法试图通过名称调用它，它只会递归地命中它自己的覆盖。我们需要一种方式来表达“调用此方法，但直接在我的超类上查找它并忽略我的覆盖”。Java用<code>super</code>，我们将在 Lox 中使用相同的语法。这是一个例子：</p>
+<pre><code class="language-js">class Doughnut {
+  cook() {
+    print &quot;Fry until golden brown.&quot;;
+  }
+}
+
+class BostonCream &lt; Doughnut {
+  cook() {
+    super.cook();
+    print &quot;Pipe full of custard and coat with chocolate.&quot;;
+  }
+}
+
+BostonCream().cook();
+</code></pre>
+<p>如果你运行它，它应该打印：</p>
+<pre><code>Fry until golden brown.
+Pipe full of custard and coat with chocolate.
+</code></pre>
+<p>我们有一个新的表达形式。<code>super</code>关键字后跟一个点和一个标识符，用于查找具有该名称的方法。与<code>this</code>调用不同，搜索从超类开始。</p>
+<h3 id="1331">13.3.1 语法</h3>
+<p>对于<code>this</code>，关键字的作用有点像一个神奇的变量，而表达式就是那个单独的token。但是对于<code>super</code>，后续的<code>.</code>和属性名称是<code>super</code>表达式不可分割的部分。你不能单独拥有一个裸<code>super</code>token。</p>
+<pre><code>print super; // Syntax error.
+</code></pre>
+<p><code>primary</code>因此，我们在语法中添加到规则中的新子句也包括属性访问。</p>
+<pre><code>primary        → &quot;true&quot; | &quot;false&quot; | &quot;nil&quot; | &quot;this&quot;
+               | NUMBER | STRING | IDENTIFIER | &quot;(&quot; expression &quot;)&quot;
+               | &quot;super&quot; &quot;.&quot; IDENTIFIER ;
+</code></pre>
+<p>通常，<code>super</code>表达式用于方法调用，但与常规方法一样，参数列表<em>不是</em>表达式的一部分。相反，super 调用是一个super，后跟着一个函数调用。与其他方法调用一样，您可以获得超类方法的句柄并单独调用它。</p>
+<pre><code class="language-js">var method = super.cook;
+method();
+</code></pre>
+<p>所以<code>super</code>表达式本身只包含<code>super</code>关键字的token和正在查找的方法的名称。因此对应的语法树节点是：</p>
+<pre><code class="language-java">      &quot;Set      : Expr object, Token name, Expr value&quot;,
+      &quot;Super    : Token keyword, Token method&quot;,
+      &quot;This     : Token keyword&quot;,
+// tool/GenerateAst.java, in main()
+</code></pre>
+<blockquote>
+<p>为新节点生成的代码在<a href="http://craftinginterpreters.com/appendix-ii.html#super-expression">附录 II</a>中。</p>
+</blockquote>
+<p>按照语法，新的解析代码进入我们现有的<code>primary()</code>方法。</p>
+<pre><code class="language-java">      return new Expr.Literal(previous().literal);
+    }
+
+    if (match(SUPER)) {
+      Token keyword = previous();
+      consume(DOT, &quot;Expect '.' after 'super'.&quot;);
+      Token method = consume(IDENTIFIER,
+          &quot;Expect superclass method name.&quot;);
+      return new Expr.Super(keyword, method);
+    }
+
+    if (match(THIS)) return new Expr.This(previous());
+// lox/Parser.java, in primary()
+</code></pre>
+<p>前导<code>super</code>关键字告诉我们我们已经命中了一个<code>super</code>表达式。之后我们使用预期的<code>.</code>和一个方法名称。</p>
+<h3 id="1332">13.3.2 语义</h3>
+<p>早些时候，我说过<code>super</code>表达式从“超类”开始方法查找，但是<em>哪个</em>超类呢？天真的答案是 <code>this</code>的超类?，调用周围方法的对象。在很多情况下，这巧合地产生了正确的行为，但这实际上并不正确。仔细看一下：</p>
+<pre><code class="language-js">class A {
+  method() {
+    print &quot;A method&quot;;
+  }
+}
+
+class B &lt; A {
+  method() {
+    print &quot;B method&quot;;
+  }
+
+  test() {
+    super.method();
+  }
+}
+
+class C &lt; B {}
+
+C().test(); 
+</code></pre>
+<p>将此程序翻译成 Java、C# 或 C++，它将打印“A method”，这也是我们希望 Lox 执行的操作。当这个程序运行时，在 <code>test()</code>的主体内，<code>this</code>是 C 的一个实例。C 的超类是 B，但这<em>不是</em>查找应该开始的地方。如果是这样，我们会打 B method()`。</p>
+<p>相反，查找应该从<em>包含<code>super</code>expression</em>的类的超类开始。在这种情况下，因为<code>test()</code>是在 B 内部定义的 ，所以<code>super</code>它内部的表达式应该开始查找<em>B</em>的超类——A。</p>
+<p><img alt="" src="../assets/ec99e757fac978baf6dba9bc74278455fedb3ece.png" /></p>
+<blockquote>
+<p>执行流程看起来像这样：</p>
+<ol>
+<li>
+<p>我们调用<code>test()</code>C 的一个实例。</p>
+</li>
+<li>
+<p>即进入<code>test()</code>继承自B的方法。即调用<code>super.method()</code>。</p>
+</li>
+<li>
+<p>B 的超类是 A，因此调用A 的<code>method()</code>，程序打印“A method”。</p>
+</li>
+</ol>
+</blockquote>
+<p>因此，为了评估<code>super</code>表达式，我们需要访问围绕调用的类定义的超类。但是，在执行<code>super</code>表达式的解释器中，我们没有那么容易获得。</p>
+<p>我们<em>可以</em>向 LoxFunction 添加一个字段来存储拥有该方法的 LoxClass 的引用。解释器将保留对当前正在执行的 LoxFunction 的引用，以便我们稍后可以在遇到<code>super</code>表达式时查找它。从那里，我们将获得方法的 LoxClass，然后是它的超类。</p>
+<p>这有好多流程。在<a href="http://craftinginterpreters.com/classes.html">上一章</a>中，当我们需要添加对<code>this</code>的支持时，我们遇到了类似的问题。在那种情况下，我们使用现有的环境和闭包机制来存储对当前对象的引用。我们可以做类似的事情来存储超类吗？好吧，如果答案是否定的，我可能不会谈论它，所以... 是的。</p>
+<blockquote>
+<p>有没有人喜欢反问？</p>
+</blockquote>
+<p>一个重要的区别是我们在<em>访问</em>方法时绑定<code>this</code>。可以在不同的实例上调用相同的方法，每个实例都需要自己的<code>this</code>.对于<code>super</code>表达式，超类是<em>类声明本身</em>的固定属性。每次你评估<code>super</code>表达式时，超类总是相同的。</p>
+<p>这意味着我们可以在执行类定义时为超类创建一个一次性的环境。在定义方法之前，创建了一个新环境来将类的超类绑定到 <code>super</code>。</p>
+<p><img alt="" src="../assets/ce6c9da2a783de5fe6d405e5178bfc1460319059.png" /></p>
+<p>当我们为每个方法创建 LoxFunction 运行时表示时，这就是它们将在闭包中捕获的环境。稍后，当调用并<code>this</code>绑定方法时，超类环境成为方法环境的父类，如下所示：</p>
+<p><img alt="" src="../assets/322ca0988f1b2742bed98c8bac93fce1b8162c8a.png" /></p>
+<p>好多机制，但我们会一步一步地完成它。在开始在运行时创建环境之前，需要在解析器中处理相应的作用域链。</p>
+<pre><code class="language-java">      resolve(stmt.superclass);
+    }
+
+    if (stmt.superclass != null) {
+      beginScope();
+      scopes.peek().put(&quot;super&quot;, true);
+    }
+
+    beginScope();
+// lox/Resolver.java, in visitClassStmt()
+</code></pre>
+<p>如果类声明有一个超类，那么我们创建一个围绕其所有方法的新作用域。在该范围内，我们定义名称“super”。一旦我们完成了类方法的解析，就丢弃了那个作用域。</p>
+<pre><code class="language-java">    endScope();
+
+    if (stmt.superclass != null) endScope();
+
+    currentClass = enclosingClass;
+// lox/Resolver.java, in visitClassStmt()
+</code></pre>
+<p>这是一个小的优化，但如果类确实<em>有</em>一个超类，我们只会创建超类环境。当没有超类时创建它是没有意义的，因为无论如何都没有超类可以存储在其中。</p>
+<p>通过在作用域链中定义“super”，我们能够解析<code>super</code>表达式本身。</p>
+<pre><code class="language-java">  @Override
+  public Void visitSuperExpr(Expr.Super expr) {
+    resolveLocal(expr, expr.keyword);
+    return null;
+  }
+// lox/Resolver.java, add after visitSetExpr()
+</code></pre>
+<p>我们完全将<code>super</code> token解析为变量。解析存储了解释器为找到存储超类的环境而需要走的环境链中的跃点数。</p>
+<p>此代码在解释器中有镜像。当我们评估子类定义时，我们创建了一个新环境。</p>
+<pre><code class="language-java">        throw new RuntimeError(stmt.superclass.name,
+            &quot;Superclass must be a class.&quot;);
+      }
+    }
+
+    environment.define(stmt.name.lexeme, null);
+
+    if (stmt.superclass != null) {
+      environment = new Environment(environment);
+      environment.define(&quot;super&quot;, superclass);
+    }
+
+    Map&lt;String, LoxFunction&gt; methods = new HashMap&lt;&gt;();
+// lox/Interpreter.java, in visitClassStmt()
+</code></pre>
+<p>在该环境中，我们存储了对超类的引用——我们现在在运行时中拥有的超类的实际 LoxClass 对象。然后我们为每个方法创建 LoxFunction。这些将捕获当前环境——我们刚刚绑定“super”的环境——作为它们的闭包，按照我们的需要保留超类。完成后，我们弹出环境</p>
+<pre><code class="language-java">   LoxClass klass = new LoxClass(stmt.name.lexeme,
+        (LoxClass)superclass, methods);
+
+    if (superclass != null) {
+      environment = environment.enclosing;
+    }
+
+    environment.assign(stmt.name, klass);
+// lox/Interpreter.java, in visitClassStmt()
+</code></pre>
+<p>我们已经准备好解释<code>super</code>表达式本身。有一些活动部件，因此我们将分段构建此方法。</p>
+<pre><code class="language-java">  @Override
+  public Object visitSuperExpr(Expr.Super expr) {
+    int distance = locals.get(expr);
+    LoxClass superclass = (LoxClass)environment.getAt(
+        distance, &quot;super&quot;);
+  }
+// lox/Interpreter.java, add after visitSetExpr() 
+</code></pre>
+<p>首先，我们一直在工作的进行中。我们通过在适当的环境中查找“super”来查找周围类的超类。</p>
+<p>当我们访问一个方法时，我们还需要绑定<code>this</code>到访问该方法的对象。在像<code>doughnut.cook</code>这样的表达式中，对象是我们从求值中得到的任何东西<code>doughnut</code>。在像<code>super.cook</code> 的<code>super</code>表达式中，当前对象隐式地与我们正在使用的当前对象相同。换句话说，<code>this</code>。即使我们正在查找超类上的方法，实例仍然是<code>this</code>.</p>
+<p>不幸的是，在<code>super</code>表达式内部，我们没有方便的节点让解析器将跳数挂在<code>this</code>上面。幸运的是，我们确实控制了环境链的布局。“this”绑定的环境总是在我们存储“super”的环境中</p>
+<pre><code class="language-java">    LoxClass superclass = (LoxClass)environment.getAt(
+        distance, &quot;super&quot;);
+
+    LoxInstance object = (LoxInstance)environment.getAt(
+        distance - 1, &quot;this&quot;);
+  }
+// lox/Interpreter.java, in visitSuperExpr()
+</code></pre>
+<p>将距离减去1 在那个内部环境中查找“this”。我承认这不是最优雅的代码，但它确实有效。</p>
+<blockquote>
+<p>写一本书包含程序的每一行代码意味着我不能通过将它们作为“读者的练习”来隐藏这些技巧。</p>
+</blockquote>
+<p>现在我们准备查找并绑定方法，从超类开始。</p>
+<pre><code class="language-java">    LoxInstance object = (LoxInstance)environment.getAt(
+        distance - 1, &quot;this&quot;);
+
+    LoxFunction method = superclass.findMethod(expr.method.lexeme);
+    return method.bind(object);
+  }
+// lox/Interpreter.java, in visitSuperExpr()
+</code></pre>
+<p>这几乎与查找 get 表达式方法的代码完全一样，只是我们调用<code>findMethod()</code>超类而不是当前对象的类。</p>
+<p>基本上就是这样。当然，除非我们可能<em>找不到</em>方法。所以我们也检查一下。</p>
+<pre><code class="language-java">    LoxFunction method = superclass.findMethod(expr.method.lexeme);
+
+    if (method == null) {
+      throw new RuntimeError(expr.method,
+          &quot;Undefined property '&quot; + expr.method.lexeme + &quot;'.&quot;);
+    }
+
+    return method.bind(object);
+  }
+// lox/Interpreter.java, in visitSuperExpr()
+</code></pre>
+<p>搞定！用之前的 BostonCream 示例为例，试一试。假设你我都做对了，应该是先炒，再填奶油。</p>
+<h3 id="1333-super">13.3.3 super 的非法使用</h3>
+<p>与以前的语言功能一样，当用户编写正确的代码时，我们的实现会做正确的事情，但我们没有让解释器免受错误代码的侵害。特别要考虑：</p>
+<pre><code class="language-js">class Eclair {
+  cook() {
+    super.cook();
+    print &quot;Pipe full of crème p?tissière.&quot;;
+  }
+}
+</code></pre>
+<p>这个类有一个<code>super</code>表达式，但没有超类。在运行时，用于评估<code>super</code>表达式的代码假定“super”已成功解析并将在环境中找到。这将在这里失败，因为没有超类，因此没有超类的周围环境。JVM 将抛出异常并使我们的解释器崩溃。</p>
+<p>呀，还有更简单的 super 错误用法：</p>
+<pre><code class="language-js">super.notEvenInAClass();
+</code></pre>
+<p>我们可以在运行时通过检查“super”的查找是否成功来处理此类错误。但是我们可以静态地告诉你——仅仅通过查看源代码——Eclair没有超类，因此没有<code>super</code>表达式可以在其中工作。同样，在第二个例子中，我们知道<code>super</code>表达式甚至不在方法体内。</p>
+<p>尽管 Lox 是动态类型的，但这并不意味着我们要将<em>所有内容</em>推迟到运行时。如果用户犯了错误，我们希望帮助他们尽快找到它。所以我们将在解析器中静态报告这些错误。</p>
+<p>首先，我们向枚举中添加一个新案例，以跟踪当前正在访问的代码周围是哪种类。</p>
+<pre><code class="language-java">    NONE,
+    CLASS,
+    SUBCLASS
+  }
+// lox/Resolver.java, in enum ClassType, add “,” to previous line
+</code></pre>
+<p>我们将使用它来区分何时处于具有超类和不具有超类的类中。当我们解析一个类声明时，设置它是否是一个子类。</p>
+<pre><code class="language-java">    if (stmt.superclass != null) {
+      currentClass = ClassType.SUBCLASS;
+      resolve(stmt.superclass);
+// lox/Resolver.java, in visitClassStmt()
+</code></pre>
+<p>然后，当我们解析一个<code>super</code>表达式时，我们会检查我们当前是否在允许的范围内。</p>
+<pre><code class="language-java">  public Void visitSuperExpr(Expr.Super expr) {
+    if (currentClass == ClassType.NONE) {
+      Lox.error(expr.keyword,
+          &quot;Can't use 'super' outside of a class.&quot;);
+    } else if (currentClass != ClassType.SUBCLASS) {
+      Lox.error(expr.keyword,
+          &quot;Can't use 'super' in a class with no superclass.&quot;);
+    }
+
+    resolveLocal(expr, expr.keyword);
+// lox/Resolver.java, in visitSuperExpr()
+</code></pre>
+<p>如果不是——o no！—用户犯了一个错误。</p>
+<h2 id="134">13.4 总结</h2>
+<p>我们做到了！最后一点错误处理是完成 Lox 的 Java 实现所需的最后一块代码。这是一项真正的成就，您应该为此感到自豪。在过去的十几章，上千行代码中，我们学习并实现了...</p>
+<ul>
+<li><a href="http://craftinginterpreters.com/scanning.html">token和词法分析</a>，</li>
+<li><a href="http://craftinginterpreters.com/representing-code.html">抽象语法树</a>，</li>
+<li><a href="http://craftinginterpreters.com/parsing-expressions.html">递归下降解析</a>，</li>
+<li>前缀和中缀表达式，</li>
+<li>对象的运行时表示，</li>
+<li><a href="http://craftinginterpreters.com/evaluating-expressions.html">使用访问者模式解释代码</a>，</li>
+<li><a href="http://craftinginterpreters.com/statements-and-state.html">词法作用域</a>，</li>
+<li>用于存储变量的环境链，</li>
+<li><a href="http://craftinginterpreters.com/control-flow.html">控制流程</a>，</li>
+<li><a href="http://craftinginterpreters.com/functions.html">带参数的函数</a>，</li>
+<li>闭包，</li>
+<li><a href="http://craftinginterpreters.com/resolving-and-binding.html">静态变量解析和错误检测</a>，</li>
+<li><a href="http://craftinginterpreters.com/classes.html">类</a>，</li>
+<li>构造函数，</li>
+<li>字段，</li>
+<li>方法，最后，</li>
+<li>继承。</li>
+</ul>
+<p><img alt="" src="../assets/5f1cfb97369c9cb576e2eaa9dd5bf5ffcfc285a4.png" /></p>
+<p>我们从头开始完成所有这些工作，没有外部依赖项或神奇工具。只有你和我，我们各自的文本编辑器，Java 标准库中的几个集合类，以及 JVM 运行时。</p>
+<p>这标志着第二部分的结束，但不是本书的结束。休息一下。也许写一些有趣的 Lox 程序并在你的解释器中运行它们。（您可能想为读取用户输入等操作添加更多本机方法。）当您神清气爽并准备就绪时，我们将开始<a href="http://craftinginterpreters.com/a-bytecode-virtual-machine.html">下一次冒险</a>。</p>
+<hr />
+<h2 id="_2"><a href="http://craftinginterpreters.com/inheritance.html#challenges">挑战</a></h2>
+<ol>
+<li>Lox 仅支持<em>单继承</em>——一个类可能有一个超类，这是跨类重用方法的唯一方法。其他语言已经探索了多种方式来更自由地跨类重用和共享能力：mixins、traits、多重继承、虚拟继承、扩展方法等。</li>
+</ol>
+<p>如果你要沿着这些思路向 Lox 添加一些功能，你会选择哪个？为什么？如果您感到有勇气（此时您应该有勇气），请继续添加它。</p>
+<ol>
+<li>在 Lox 中，与在大多数其他面向对象语言中一样，在查找方法时，我们从类层次结构的底部开始，然后逐步向上——子类的方法优于超类的方法。为了从覆盖方法中获取超类方法，您可以使用<code>super</code>.</li>
+</ol>
+<p>语言<a href="https://beta.cs.au.dk/">BETA</a>采用<a href="http://journal.stuffwithstuff.com/2012/12/19/the-impoliteness-of-overriding-methods/">相反的方法</a>。当你调用一个方法时，它从类层次结构的<em>顶部开始并向下</em>工作。超类方法胜过子类方法。为了到达子类方法，超类方法可以调用<code>inner</code>，这有点像 的逆运算<code>super</code>。它链接到层次结构中的下一个方法。</p>
+<p>超类方法控制何时何地允许子类改进其行为。如果超类方法根本不调用<code>inner</code>，那么子类就没有办法覆盖或修改超类的行为。</p>
+<p>去掉 Lox 当前的覆盖和<code>super</code>行为，并用 BETA 的语义替换它。简而言之：</p>
+<ul>
+<li>
+<p>在类上调用方法时，优先选择类继承链上<em>最高的方法。</em></p>
+</li>
+<li>
+<p>在方法体内，对 <code>inner</code>的调用沿着包含 的类和this的类<code>inner</code>之间的继承链在最近的子类中查找具有相同名称的方法。如果没有匹配的方法，则调用<code>inner</code>不执行任何操作。`</p>
+</li>
+</ul>
+<p>例如：</p>
+<p>```js
+   class Doughnut {
+     cook() {
+       print "Fry until golden brown.";
+       inner();
+       print "Place in a nice box.";
+     }
+   }</p>
+<p>class BostonCream &lt; Doughnut {
+     cook() {
+       print "Pipe full of custard and coat with chocolate.";
+     }
+   }</p>
+<p>BostonCream().cook();
+   ```</p>
+<p>这应该打印：</p>
+<p><code>Fry until golden brown.
+   Pipe full of custard and coat with chocolate.
+   Place in a nice box.</code></p>
+<ol>
+<li>在我介绍 Lox 的那一章中，我要求<a href="http://craftinginterpreters.com/the-lox-language.html#challenges">你</a>想出一些你认为该语言缺失的特性。现在您知道如何构建解释器，实现其中一个功能。</li>
+</ol>
+                
+              
+              
+<script src="https://giscus.app/client.js" data-repo="PKUFlyingPig/cs-self-learning" data-repo-id="R_kgDOGP67ng"
+    data-category="Announcements" data-category-id="DIC_kwDOGP67ns4COM9Q" data-mapping="title"
+    data-reactions-enabled="1" data-emit-metadata="0" data-input-position="top" data-theme="light_protanopia"
+    data-lang="zh-CN" data-loading="lazy" crossorigin="anonymous" async>
+</script>
+
+<script>
+    var palette = __get("__palette")
+    if (palette && typeof palette.color === "object") {
+        if (palette.color.scheme === "slate") {
+            const giscus = document.querySelector("script[src*=giscus]")
+            giscus.setAttribute("data-theme", "dark_protanopia")
+        }
+    }
+
+    document.addEventListener("DOMContentLoaded", function () {
+        const ref = document.querySelector("[data-md-component=palette]")
+        ref.addEventListener("change", function () {
+            var palette = __get("__palette")
+            if (palette && typeof palette.color === "object") {
+                const theme = palette.color.scheme === "slate" ? "dark_protanopia" : "light_protanopia"
+                const frame = document.querySelector(".giscus-frame")
+                frame.contentWindow.postMessage({
+                    giscus: { setConfig: { theme } }
+                }, "https://giscus.app")
+            }
+        })
+    })
+</script>
+
+            </article>
+          </div>
+        </div>
+        
+          <a href="#" class="md-top md-icon" data-md-component="top" data-md-state="hidden">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"/></svg>
+            Back to top
+          </a>
+        
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href="../../2_12.Classes/Classes/" class="md-footer__link md-footer__link--prev" aria-label="上一页: 2.12.Classes" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                上一页
+              </span>
+              2.12.Classes
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../../3_00.A%20BYTECODE%20VIRTUAL%20MACHINE/A%20BYTECODE%20VIRTUAL%20MACHINE/" class="md-footer__link md-footer__link--next" aria-label="下一页: 三、A BYTECODE VIRTUAL MACHINE" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                下一页
+              </span>
+              三、A BYTECODE VIRTUAL MACHINE
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        
+          Made with
+          <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+            Material for MkDocs
+          </a>
+        
+        
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["header.autohide", "navigation.tracking", "navigation.top", "search.highlight", "search.share", "search.suggest", "content.code.annotate"], "search": "../../../assets/javascripts/workers/search.fcfe8b6d.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\uff0c\\u3002]+", "search.placeholder": "\u641c\u7d22", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.b1047164.min.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+      
+    
+  </body>
+</html>

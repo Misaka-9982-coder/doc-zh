@@ -1,0 +1,2531 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-7.3.6">
+    
+    
+      
+        <title>3.25.Closures - doc-zh</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.a57b2b03.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.3f5d1f46.min.css">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font-family:"Roboto";--md-code-font-family:"Roboto Mono"}</style>
+      
+    
+    
+    
+    
+      
+
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="light-blue" data-md-color-accent="deep-purple">
+  
+    
+    <script>function __prefix(e){return new URL("../../..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+    
+      <script>var palette=__get("__palette");if(null!==palette&&"object"==typeof palette.color)for(var key in palette.color)document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="doc-zh" class="md-header__button md-logo" aria-label="doc-zh" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            doc-zh
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              3.25.Closures
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="light-blue" data-md-color-accent="deep-purple"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+          
+            <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5c-.84 0-1.65.15-2.39.42L12 2M3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29L3.34 7m.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14L3.36 17M20.65 7l-1.77 3.79a7.023 7.023 0 0 0-2.38-4.15l4.15.36m-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29L20.64 17M12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44L12 22z"/></svg>
+            </label>
+          
+        
+          
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="cyan" data-md-color-accent="deep-purple"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
+          
+            <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3 3.19.09m3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95 2.06.05m-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31z"/></svg>
+            </label>
+          
+        
+      </form>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7 0-.24-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91 1.61 0 2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08z"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        
+<a href="https://github.com/Misaka-9982-coder/doc-zh" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    doc-zh
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="doc-zh" class="md-nav__button md-logo" aria-label="doc-zh" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    doc-zh
+  </label>
+  
+    <div class="md-nav__source">
+      
+<a href="https://github.com/Misaka-9982-coder/doc-zh" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    doc-zh
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1" type="checkbox" id="__nav_1" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_1">
+          xv6-book
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="xv6-book" data-md-level="1">
+        <label class="md-nav__title" for="__nav_1">
+          <span class="md-nav__icon md-icon"></span>
+          xv6-book
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../S081/0.%20%E5%89%8D%E8%A8%80%E5%92%8C%E8%87%B4%E8%B0%A2/" class="md-nav__link">
+        0. 前言和致谢
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../S081/1.%20%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E6%8E%A5%E5%8F%A3/" class="md-nav__link">
+        1. 操作系统接口
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../S081/2.%20%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84/" class="md-nav__link">
+        2. 操作系统架构
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../S081/3.%20%E9%A1%B5%E8%A1%A8/" class="md-nav__link">
+        3. 页表
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../S081/4.%20trap%20%E4%B8%8E%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8/" class="md-nav__link">
+        4. trap 与系统调用
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../S081/5.%20%E4%B8%AD%E6%96%AD%E5%92%8C%E8%AE%BE%E5%A4%87%E9%A9%B1%E5%8A%A8%E7%A8%8B%E5%BA%8F/" class="md-nav__link">
+        5. 中断和设备驱动程序
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../S081/6.%20%E9%94%81/" class="md-nav__link">
+        6. 锁
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../S081/7.%20%E8%B0%83%E5%BA%A6/" class="md-nav__link">
+        7. 调度
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../S081/8.%20%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/" class="md-nav__link">
+        8. 文件系统
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../S081/9.%20%E5%86%8D%E6%AC%A1%E6%8E%A2%E8%AE%A8%E5%B9%B6%E5%8F%91%E6%80%A7/" class="md-nav__link">
+        9. 再次探讨并发性
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2">
+          craftinginterpreters
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="craftinginterpreters" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          craftinginterpreters
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../0_00.contents/contents/" class="md-nav__link">
+        0.00.contents
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../0_01.acknowledgements/acknowledgements/" class="md-nav__link">
+        0.01.acknowledgements
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1_00.Welcome/Welcome/" class="md-nav__link">
+        一、WELCOME
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1_01.Introduction/Introduction/" class="md-nav__link">
+        1.01.Introduction
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1_02.A%20Map%20of%20the%20Territory/A%20Map%20of%20the%20Territory/" class="md-nav__link">
+        1.02.A Map of the Territory
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1_03.The%20Lox%20Language/The%20Lox%20Language/" class="md-nav__link">
+        1.03.The Lox Language
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2_00.A%20TREE-WALK%20INTERPRETER/A%20TREE-WALK%20INTERPRETER/" class="md-nav__link">
+        二、A TREE-WALK INTERPRETER
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2_04.Scanning/Scanning/" class="md-nav__link">
+        2.04.Scanning
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2_05.Representing%20Code/Representing%20Code/" class="md-nav__link">
+        2.05.Representing Code
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2_06.Parsing%20Expressions/Parsing%20Expressions/" class="md-nav__link">
+        2.06.Parsing Expressions
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2_07.Evaluating%20Expressions/Evaluating%20Expressions/" class="md-nav__link">
+        2.07.Evaluating Expressions
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2_08.Statements%20and%20State/Statements%20and%20State/" class="md-nav__link">
+        2.08.Statements and State
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2_09.Control%20Flow/Control%20Flow/" class="md-nav__link">
+        2.09.Control Flow
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2_10.Functions/Functions/" class="md-nav__link">
+        2.10.Functions
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2_11.Resolving%20and%20Binding/Resolving%20and%20Binding/" class="md-nav__link">
+        2.11.Resolving and Binding
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2_12.Classes/Classes/" class="md-nav__link">
+        2.12.Classes
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2_13.Inheritance/Inheritance/" class="md-nav__link">
+        2.13.Inheritance
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3_00.A%20BYTECODE%20VIRTUAL%20MACHINE/A%20BYTECODE%20VIRTUAL%20MACHINE/" class="md-nav__link">
+        三、A BYTECODE VIRTUAL MACHINE
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3_14.Chunks%20of%20Bytecode/Chunks%20of%20Bytecode/" class="md-nav__link">
+        3.14.Chunks of Bytecode
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3_15.A%20Virtual%20Machine/A%20Virtual%20Machine/" class="md-nav__link">
+        3.15.A Virtual Machine
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3_16.Scanning%20on%20Demand/Scanning%20on%20Demand/" class="md-nav__link">
+        3.16.Scanning on Demand
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3_17.Compiling%20Expressions/Compiling%20Expressions/" class="md-nav__link">
+        3.17.Compiling Expressions
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3_18.Types%20of%20Values/Types%20of%20Values/" class="md-nav__link">
+        3.18.Types of Values
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3_19.Strings/Strings/" class="md-nav__link">
+        3.19.Strings
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3_20.Hash%20Tables/Hash%20Tables/" class="md-nav__link">
+        3.20.Hash Tables
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3_21.Global%20Variables/Global%20Variables/" class="md-nav__link">
+        3.21.Global Variables
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3_22.Local%20Variables/Local%20Variables/" class="md-nav__link">
+        3.22.Local Variables
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3_23.Jumping%20Back%20and%20Forth/Jumping%20Back%20and%20Forth/" class="md-nav__link">
+        3.23.Jumping Back and Forth
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3_24.Calls%20and%20Functions/Calls%20and%20Functions/" class="md-nav__link">
+        3.24.Calls and Functions
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          3.25.Closures
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        3.25.Closures
+      </a>
+      
+        
+
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#251" class="md-nav__link">
+    25.1 闭包对象
+  </a>
+  
+    <nav class="md-nav" aria-label="25.1 闭包对象">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#2511" class="md-nav__link">
+    25.1.1 编译闭包对象
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2512" class="md-nav__link">
+    25.1.2 解释函数声明
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#252-upvalues" class="md-nav__link">
+    252 上值 Upvalues
+  </a>
+  
+    <nav class="md-nav" aria-label="252 上值 Upvalues">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#2521-compiling-upvalues" class="md-nav__link">
+    25.2.1 编译上值 compiling upvalues
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2522-flattening-upvalues" class="md-nav__link">
+    25.2.2 展开上值 flattening-upvalues
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#253-upvalue-objects" class="md-nav__link">
+    25.3 上值对象 upvalue objects
+  </a>
+  
+    <nav class="md-nav" aria-label="25.3 上值对象 upvalue objects">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#2531-upvalues-in-closures" class="md-nav__link">
+    25.3.1 闭包中的上值 upvalues in closures
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#254-closed-upvalues" class="md-nav__link">
+    25.4  封闭的上值 closed-upvalues
+  </a>
+  
+    <nav class="md-nav" aria-label="25.4  封闭的上值 closed-upvalues">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#2541" class="md-nav__link">
+    25.4.1  值和变量
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2542-closing-upvalues" class="md-nav__link">
+    25.4.2  正在的上值 closing upvalues
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2543-tracking-open-upvalues" class="md-nav__link">
+    25.4.3 跟踪开放的上值  tracking-open-upvalues
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2544-closing-upvalues-at-runtime" class="md-nav__link">
+    25.4.4 运行时关闭上值 closing upvalues at runtime
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    挑战
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    设计说明：循环变量闭包
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3_26.Garbage%20Collection/Garbage%20Collection/" class="md-nav__link">
+        3.26.Garbage Collection
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3_27.Classes%20and%20Instances/Classes%20and%20Instances/" class="md-nav__link">
+        3.27.Classes and Instances
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3_28.Methods%20and%20Initializers/Methods%20and%20Initializers/" class="md-nav__link">
+        3.28.Methods and Initializers
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3_29.Superclasses/Superclasses/" class="md-nav__link">
+        3.29.Superclasses
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3_30.Optimization/Optimization/" class="md-nav__link">
+        3.30.Optimization
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../4_01.A1.Appendix%20I%20Lox%20Grammar/A1.Appendix%20I%20Lox%20Grammar/" class="md-nav__link">
+        A1.Appendix I Lox Grammar
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../4_02.A2.Appendix%20II%20Generated%20Syntax%20Tree%20Classes/A2.Appendix%20II%20Generated%20Syntax%20Tree%20Classes/" class="md-nav__link">
+        A2.Appendix II Generated Syntax Tree Classes
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#251" class="md-nav__link">
+    25.1 闭包对象
+  </a>
+  
+    <nav class="md-nav" aria-label="25.1 闭包对象">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#2511" class="md-nav__link">
+    25.1.1 编译闭包对象
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2512" class="md-nav__link">
+    25.1.2 解释函数声明
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#252-upvalues" class="md-nav__link">
+    252 上值 Upvalues
+  </a>
+  
+    <nav class="md-nav" aria-label="252 上值 Upvalues">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#2521-compiling-upvalues" class="md-nav__link">
+    25.2.1 编译上值 compiling upvalues
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2522-flattening-upvalues" class="md-nav__link">
+    25.2.2 展开上值 flattening-upvalues
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#253-upvalue-objects" class="md-nav__link">
+    25.3 上值对象 upvalue objects
+  </a>
+  
+    <nav class="md-nav" aria-label="25.3 上值对象 upvalue objects">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#2531-upvalues-in-closures" class="md-nav__link">
+    25.3.1 闭包中的上值 upvalues in closures
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#254-closed-upvalues" class="md-nav__link">
+    25.4  封闭的上值 closed-upvalues
+  </a>
+  
+    <nav class="md-nav" aria-label="25.4  封闭的上值 closed-upvalues">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#2541" class="md-nav__link">
+    25.4.1  值和变量
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2542-closing-upvalues" class="md-nav__link">
+    25.4.2  正在的上值 closing upvalues
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2543-tracking-open-upvalues" class="md-nav__link">
+    25.4.3 跟踪开放的上值  tracking-open-upvalues
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2544-closing-upvalues-at-runtime" class="md-nav__link">
+    25.4.4 运行时关闭上值 closing upvalues at runtime
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    挑战
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    设计说明：循环变量闭包
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/Misaka-9982-coder/doc-zh/edit/master/docs/craftinginterpreters/3_25.Closures/Closures.md" title="编辑此页" class="md-content__button md-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
+                  </a>
+                
+                
+                <h1 id="_1">闭包</h1>
+<blockquote>
+<p>正如男人所说，对于每个复杂的问题都有一个简单的解决方案，这是错误的。</p>
+<p>-- Umberto Eco,<em>Foucault’s Pendulum</em></p>
+</blockquote>
+<p>由于我们<a href="http://craftinginterpreters.com/calls-and-functions.html">上一章</a>的辛勤劳动，已经拥有了一个可以工作的虚拟机。它缺少的是闭包。除了全局变量，这是他们自己的动物品种，一个函数没有办法引用在它自己的主体之外声明的变量。</p>
+<pre><code class="language-js">var x = &quot;global&quot;;
+fun outer() {
+  var x = &quot;outer&quot;;
+  fun inner() {
+    print x;
+  }
+  inner();
+}
+outer();
+</code></pre>
+<p>现在运行此示例，它会打印“global”。它应该打印“outer”。为了解决这个问题，需要在解析变量时包含所有外围函数的整个词法作用域。</p>
+<p>这个问题在 clox 中比在 jlox 中更难，因为字节码 VM 将局部变量存储在栈中。使用栈是因为我声称局部变量具有栈语义——变量以与创建它们相反的顺序被丢弃。但是对于闭包，这只是<em>大多数</em>情况下是正确的。</p>
+<pre><code class="language-js">fun makeClosure() {
+  var local = &quot;local&quot;;
+  fun closure() {
+    print local;
+  }
+  return closure;
+}
+
+var closure = makeClosure();
+closure();
+</code></pre>
+<p>外部函数<code>makeClosure()</code>声明了一个变量<code>local</code>.它还创建了一个内部函数，<code>closure()</code>用于捕获该变量。然后<code>makeClosure()</code>返回对该函数的引用。由于闭包在赋值给局部变量时逃逸(var closure =)，<code>local</code>应该必须比创建它的函数生命周期更长。</p>
+<p><img alt="" src="../assets/e5f22aae415ed60d9592ef78abe784b71a2c221d.png" /></p>
+<blockquote>
+<p>哦不，他正在逃逸！</p>
+</blockquote>
+<p>可以通过为所有局部变量动态分配内存来解决这个问题。在 jlox 就是这样做的，它把所有东西都放在若干Environment 对象,  而Environment 对象在java堆中创建。但现在我们不想。使用栈非常快。大多数局部变量不被闭包捕获并且具有栈语义。为了个别(被闭包捕获)的局部变量的利益，让所有这些都慢下来是很糟糕的措施。</p>
+<blockquote>
+<p>毕竟，C 和 Java 将栈用于局部变量是有原因的。</p>
+</blockquote>
+<p>这意味着比之前在 Java 解释器中使用的方法更复杂。因为一些局部变量的生存周期差异很大，我们将有两种实施策略。对于不在闭包中使用的局部变量，将保留它们在栈中。当一个局部变量被闭包捕获时，将采用另一种解决方案，将它们提升到堆上，在那里它们可以根据需要生存。</p>
+<p>自早期 Lisp 以来，闭包就一直存在，当时内存字节和 CPU 周期比翡翠更珍贵。在其间的几十年里，黑客设计了各种方式来将闭包编译为各种优化的运行时表示。有些效率更高，但需要更复杂的编译过程，所以不太可能轻松地改造到 clox 中。</p>
+<blockquote>
+<p>搜索“closure conversion”或“lambda lifting”开始探索。</p>
+</blockquote>
+<p>我在这里解释的技术来自 Lua VM 的设计。它速度快，节省内存，并且用相对较少的代码实现。更令人印象深刻的是，它自然适合 clox 和 Lua 都使用的单程编译器。不过，它有些复杂。可能需要一段时间才能在您的脑海中将所有片段拼凑在一起。我们将一步一步地构建它们，我将尝试分阶段介绍这些概念。</p>
+<h2 id="251">25.1 闭包对象</h2>
+<p>VM 使用 ObjFunction 表示运行时函数。这些对象是前端在编译时创建的。在运行时，VM 所做的只是从常量表中加载函数对象并将其绑定到名称。没有在运行时“创建”函数的操作。与字符串和数字非常相似，它们是纯粹在编译时实例化的常量。</p>
+<blockquote>
+<p>换句话说，Lox 中的函数声明是一种字面量——一种定义内置类型常量值的语法。</p>
+</blockquote>
+<p>这是有道理的，因为组成函数的所有数据在编译时都是已知的：从函数主体编译的字节码块，以及主体中使用的常量。但是，一旦引入闭包，这种表示方式就不再足够了。看看：</p>
+<pre><code class="language-js">fun makeClosure(value) {
+  fun closure() {
+    print value;
+  }
+  return closure;
+}
+
+var doughnut = makeClosure(&quot;doughnut&quot;);
+var bagel = makeClosure(&quot;bagel&quot;);
+doughnut();
+bagel();
+</code></pre>
+<p>该<code>makeClosure()</code>函数定义并返回一个函数。我们调用它两次并返回两个闭包。它们由相同的嵌套函数声明<code>closure</code>创建，但封闭不同的值。当调用这两个闭包时，每个都打印不同的字符串。这意味着 需要闭包的运行时表示，它捕获函数周围的局部变量，因为它们在执行函数声明时存在，而不仅仅是在编译时。</p>
+<p>我们将逐步捕获变量，但最好是在第一步定义该对象表示。现有的 ObjFunction 类型表示 函数声明的“原始”编译时状态，因为从单个声明创建的所有闭包共享相同的代码和常量。在运行时，当执行函数声明时，我们将 ObjFunction 包装在一个新的 ObjClosure 结构中。后者 引用了原始的函数 并包含了 原始函数闭包变量的  运行时状态。</p>
+<blockquote>
+<p>Lua 实现将包含字节码的原始函数对象称为“原型”，这个词很适合描述这一点，除了这个词还被重载以指代<a href="https://en.wikipedia.org/wiki/Prototype-based_programming">原型继承</a>。</p>
+</blockquote>
+<p><img alt="" src="../assets/db88c08e19b9cd8ddb1a5e04902a53f2ad9d7e97.png" /></p>
+<p>我们将把每个函数都包装在一个 ObjClosure 中，即使该函数实际上并没有关闭并捕获任何周围的局部变量。这有点浪费，但它简化了 VM，因为我们总是可以假设调用的函数是一个 ObjClosure。这个新结构是这样开始的：</p>
+<pre><code class="language-c">typedef struct {
+  Obj obj;
+  ObjFunction* function;
+} ObjClosure;
+// object.h, add after struct ObjString
+</code></pre>
+<p>现在，它只是指向一个 ObjFunction 并添加必要的对象头内容。通过向 clox 添加新对象类型的通常仪式，我们声明一个 C 函数来创建一个新的闭包。</p>
+<pre><code class="language-c">} ObjClosure;
+
+ObjClosure* newClosure(ObjFunction* function);
+ObjFunction* newFunction();
+// object.h, add after struct ObjClosure
+</code></pre>
+<p>然后在这里实现它：</p>
+<pre><code class="language-c">ObjClosure* newClosure(ObjFunction* function) {
+  ObjClosure* closure = ALLOCATE_OBJ(ObjClosure, OBJ_CLOSURE);
+  closure-&gt;function = function;
+  return closure;
+}
+// object.c, add after allocateObject()
+</code></pre>
+<p>它需要一个指向它包装的 ObjFunction 的指针。它还将类型字段初始化为新类型。</p>
+<pre><code class="language-c">typedef enum {
+  OBJ_CLOSURE,
+  OBJ_FUNCTION,
+// object.h, in enum ObjType
+</code></pre>
+<p>当我们完成一个闭包时，我们释放它的内存。</p>
+<pre><code class="language-c">  switch (object-&gt;type) {
+    case OBJ_CLOSURE: {
+      FREE(ObjClosure, object);
+      break;
+    }
+    case OBJ_FUNCTION: {
+// memory.c, in freeObject()
+</code></pre>
+<p>我们只释放 ObjClosure 本身，而不释放 ObjFunction。那是因为闭包不拥有该ObjFunction。可能有多个闭包都引用同一个ObjFunction，并且没有一个闭包声称对它有任何特殊特权。在引用它的所有对象都消失之前，我们无法释放 ObjFunction——甚至包括它的外围函数,因为它常量表中包含它。跟踪听起来很棘手，而且确实如此！这就是为什么我们很快就会编写一个垃圾收集器来为我们管理它。</p>
+<p>我们还有用于检查值类型的常用宏。</p>
+<blockquote>
+<p>也许我应该定义一个宏，以便更容易地生成这些宏。也许那会有点太元编程了。</p>
+</blockquote>
+<pre><code class="language-c">#define OBJ_TYPE(value)        (AS_OBJ(value)-&gt;type)
+
+#define IS_CLOSURE(value)      isObjType(value, OBJ_CLOSURE)
+#define IS_FUNCTION(value)     isObjType(value, OBJ_FUNCTION)
+// object.h
+</code></pre>
+<p>和转换值：</p>
+<pre><code class="language-c">#define IS_STRING(value)       isObjType(value, OBJ_STRING)
+
+#define AS_CLOSURE(value)      ((ObjClosure*)AS_OBJ(value))
+#define AS_FUNCTION(value)     ((ObjFunction*)AS_OBJ(value))
+// object.h
+</code></pre>
+<p>闭包是一级对象，所以你可以打印它们。</p>
+<pre><code class="language-c">  switch (OBJ_TYPE(value)) {
+    case OBJ_CLOSURE:
+      printFunction(AS_CLOSURE(value)-&gt;function);
+      break;
+    case OBJ_FUNCTION:
+// object.c, in printObject()
+</code></pre>
+<p>它们的显示与 ObjFunction 完全一样。从用户的角度来看，ObjFunction 和 ObjClosure 之间的区别纯粹是一个隐藏的实现细节。有了这个，我们就有了一个有效但空的闭包表示。</p>
+<h3 id="2511">25.1.1 编译闭包对象</h3>
+<p>我们有了闭包对象，但虚拟机从不创建它们。下一步是让编译器发出指令，告诉运行时何时创建新的 ObjClosure 来包装给定的 ObjFunction。这发生在函数声明的末尾。</p>
+<pre><code class="language-c">  ObjFunction* function = endCompiler();
+  emitBytes(OP_CLOSURE, makeConstant(OBJ_VAL(function)));
+}
+// compiler.c, in function(), replace 1 line
+</code></pre>
+<p>以前，函数声明的最终字节码是单条OP_CONSTANT`指令，用于从周围函数的常量表中加载已编译函数并将其压入堆栈。现在有一个新指令。</p>
+<pre><code class="language-c">  OP_CALL,
+  OP_CLOSURE,
+  OP_RETURN,
+// chunk.h, in enum OpCode  
+</code></pre>
+<p>与 <code>OP_CONSTANT</code>一样，它有一个操作数，其值是函数常量表索引。但是当我们转到运行时实现时，会做一些更有趣的事情。</p>
+<p>首先，让我们成为勤奋的 VM 黑客，并在反汇编程序中插入指令支持。</p>
+<pre><code class="language-c">    case OP_CALL:
+      return byteInstruction(&quot;OP_CALL&quot;, chunk, offset);
+    case OP_CLOSURE: {
+      offset++;
+      uint8_t constant = chunk-&gt;code[offset++];
+      printf(&quot;%-16s %4d &quot;, &quot;OP_CLOSURE&quot;, constant);
+      printValue(chunk-&gt;constants.values[constant]);
+      printf(&quot;\n&quot;);
+      return offset;
+    }
+    case OP_RETURN:
+// debug.c, in disassembleInstruction()
+</code></pre>
+<p>这里发生的事情比我们通常在反汇编程序中发生的要多。到本章结束时，您会发现这<code>OP_CLOSURE</code>是一条非常不寻常的指令。现在它很简单——只是一个单字节操作数——但我们会添加它。这里的代码预示着那个未来。</p>
+<h3 id="2512">25.1.2 解释函数声明</h3>
+<p>需要做的大部分工作都在运行时。自然地，我们必须处理新指令。但还需要触及 VM 中与 ObjFunction 一起使用的每一段代码，并将其改为使用 ObjClosure—函数调用、调用帧等。不过，我们将从指令开始。</p>
+<pre><code class="language-c">      }
+      case OP_CLOSURE: {
+        ObjFunction* function = AS_FUNCTION(READ_CONSTANT());
+        ObjClosure* closure = newClosure(function);
+        push(OBJ_VAL(closure));
+        break;
+      }
+      case OP_RETURN: {
+// vm.c, in run()
+</code></pre>
+<p>就像之前使用的<code>OP_CONSTANT</code>指令一样，首先从常量表中加载编译后的函数。现在的不同之处在于将该函数包装在一个新的 ObjClosure 中并将结果压入堆栈。</p>
+<p>一旦你有一个闭包，你最终会想要调用它</p>
+<pre><code class="language-c">    switch (OBJ_TYPE(callee)) {
+      case OBJ_CLOSURE:
+        return call(AS_CLOSURE(callee), argCount);
+      case OBJ_NATIVE: {
+// vm.c, in callValue(), replace 2 lines
+</code></pre>
+<p>我们删除了调用类型为 <code>OBJ_FUNCTION</code>的对象的代码。由于将所有函数包装在 ObjClosures 中，运行时将永远不会再尝试调用裸 ObjFunction。这些对象只存在于常量表中，并在其他任何东西看到它们之前立即被包裹在闭包中。</p>
+<blockquote>
+<p>我们不希望任何裸函数在 VM 周围徘徊！邻居会怎么说？</p>
+</blockquote>
+<p>用非常相似的代码替换旧代码来调用闭包。唯一的区别是传递给<code>call()</code>的对象类型。该功能的真正变化都包含在这个函数中。首先，我们更新它的签名。</p>
+<pre><code class="language-c">static bool call(ObjClosure* closure, int argCount) {
+  if (argCount != function-&gt;arity) {
+// vm.c, function call(), replace 1 line
+</code></pre>
+<p>然后，在正文中，需要修复所有引用该函数的内容，以处理引入了一个间接层的事实。从 arity 检查开始：</p>
+<pre><code class="language-c">static bool call(ObjClosure* closure, int argCount) {
+  if (argCount != closure-&gt;function-&gt;arity) {
+    runtimeError(&quot;Expected %d arguments but got %d.&quot;,
+        closure-&gt;function-&gt;arity, argCount);
+    return false;
+// vm.c, in call(), replace 3 lines
+</code></pre>
+<p>唯一的变化是我们打开闭包以获取底层函数。<code>call()</code>接下来要做的是创建一个新的 CallFrame。我们更改该代码以将闭包存储在 CallFrame 中并从闭包的函数中获取字节码指针。</p>
+<pre><code class="language-c">  CallFrame* frame = &amp;vm.frames[vm.frameCount++];
+  frame-&gt;closure = closure;
+  frame-&gt;ip = closure-&gt;function-&gt;chunk.code;
+  frame-&gt;slots = vm.stackTop - argCount - 1;
+// vm.c, in call(), replace 2 lines
+</code></pre>
+<p>这也需要更改 CallFrame 的声明。</p>
+<pre><code class="language-c">typedef struct {
+  ObjClosure* closure;
+  uint8_t* ip;
+// vm.h, in struct CallFrame, replace 1 line
+</code></pre>
+<p>该更改会触发其他一些级联更改。VM 中访问 CallFrame 函数的每个地方都需要使用闭包。首先，从当前函数的常量表中读取常量的宏：</p>
+<pre><code class="language-c">    (uint16_t)((frame-&gt;ip[-2] &lt;&lt; 8) | frame-&gt;ip[-1]))
+
+#define READ_CONSTANT() \
+    (frame-&gt;closure-&gt;function-&gt;chunk.constants.values[READ_BYTE()])
+
+#define READ_STRING() AS_STRING(READ_CONSTANT())
+// vm.c, in run(), replace 2 lines
+</code></pre>
+<p><code>DEBUG_TRACE_EXECUTION</code>启用时，它需要从闭包中获取块。</p>
+<pre><code class="language-c">    printf(&quot;\n&quot;);
+    disassembleInstruction(&amp;frame-&gt;closure-&gt;function-&gt;chunk,
+        (int)(frame-&gt;ip - frame-&gt;closure-&gt;function-&gt;chunk.code));
+#endif
+// vm.c, in run(), replace 2 lines
+</code></pre>
+<p>同样在报告运行时错误时：</p>
+<pre><code class="language-c">    CallFrame* frame = &amp;vm.frames[i];
+    ObjFunction* function = frame-&gt;closure-&gt;function;
+    size_t instruction = frame-&gt;ip - function-&gt;chunk.code - 1;
+// vm.c, in runtimeError(), replace 1 line
+</code></pre>
+<p>快好了。最后一段是设置第一个 CallFrame 以开始执行 Lox 脚本的顶级代码块。</p>
+<pre><code class="language-c">  push(OBJ_VAL(function));
+  ObjClosure* closure = newClosure(function);
+  pop();
+  push(OBJ_VAL(closure));
+  call(closure, 0);
+
+  return run();
+// vm.c, in interpret(), replace 1 line
+</code></pre>
+<p>编译脚本时，编译器仍然返回一个原始的 ObjFunction。这很好，但这意味着需要在 VM 执行它之前将它包装在 ObjClosure 中。</p>
+<blockquote>
+<p>代码看起来有点傻，因为我们仍然将原始 ObjFunction 压入堆栈。然后我们在创建闭包后弹出它，然后才压入闭包。为什么要把 ObjFunction 放在那里？像往常一样，当你看到奇怪的堆栈事情发生时，这是为了让<a href="http://craftinginterpreters.com/garbage-collection.html">即将到来的垃圾收集器</a>知道一些堆分配的对象。</p>
+</blockquote>
+<p>我们又回到了解析器。用户看不出有什么区别，但是编译器现在生成代码告诉 VM 为每个函数声明创建一个闭包。每次 VM 执行函数声明时，它都会将 ObjFunction 包装在一个新的 ObjClosure 中。VM 的其余部分现在处理那些浮动的 ObjClosures。那是无聊的事情。现在我们准备好让这些闭包真正做点什么了。</p>
+<h2 id="252-upvalues">252 上值 Upvalues</h2>
+<p>现有的读写局部变量的指令仅限于单个函数的栈窗口。来自周围函数的局部变量位于内部函数的窗口之外。我们需要一些新的指令。</p>
+<p>最简单的方法可能是一条指令，该指令使用当前函数窗口栈槽 相对偏移,  以便获取的前边函数窗口栈槽数据。如果封闭变量总是在栈上，那将起作用。但正如之前看到的，这些变量有时比声明它们的函数生命周期还长。这意味着他们不能总是在栈上(函数执行完后会销毁栈帧)。</p>
+<p>那么，下一个最简单的方法是让任何被关闭的局部变量并让它始终存在于堆中。当周围函数中的局部变量声明被执行时，VM 会动态地为其分配内存。这样它就可以在需要的时候延长生命周期。</p>
+<p>如果 clox 不是单程编译器，这将是一个很好的方法。但是我们的选择，在实现时很多限制使事情变得更加困难。看看这个例子：</p>
+<pre><code class="language-js">fun outer() {
+  var x = 1;    // (1)
+  x = 2;        // (2)
+  fun inner() { // (3)
+    print x;
+  }
+  inner();
+}
+</code></pre>
+<p>在到达<code>inner()</code>声明<code>(3)</code>时，编译器编译 <code>x</code> 声明<code>(1)</code> 并发出赋值代码<code>(2)</code>，这些已经完成了， 然后发现<code>x</code>实际上已经封闭。我们没有一种简单的方法可以返回并修复已发出的代码以进行<code>x</code>特殊处理。所以，我们想要一个解决方案，允许闭包变量完全像普通局部变量一样存在于栈中，直到它被封闭。</p>
+<p>幸运的是，多亏了 Lua 开发团队，我们有了一个解决方案。使用他们称为 <strong>上值(upvalue)</strong> 的间接层。上值(upvalue)指的是封闭函数中的局部变量。每个闭包都维护一个上值数组，每个上值对应闭包使用的每个周围局部变量。</p>
+<p>upvalue 指向栈中它捕获的变量所在的位置。当闭包需要访问一个封闭变量时，它会通过相应的上值来获取它。首次执行函数声明并为其创建闭包时，VM 会创建上值数组并将它们连接起来以“捕获”闭包所需的周围局部变量。</p>
+<p>例如，如果把这个程序丢给 clox，</p>
+<pre><code class="language-js">{
+  var a = 3;
+  fun f() {
+    print a;
+  }
+}
+</code></pre>
+<p>编译器和运行时将共同在内存中构建一组对象，如下所示：</p>
+<p><img alt="" src="../assets/9dfacd45cf5f0b2fa04e70c1273e9dee4f01b3f8.png" /></p>
+<p>这可能看起来势不可挡，但不要害怕。我们会努力解决的。重要的部分是 upvalues 用作继续查找捕获的局部变量所需的间接层，即使它离开栈也是如此。但在开始之前，让我们专注于编译捕获的变量。</p>
+<h3 id="2521-compiling-upvalues">25.2.1 编译上值 compiling upvalues</h3>
+<p>像往常一样，我们希望在编译期间做尽可能多的工作，以保持运行时简单和快速。由于局部变量在 Lox 中是词法作用域的，在编译时有足够的知识来解决函数访问哪些周围局部变量以及声明这些局部变量的位置。反过来，这意味着我们知道闭包需要多少上值，它们捕获哪些变量，以及声明函数的栈窗口中哪些栈槽包含这些变量。</p>
+<p>目前，当编译器解析(resolves)一个标识符时，它会从最内层到最外层遍历当前函数的块作用域。如果在该函数中没有找到该变量，假设该变量必须是全局变量。我们不考虑闭包函数的局部作用域——它们会被直接跳过。那么，第一个变化是为那些外围本地作用域插入一个解析步骤(The first change, then, is inserting a resolution step for those outer local scopes.)。</p>
+<pre><code class="language-c">  if (arg != -1) {
+    getOp = OP_GET_LOCAL;
+    setOp = OP_SET_LOCAL;
+  } else if ((arg = resolveUpvalue(current, &amp;name)) != -1) {
+    getOp = OP_GET_UPVALUE;
+    setOp = OP_SET_UPVALUE;
+  } else {
+// compiler.c, in namedVariable() 
+</code></pre>
+<p>这个新<code>resolveUpvalue()</code>函数查找在任何周围函数中声明的局部变量。如果找到一个，它会返回该变量的“上值索引”。（我们稍后会了解这意味着什么。）否则，它返回 -1 以指示未找到该变量。如果找到，我们将使用这两条新指令通过其上值读取或写入变量：</p>
+<pre><code class="language-c">  OP_SET_GLOBAL,
+  OP_GET_UPVALUE,
+  OP_SET_UPVALUE,
+  OP_EQUAL,
+// chunk.h, in enum OpCode
+</code></pre>
+<p>这是自上而下的实现方式，所以我将很快向您展示这些在运行时是如何工作的。现在要关注的部分是编译器如何实际解析标识符。</p>
+<pre><code class="language-c">static int resolveUpvalue(Compiler* compiler, Token* name) {
+  if (compiler-&gt;enclosing == NULL) return -1;
+
+  int local = resolveLocal(compiler-&gt;enclosing, name);
+  if (local != -1) {
+    return addUpvalue(compiler, (uint8_t)local, true);
+  }
+
+  return -1;
+}
+// compiler.c, add after resolveLocal()
+</code></pre>
+<p>在当前函数作用域内无法解析局部变量(resolveLocal)后调用它(addUpvalue)，因此知道该变量不在当前编译器中。回想一下，Compiler 存储了一个指向闭包函数的 Compiler 的指针，这些指针形成了一个链表，一直到顶级代码的根 Compiler。因此，如果封闭的 Compiler 是<code>NULL</code>，我们知道已经到达最外层的函数而没有找到局部变量。该变量必定是全局的，所以返回 -1。</p>
+<blockquote>
+<p>它可能最终成为一个完全未定义的变量，甚至不是全局变量。但在 Lox 中，我们直到运行时才检测到该错误，因此从编译器的角度来看，它是“希望是全局的”。</p>
+</blockquote>
+<p>否则，我们会尝试将标识符解析为<em>封闭</em>编译器中的局部变量 。也就是说，我们在当前函数之外寻找它。例如：</p>
+<pre><code class="language-js">fun outer() {
+  var x = 1;
+  fun inner() {
+    print x; // (1)
+  }
+  inner();
+}
+</code></pre>
+<p>在编译标识符表达式时<code>(1)</code>，<code>resolveUpvalue()</code>查找在<code>outer()</code>中声明的局部变量<code>x</code>。如果找到——就像在这个例子中一样——那么就成功地解析了变量。我们创建一个上值，以便内部函数可以通过它访问变量。upvalue 在这里创建：</p>
+<pre><code class="language-c">static int addUpvalue(Compiler* compiler, uint8_t index,
+                      bool isLocal) {
+  int upvalueCount = compiler-&gt;function-&gt;upvalueCount;
+  compiler-&gt;upvalues[upvalueCount].isLocal = isLocal;
+  compiler-&gt;upvalues[upvalueCount].index = index;
+  return compiler-&gt;function-&gt;upvalueCount++;
+}
+// compiler.c, add after resolveLocal()
+</code></pre>
+<p>编译器保留一个 upvalue 数组来跟踪它在每个函数的主体中解析的封闭标识符。还记得编译器的 Local 数组如何反映运行时局部变量所在的栈槽索引吗？这个新的上值数组以同样的方式工作。编译器数组中的索引与运行时 ObjClosure 中上值所在的索引相匹配。</p>
+<p>此函数向该数组添加一个新的上值。它还跟踪函数使用的上值数。它将计数直接存储在 ObjFunction 本身中，因为我们还需要在运行时使用该数字。</p>
+<blockquote>
+<p>与常量和函数元数(arity)一样，upvalue 计数是另一个构成编译器和运行时之间桥梁的那些小数据中。</p>
+</blockquote>
+<p><code>index</code>字段跟踪封闭局部变量的槽索引。这样编译器就知道需要捕获封闭函数中的哪个变量。我们很快就会回到那个<code>isLocal</code>字段的用途。最后，<code>addUpvalue()</code>返回创建的上值在函数的上值列表中的索引。该索引成为<code>OP_GET_UPVALUE</code>和<code>OP_SET_UPVALUE</code>指令的操作数。</p>
+<p>这是解析上值的基本思想，但该函数尚未完全成熟。闭包可以多次引用周围函数中的同一个变量。在那种情况下，我们不想浪费时间和内存为每个标识符表达式创建一个单独的上值。为了解决这个问题，在我们添加一个新的上值之前，我们首先检查函数是否已经有一个封闭该变量的上值。</p>
+<pre><code class="language-c">  int upvalueCount = compiler-&gt;function-&gt;upvalueCount;
+
+  for (int i = 0; i &lt; upvalueCount; i++) {
+    Upvalue* upvalue = &amp;compiler-&gt;upvalues[i];
+    if (upvalue-&gt;index == index &amp;&amp; upvalue-&gt;isLocal == isLocal) {
+      return i;
+    }
+  }
+
+  compiler-&gt;upvalues[upvalueCount].isLocal = isLocal;
+// compiler.c, in addUpvalue()
+</code></pre>
+<p>如果我们在数组中找到一个上值，其槽索引与我们添加的那个相匹配，只需返回该上值索引并重新使用它。否则，查找失败后并添加新的上值。</p>
+<p>这两个函数访问和修改一堆新状态，所以让我们定义它。首先，将上值计数添加到 ObjFunction。</p>
+<pre><code class="language-c">  int arity;
+  int upvalueCount;
+  Chunk chunk;
+// object.h, in struct ObjFunction
+</code></pre>
+<p>我们是认真的 C 程序员，所以在第一次分配 ObjFunction 时对其进行零初始化。</p>
+<pre><code class="language-c">  function-&gt;arity = 0;
+  function-&gt;upvalueCount = 0;
+  function-&gt;name = NULL;
+// object.c, in newFunction()
+</code></pre>
+<p>在编译器中，为上值数组添加了一个字段。</p>
+<pre><code class="language-c">  int localCount;
+  Upvalue upvalues[UINT8_COUNT];
+  int scopeDepth;
+// compiler.c, in struct Compiler
+</code></pre>
+<p>为了简单起见，给了它一个固定的大小。<code>OP_GET_UPVALUE</code>和 <code>OP_SET_UPVALUE</code>指令使用单字节操作数对上值索引进行编码，因此函数可以拥有多少个上值是有限制的——它可以关闭多少个唯一变量。鉴于此，我们可以负担得起这么大的静态数组。我们还需要确保编译器不会溢出该限制。</p>
+<pre><code class="language-c">    if (upvalue-&gt;index == index &amp;&amp; upvalue-&gt;isLocal == isLocal) {
+      return i;
+    }
+  }
+
+  if (upvalueCount == UINT8_COUNT) {
+    error(&quot;Too many closure variables in function.&quot;);
+    return 0;
+  }
+
+  compiler-&gt;upvalues[upvalueCount].isLocal = isLocal;
+// compiler.c, in addUpvalue()
+</code></pre>
+<p>最后，Upvalue 结构类型本身。</p>
+<pre><code class="language-c">typedef struct {
+  uint8_t index;
+  bool isLocal;
+} Upvalue;
+// compiler.c, add after struct Local
+</code></pre>
+<p><code>index</code>字段存储正在捕获的上值本地插槽。该<code>isLocal</code>字段拥有自己的部分，我们将在接下来进行介绍。</p>
+<h3 id="2522-flattening-upvalues">25.2.2 展开上值 flattening-upvalues</h3>
+<p>在我之前展示的示例中，闭包正在访问在 紧邻的封闭函数中声明的变量。Lox 还支持访问在<em>任何</em>封闭范围内声明的局部变量，如：</p>
+<pre><code class="language-js">fun outer() {
+  var x = 1;
+  fun middle() {
+    fun inner() {
+      print x;
+    }
+  }
+}
+</code></pre>
+<p>在这里，我们在<code>inner()</code>访问<code>x</code>。该变量不是在<code>middle()</code>中定义的，而是在<code>outer()</code>中定义的。我们也需要处理这样的情况。您可能认为这并不难，因为变量只是位于栈中更靠下的位置。但是考虑这个狡猾的例子：</p>
+<blockquote>
+<p>如果你在编程语言上工作的时间足够长，你将培养出一种精心磨练的技能，可以创建像这样的奇异程序，这些程序在技术上是有效的，但可能会绊倒那些想象力不如你的人编写的实现。</p>
+</blockquote>
+<pre><code class="language-js">fun outer() {
+  var x = &quot;value&quot;;
+  fun middle() {
+    fun inner() {
+      print x;
+    }
+
+    print &quot;create inner closure&quot;;
+    return inner;
+  }
+
+  print &quot;return from outer&quot;;
+  return middle;
+}
+
+var mid = outer(); //(1)
+var in = mid();    //(2)
+in();
+</code></pre>
+<p>当你运行它时，它应该打印：</p>
+<pre><code>return from outer
+create inner closure
+value
+</code></pre>
+<p>我知道，这很复杂。重要的部分是<code>outer()</code>(<code>x</code>在此处声明) ,   在执行<code>inner()</code>声明之前 (1)处 outer()已经返回并弹出堆栈中的所有变量。因此，在我们创建<code>inner()</code>闭包的时候，<code>x</code>已经脱离了栈。</p>
+<p>在这里，我为您追踪了执行流程：</p>
+<p><img alt="" src="../assets/72d2d936849206616463a3284a45881beab0792e.png" /></p>
+<p>顺着执行箭头查看如何<code>x</code>在捕获 ② 之前弹出① , 然后稍后访问 ③？我们确实有两个问题：</p>
+<ol>
+<li>
+<p>需要解析在 紧邻封闭函数之外的周围函数中声明的局部变量。</p>
+</li>
+<li>
+<p>需要能够捕获已经离开堆栈的变量。</p>
+</li>
+</ol>
+<p>幸运的是，我们正在向 VM 添加上值，并且上值明确设计用于跟踪已逃脱堆栈的变量。因此，在一个巧妙的自引用中，可以使用 upvalues 来  允许 upvalues 捕获在紧邻函数外部声明的变量。</p>
+<p>解决方案是允许闭包捕获局部变量或紧邻封闭函数中的<strong>现有</strong>上值。如果一个深度嵌套的函数引用了一个在几步之外声明的局部变量，将通过让每个函数捕获一个上值以供下一个函数获取，将其线索通过所有的中间函数。</p>
+<p><img alt="" src="../assets/de28c91dcc24c7bd172ed271b0e925ee4c576bfa.png" /></p>
+<p>在上面的示例中，<code>middle()</code>捕获<code>x</code>紧邻封闭函数<code>outer()</code>中的局部变量并将其存储在它自己的上值中。即使<code>middle()</code>本身不引用<code>x</code>.然后，当<code>inner()</code>的声明执行时，它的闭包从<code>middle()</code> ObjClosure中获取捕获的 upvalue<code>x</code>。一个函数只从紧邻的函数中捕获——无论是局部值还是上值——它保证在内部函数声明执行的那一刻仍然存在。</p>
+<p>为了实现这一点，<code>resolveUpvalue()</code>变得递归。</p>
+<pre><code class="language-c">  if (local != -1) {
+    return addUpvalue(compiler, (uint8_t)local, true);
+  }
+
+  int upvalue = resolveUpvalue(compiler-&gt;enclosing, name);  //&lt;&lt;
+  if (upvalue != -1) {
+    return addUpvalue(compiler, (uint8_t)upvalue, false); 
+  }                                                         //&lt;&lt;
+
+  return -1;
+// compiler.c, in resolveUpvalue()
+</code></pre>
+<p>这仅有三行代码，但我发现这个函数第一次做对真的很有挑战性。尽管事实上我并没有发明任何新东西，只是从 Lua 移植了这个概念。大多数递归函数要么在递归调用之前完成所有工作（<strong>前序遍历</strong>，或“进行中”），要么在递归调用之后完成所有工作（<strong>后序遍历</strong>，或“进行中备份”）。这个函数两者兼而有之。递归调用就在中间。</p>
+<p>我们将慢慢介绍它。首先，我们在封闭函数中寻找匹配的局部变量。如果找到一个，捕获那个本地并返回。这是基本情况。</p>
+<blockquote>
+<p>当然，另一种基本情况是没有封闭函数。在这种情况下，该变量无法按词法解析，而是被视为全局变量。</p>
+</blockquote>
+<p>否则，我们会在紧邻封闭的函数之外寻找局部变量。通过递归调用<code>resolveUpvalue()</code> 传入<em>enclosing</em>编译器而不是当前的编译器来做到这一点。这一系列<code>resolveUpvalue()</code>调用沿着嵌套编译器链进行，直到它遇到一个基本情况——要么它找到一个实际的局部变量来捕获，要么它用完编译器。</p>
+<p>当找到局部变量时，嵌套最深的<code>resolveUpvalue()</code>调用会捕获它并返回上值索引。这将返回到对内部函数声明的下一次调用。该调用捕获<em>周围</em>函数的上值，依此类推。随着对每个<code>resolveUpvalue()</code>嵌套调用的返回，我们向下钻取到最里面的函数声明，其中出现了我们正在解析的标识符。在此过程中的每一步，我们都会向中间函数添加一个上值，并将生成的上值索引传递给下一个调用。</p>
+<blockquote>
+<p>每次<code>resolveUpvalue()</code>递归调用都会走出一层函数嵌套。因此，内部递归调用引用外部嵌套声明。查找局部变量的最内层<code>resolveUpvalue()</code>递归调用将针对<em>最外层</em>函数，就在实际声明该变量的封闭函数内。</p>
+</blockquote>
+<p>解析<code>x</code>时，遍历原始示例可能会有所帮助：</p>
+<p><img alt="" src="../assets/3803da5525a13c9692cb5cd4586ecac1c5418448.png" /></p>
+<p>注意，对<code>addUpvalue()</code> 新的调用参数<code>isLocal</code>值是<code>false</code>。现在您看到该标志控制闭包是捕获局部变量还是捕获周围函数的上值。</p>
+<p>当编译器到达函数声明的末尾时，每个变量引用都已解析为局部、上值或全局。每个 upvalue 可以依次从周围的函数中捕获一个局部变量，或者在传递闭包的情况下捕获一个 upvalue。终于有足够的数据来发出字节码，它在运行时创建一个闭包来捕获所有正确的变量。</p>
+<pre><code class="language-c">  emitBytes(OP_CLOSURE, makeConstant(OBJ_VAL(function)));
+
+  for (int i = 0; i &lt; function-&gt;upvalueCount; i++) {
+    emitByte(compiler.upvalues[i].isLocal ? 1 : 0);
+    emitByte(compiler.upvalues[i].index);
+  }
+}
+// compiler.c, in function()
+</code></pre>
+<p><code>OP_CLOSURE</code>指令的独特之处在于它具有可变大小的编码。对于闭包捕获的每个上值，都有两个单字节操作数。每对操作数指定该上值捕获的内容。如果第一个字节是1，它会捕获封闭函数中的一个局部变量。如果为0，它会捕获函数的一个上值。下一个字节是要捕获的本地槽或上值索引。</p>
+<p>这种奇怪的编码意味着我们需要在反汇编代码中为<code>OP_CLOSURE</code>.</p>
+<pre><code class="language-c">      printf(&quot;\n&quot;);
+
+      ObjFunction* function = AS_FUNCTION(
+          chunk-&gt;constants.values[constant]);
+      for (int j = 0; j &lt; function-&gt;upvalueCount; j++) {
+        int isLocal = chunk-&gt;code[offset++];
+        int index = chunk-&gt;code[offset++];
+        printf(&quot;%04d      |                     %s %d\n&quot;,
+               offset - 2, isLocal ? &quot;local&quot; : &quot;upvalue&quot;, index);
+      }
+
+      return offset;
+// debug.c, in disassembleInstruction()
+</code></pre>
+<p>例如，采用以下脚本：</p>
+<pre><code class="language-js">fun outer() {
+  var a = 1;
+  var b = 2;
+  fun middle() {
+    var c = 3;
+    var d = 4;
+    fun inner() {
+      print a + c + b + d;
+    }
+  }
+}
+</code></pre>
+<p>如果我们反汇编创建闭包的指令<code>inner()</code>，它会打印：</p>
+<pre><code>0004    9 OP_CLOSURE          2 &lt;fn inner&gt;
+0006      |                     upvalue 0
+0008      |                     local 1
+0010      |                     upvalue 1
+0012      |                     local 2
+</code></pre>
+<p>我们还有另外两个更简单的指令来添加反汇编程序支持。</p>
+<pre><code class="language-c">    case OP_SET_GLOBAL:
+      return constantInstruction(&quot;OP_SET_GLOBAL&quot;, chunk, offset);
+    case OP_GET_UPVALUE:
+      return byteInstruction(&quot;OP_GET_UPVALUE&quot;, chunk, offset);
+    case OP_SET_UPVALUE:
+      return byteInstruction(&quot;OP_SET_UPVALUE&quot;, chunk, offset);
+    case OP_EQUAL:
+// debug.c, in disassembleInstruction()
+</code></pre>
+<p>它们都有一个单字节操作数，所以没有什么令人兴奋的事情发生。我们确实需要添加一个incluce，以便调试模块可以访问<code>AS_FUNCTION()</code>.</p>
+<pre><code class="language-c">#include &quot;debug.h&quot;
+#include &quot;object.h&quot;
+#include &quot;value.h&quot;
+// debug.c
+</code></pre>
+<p>有了它，我们的编译器就在我们想要的地方。对于每个函数声明，它输出一条<code>OP_CLOSURE</code>指令，后跟一系列操作数字节对，用于在运行时需要捕获的每个上值。是时候跳到 VM 的那一边并开始运行了。</p>
+<h2 id="253-upvalue-objects">25.3 上值对象 upvalue objects</h2>
+<p>现在，每条<code>OP_CLOSURE</code>指令后跟一系列字节，这些字节指定 ObjClosure 应拥有的上值。在处理这些操作数之前，需要一个上值的运行时表示。</p>
+<pre><code class="language-c">typedef struct ObjUpvalue {
+  Obj obj;
+  Value* location;
+} ObjUpvalue;
+// object.h, add after struct ObjString
+</code></pre>
+<p>我们知道 upvalues 必须管理不再存在于堆栈中的封闭变量，这意味着一定量的动态分配。在 VM 中执行此操作的最简单方法是在已有的对象系统上构建。这样，在<a href="http://craftinginterpreters.com/garbage-collection.html">下一章</a>实现垃圾收集器时，GC 也可以管理 upvalues 的内存。</p>
+<p>因此，运行时上值结构是一个具有典型 Obj 标头字段的 ObjUpvalue。接下来是一个<code>location</code>指向封闭变量的字段。请注意，这是指向值的指针，而不是值本身。它是对变量的引用，而不是值。这很重要，因为这意味着当将上值分配给捕获的变量时，我们正在分配给实际变量，而不是副本。例如：</p>
+<pre><code class="language-js">fun outer() {
+  var x = &quot;before&quot;;
+  fun inner() {
+    x = &quot;assigned&quot;;
+  }
+  inner();
+  print x;
+}
+outer();
+</code></pre>
+<p>这个程序应该打印“assigned”，即使闭包赋值给<code>x</code>它并且周围的函数访问它。</p>
+<p>因为上值是对象，所以我们有所有常见的对象机制，从一个类似构造函数的函数开始：</p>
+<pre><code class="language-c">ObjString* copyString(const char* chars, int length);
+ObjUpvalue* newUpvalue(Value* slot);
+void printObject(Value value);
+// object.h, add after copyString()
+</code></pre>
+<p>它采用封闭变量所在的槽的地址。这是实现：</p>
+<pre><code class="language-c">ObjUpvalue* newUpvalue(Value* slot) {
+  ObjUpvalue* upvalue = ALLOCATE_OBJ(ObjUpvalue, OBJ_UPVALUE);
+  upvalue-&gt;location = slot;
+  return upvalue;
+}
+// object.c, add after copyString()
+</code></pre>
+<p>我们简单地初始化对象并存储指针。这需要一个新的对象类型。</p>
+<pre><code class="language-c">  OBJ_STRING,
+  OBJ_UPVALUE
+} ObjType;
+// object.h, in enum ObjType
+</code></pre>
+<p>当然还有一个类似析构函数的函数：</p>
+<pre><code class="language-c">      FREE(ObjString, object);
+      break;
+    }
+    case OBJ_UPVALUE:
+      FREE(ObjUpvalue, object);
+      break;
+  }
+// memory.c, in freeObject()
+</code></pre>
+<p>多个闭包可以关闭同一个变量，因此 ObjUpvalue 不拥有它引用的变量。因此，唯一要释放的是 ObjUpvalue 本身。</p>
+<p>最后，打印：</p>
+<pre><code class="language-c">    case OBJ_STRING:
+      printf(&quot;%s&quot;, AS_CSTRING(value));
+      break;
+    case OBJ_UPVALUE:
+      printf(&quot;upvalue&quot;);
+      break;
+  }
+// object.c, in printObject()
+</code></pre>
+<p>打印对最终用户没有用。Upvalues 只是对象，因此我们可以利用 VM 的内存管理。它们不是 Lox 用户可以在程序中直接访问的一等值。所以这段代码永远不会真正执行... 但它可以防止编译器对我们大喊大叫未处理的 switch case，所以我们到了。</p>
+<h3 id="2531-upvalues-in-closures">25.3.1 闭包中的上值 upvalues in closures</h3>
+<p>当第一次介绍上值时，说过每个闭包都有一个上值数组。我们终于努力回到实施这一点。</p>
+<pre><code class="language-c">  ObjFunction* function;
+  ObjUpvalue** upvalues;
+  int upvalueCount;
+} ObjClosure;
+// object.h, in struct ObjClosure
+</code></pre>
+<p>不同的闭包可能有不同数量的上值，所以需要一个动态数组。upvalues 本身也是动态分配的，所以最终得到一个二级指针——一个指向动态分配的 upvalues 指针数组的指针。我们还存储数组中元素的数量。</p>
+<blockquote>
+<p>将上值计数存储在闭包中是多余的，因为 ObjClosure 引用的 ObjFunction 也保留该计数。和往常一样，这段奇怪的代码是为了安抚 GC。在闭包对应的 ObjFunction 已经被释放后，收集器可能需要知道 ObjClosure 的上值数组大小。</p>
+</blockquote>
+<p>当创建一个 ObjClosure 时，分配了一个适当大小的上值数组，在编译时确定并存储在 ObjFunction 中。</p>
+<pre><code class="language-c">ObjClosure* newClosure(ObjFunction* function) {
+  ObjUpvalue** upvalues = ALLOCATE(ObjUpvalue*,
+                                   function-&gt;upvalueCount);
+  for (int i = 0; i &lt; function-&gt;upvalueCount; i++) {
+    upvalues[i] = NULL;
+  }
+
+  ObjClosure* closure = ALLOCATE_OBJ(ObjClosure, OBJ_CLOSURE);
+// object.c, in newClosure()
+</code></pre>
+<p>在创建闭包对象本身之前，分配上值数组并将它们全部初始化为<code>NULL</code>.这个围绕记忆的奇怪仪式是一种精心的舞蹈，以取悦（即将到来的）垃圾收集神。它确保内存管理器永远不会看到未初始化的内存。</p>
+<p>然后我们将数组存储在新的闭包中，并从 ObjFunction 复制计数。</p>
+<pre><code class="language-c">  closure-&gt;function = function;
+  closure-&gt;upvalues = upvalues;
+  closure-&gt;upvalueCount = function-&gt;upvalueCount;
+  return closure;
+// object.c, in newClosure()
+</code></pre>
+<p>当我们释放一个 ObjClosure 时，我们也释放了上值数组。</p>
+<pre><code class="language-c">    case OBJ_CLOSURE: {
+      ObjClosure* closure = (ObjClosure*)object;
+      FREE_ARRAY(ObjUpvalue*, closure-&gt;upvalues,
+                 closure-&gt;upvalueCount);
+      FREE(ObjClosure, object);
+// memory.c, in freeObject()
+</code></pre>
+<p>ObjClosure 本身并不拥有 ObjUpvalue 对象，但它拥有包含指向这些上值的指针的数组。</p>
+<p>当它创建一个闭包时，在解释器中填充上值数组。在<code>OP_CLOSURE</code>之后，遍历所有操作数，以查看每个插槽捕获的上值类型。</p>
+<pre><code class="language-c">        push(OBJ_VAL(closure));
+        for (int i = 0; i &lt; closure-&gt;upvalueCount; i++) {
+          uint8_t isLocal = READ_BYTE();
+          uint8_t index = READ_BYTE();
+          if (isLocal) {
+            closure-&gt;upvalues[i] =
+                captureUpvalue(frame-&gt;slots + index);
+          } else {
+            closure-&gt;upvalues[i] = frame-&gt;closure-&gt;upvalues[index];
+          }
+        }
+        break;
+// vm.c, in run()
+</code></pre>
+<p>这段代码是闭包生效的神奇时刻。我们迭代闭包期望的每个上值。对于每一个，读取一对操作数字节。如果 upvalue 在封闭函数中关闭了一个局部变量，我们就让<code>captureUpvalue()</code>完成工作。</p>
+<p>否则，从周围的函数中捕获一个上值。在函数声明的末尾发出一条<code>OP_CLOSURE</code>指令。在我们执行该声明的那一刻，<em>当前</em>函数就是周围的函数。这意味着当前函数的闭包存储在调用堆栈顶部的 CallFrame 中。因此，要从封闭函数中获取上值，我们可以直接从本地变量<code>frame</code>中读取它，该变量缓存了对该 CallFrame 的引用。</p>
+<p>关闭局部变量更有趣。大部分工作发生在一个单独的函数中，但首先我们计算要传递给它的参数。我们需要在周围函数的栈窗口中获取指向捕获的本地槽的指针。该窗口从 <code>frame-&gt;slots</code>开始，指向插槽零。将<code>index</code>偏移量添加到我们要捕获的本地插槽中。我们在这里传递该指针：</p>
+<pre><code class="language-c">static ObjUpvalue* captureUpvalue(Value* local) {
+  ObjUpvalue* createdUpvalue = newUpvalue(local);
+  return createdUpvalue;
+}
+// vm.c, add after callValue()
+</code></pre>
+<p>这似乎有点傻。它所做的只是创建一个新的 ObjUpvalue 来捕获给定的堆栈槽并将其返回。我们需要一个单独的函数吗？嗯，不，还<em>没有</em>。但是你知道我们最终会在这里添加更多代码。</p>
+<p>首先，让我们总结一下正在做的事情。回到用于处理<code>OP_CLOSURE</code>的解释器代码中，我们最终完成了对上值数组的迭代并初始化了每个数组。完成后，我们有一个新的闭包，其中包含一个充满指向变量的上值的数组。</p>
+<p>有了它，我们就可以实现与这些上值一起使用的指令。</p>
+<pre><code class="language-c">      }
+      case OP_GET_UPVALUE: {
+        uint8_t slot = READ_BYTE();
+        push(*frame-&gt;closure-&gt;upvalues[slot]-&gt;location);
+        break;
+      }
+      case OP_EQUAL: {
+// vm.c, in run()
+</code></pre>
+<p>操作数是当前函数的上值数组的索引。所以我们简单地查找相应的上值并解引用其位置指针以读取该槽中的值。设置变量是类似的。</p>
+<pre><code class="language-c">      }
+      case OP_SET_UPVALUE: {
+        uint8_t slot = READ_BYTE();
+        *frame-&gt;closure-&gt;upvalues[slot]-&gt;location = peek(0);
+        break;
+      }
+      case OP_EQUAL: {
+// vm.c, in run()
+</code></pre>
+<p>我们将栈顶部的值存储到所选上值指向的槽中。正如局部变量的指令一样，这些指令的速度很重要。用户程序不断地读取和写入变量，所以如果它很慢，那么一切都很慢。而且，像往常一样，使它们快速的方法是保持它们的简单。这两条新指令非常好：没有控制流，没有复杂的算法，只有几个间接指针和一个<code>push()</code>.</p>
+<blockquote>
+<p>set 指令不会从堆栈中<em>弹出</em>值，因为请记住，赋值是 Lox 中的表达式。因此，赋值的结果——赋值——需要保留在周围表达式的堆栈中。</p>
+</blockquote>
+<p>这是一个里程碑。只要所有变量都保留在堆栈中，我们就有了可以工作的闭包。尝试这个：</p>
+<pre><code class="language-js">fun outer() {
+  var x = &quot;outside&quot;;
+  fun inner() {
+    print x;
+  }
+  inner();
+}
+outer();
+</code></pre>
+<p>运行它，它会正确打印“outside”。</p>
+<h2 id="254-closed-upvalues">25.4  封闭的上值 closed-upvalues</h2>
+<p>当然，闭包的一个关键特性是它们会根据需要保留变量，即使在声明变量的函数返回之后也是如此。这是另一个<em>应该</em>起作用的例子：</p>
+<pre><code class="language-c">fun outer() {
+  var x = &quot;outside&quot;;
+  fun inner() {
+    print x;
+  }
+
+  return inner;
+}
+
+var closure = outer();
+closure();
+</code></pre>
+<p>但是如果你现在运行它... 谁知道它的作用？在运行时，它将从不再包含封闭变量的栈槽中读取。就像我多次提到的那样，问题的症结在于闭包中的变量没有栈语义。这意味着当声明它们的函数返回时，必须将它们从栈中取出。本章的最后一节就是这样做的。</p>
+<h3 id="2541">25.4.1  值和变量</h3>
+<p>在开始编写代码之前，我想深入探讨一个重要的语义点。闭包是关闭一个值还是一个(引用)变量？这不仅仅是一个学术问题。我不只是吹毛求疵。考虑：</p>
+<blockquote>
+<p>如果 Lox 不允许分配，那<em>将</em>是一个学术问题。</p>
+</blockquote>
+<pre><code class="language-c">var globalSet;
+var globalGet;
+
+fun main() {
+  var a = &quot;initial&quot;;
+
+  fun set() { a = &quot;updated&quot;; }
+  fun get() { print a; }
+
+  globalSet = set;
+  globalGet = get;
+}
+
+main();
+globalSet();
+globalGet();
+</code></pre>
+<p>外部<code>main()</code>函数创建两个闭包并将它们存储在全局变量中，以便它们比<code>main()</code>自身的执行时间更长。这两个闭包都捕获相同的变量。第一个闭包为其分配一个新值，第二个闭包读取该变量。</p>
+<blockquote>
+<p>我使用几个全局变量这一事实并不重要。我需要一些方法从一个函数返回两个值，并且在 Lox 中没有任何类型的集合类型，我的选择是有限的。</p>
+</blockquote>
+<p><code>globalGet()</code>打印的调用是什么？如果闭包捕获<em>值</em>，那么每个闭包都会获得自己<code>a</code>的副本，其中包含闭包函数声明执行时的值。对<code>globalSet()</code>的调用将修改<code>set()</code>的副本<code>a</code>，但<code>get()</code>的副本将不受影响。因此，调用<code>globalGet()</code>将打印“initial”。</p>
+<p>如果闭包关闭变量，则<code>get()</code>和<code>set()</code>都将捕获（引用）同<em>一个可变变量</em>。<code>set()</code>更改<code>a</code>时，它会更改<code>get()</code>读取<code>a</code>的内容。只有一个<code>a</code>。反过来，这意味着调用<code>globalGet()</code>将打印“updated”。</p>
+<p>应该是哪个？Lox 和我所知道的大多数其他闭包语言的答案是后者。闭包捕获变量。您可以将它们视为捕获<em>值所在的位置</em>。当我们处理不再在堆栈上的封闭变量时，请记住这一点很重要。当一个变量移动到堆中时，我们需要确保捕获该变量的所有闭包都保留对其<em>一个</em>新位置的引用。这样，当变量发生变化时，所有闭包都会看到变化。</p>
+<h3 id="2542-closing-upvalues">25.4.2  正在的上值 closing upvalues</h3>
+<p>我们知道局部变量总是从堆栈开始。这样速度更快，并且让我们的单程编译器在发现变量已被捕获之前发出代码。还知道，如果闭包比声明捕获变量的函数生命周期更长，则闭包变量需要移动到堆中。</p>
+<p>在 Lua 之后，我们将使用<strong>open upvalue</strong>来引用指向仍在堆栈上的局部变量的 upvalue。当一个变量移动到堆中时，我们正在<em>关闭</em>上值，结果自然是一个<strong>关闭的上值 （closed upvalue）</strong>。我们需要回答的两个问题是：</p>
+<ol>
+<li>
+<p>封闭变量在堆上的什么位置？</p>
+</li>
+<li>
+<p>什么时候关闭upvalue？</p>
+</li>
+</ol>
+<p>第一个问题的答案很简单。我们已经在堆上有一个方便的对象，它表示对变量的引用——ObjUpvalue本身。封闭变量将移动到 ObjUpvalue 结构内部的新字段中。这样就不需要做任何额外的堆分配来关闭上值。</p>
+<p>第二个问题也很简单。只要变量在堆栈上，就可能有代码引用它，并且该代码必须正常工作。所以将变量提升到堆的逻辑时间越晚越好。如果我们在局部变量超出作用域时将其转移，可以肯定在该点之后没有代码会尝试从栈中访问它。变量超出作用域后，如果任何代码试图使用它，编译器将报告错误。</p>
+<blockquote>
+<p>这里的“之后”，我指的是词汇或文本意义包含封闭变量声明的块<code>}</code>之后的代码。</p>
+</blockquote>
+<p>当局部变量超出范围时，编译器已经发出<code>OP_POP</code>指令。如果一个变量被闭包捕获，我们将改为发出一条不同的指令将该变量从栈中提升到其对应的上值中。为此，编译器需要知道哪些局部变量被关闭。</p>
+<blockquote>
+<p>编译器不会弹出函数体内立即声明的参数和局部变量。我们也会在运行时处理这些。</p>
+</blockquote>
+<p>编译器已经为函数中的每个局部变量维护了一个 Upvalue 结构数组，以准确跟踪该状态。该数组非常适合回答“这个闭包使用哪些变量？”  但它不太适合回答  “有<em>没有</em>函数捕获这个局部变量？”  特别是，一旦某个闭包的编译器完成，其变量已被捕获的封闭函数的编译器将无法再访问任何上值状态。</p>
+<p>换句话说，编译器维护从上值到它们捕获的局部变量的指针，但不是在另一个方向。所以我们首先需要在现有的本地结构中添加一些额外的跟踪，以便我们可以判断给定的本地是否被闭包捕获。</p>
+<pre><code class="language-c">  int depth;
+  bool isCaptured;
+} Local;
+// compiler.c, in struct Local
+</code></pre>
+<p>如果local被任何以后的嵌套函数声明捕获该字段是<code>true</code>。最初，并未捕获所有局部变量。</p>
+<pre><code class="language-c">  local-&gt;depth = -1;
+  local-&gt;isCaptured = false;
+}
+// compiler.c, in addLocal()
+</code></pre>
+<p>同样，编译器隐式声明的特殊“slot zero local”也没有被捕获。</p>
+<blockquote>
+<p>在本书的后面，用户<em>将</em>有可能捕获此变量。只是在这里建立一些预期。</p>
+</blockquote>
+<pre><code class="language-c">  local-&gt;depth = 0;
+  local-&gt;isCaptured = false;
+  local-&gt;name.start = &quot;&quot;;
+// compiler.c, in initCompiler()
+</code></pre>
+<p>在解析标识符时，如果我们最终为局部变量创建了一个上值，我们将其标记为已捕获。</p>
+<pre><code class="language-c">  if (local != -1) {
+    compiler-&gt;enclosing-&gt;locals[local].isCaptured = true;
+    return addUpvalue(compiler, (uint8_t)local, true);
+// compiler.c, in resolveUpvalue()
+</code></pre>
+<p>现在，在块作用域的末尾，当编译器发出代码为局部变量释放堆栈槽时，可以判断哪些需要提升到堆上。我们将为此使用一条新指令。</p>
+<pre><code class="language-c">  while (current-&gt;localCount &gt; 0 &amp;&amp;
+         current-&gt;locals[current-&gt;localCount - 1].depth &gt;
+            current-&gt;scopeDepth) {
+    if (current-&gt;locals[current-&gt;localCount - 1].isCaptured) {
+      emitByte(OP_CLOSE_UPVALUE);
+    } else {
+      emitByte(OP_POP);
+    }
+    current-&gt;localCount--;
+  }
+// compiler.c, in endScope(), replace 1 line
+</code></pre>
+<p>该指令不需要操作数。我们知道，在这条指令执行的时候，变量总是在栈顶。我们声明指令。</p>
+<pre><code class="language-c">  OP_CLOSURE,
+  OP_CLOSE_UPVALUE,
+  OP_RETURN,
+// chunk.h, in enum OpCode
+</code></pre>
+<p>并为其添加简单的反汇编程序支持：</p>
+<pre><code class="language-c">    }
+    case OP_CLOSE_UPVALUE:
+      return simpleInstruction(&quot;OP_CLOSE_UPVALUE&quot;, offset);
+    case OP_RETURN:
+// debug.c, in disassembleInstruction()
+</code></pre>
+<p>完美！现在生成的字节码准确地告诉运行时每个捕获的局部变量必须何时移动到堆中。更好的是，它只对被闭包使用并需要这种特殊待遇的局部变量这样做。这符合我们希望用户只为他们使用的功能付费的总体性能目标。没有被闭包使用的变量完全在栈上生存和死亡，就像它们以前一样。</p>
+<h3 id="2543-tracking-open-upvalues">25.4.3 跟踪开放的上值  tracking-open-upvalues</h3>
+<p>让我们转到运行时方面。在我们可以解释<code>OP_CLOSE_UPVALUE</code>指令之前，有一个问题需要解决。早些时候，当我谈到闭包是捕获变量还是值时，我说过重要的是，如果多个闭包访问同一个变量，它们最终会引用内存中完全相同的存储位置。这样一来，如果一个闭包写入变量，另一个闭包就会看到变化。</p>
+<p>现在，如果两个闭包捕获相同的局部变量，则 VM 会为每个闭包创建一个单独的 Upvalue。缺少必要的共享。当我们将变量移出栈时，如果我们仅将其移入其中一个上值，则另一个上值将具有孤立值。</p>
+<blockquote>
+<p>如果一个闭包从周围的函数中捕获了一个<em>上值</em>，则VM确实共享上值。嵌套案例工作正常。但是，如果两个兄弟闭包捕获相同的局部变量，则它们各自创建一个单独的 ObjUpvalue。</p>
+</blockquote>
+<p>为了解决这个问题，每当 VM 需要一个捕获特定局部变量槽的上值时，将首先搜索指向该槽的现有上值。如果找到，会重复使用它。挑战在于所有先前创建的上值都隐藏在各种闭包的上值数组中。这些闭包可能位于 VM 内存中的任何位置。</p>
+<p>第一步是为 VM 提供它自己的所有开放上值列表，这些上值指向仍在栈中的变量。每次 VM 需要一个 upvalue 时搜索列表听起来可能很慢，但实际上，这还不错。实际关闭的堆栈上的变量数量往往很小。创建闭包的函数声明很少出现在用户程序的性能关键执行路径上。</p>
+<blockquote>
+<p>闭包经常在热循环中被调用。想一想传递给集合上典型的高阶函数的闭包，例如<a href="https://en.wikipedia.org/wiki/Map_(higher-order_function)"><code>map()</code></a>和<a href="https://en.wikipedia.org/wiki/Filter_(higher-order_function)"><code>filter()</code></a>。那应该很快。<em>但是创建</em>闭包的函数声明只发生一次并且通常在循环之外。</p>
+</blockquote>
+<p>更好的是，我们可以通过它们指向的栈槽索引来对开放值列表进行排序。常见的情况是插槽<em>尚未</em>被捕获——在闭包之间共享变量并不常见——并且闭包倾向于捕获靠近堆栈顶部的局部变量。如果我们按堆栈槽顺序存储开放的上值数组，一旦我们越过我们正在捕获的本地所在的槽，我们就知道它不会被发现。当局部变量接近栈顶时，我们可以很早地退出循环。</p>
+<p>维护一个排序列表需要在中间有效地插入元素。这建议使用链接列表而不是动态数组。由于我们自己定义了 ObjUpvalue 结构，最简单的实现是一个侵入式列表，它将 next 指针放在 ObjUpvalue 结构本身的内部。</p>
+<pre><code class="language-c">  Value* location;
+  struct ObjUpvalue* next;
+} ObjUpvalue;
+// object.h, in struct ObjUpvalue
+</code></pre>
+<p>当我们分配一个 upvalue 时，它??还没有附加到任何列表，所以链接是?<code>NULL</code>。</p>
+<pre><code class="language-c">  upvalue-&gt;location = slot;
+  upvalue-&gt;next = NULL;
+  return upvalue;
+// object.c, in newUpvalue()
+</code></pre>
+<p>VM 拥有该列表，因此头指针正好位于主 VM 结构内。</p>
+<pre><code class="language-c">  Table strings;
+  ObjUpvalue* openUpvalues;
+  Obj* objects;
+// vm.h, in struct VM
+</code></pre>
+<p>该列表一开始是空的。</p>
+<pre><code class="language-c">  vm.frameCount = 0;
+  vm.openUpvalues = NULL;
+}
+// vm.c, in resetStack()
+</code></pre>
+<p>从 VM 指向的第一个 upvalue 开始，每个打开的 upvalue 都指向下一个打开的 upvalue，该 upvalue 引用堆栈更下方的局部变量。这个脚本，例如，</p>
+<pre><code class="language-js">{
+  var a = 1;
+  fun f() {
+    print a;
+  }
+  var b = 2;
+  fun g() {
+    print b;
+  }
+  var c = 3;
+  fun h() {
+    print c;
+  }
+}
+</code></pre>
+<p>应该产生一系列链接的上值，如下所示：</p>
+<p><img alt="" src="../assets/1674588218099b340fce203e4dac28040652ccfb.png" /></p>
+<p>每当我们关闭一个局部变量时，在创建一个新的上值之前，我们都会在列表中寻找一个现有的。</p>
+<pre><code class="language-c">static ObjUpvalue* captureUpvalue(Value* local) {
+  ObjUpvalue* prevUpvalue = NULL;
+  ObjUpvalue* upvalue = vm.openUpvalues;
+  while (upvalue != NULL &amp;&amp; upvalue-&gt;location &gt; local) {
+    prevUpvalue = upvalue;
+    upvalue = upvalue-&gt;next;
+  }
+
+  if (upvalue != NULL &amp;&amp; upvalue-&gt;location == local) {
+    return upvalue;
+  }
+
+  ObjUpvalue* createdUpvalue = newUpvalue(local);
+// vm.c, in captureUpvalue()
+</code></pre>
+<p>我们从列表的头部开始，这是最接近堆栈顶部的上值。我们遍历列表，使用一个小的指针比较来遍历每个指向我们正在寻找的槽上方的槽的上值。在这样做的同时，我们会跟踪列表中前面的上值。如果我们最终在它之后插入一个节点，我们将需要更新该节点的<code>next</code>指针。</p>
+<blockquote>
+<p>这是一个单链表。除了从头开始并从那里前进，我们没有其他选择。</p>
+</blockquote>
+<p>我们可以退出循环的三个原因：</p>
+<ol>
+<li>
+<p><strong>停在的本地插槽就是我们正在寻找的插槽</strong>。我们发现一个现有的上值捕获变量，所以我们重用那个上值。</p>
+</li>
+<li>
+<p><strong>用完了 upvalues 来搜索</strong>。当<code>upvalue</code>是时<code>NULL</code>，这意味着列表中的每个开放上值都指向我们正在寻找的插槽上方的局部变量，或者（更有可能）上值列表为空。无论哪种方式，我们都没有为我们的插槽找到升值。</p>
+</li>
+<li>
+<p><strong>我们找到了一个 upvalue，它的本地槽位低于我们正在寻找的槽位</strong>。由于列表已排序，这意味着我们已经超过了我们正在关闭的插槽，因此它一定没有现有的上值。</p>
+</li>
+</ol>
+<p>在第一种情况下，我们已经完成并返回了。否则，我们为本地槽创建一个新的上值并将其插入列表中正确的位置。</p>
+<pre><code class="language-c">  ObjUpvalue* createdUpvalue = newUpvalue(local);
+  createdUpvalue-&gt;next = upvalue;
+
+  if (prevUpvalue == NULL) {
+    vm.openUpvalues = createdUpvalue;
+  } else {
+    prevUpvalue-&gt;next = createdUpvalue;
+  }
+
+  return createdUpvalue;
+// vm.c, in captureUpvalue()
+</code></pre>
+<p>这个函数的当前版本已经创建了上值，所以我们只需要添加代码来将上值插入到列表中。我们通过越过列表末尾或停止在栈槽低于我们正在寻找的栈槽的第一个上值来退出列表遍历。在任何一种情况下，这意味着我们需要在指向的对象<em>之前</em>插入新的上值（如果我们到达列表的末尾<code>upvalue</code>可能是<code>NULL</code>）。</p>
+<p>正如您可能在数据结构 101 中了解到的那样，要将一个节点插入到链表中，您需要将前一个节点的<code>next</code>指针设置为指向您的新节点。当我们遍历列表时，我们一直在方便地跟踪前面的节点。还需要处理在列表头部插入新上值的特殊情况，在这种情况下，“next”指针是 VM 的头指针。</p>
+<blockquote>
+<p>有一个较短的实现，它通过使用指向指针的指针来统一处理头指针或前一个上值指针的更新<code>next</code>，但这种代码几乎让所有没有达到禅师水平的指针专业知识的人感到困惑。我采用了基本<code>if</code>语句方法。</p>
+</blockquote>
+<p>有了这个更新的功能，VM 现在可以确保任何给定的本地插槽只有一个 ObjUpvalue。如果两个闭包捕获相同的变量，它们将获得相同的上值。现在准备好将这些上值移出堆栈。</p>
+<h3 id="2544-closing-upvalues-at-runtime">25.4.4 运行时关闭上值 closing upvalues at runtime</h3>
+<p>编译器会发出一条<code>OP_CLOSE_UPVALUE</code>指令，准确地告诉 VM 何时应将局部变量提升到堆上。执行该指令是解释器的责任。</p>
+<pre><code class="language-c">      }
+      case OP_CLOSE_UPVALUE:
+        closeUpvalues(vm.stackTop - 1);
+        pop();
+        break;
+      case OP_RETURN: {
+// vm.c, in run()
+</code></pre>
+<p>当运行到此指令时，正在提升的变量就在堆栈的顶部。我们调用一个辅助函数，传递栈槽的地址。该函数负责关闭上值并将本地从栈移动到堆。之后，VM 可以通过调用<code>pop()</code>自由丢弃堆栈槽.</p>
+<p>有趣的事情发生在这里：</p>
+<pre><code class="language-c">static void closeUpvalues(Value* last) {
+  while (vm.openUpvalues != NULL &amp;&amp;
+         vm.openUpvalues-&gt;location &gt;= last) {
+    ObjUpvalue* upvalue = vm.openUpvalues;
+    upvalue-&gt;closed = *upvalue-&gt;location;
+    upvalue-&gt;location = &amp;upvalue-&gt;closed;
+    vm.openUpvalues = upvalue-&gt;next;
+  }
+}
+// vm.c, add after captureUpvalue()
+</code></pre>
+<p>这个函数接受一个指向栈槽的指针。它关闭可以找到的开放上值(open upvalue)，包含栈上当前槽或当前槽上方任意槽(vm.openUpvalues-&gt;location &gt;= last)。现在，我们只将指针传递给栈的顶部位置，因此“或当前槽上方”部分不会起作用，但很快就会起作用。</p>
+<p>为此，我们再次从上到下遍历 VM 的开放上值列表。如果 upvalue 的位置指向要关闭的插槽范围，我们将关闭 upvalue。否则，一旦我们达到范围之外的上值，我们知道剩余部分也会如此，所以停止迭代。</p>
+<p>upvalue 关闭的方式非常酷。首先，我们将变量的值复制到ObjUpvalue 的<code>closed</code>字段中。这就是封闭变量存在于堆中的地方。<code>OP_GET_UPVALUE</code>和<code>OP_SET_UPVALUE</code>指令需要在移动后的地方查找变量。我们可以在解释器代码中为这些指令添加一些条件逻辑，以检查上值是打开还是关闭的一些标志。</p>
+<p>但是已经有一定程度的间接性在起作用——那些指令解引用<code>location</code>指针以获取变量的值。当变量从栈移动到<code>closed</code>字段时，我们只需将<code>location</code>更新为 ObjUpvalue的<code>closed</code>字段的地址。</p>
+<p>我不是在这里赞美自己。这都是Lua开发团队的创新。</p>
+<p><img alt="" src="../assets/8e039832a5a46fec5b18ccb3f9d4ae8ca8d20ed9.png" /></p>
+<p>根本不需要改变<code>OP_GET_UPVALUE</code>和<code>OP_SET_UPVALUE</code>解释方式。这使它们保持简单，从而使它们保持快速。不过，确实需要将新字段添加到 ObjUpvalue。</p>
+<pre><code class="language-c">  Value* location;
+  Value closed;
+  struct ObjUpvalue* next;
+// object.h, in struct ObjUpvalue
+</code></pre>
+<p>当我们创建一个 ObjUpvalue 时，我们应该将它归零，这样就没有未初始化的内存在周围浮动。</p>
+<pre><code class="language-c">  ObjUpvalue* upvalue = ALLOCATE_OBJ(ObjUpvalue, OBJ_UPVALUE);
+  upvalue-&gt;closed = NIL_VAL;
+  upvalue-&gt;location = slot;
+// object.c, in newUpvalue()
+</code></pre>
+<p>每当编译器到达块的末尾时，它会丢弃该块中的所有局部变量，并为每个被关闭的局部变量发出一个<code>OP_CLOSE_UPVALUE</code>。编译器不会<em>在</em>定义函数体的最外层块作用域的末尾发出任何指令。该作用域包含函数的参数和在函数内部立即声明的任何局部变量。那些也需要关闭。</p>
+<blockquote>
+<p>没有什么能<em>阻止</em>我们关闭编译器中最外层的函数作用域并发出<code>OP_POP</code>指令<code>OP_CLOSE_UPVALUE</code>。这样做是不必要的，因为运行时在弹出调用帧时会隐式丢弃函数使用的所有堆栈槽。</p>
+</blockquote>
+<p>这就是<code>closeUpvalues()</code>接受指向栈槽的指针的原因。当一个函数返回时，我们调用同一个 辅助函数 并传入函数拥有的第一个栈槽。</p>
+<pre><code class="language-c">        Value result = pop();
+        closeUpvalues(frame-&gt;slots);
+        vm.frameCount--;
+vm.c, in run()
+</code></pre>
+<p>通过传递函数栈窗口中的第一个槽，我们关闭了返回函数拥有的所有剩余的开放上值。这样，我们现在就有了一个功能完备的闭包实现。只要捕获它们的函数需要它们，封闭变量就会存在。</p>
+<p>这是很多工作！在 jlox 中，闭包自然地从我们的环境表示中消失了。在 clox 中，我们不得不添加大量代码——新的字节码指令、编译器中的更多数据结构以及新的运行时对象。VM 在很大程度上将闭包中的变量与其他变量区别开来。</p>
+<p>这是有原因的。在实现复杂性方面，jlox 为我们“免费”提供了闭包。但就<em>性能</em>而言，jlox 的闭包却无济于事。通过在堆上分配<em>所有</em>环境，jlox 为<em>所有</em>局部变量付出了显着的性能代价，即使是大多数从未被闭包捕获的变量。</p>
+<p>使用 clox，我们有一个更复杂的系统，但这允许我们调整实现以适应我们观察到的局部变量的两种使用模式。对于大多数确实具有栈语义的变量，将它们完全分配在栈上，这样既简单又快速。然后，对于少数不起作用的局部变量，有第二条较慢的路径，可以根据需要选择加入。</p>
+<p>幸运的是，用户不会察觉到其中的复杂性。在他们看来，Lox 中的局部变量是简单和统一的。该<em>语言本身</em>与 jlox 的实现一样简单。但在幕后，clox 正在观察用户的行为并针对他们的特定用途进行优化。随着您的语言实现变得越来越复杂，您会发现自己会越来越多地这样做。很大一部分“优化”是关于添加检测特定用途的特殊情况代码，并为适合该模式的代码提供定制的、更快的路径。</p>
+<p>我们现在已经在 clox 中完全使用了词法范围，这是一个重要的里程碑。而且，现在我们有了具有复杂生命周期的函数和变量，我们也有<em>很多</em>对象漂浮在 clox 的堆中，指针网络将它们串在一起。<a href="http://craftinginterpreters.com/garbage-collection.html">下一步</a>是弄清楚如何管理该内存，以便我们可以在不再需要时释放其中一些对象。</p>
+<hr />
+<h2 id="_2"><a href="http://craftinginterpreters.com/closures.html#challenges">挑战</a></h2>
+<ol>
+<li>将每个 ObjFunction 包装在 ObjClosure 中会引入一个具有性能成本的间接层。对于 不关闭任何变量的函数来说，该成本不是必需的，但它确实让运行时统一处理所有调用。</li>
+</ol>
+<p>将 clox 更改为仅包装需要上值的 ObjClosures 中的函数。与始终包装函数相比，代码复杂性和性能如何？注意使用和不使用闭包的基准程序。您应该如何权衡每个基准的重要性？如果一个变得更慢，一个变得更快，您如何决定在选择实现策略时做出什么样的权衡？</p>
+<ol>
+<li>
+<p>阅读下面的设计说明。我会等。现在，你认为 Lox应该如何表现？更改实现为每个循环迭代创建一个新变量。</p>
+</li>
+<li>
+<p>一个<a href="http://wiki.c2.com/?ClosuresAndObjectsAreEquivalent">著名的公案</a>告诉我们“对象是穷人的闭包  (objects are a poor man’s closure)”（反之亦然）。我们的 VM 还不支持对象，但现在有了闭包，我们可以近似它们。使用闭包，编写一个模拟二维向量“对象”的 Lox 程序。它应该：</p>
+</li>
+<li>
+<p>定义一个“构造函数”以创建具有给定<em>x</em>和<em>y</em>坐标的新向量。</p>
+</li>
+<li>
+<p>提供“方法”以访问从该构造函数返回的值的<em>x</em>和<em>y</em>坐标。</p>
+</li>
+<li>
+<p>定义一个加法“方法”，将两个向量相加并产生第三个向量。</p>
+</li>
+</ol>
+<h2 id="_3"><a href="http://craftinginterpreters.com/closures.html#design-note">设计说明：循环变量闭包</a></h2>
+<p>闭包捕获变量。当两个闭包捕获相同的变量时，它们共享对相同底层存储位置的引用。当给变量设置新值时，这对所有变量是可见的。显然，如果两个闭包捕获不同的变量，就没有共享。</p>
+<pre><code class="language-js">var globalOne;
+var globalTwo;
+
+fun main() {
+  {
+    var a = &quot;one&quot;;
+    fun one() {
+      print a;
+    }
+    globalOne = one;
+  }
+
+  {
+    var a = &quot;two&quot;;
+    fun two() {
+      print a;
+    }
+    globalTwo = two;
+  }
+}
+
+main();
+globalOne();
+globalTwo();
+</code></pre>
+<p>这将打印“one”然后“two”。在这个例子中，很明显这两个<code>a</code>变量是不同的。但它并不总是那么明显。考虑：</p>
+<pre><code class="language-c">var globalOne;
+var globalTwo;
+
+fun main() {
+  for (var a = 1; a &lt;= 2; a = a + 1) {
+    fun closure() {
+      print a;
+    }
+    if (globalOne == nil) {
+      globalOne = closure;
+    } else {
+      globalTwo = closure;
+    }
+  }
+}
+
+main();
+globalOne();
+globalTwo();
+</code></pre>
+<p>代码很复杂，因为 Lox 没有集合类型。重要的部分是该<code>main()</code>函数执行循环的两次迭代<code>for</code>。每次通过循环，它都会创建一个闭包来捕获循环变量。它将第一个闭包存储在 中<code>globalOne</code>，第二个闭包存储在 中<code>globalTwo</code>。</p>
+<p>肯定有两种不同的关闭方式。他们关闭两个不同的变量吗？在循环的整个持续时间内是否只有一个<code>a</code>，或者每次迭代都有自己不同的<code>a</code>变量？</p>
+<p>此处的脚本很奇怪且人为设计，但这确实以不像 clox 那样最小的语言出现在真实代码中。这是一个 JavaScript 示例：</p>
+<pre><code class="language-js">var closures = [];
+for (var i = 1; i &lt;= 2; i++) {
+  closures.push(function () { console.log(i); });
+}
+
+closures[0]();
+closures[1]();
+</code></pre>
+<p>这是先打印“1”再打印“2”，还是打印两次“3” ？听到它打印了两次“3”，您可能会感到惊讶。在这个 JavaScript 程序中，只有一个<code>i</code>变量，其生命周期包括循环的所有迭代，包括最终退出。</p>
+<blockquote>
+<p>你想知道<em>3</em>是如何进入画面的吗？在第二次迭代后，执行<code>i++</code>，递增<code>i</code>到 3。这就是导致<code>i &lt;= 2</code>评估为假并结束循环的原因。如果<code>i</code>从未达到3，循环将永远运行。</p>
+</blockquote>
+<p>如果您熟悉 JavaScript，您可能知道使用<code>var</code>声明的变量会隐式<em>提升</em>到周围的函数或顶级范围。就好像你真的写了这个：</p>
+<pre><code class="language-js">var closures = [];
+var i;
+for (i = 1; i &lt;= 2; i++) {
+  closures.push(function () { console.log(i); });
+}
+
+closures[0]();
+closures[1]();
+</code></pre>
+<p>在这一点上，只有一个<code>i</code>.现在考虑是否更改程序以使用新的<code>let</code>关键字：</p>
+<pre><code class="language-js">var closures = [];
+for (let i = 1; i &lt;= 2; i++) {
+  closures.push(function () { console.log(i); });
+}
+
+closures[0]();
+closures[1]();
+</code></pre>
+<p>这个新程序的行为是否相同？没有。在这种情况下，它先打印“1”，然后打印“2”。每个闭包都有自己的<code>i</code>.当你想到它时，这有点奇怪。增量子句是<code>i++</code>.这看起来很像它正在分配和改变一个现有变量，而不是创建一个新变量。</p>
+<p>让我们尝试一些其他语言。这是Python：</p>
+<pre><code class="language-py">closures = []
+for i in range(1, 3):
+  closures.append(lambda: print(i))
+
+closures[0]()
+closures[1]()
+</code></pre>
+<p>Python 并没有真正的块作用域。变量是隐式声明的，并自动限定在周围函数的作用域内。有点像在 JS 中提升，我认为是这样。所以两个闭包都捕获相同的变量。但是，与 C 不同的是，我们不会通过递增<code>i</code><em>超过</em>最后一个值来退出循环，因此它会打印两次“2”。</p>
+<p>Ruby呢？Ruby 有两种典型的数字迭代方式。这是经典的命令式风格：</p>
+<pre><code class="language-ruby">closures = []
+for i in 1..2 do
+  closures &lt;&lt; lambda { puts i }
+end
+
+closures[0].call
+closures[1].call
+</code></pre>
+<p>这和 Python 一样，打印“2”两次。但更惯用的 Ruby 风格是在范围对象上使用高阶<code>each()</code>方法：</p>
+<pre><code class="language-py">closures = []
+(1..2).each do |i|
+  closures &lt;&lt; lambda { puts i }
+end
+
+closures[0].call
+closures[1].call
+</code></pre>
+<p>如果您不熟悉 Ruby，该<code>do |i| ... end</code>部分基本上是一个创建并传递给<code>each()</code>方法的闭包。<code>|i|</code>是闭包的参数签名。<code>each()</code>方法调用该闭包两次，<code>i</code>第一次传入 1，第二次传入 2。</p>
+<p>在这种情况下，“循环变量”实际上是一个函数参数。而且，由于循环的每次迭代都是对函数的单独调用，因此对于每次调用而言，这些绝对是单独的变量。所以这打印“1”然后“2”。</p>
+<p>如果一门语言有更高级的基于迭代器的循环结构<code>foreach</code>，如 C#、Java 的“增强型 for”、<code>for-of</code>JavaScript、<code>for-in</code>Dart 等，那么我认为读者很自然地希望每次迭代都创建一个新变量。代码<em>看起来</em>像一个新变量，因为循环头看起来像一个变量声明。并且没有增量表达式看起来像是在改变该变量以前进到下一步。</p>
+<p>如果你深入了解 StackOverflow 和其他地方，你会发现证据表明这是用户所期望的，因为当他们<em>没有</em>得到它时，他们会非常惊讶。特别是，C# 最初并<em>没有</em>为循环的每次迭代创建新的循环变量<code>foreach</code>。这是用户混淆的常见来源，以至于他们采取了非常罕见的步骤，对语言进行了重大更改。在 C# 5 中，每次迭代都会创建一个新变量。</p>
+<p>旧的 C 风格<code>for</code>循环更难。increment 子句确实看起来像突变。这意味着每一步都会更新一个变量。但是每次迭代共享一个循环变量几乎没有<em>用</em>。唯一一次你甚至可以检测到它是在闭包捕获它的时候。拥有一个引用变量的闭包几乎没有帮助，该变量的值是导致您退出循环的任何值。</p>
+<p>实用的答案可能是做 JavaScript<code>let</code>在<code>for</code>循环中所做的事情。让它看起来像突变但实际上每次都创建一个新变量，因为那是用户想要的。但是，当您考虑它时，这有点奇怪。</p>
+                
+              
+              
+<script src="https://giscus.app/client.js" data-repo="PKUFlyingPig/cs-self-learning" data-repo-id="R_kgDOGP67ng"
+    data-category="Announcements" data-category-id="DIC_kwDOGP67ns4COM9Q" data-mapping="title"
+    data-reactions-enabled="1" data-emit-metadata="0" data-input-position="top" data-theme="light_protanopia"
+    data-lang="zh-CN" data-loading="lazy" crossorigin="anonymous" async>
+</script>
+
+<script>
+    var palette = __get("__palette")
+    if (palette && typeof palette.color === "object") {
+        if (palette.color.scheme === "slate") {
+            const giscus = document.querySelector("script[src*=giscus]")
+            giscus.setAttribute("data-theme", "dark_protanopia")
+        }
+    }
+
+    document.addEventListener("DOMContentLoaded", function () {
+        const ref = document.querySelector("[data-md-component=palette]")
+        ref.addEventListener("change", function () {
+            var palette = __get("__palette")
+            if (palette && typeof palette.color === "object") {
+                const theme = palette.color.scheme === "slate" ? "dark_protanopia" : "light_protanopia"
+                const frame = document.querySelector(".giscus-frame")
+                frame.contentWindow.postMessage({
+                    giscus: { setConfig: { theme } }
+                }, "https://giscus.app")
+            }
+        })
+    })
+</script>
+
+            </article>
+          </div>
+        </div>
+        
+          <a href="#" class="md-top md-icon" data-md-component="top" data-md-state="hidden">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"/></svg>
+            Back to top
+          </a>
+        
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href="../../3_24.Calls%20and%20Functions/Calls%20and%20Functions/" class="md-footer__link md-footer__link--prev" aria-label="上一页: 3.24.Calls and Functions" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                上一页
+              </span>
+              3.24.Calls and Functions
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../../3_26.Garbage%20Collection/Garbage%20Collection/" class="md-footer__link md-footer__link--next" aria-label="下一页: 3.26.Garbage Collection" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                下一页
+              </span>
+              3.26.Garbage Collection
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        
+          Made with
+          <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+            Material for MkDocs
+          </a>
+        
+        
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["header.autohide", "navigation.tracking", "navigation.top", "search.highlight", "search.share", "search.suggest", "content.code.annotate"], "search": "../../../assets/javascripts/workers/search.fcfe8b6d.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\uff0c\\u3002]+", "search.placeholder": "\u641c\u7d22", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.b1047164.min.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+      
+    
+  </body>
+</html>

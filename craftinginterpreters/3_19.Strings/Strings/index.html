@@ -1,0 +1,1856 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-7.3.6">
+    
+    
+      
+        <title>3.19.Strings - doc-zh</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.a57b2b03.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.3f5d1f46.min.css">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font-family:"Roboto";--md-code-font-family:"Roboto Mono"}</style>
+      
+    
+    
+    
+    
+      
+
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="light-blue" data-md-color-accent="deep-purple">
+  
+    
+    <script>function __prefix(e){return new URL("../../..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+    
+      <script>var palette=__get("__palette");if(null!==palette&&"object"==typeof palette.color)for(var key in palette.color)document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="doc-zh" class="md-header__button md-logo" aria-label="doc-zh" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            doc-zh
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              3.19.Strings
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="light-blue" data-md-color-accent="deep-purple"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+          
+            <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5c-.84 0-1.65.15-2.39.42L12 2M3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29L3.34 7m.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14L3.36 17M20.65 7l-1.77 3.79a7.023 7.023 0 0 0-2.38-4.15l4.15.36m-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29L20.64 17M12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44L12 22z"/></svg>
+            </label>
+          
+        
+          
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="cyan" data-md-color-accent="deep-purple"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
+          
+            <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3 3.19.09m3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95 2.06.05m-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31z"/></svg>
+            </label>
+          
+        
+      </form>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7 0-.24-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91 1.61 0 2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08z"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        
+<a href="https://github.com/Misaka-9982-coder/doc-zh" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    doc-zh
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="doc-zh" class="md-nav__button md-logo" aria-label="doc-zh" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    doc-zh
+  </label>
+  
+    <div class="md-nav__source">
+      
+<a href="https://github.com/Misaka-9982-coder/doc-zh" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    doc-zh
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1" type="checkbox" id="__nav_1" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_1">
+          xv6-book
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="xv6-book" data-md-level="1">
+        <label class="md-nav__title" for="__nav_1">
+          <span class="md-nav__icon md-icon"></span>
+          xv6-book
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../S081/0.%20%E5%89%8D%E8%A8%80%E5%92%8C%E8%87%B4%E8%B0%A2/" class="md-nav__link">
+        0. 前言和致谢
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../S081/1.%20%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E6%8E%A5%E5%8F%A3/" class="md-nav__link">
+        1. 操作系统接口
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../S081/2.%20%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84/" class="md-nav__link">
+        2. 操作系统架构
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../S081/3.%20%E9%A1%B5%E8%A1%A8/" class="md-nav__link">
+        3. 页表
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../S081/4.%20trap%20%E4%B8%8E%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8/" class="md-nav__link">
+        4. trap 与系统调用
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../S081/5.%20%E4%B8%AD%E6%96%AD%E5%92%8C%E8%AE%BE%E5%A4%87%E9%A9%B1%E5%8A%A8%E7%A8%8B%E5%BA%8F/" class="md-nav__link">
+        5. 中断和设备驱动程序
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../S081/6.%20%E9%94%81/" class="md-nav__link">
+        6. 锁
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../S081/7.%20%E8%B0%83%E5%BA%A6/" class="md-nav__link">
+        7. 调度
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../S081/8.%20%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/" class="md-nav__link">
+        8. 文件系统
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../S081/9.%20%E5%86%8D%E6%AC%A1%E6%8E%A2%E8%AE%A8%E5%B9%B6%E5%8F%91%E6%80%A7/" class="md-nav__link">
+        9. 再次探讨并发性
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2">
+          craftinginterpreters
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="craftinginterpreters" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          craftinginterpreters
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../0_00.contents/contents/" class="md-nav__link">
+        0.00.contents
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../0_01.acknowledgements/acknowledgements/" class="md-nav__link">
+        0.01.acknowledgements
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1_00.Welcome/Welcome/" class="md-nav__link">
+        一、WELCOME
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1_01.Introduction/Introduction/" class="md-nav__link">
+        1.01.Introduction
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1_02.A%20Map%20of%20the%20Territory/A%20Map%20of%20the%20Territory/" class="md-nav__link">
+        1.02.A Map of the Territory
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1_03.The%20Lox%20Language/The%20Lox%20Language/" class="md-nav__link">
+        1.03.The Lox Language
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2_00.A%20TREE-WALK%20INTERPRETER/A%20TREE-WALK%20INTERPRETER/" class="md-nav__link">
+        二、A TREE-WALK INTERPRETER
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2_04.Scanning/Scanning/" class="md-nav__link">
+        2.04.Scanning
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2_05.Representing%20Code/Representing%20Code/" class="md-nav__link">
+        2.05.Representing Code
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2_06.Parsing%20Expressions/Parsing%20Expressions/" class="md-nav__link">
+        2.06.Parsing Expressions
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2_07.Evaluating%20Expressions/Evaluating%20Expressions/" class="md-nav__link">
+        2.07.Evaluating Expressions
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2_08.Statements%20and%20State/Statements%20and%20State/" class="md-nav__link">
+        2.08.Statements and State
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2_09.Control%20Flow/Control%20Flow/" class="md-nav__link">
+        2.09.Control Flow
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2_10.Functions/Functions/" class="md-nav__link">
+        2.10.Functions
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2_11.Resolving%20and%20Binding/Resolving%20and%20Binding/" class="md-nav__link">
+        2.11.Resolving and Binding
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2_12.Classes/Classes/" class="md-nav__link">
+        2.12.Classes
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2_13.Inheritance/Inheritance/" class="md-nav__link">
+        2.13.Inheritance
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3_00.A%20BYTECODE%20VIRTUAL%20MACHINE/A%20BYTECODE%20VIRTUAL%20MACHINE/" class="md-nav__link">
+        三、A BYTECODE VIRTUAL MACHINE
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3_14.Chunks%20of%20Bytecode/Chunks%20of%20Bytecode/" class="md-nav__link">
+        3.14.Chunks of Bytecode
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3_15.A%20Virtual%20Machine/A%20Virtual%20Machine/" class="md-nav__link">
+        3.15.A Virtual Machine
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3_16.Scanning%20on%20Demand/Scanning%20on%20Demand/" class="md-nav__link">
+        3.16.Scanning on Demand
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3_17.Compiling%20Expressions/Compiling%20Expressions/" class="md-nav__link">
+        3.17.Compiling Expressions
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3_18.Types%20of%20Values/Types%20of%20Values/" class="md-nav__link">
+        3.18.Types of Values
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          3.19.Strings
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        3.19.Strings
+      </a>
+      
+        
+
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#191" class="md-nav__link">
+    19.1  值类型和对象类型
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#192" class="md-nav__link">
+    19.2 基于结构的继承
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#193" class="md-nav__link">
+    19.3 字符串
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#194" class="md-nav__link">
+    19.4 字符串操作
+  </a>
+  
+    <nav class="md-nav" aria-label="19.4 字符串操作">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1941" class="md-nav__link">
+    19.4.1 字符串连接
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#195" class="md-nav__link">
+    19.5 释放对象
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    挑战
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    设计说明：字符串编码
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3_20.Hash%20Tables/Hash%20Tables/" class="md-nav__link">
+        3.20.Hash Tables
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3_21.Global%20Variables/Global%20Variables/" class="md-nav__link">
+        3.21.Global Variables
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3_22.Local%20Variables/Local%20Variables/" class="md-nav__link">
+        3.22.Local Variables
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3_23.Jumping%20Back%20and%20Forth/Jumping%20Back%20and%20Forth/" class="md-nav__link">
+        3.23.Jumping Back and Forth
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3_24.Calls%20and%20Functions/Calls%20and%20Functions/" class="md-nav__link">
+        3.24.Calls and Functions
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3_25.Closures/Closures/" class="md-nav__link">
+        3.25.Closures
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3_26.Garbage%20Collection/Garbage%20Collection/" class="md-nav__link">
+        3.26.Garbage Collection
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3_27.Classes%20and%20Instances/Classes%20and%20Instances/" class="md-nav__link">
+        3.27.Classes and Instances
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3_28.Methods%20and%20Initializers/Methods%20and%20Initializers/" class="md-nav__link">
+        3.28.Methods and Initializers
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3_29.Superclasses/Superclasses/" class="md-nav__link">
+        3.29.Superclasses
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3_30.Optimization/Optimization/" class="md-nav__link">
+        3.30.Optimization
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../4_01.A1.Appendix%20I%20Lox%20Grammar/A1.Appendix%20I%20Lox%20Grammar/" class="md-nav__link">
+        A1.Appendix I Lox Grammar
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../4_02.A2.Appendix%20II%20Generated%20Syntax%20Tree%20Classes/A2.Appendix%20II%20Generated%20Syntax%20Tree%20Classes/" class="md-nav__link">
+        A2.Appendix II Generated Syntax Tree Classes
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#191" class="md-nav__link">
+    19.1  值类型和对象类型
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#192" class="md-nav__link">
+    19.2 基于结构的继承
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#193" class="md-nav__link">
+    19.3 字符串
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#194" class="md-nav__link">
+    19.4 字符串操作
+  </a>
+  
+    <nav class="md-nav" aria-label="19.4 字符串操作">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1941" class="md-nav__link">
+    19.4.1 字符串连接
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#195" class="md-nav__link">
+    19.5 释放对象
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    挑战
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    设计说明：字符串编码
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/Misaka-9982-coder/doc-zh/edit/master/docs/craftinginterpreters/3_19.Strings/Strings.md" title="编辑此页" class="md-content__button md-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
+                  </a>
+                
+                
+                <h1 id="_1">字符串</h1>
+<blockquote>
+<p>“啊？对体力劳动的一点厌恶？”医生挑了挑眉毛。“可以理解，但用错了地方。人们应该珍惜那些让身体忙碌但让思想和心灵不受束缚的单调乏味的工作。”</p>
+<p>-- 泰德·威廉姆斯，<em>龙骨之椅</em></p>
+</blockquote>
+<p>我们的小 VM 现在可以表示三种类型的值：数字、布尔值和<code>nil</code>. 这些类型有两个重要的共同点：它们是不可变的并且它们很小。数字是最大的，它们仍然适合两个 64 位字。这是一个足够小的代价，我们可以为所有值支付它，甚至不需要那么多空间的布尔值和零值。</p>
+<p>不幸的是，字符串不是那么娇小。字符串没有最大长度。即使我们人为地将它限制在某些人为的限制（如255 个字符），这仍然需要太多的内存，无法对每个值上都这样。</p>
+<blockquote>
+<p>UCSD Pascal 是 Pascal 的第一个实现之一，有这个确切的限制。Pascal 字符串以长度值开始，而不是像 C 那样使用终止空字节来指示字符串的结尾。由于 UCSD 仅使用一个字节来存储长度，因此字符串的长度不能超过 255 个字符。</p>
+</blockquote>
+<p><img alt="" src="../assets/19ea268166e6b5c45dfe286c1659b1d59209dc55.png" /></p>
+<p>我们需要一种方法来支持大小变化很大的值类型。这正是堆上动态分配的目的。可以根据需要分配尽可能多的字节，返回一个指针，用于在值流经 VM 时跟踪该值。</p>
+<h2 id="191">19.1  值类型和对象类型</h2>
+<p>将堆用于较大的可变大小的值，将栈用于较小的原子值会导致两级表示。对 Lox 来说，  每个存储在变量中或从表达式返回的都将是一个Value。对于像数字这样的小型固定大小类型，有效负载直接存储在 Value 结构本身中。</p>
+<p>如果对象较大，则其数据位于堆中。然后 Value 的有效负载是<em>指向</em>该内存块的指针。我们最终将在 clox 中拥有一些堆分配的类型：字符串、实例、函数。每种类型都有自己独特的数据，但也有它们共享的状态，<a href="http://craftinginterpreters.com/garbage-collection.html">我们未来的垃圾收集器</a>将使用该状态来管理它们的内存。</p>
+<p><img alt="" src="../assets/69e5a1ac43ab472b345d7f7dda0cf5b1fd755daf.png" /></p>
+<p>我们将这种通用表示称为“Obj”。状态存在于堆上的每个 Lox 值都是一个 Obj。因此，我们可以使用一个新的 ValueType  case来引用所有堆分配的类型。</p>
+<blockquote>
+<p>“Obj”是“object”的缩写，natch。</p>
+</blockquote>
+<pre><code class="language-c">  VAL_NUMBER,
+  VAL_OBJ
+} ValueType;
+// value.h, in enum ValueType
+</code></pre>
+<p>当 Value 的类型为<code>VAL_OBJ</code>时，有效负载是指向堆内存的指针，因此我们为此向联合添加另一个 case</p>
+<pre><code class="language-c">    double number;
+    Obj* obj;
+  } as; 
+// value.h, in struct Value
+</code></pre>
+<p>正如我们对其他值类型所做的那样，我们制作了几个有用的宏来处理 Obj 值。</p>
+<pre><code class="language-c">#define IS_NUMBER(value)  ((value).type == VAL_NUMBER)
+#define IS_OBJ(value)     ((value).type == VAL_OBJ)
+
+#define AS_BOOL(value)    ((value).as.boolean)
+// value.h, add after struct Value
+</code></pre>
+<p>如果给定的值是 Obj那么评估结果是<code>true</code>。如果是这样，我们可以使用这个：</p>
+<pre><code class="language-c">#define IS_OBJ(value)     ((value).type == VAL_OBJ)
+
+#define AS_OBJ(value)     ((value).as.obj)
+#define AS_BOOL(value)    ((value).as.boolean)
+// value.h
+</code></pre>
+<p>它从值中提取 Obj 指针。我们也可以走另一条路。</p>
+<pre><code class="language-c">#define NUMBER_VAL(value) ((Value){VAL_NUMBER, {.number = value}})
+#define OBJ_VAL(object)   ((Value){VAL_OBJ, {.obj = (Obj*)object}})
+
+typedef struct {
+// value.h
+</code></pre>
+<p>这需要一个裸 Obj 指针并将其包装在一个完整的值中。</p>
+<h2 id="192">19.2 基于结构的继承</h2>
+<p>每个堆分配的值都是一个 Obj，但 Obj并不完全相同。对于字符串，我们需要字符数组。而类的实例，将需要数据字段。一个函数对象需要它的字节码块。如何处理不同的有效载荷和大小？我们不能像我们为 Value 所做的那样使用另一个联合，因为大小到处都是。</p>
+<blockquote>
+<p>不，我也不知道“objs”怎么发音。感觉某处应该有一个元音。</p>
+</blockquote>
+<p>相反，我们将使用另一种技术。它已经存在了很长时间，以至于 C 规范为它制定了特定的支持，但我不知道它有一个规范的名称。<a href="https://en.wikipedia.org/wiki/Type_punning"><em>这是类型双关语</em></a>的一个例子，但这个术语太宽泛了。在没有任何更好的想法的情况下，我将其称为<strong>struct inheritance</strong>，因为它依赖于 structs 并且大致遵循状态的单一继承在面向对象语言中的工作方式。</p>
+<p>与tagged union一样，每个 Obj 都以一个tag字段开始，该tag字段标识它是什么类型的对象——字符串、实例等。接下来是有效负载字段。与统一的union不同，每种类型都是它自己的独立结构。棘手的部分是如何统一对待这些结构，因为 C 没有继承或多态性的概念。我很快就会解释，但首先让我们先了解一下初步的内容。</p>
+<p>名称“Obj”本身指的是一个包含所有对象类型共享的状态的结构。它有点像对象的“基类”。由于值和对象之间存在一些循环依赖，我们在“value”模块中前向声明它。</p>
+<pre><code class="language-c">#include &quot;common.h&quot;
+
+typedef struct Obj Obj;
+
+typedef enum {
+// value.h
+</code></pre>
+<p>实际定义在一个新模块中。</p>
+<pre><code class="language-c">#ifndef clox_object_h
+#define clox_object_h
+
+#include &quot;common.h&quot;
+#include &quot;value.h&quot;
+
+struct Obj {
+  ObjType type;
+};
+
+#endif
+// object.h, create new file
+</code></pre>
+<p>现在，它只包含类型标签type。很快，我们将为内存管理添加一些其他信息。类型枚举是这样的：</p>
+<pre><code class="language-c">#include &quot;value.h&quot;
+
+typedef enum {
+  OBJ_STRING,
+} ObjType;
+
+struct Obj {
+// object.h
+</code></pre>
+<p>显然，在我们添加更多堆分配类型后，这在后面的章节中会更有用。由于我们将经常访问这些标签类型，因此有必要制作一个小宏来从给定的值中提取对象类型标签。</p>
+<pre><code class="language-c">#include &quot;value.h&quot;
+
+#define OBJ_TYPE(value)        (AS_OBJ(value)-&gt;type)
+
+typedef enum {
+// object.h
+</code></pre>
+<p>那是我们的基础。</p>
+<p>现在，让我们在它之上构建字符串。字符串的有效负载在单独的结构中定义。同样，我们需要前向声明(forward-declare)它。</p>
+<pre><code class="language-c">typedef struct Obj Obj;
+typedef struct ObjString ObjString;
+
+typedef enum {
+// value.h
+</code></pre>
+<p>该定义与 Obj 并存。</p>
+<pre><code class="language-c">};
+
+struct ObjString {
+  Obj obj;
+  int length;
+  char* chars;
+};
+
+#endif
+// object.h, add after struct Obj
+</code></pre>
+<p>字符串对象包含一个字符数组。它们存储在一个单独的堆分配数组中，因此我们只为每个字符串留出所需的空间。我们还将字节数存储在数组中。这不是绝对必要的，但让我们知道为字符串分配了多少内存，而无需遍历字符数组来查找空终止符。</p>
+<p>因为ObjString是一个Obj，所以它也需要所有Objs共享的状态。它通过将第一个字段设为 Obj 来实现这一点。<strong>C 指定结构字段按照声明的顺序排列在内存中</strong>。此外，当嵌套结构时，内部结构的字段会在适当的位置展开。所以 Obj 和 ObjString 的内存看起来像这样：</p>
+<p><img alt="" src="../assets/43601b65bd0104665166ef74d74db8406cae9ea6.png" /></p>
+<p>请注意 ObjString 的第一个字节如何与 Obj 完全对齐。这不是巧合——C要求它。这是为了实现一种巧妙的模式：您可以获取一个指向结构的指针，并将其安全地转换为指向其第一个字段的指针，然后返回。</p>
+<blockquote>
+<p>规范的关键部分是：</p>
+<p>§ 6.7.2.1 13</p>
+<p>在结构对象中，非位域成员和位域所在的单元的地址按照它们声明的顺序递增。指向结构对象的指针经过适当转换后指向其初始成员（或者如果该成员是位域，则指向它所在的单元），反之亦然。结构对象中可能有未命名的填充，但不是在它的开头。</p>
+</blockquote>
+<p>给定一个<code>ObjString*</code>，您可以安全地将它转换为<code>Obj*</code>然后从中访问<code>type</code>字段。在 OOP 的“is”的意义上 ,每个 ObjString “is”一个 Obj 。当我们稍后添加其他对象类型时，每个结构将有一个 Obj 作为其第一个字段。任何想要处理所有对象的代码都可以将它们视为基本<code>Obj*</code>，并忽略可能碰巧跟随的任何其他字段。</p>
+<p>你也可以往另一个方向走。给一个<code>Obj*</code>，您可以将它“向下转换”为一个<code>ObjString*</code>.当然，需要确保拥有的<code>Obj*</code>指针确实指向实际 ObjString 的<code>obj</code>字段。否则，您将不安全地重新解释随机的内存位。为了检测这样的转换是否安全，我们添加了另一个宏。</p>
+<pre><code class="language-c">#define OBJ_TYPE(value)        (AS_OBJ(value)-&gt;type)
+
+#define IS_STRING(value)       isObjType(value, OBJ_STRING)
+
+typedef enum {
+// object.h
+</code></pre>
+<p>它需要一个值，而不是原始<code>Obj*</code>值，因为 VM 中的大多数代码都使用值。它依赖于这个内联函数：</p>
+<pre><code class="language-c">};
+
+static inline bool isObjType(Value value, ObjType type) {
+  return IS_OBJ(value) &amp;&amp; AS_OBJ(value)-&gt;type == type;
+}
+
+#endif
+// object.h, add after struct ObjString
+</code></pre>
+<p>突击测验：为什么不直接将此函数的主体放在宏中呢？与其他相比，这个有什么不同？对，是因为函数体使用<code>value</code>了两次。通过在参数名称出现在主体中的每个地方插入参数<em>表达式</em>来扩展宏。如果宏多次使用一个参数，则该表达式会被计算多次。</p>
+<p>如果表达式有副作用，那就太糟糕了。如果我们将 <code>isObjType()</code>放入宏定义中,而且做了以下操作，比如说，</p>
+<pre><code class="language-c">IS_STRING(POP())
+</code></pre>
+<p>然后它会从堆栈中pop两个值！使用一个函数可以解决这个问题。</p>
+<p>只要我们确保在创建某种类型的 Obj 时正确设置类型标签，该宏就会告诉我们何时可以安全地将值转换为特定对象类型。我们可以使用这些来做到这一点：</p>
+<pre><code class="language-c">#define IS_STRING(value)       isObjType(value, OBJ_STRING)
+
+#define AS_STRING(value)       ((ObjString*)AS_OBJ(value))
+#define AS_CSTRING(value)      (((ObjString*)AS_OBJ(value))-&gt;chars)
+
+typedef enum {
+// object.h
+</code></pre>
+<p>这两个宏采用一个值，该值应包含指向堆上有效 ObjString 的指针。第一个返回<code>ObjString*</code>指针。第二个通过它返回字符数组本身，因为这通常是我们最终需要的。</p>
+<h2 id="193">19.3 字符串</h2>
+<p>好的，我们的 VM 现在可以表示字符串值了。是时候给语言本身添加字符串了。像往常一样，我们从前端开始。词法分析器已经标记了字符串文字，所以轮到解析器了。</p>
+<pre><code class="language-c">  [TOKEN_IDENTIFIER]    = {NULL,     NULL,   PREC_NONE},
+  [TOKEN_STRING]        = {string,   NULL,   PREC_NONE},
+  [TOKEN_NUMBER]        = {number,   NULL,   PREC_NONE},
+// compiler.c, replace 1 line
+</code></pre>
+<p>当解析器遇到字符串token时，它会调用此解析函数：</p>
+<pre><code class="language-c">static void string() {
+  emitConstant(OBJ_VAL(copyString(parser.previous.start + 1,
+                                  parser.previous.length - 2)));
+}
+// compiler.c, add after number()
+</code></pre>
+<p>这直接从词素中获取字符串的字符。<code>+ 1</code>和<code>- 2</code>部分修剪前引号和尾随引号。然后它创建一个字符串对象，将其包装在一个值中，并将其填充到常量表中。</p>
+<blockquote>
+<p>如果 Lox 支持像<code>\n</code>这样的字符串转义序列，我们会在此处进行翻译。既然没有，我们可以照原样使用字符。</p>
+</blockquote>
+<p>要创建字符串，我们使用<code>copyString()</code>，它在 中声明<code>object.h</code>。</p>
+<pre><code class="language-c">};
+
+ObjString* copyString(const char* chars, int length);
+
+static inline bool isObjType(Value value, ObjType type) {
+// object.h, add after struct ObjString
+</code></pre>
+<p>编译器模块需要包含它。</p>
+<pre><code class="language-c">#define clox_compiler_h
+
+#include &quot;object.h&quot;
+#include &quot;vm.h&quot;
+// compiler.h
+</code></pre>
+<p>我们的“object”模块获得了一个实现文件，我们在其中定义了新函数。</p>
+<pre><code class="language-c">#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+
+#include &quot;memory.h&quot;
+#include &quot;object.h&quot;
+#include &quot;value.h&quot;
+#include &quot;vm.h&quot;
+
+ObjString* copyString(const char* chars, int length) {
+  char* heapChars = ALLOCATE(char, length + 1);
+  memcpy(heapChars, chars, length);
+  heapChars[length] = '\0';
+  return allocateString(heapChars, length);
+}
+// object.c, create new file
+</code></pre>
+<p>首先，我们在堆上分配一个新数组，刚好足够容纳字符串的字符和结尾的终止符，使用这个低级宏分配一个具有给定元素类型和大小的数组：</p>
+<pre><code class="language-c">#include &quot;common.h&quot;
+
+#define ALLOCATE(type, count) \
+    (type*)reallocate(NULL, 0, sizeof(type) * (count))
+
+#define GROW_CAPACITY(capacity) \
+// memory.h
+</code></pre>
+<p>一旦我们有了数组，我们就从词素中复制字符并终止它。</p>
+<blockquote>
+<p>我们需要自己终止字符串，因为词素指向整体源字符串中的一系列字符并且没有终止。</p>
+<p>由于 ObjString 显式存储长度，我们<em>可以</em>让字符数组保持未终止状态，但在末尾添加一个终止符只会花费我们一个字节，并让我们将字符数组传递给需要终止字符串的 C 标准库函数。</p>
+</blockquote>
+<p>您可能想知道为什么 ObjString 不能直接指向源字符串中的原始字符。作为连接等字符串操作的结果，一些 ObjString 将在运行时动态创建。这些字符串显然需要为字符动态分配内存，这意味着字符串要在不再需要时<em>释放该内存。</em></p>
+<p>如果我们有一个字符串文字的 ObjString，并试图释放它指向原始源代码字符串的字符数组，就会发生不好的事情。因此，对于文字，我们先发制人地将字符复制到堆中。这样，每个 ObjString 都可靠地拥有它的字符数组并可以释放它。</p>
+<p>创建字符串对象的真正工作发生在这个函数中：</p>
+<pre><code class="language-c">#include &quot;vm.h&quot;
+
+static ObjString* allocateString(char* chars, int length) {
+  ObjString* string = ALLOCATE_OBJ(ObjString, OBJ_STRING);
+  string-&gt;length = length;
+  string-&gt;chars = chars;
+  return string;
+}
+// object.c
+</code></pre>
+<p>它在堆上创建一个新的 ObjString，然后初始化它的字段。它有点像 OOP 语言中的构造函数。因此，它首先使用新宏调用“基类”构造函数来初始化 Obj 状态。</p>
+<pre><code class="language-c">#include &quot;vm.h&quot;
+
+#define ALLOCATE_OBJ(type, objectType) \
+    (type*)allocateObject(sizeof(type), objectType)
+
+static ObjString* allocateString(char* chars, int length) {
+// object.c
+</code></pre>
+<p>与前面的宏一样，它的存在主要是为了避免冗余地转换<code>void*</code>回所需的类型。实际功能在这里：</p>
+<blockquote>
+<p>我承认这一章有大量的辅助函数和宏需要阅读。我尽量保持代码的良好分解，但这会导致微小函数的分散。当我们稍后重用它们时，它们会得到回报。</p>
+</blockquote>
+<pre><code class="language-c">#define ALLOCATE_OBJ(type, objectType) \
+    (type*)allocateObject(sizeof(type), objectType)
+
+static Obj* allocateObject(size_t size, ObjType type) {
+  Obj* object = (Obj*)reallocate(NULL, 0, size);
+  object-&gt;type = type;
+  return object;
+}
+
+static ObjString* allocateString(char* chars, int length) {
+// object.c
+</code></pre>
+<p>它在堆上分配给定大小的对象。请注意，大小<em>不仅仅是</em>Obj 本身的大小。调用者传入字节数，以便为正在创建的特定对象类型所需的额外有效负载字段留出空间。</p>
+<p>然后它初始化 Obj 状态——现在，这只是type 标签。此函数返回到<code>allocateString()</code>，完成 ObjString 字段的初始化。<em>瞧</em>，我们可以编译和执行字符串文字。</p>
+<p><img alt="" src="../assets/0e96eac649b946972e05945e3000e4bd493ba424.png" /></p>
+<blockquote>
+<p>不要将“voilà”与“viola”混淆。一个意思是“就在那里”，另一个是弦乐器，介于小提琴和大提琴之间。是的，我确实花了两个小时画了一把中提琴，只是为了提一下。</p>
+</blockquote>
+<h2 id="194">19.4 字符串操作</h2>
+<p>我们漂亮的字符串就在那里，但它们还没有做很多事情。一个好的第一步是让现有的打印代码不会拒绝新的值类型。</p>
+<pre><code class="language-c">    case VAL_NUMBER: printf(&quot;%g&quot;, AS_NUMBER(value)); break;
+    case VAL_OBJ: printObject(value); break;
+  }
+// value.c, in printValue()
+</code></pre>
+<p>如果该值是一个堆分配的对象，它会延迟调用“对象”模块中的辅助函数。</p>
+<pre><code class="language-c">ObjString* copyString(const char* chars, int length);
+void printObject(Value value);
+
+static inline bool isObjType(Value value, ObjType type) {
+// object.h, add after copyString()
+</code></pre>
+<p>实现看起来像这样：</p>
+<pre><code class="language-c">void printObject(Value value) {
+  switch (OBJ_TYPE(value)) {
+    case OBJ_STRING:
+      printf(&quot;%s&quot;, AS_CSTRING(value));
+      break;
+  }
+}
+// object.c, add after copyString()
+</code></pre>
+<p>我们现在只有一个对象类型，但是这个函数会在后面的章节中产生额外的 switch case。对于字符串对象，它只是将字符数组打印为 C 字符串。</p>
+<blockquote>
+<p>我告诉过你终止字符串会派上用场。</p>
+</blockquote>
+<p>相等运算符还需要优雅地处理字符串。考虑：</p>
+<pre><code class="language-c">&quot;string&quot; == &quot;string&quot;
+</code></pre>
+<p>这是两个独立的字符串文字。编译器将对<code>copyString()</code>进行两次独立的调用，创建两个不同的 ObjString 对象并将它们作为两个常量存储在块中。它们是堆中的不同对象。但是用户（因此我们）希望字符串具有相等的值。上述表达式的计算结果应为<code>true</code>.这需要一些特殊的支持。</p>
+<pre><code class="language-c">    case VAL_NUMBER: return AS_NUMBER(a) == AS_NUMBER(b);
+    case VAL_OBJ: {
+      ObjString* aString = AS_STRING(a);
+      ObjString* bString = AS_STRING(b);
+      return aString-&gt;length == bString-&gt;length &amp;&amp;
+          memcmp(aString-&gt;chars, bString-&gt;chars,
+                 aString-&gt;length) == 0;
+    }
+    default:         return false; // Unreachable.
+// value.c, in valuesEqual()
+</code></pre>
+<p>如果这两个值都是字符串，那么如果它们的字符数组包含相同的字符，则它们相等，无论它们是两个单独的对象还是完全相同的对象。这确实意味着字符串相等性比其他类型的相等性慢，因为它必须遍历整个字符串。我们稍后会对其进行<a href="http://craftinginterpreters.com/hash-tables.html">修改，</a>但这暂时为我们提供了正确的语义。</p>
+<p>最后，为了使用<code>memcmp()</code>和“object”模块中的新内容，我们需要包含一些头文件。这里：</p>
+<pre><code class="language-c">#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+
+#include &quot;memory.h&quot;
+// value.c
+</code></pre>
+<p>和这里：</p>
+<pre><code class="language-c">#include &lt;string.h&gt;
+
+#include &quot;object.h&quot;
+#include &quot;memory.h&quot;
+// value.c
+</code></pre>
+<h3 id="1941">19.4.1 字符串连接</h3>
+<p>成熟的语言提供了许多处理字符串的操作——访问单个字符、字符串的长度、改变大小写、拆分、连接、搜索等。当你实现你的语言时，你可能需要所有这些。但是对于本书，我们将内容保持<em>得非常</em>精简。</p>
+<p>我们支持的唯一有趣的字符串操作是<code>+</code>.如果您在两个字符串对象上使用该运算符，它会生成一个新字符串，该字符串是两个操作数的连接。由于 Lox 是动态类型的，我们无法在编译时判断需要哪种行为，因为直到运行时我们才知道操作数的类型。因此，该<code>OP_ADD</code>指令动态检查操作数并选择正确的操作。</p>
+<pre><code class="language-c">      case OP_LESS:     BINARY_OP(BOOL_VAL, &lt;); break;
+      case OP_ADD: {
+        if (IS_STRING(peek(0)) &amp;&amp; IS_STRING(peek(1))) {
+          concatenate();
+        } else if (IS_NUMBER(peek(0)) &amp;&amp; IS_NUMBER(peek(1))) {
+          double b = AS_NUMBER(pop());
+          double a = AS_NUMBER(pop());
+          push(NUMBER_VAL(a + b));
+        } else {
+          runtimeError(
+              &quot;Operands must be two numbers or two strings.&quot;);
+          return INTERPRET_RUNTIME_ERROR;
+        }
+        break;
+      }
+      case OP_SUBTRACT: BINARY_OP(NUMBER_VAL, -); break;
+// vm.c, in run(), replace 1 line
+</code></pre>
+<p>如果两个操作数都是字符串，它会连接起来。如果它们都是数字，则将它们相加。操作数类型的任何其他组合都是运行时错误。</p>
+<blockquote>
+<p>这比大多数语言更保守。在其他语言中，如果一个操作数是字符串，则另一个可以是任何类型，并且在连接两者之前将隐式转换为字符串。</p>
+<p>我认为这是一个很好的特性，但需要为每种类型编写乏味的“转换为字符串”代码，所以我将它从 Lox 中删除了。</p>
+</blockquote>
+<p>为了连接字符串，我们定义了一个新函数。</p>
+<pre><code class="language-c">static void concatenate() {
+  ObjString* b = AS_STRING(pop());
+  ObjString* a = AS_STRING(pop());
+
+  int length = a-&gt;length + b-&gt;length;
+  char* chars = ALLOCATE(char, length + 1);
+  memcpy(chars, a-&gt;chars, a-&gt;length);
+  memcpy(chars + a-&gt;length, b-&gt;chars, b-&gt;length);
+  chars[length] = '\0';
+
+  ObjString* result = takeString(chars, length);
+  push(OBJ_VAL(result));
+}
+// vm.c, add after isFalsey()
+</code></pre>
+<p>它非常冗长，因为处理字符串的 C 代码往往如此。首先，我们根据操作数的长度计算结果字符串的长度。我们为结果分配一个字符数组，然后将两半复制进去。一如既往，我们仔细确保字符串终止。</p>
+<p>为了调用<code>memcpy()</code>，VM 需要包含一个头文件。</p>
+<pre><code class="language-c">#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+
+#include &quot;common.h&quot;
+// vm.c
+</code></pre>
+<p>最后，我们生成一个 ObjString 来包含这些字符。这次我们使用一个新函数，<code>takeString()</code>.</p>
+<pre><code class="language-c">};
+
+ObjString* takeString(char* chars, int length);
+ObjString* copyString(const char* chars, int length);
+// object.h, add after struct ObjString
+</code></pre>
+<p>实现看起来像这样：</p>
+<pre><code class="language-c">ObjString* takeString(char* chars, int length) {
+  return allocateString(chars, length);
+}
+// object.c, add after allocateString()
+</code></pre>
+<p>前面的<code>copyString()</code>函数假定它<em>不能</em>取得您传入的字符的所有权。相反，它保守地在 ObjString 可以拥有的堆上创建字符的副本。对于传入字符位于源字符串中间的字符串文字来说，这是正确的做法。</p>
+<p>但是，对于字符串连接，已经在堆上动态分配了一个字符数组。制作另一个副本将是多余的（并且意味着<code>concatenate()</code>必须记住释放其副本）。相反，此函数声明对您提供的字符串的所有权。</p>
+<p>像往常一样，将此功能拼接在一起需要包含几个头文件。</p>
+<pre><code class="language-c">#include &quot;debug.h&quot;
+#include &quot;object.h&quot;
+#include &quot;memory.h&quot;
+#include &quot;vm.h&quot;
+// vm.c
+</code></pre>
+<h2 id="195">19.5 释放对象</h2>
+<p>看看这个看似无伤大雅的表达式：</p>
+<pre><code class="language-c">&quot;st&quot; + &quot;ri&quot; + &quot;ng&quot;
+</code></pre>
+<p>当编译器仔细检查这个时，它为这三个字符串文字中的每一个分配一个 ObjString 并将它们存储在块的常量表中并生成这个字节码：</p>
+<blockquote>
+<p>这是每条指令后堆栈的样子：</p>
+</blockquote>
+<p><img alt="" src="../assets/c52eb31430d84a3ccaab042fc27bbb8c1b178dec.png" /></p>
+<pre><code>0000    OP_CONSTANT         0 &quot;st&quot;
+0002    OP_CONSTANT         1 &quot;ri&quot;
+0004    OP_ADD
+0005    OP_CONSTANT         2 &quot;ng&quot;
+0007    OP_ADD
+0008    OP_RETURN
+</code></pre>
+<p>前两条指令将<code>"st"</code>和<code>"ri"</code>压入堆栈。然后<code>OP_ADD</code>弹出那些并将它们连接起来。这会在堆上动态分配一个新<code>"stri"</code>字符串。VM push它，然后push<code>"ng"</code>常量。最后<code>OP_ADD</code>弹出<code>"stri"</code>和<code>"ng"</code>，将它们连接起来，并push结果：<code>"string"</code>。太好了，这就是我们所期望的。</p>
+<p>可是等等。那个<code>"stri"</code>字符串是怎么回事？我们动态分配它，然后 VM 在将它与 <code>"ng"</code> 连接后丢弃它。我们将它从堆栈中弹出，不再有对它的引用，但从未释放它的内存。我们遇到了典型的内存泄漏。</p>
+<p>当然，<em>Lox 程序</em>完全可以忘记中间字符串而不用担心释放它们。Lox 代表用户自动管理内存。管理内存的责任不会<em>消失</em>。相反，它落在我们作为 VM 实现者的肩上。</p>
+<p>完整的解决方案是在程序运行时回收未使用的内存的<a href="http://craftinginterpreters.com/garbage-collection.html">垃圾收集器。</a>在我们准备好处理那个项目之前，还有一些其他的东西要到位。在那之前，我们的生活是借来的。我们等待添加收集器的时间越长，就越难做到。</p>
+<blockquote>
+<p>我已经看到很多人在尝试开始 GC 之前实现了大量他们的语言。对于您通常在开发语言时运行的那种玩具程序，您实际上不会在程序结束之前用完内存，所以这会让您走得更远。</p>
+<p>但这低估了以后添加垃圾收集器的难度。<em>收集器</em>必须确保它可以找到仍在使用的每一位内存，<em>这样</em>它就不会收集实时数据。语言实现可以在数百个地方存储对某个对象的引用。如果你没有找到所有这些，你就会遇到噩梦般的错误。</p>
+<p>我已经看到语言实现死掉了，因为以后很难让 GC 进入。如果你的语言需要 GC，请尽快让它工作。这是一个涉及整个代码库的横切关注点。</p>
+</blockquote>
+<p>今天，我们至少应该做最低限度的事情：通过确保 VM 仍然可以找到每个分配的对象来避免内存<em>泄漏</em>，即使 Lox 程序本身不再引用它们。高级内存管理器使用许多复杂的技术来为对象分配和跟踪内存。我们将采用最简单实用的方法。</p>
+<p>我们将创建一个链表来存储每个 Obj。VM 可以遍历该列表以找到已在堆上分配的每个对象，无论用户的程序或 VM 的堆栈是否仍具有对它的引用。</p>
+<p>我们可以定义一个单独的链表节点结构，但我们也必须分配它们。相反，我们将使用<strong>侵入式列表</strong>——Obj结构本身将是链表节点。每个 Obj 都有一个指向链中下一个 Obj 的指针。</p>
+<pre><code class="language-c">struct Obj {
+  ObjType type;
+  struct Obj* next;
+};
+// object.h, in struct Obj
+</code></pre>
+<p>VM 存储指向列表头部的指针。</p>
+<pre><code class="language-c">  Value* stackTop;
+  Obj* objects;
+} VM;
+// vm.h, in struct VM
+</code></pre>
+<p>当我们第一次初始化 VM 时，没有分配的对象。</p>
+<pre><code class="language-c">  resetStack();
+  vm.objects = NULL;
+}
+// vm.c, in initVM()  
+</code></pre>
+<p>每次我们分配一个 Obj 时，我们将它插入到列表中。</p>
+<pre><code class="language-c">  object-&gt;type = type;
+
+  object-&gt;next = vm.objects;
+  vm.objects = object;
+  return object;
+// object.c, in allocateObject()
+</code></pre>
+<p>因为这是一个单向链表，所以最容易插入的地方就是表头。这样，我们就不需要存储指向尾部的指针并保持更新。</p>
+<p>“object”模块直接使用<code>vm</code>“vm”模块中的全局变量，因此我们需要将其暴露在外部。</p>
+<pre><code class="language-c">} InterpretResult;
+
+extern VM vm;
+
+void initVM();
+// vm.h, add after enum InterpretResult
+</code></pre>
+<p>最终，垃圾收集器将在 VM 仍在运行时释放内存。但是，即便如此，当用户的程序完成时，通常仍有一些未使用的对象仍在内存中徘徊。虚拟机也应该释放它们。</p>
+<p>没有复杂的逻辑。程序完成后，我们可以释放<em>每个</em>对象。我们现在可以而且应该实现它。</p>
+<pre><code class="language-c">void freeVM() {
+  freeObjects();
+}
+// vm.c, in freeVM()
+</code></pre>
+<p>我们在finally 做某事<a href="http://craftinginterpreters.com/a-virtual-machine.html#an-instruction-execution-machine">时</a>定义的那个空函数！它称之为：</p>
+<pre><code class="language-c">void* reallocate(void* pointer, size_t oldSize, size_t newSize);
+void freeObjects();
+
+#endif
+// memory.h, add after reallocate()
+</code></pre>
+<p>下面是我们如何释放对象：</p>
+<pre><code class="language-c">void freeObjects() {
+  Obj* object = vm.objects;
+  while (object != NULL) {
+    Obj* next = object-&gt;next;
+    freeObject(object);
+    object = next;
+  }
+}
+// memory.c, add after reallocate()
+</code></pre>
+<p>这是遍历链表并释放其节点的 CS 101 教科书实现。对于每个节点，我们调用：</p>
+<pre><code class="language-c">static void freeObject(Obj* object) {
+  switch (object-&gt;type) {
+    case OBJ_STRING: {
+      ObjString* string = (ObjString*)object;
+      FREE_ARRAY(char, string-&gt;chars, string-&gt;length + 1);
+      FREE(ObjString, object);
+      break;
+    }
+  }
+}
+// memory.c, add after reallocate()
+</code></pre>
+<p>我们不仅要释放 Obj 本身。由于某些对象类型还分配了它们拥有的其他内存，因此我们还需要一些特定于类型的代码来处理每个对象类型的特殊需求。在这里，这意味着我们释放字符数组，然后释放 ObjString。那些都使用最后一个内存管理宏。</p>
+<pre><code class="language-c">     (type*)reallocate(NULL, 0, sizeof(type) * (count))
+
+#define FREE(type, pointer) reallocate(pointer, sizeof(type), 0)
+
+#define GROW_CAPACITY(capacity) \
+// memory.h
+</code></pre>
+<p>它是对<code>reallocate()</code>简单包装，只是将分配的内容“调整大小”到零字节。</p>
+<blockquote>
+<p>使用<code>reallocate()</code>释放内存似乎毫无意义。为什么不直接调用<code>free()</code>？稍后，这将帮助 VM 跟踪仍在使用的内存量。如果所有的分配和释放都通过了<code>reallocate()</code>，就很容易对分配内存的字节数进行动态计数。</p>
+</blockquote>
+<p>像往常一样，我们需要一个包含将所有内容连接在一起。</p>
+<pre><code class="language-c">#include &quot;common.h&quot;
+#include &quot;object.h&quot;
+
+#define ALLOCATE(type, count) \
+// memory.h
+</code></pre>
+<p>然后在实现文件中：</p>
+<pre><code class="language-c">#include &quot;memory.h&quot;
+#include &quot;vm.h&quot;
+
+void* reallocate(void* pointer, size_t oldSize, size_t newSize) {
+// memory.c
+</code></pre>
+<p>这样，我们的 VM 就不会再泄漏内存了。就像一个好的 C 程序一样，它在退出之前清理它的混乱。但它不会在 VM 运行时释放任何对象。稍后，当可以编写运行时间更长的 Lox 程序时，VM 将在运行过程中消耗越来越多的内存，直到整个程序完成才放弃一个字节。</p>
+<p><a href="http://craftinginterpreters.com/garbage-collection.html">在我们添加一个真正的垃圾收集器</a>之前我们不会解决这个问题，但这是一大步。我们现在拥有支持各种不同类型的动态分配对象的基础设施。我们用它来将字符串添加到 clox，这是大多数编程语言中最常用的类型之一。字符串反过来使我们能够构建另一种基本数据类型，尤其是在动态语言中：古老的<a href="http://craftinginterpreters.com/hash-tables.html">哈希表</a>。但那是下一章的事了...</p>
+<hr />
+<h2 id="_2"><a href="http://craftinginterpreters.com/strings.html#challenges">挑战</a></h2>
+<ol>
+<li>
+<p>每个字符串都需要两个单独的动态分配——一个用于 ObjString，另一个用于字符数组。从一个值访问字符需要两个指针间接寻址，这可能对性能不利。更有效的解决方案依赖于一种称为<a href="https://en.wikipedia.org/wiki/Flexible_array_member">灵活数组成员</a>的技术。使用它将 ObjString 及其字符数组存储在单个连续分配中。</p>
+</li>
+<li>
+<p>当我们为每个字符串文字创建 ObjString 时，我们将字符复制到堆上。这样，当稍后释放字符串时，我们知道释放字符也是安全的。</p>
+</li>
+</ol>
+<p>这是一种更简单的方法，但会浪费一些内存，这在非常受限的设备上可能是个问题。相反，我们可以跟踪哪些 ObjStrings 拥有它们的字符数组，哪些是“常量字符串”，它们只是指向原始源字符串或其他一些不可释放的位置。添加对此的支持。</p>
+<ol>
+<li>如果 Lox 是您的语言，当用户尝试使用<code>+</code>一个字符串操作数而另一个使用其他类型时，您会让它做什么？证明你的选择。其他语言有什么作用？</li>
+</ol>
+<h2 id="_3"><a href="http://craftinginterpreters.com/strings.html#design-note">设计说明：字符串编码</a></h2>
+<p>在本书中，我尽量不回避您在实际语言实现中会遇到的棘手问题。我们可能并不总是使用最<em>复杂的</em>解决方案——毕竟这是一本介绍性的书——但我认为假装问题根本不存在是不诚实的。然而，我确实避开了一个非常棘手的难题：决定如何表示字符串。</p>
+<p>字符串编码有两个方面：</p>
+<ul>
+<li><strong>什么是字符串中的单个“字符”</strong>  有多少种不同的值，它们代表什么？第一个被广泛采用的标准答案是<a href="https://en.wikipedia.org/wiki/ASCII">ASCII</a>。它给了你 127 个不同的字符值并指定了它们是什么。很棒...如果你只关心英语。虽然它有一些奇怪的、几乎被遗忘的字符，如“记录分隔符”和“同步空闲”，但它没有一个变音符、锐音符或重音符。它不能代表“jalape?o”、“na?ve”、“Gruyère”或“M?tley Crüe”。</li>
+</ul>
+<p>不用说，一种不允许人们讨论 Gruyère 或 M?tley Crüe 的语言是一种不值得使用的语言。</p>
+<p>接下来是<a href="https://en.wikipedia.org/wiki/Unicode">Unicode</a>。最初，它支持 16,384 个不同的字符（<strong>code points</strong>），这些字符非常适合 16 位，还有一些备用位。后来它越来越大，现在有超过 100,000 个不同的代码点，包括人类交流的重要工具，如（Unicode 字符“PILE OF POO”，<code>U+1F4A9</code>）。</p>
+<p>即使是那么长的代码点列表也不足以表示一种语言可能支持的每个可能的可见字形。为了解决这个问题，Unicode 还具有?修改前面代码点的<strong>组合字符。</strong>例如，“a”后跟组合字符“¨”就是“?”。（为了让事情更混乱，Unicode<em>还有</em>一个看起来像“?”的单一代码点。）</p>
+<p>如果用户访问“na?ve”中的第四个“字符”，他们期望返回“v”还是“¨”？前者意味着他们将每个代码点及其组合字符视为一个单元——Unicode称之为?<strong>扩展字素簇</strong>——后者意味着他们正在考虑单独的代码点。您的用户期望哪个？</p>
+<ul>
+<li><strong>单个单元在内存中如何表示？</strong>大多数使用 ASCII 的系统为每个字符分配一个字节，并保留高位未使用。Unicode 有一些常见的编码。UTF-16 将大多数代码点打包成 16 位。当每个代码点都适合该大小时，这很棒。当它溢出时，他们添加了使用多个 16 位代码单元来表示单个代码点的<em>代理对。</em>UTF-32 是 UTF-16 的下一步发展——它为每个代码点提供了完整的 32 位。</li>
+</ul>
+<p>UTF-8 比其中任何一个都复杂。它使用可变数量的字节来编码代码点。较低值的代码点适合较少的字节。由于每个字符可能占用不同的字节数，因此您不能直接索引字符串来查找特定的代码点。如果你想要，比方说，第 10 个代码点，你不知道在没有遍历和解码所有前面的字符串的情况下，字符串中有多少字节。</p>
+<p>选择字符表示和编码涉及基本的权衡。就像工程中的许多事情一样，没有完美的解决方案：</p>
+<p>这个问题有多难的一个例子来自 Python。从 Python 2 到 3 的漫长过渡令人痛苦，主要是因为它围绕字符串编码进行了更改。</p>
+<ul>
+<li>
+<p>ASCII 内存效率高且速度快，但它会将非拉丁语言排在一边。</p>
+</li>
+<li>
+<p>UTF-32 速度很快并且支持整个 Unicode 范围，但会浪费大量内存，因为大多数代码点往往位于较低的值范围内，不需要完整的 32 位。</p>
+</li>
+<li>
+<p>UTF-8 内存效率高，支持整个 Unicode 范围，但其可变长度编码使其访问任意代码点的速度变慢。</p>
+</li>
+<li>
+<p>UTF-16 比所有这些都糟糕——这是 Unicode 超出其早期 16 位范围的丑陋结果。它的内存效率低于 UTF-8，但由于代理对，它仍然是一种可变长度编码。如果可以，请避免使用它。las，如果您的语言需要在浏览器、JVM 或 CLR 上运行或与浏览器、JVM 或 CLR 互操作，您可能会坚持使用它，因为它们的字符串都使用 UTF-16，并且您不想必须转换每个将字符串传递给底层系统的时间。</p>
+</li>
+</ul>
+<p>一种选择是采取最大限度的方法并做“最正确”的事情。支持所有 Unicode 代码点。在内部，根据每个字符串的内容为每个字符串选择一种编码——如果每个代码点都适合一个字节，则使用 ASCII，如果没有代理对，则使用 UTF-16，等等。提供 API 让用户迭代代码点和扩展字形簇.</p>
+<p>这涵盖了您的所有基础，但确实很复杂。实施、调试和优化的工作量很大。在序列化字符串或与其他系统互操作时，您必须处理所有编码。用户需要了解这两个索引 API 并知道何时使用哪个。这是更新的大型语言倾向于采用的方法——比如 Raku 和 Swift。</p>
+<p>一个更简单的折衷方案是始终使用 UTF-8 进行编码，并且只公开适用于代码点的 API。对于想要使用字素簇的用户，让他们为此使用第三方库。这不像 ASCII 那样以拉丁语为中心，但也没有复杂得多。你失去了按代码点快速直接索引，但你通常可以没有它或者负担得起让它<em>O(n)</em>而不是<em>O(1)</em>。</p>
+<p>如果我要为编写大型应用程序的人设计一种大型主力语言，我可能会采用最大方法。对于我的小型嵌入式脚本语言<a href="http://wren.io/">Wren</a>，我使用了 UTF-8 和代码点。</p>
+                
+              
+              
+<script src="https://giscus.app/client.js" data-repo="PKUFlyingPig/cs-self-learning" data-repo-id="R_kgDOGP67ng"
+    data-category="Announcements" data-category-id="DIC_kwDOGP67ns4COM9Q" data-mapping="title"
+    data-reactions-enabled="1" data-emit-metadata="0" data-input-position="top" data-theme="light_protanopia"
+    data-lang="zh-CN" data-loading="lazy" crossorigin="anonymous" async>
+</script>
+
+<script>
+    var palette = __get("__palette")
+    if (palette && typeof palette.color === "object") {
+        if (palette.color.scheme === "slate") {
+            const giscus = document.querySelector("script[src*=giscus]")
+            giscus.setAttribute("data-theme", "dark_protanopia")
+        }
+    }
+
+    document.addEventListener("DOMContentLoaded", function () {
+        const ref = document.querySelector("[data-md-component=palette]")
+        ref.addEventListener("change", function () {
+            var palette = __get("__palette")
+            if (palette && typeof palette.color === "object") {
+                const theme = palette.color.scheme === "slate" ? "dark_protanopia" : "light_protanopia"
+                const frame = document.querySelector(".giscus-frame")
+                frame.contentWindow.postMessage({
+                    giscus: { setConfig: { theme } }
+                }, "https://giscus.app")
+            }
+        })
+    })
+</script>
+
+            </article>
+          </div>
+        </div>
+        
+          <a href="#" class="md-top md-icon" data-md-component="top" data-md-state="hidden">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"/></svg>
+            Back to top
+          </a>
+        
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href="../../3_18.Types%20of%20Values/Types%20of%20Values/" class="md-footer__link md-footer__link--prev" aria-label="上一页: 3.18.Types of Values" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                上一页
+              </span>
+              3.18.Types of Values
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../../3_20.Hash%20Tables/Hash%20Tables/" class="md-footer__link md-footer__link--next" aria-label="下一页: 3.20.Hash Tables" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                下一页
+              </span>
+              3.20.Hash Tables
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        
+          Made with
+          <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+            Material for MkDocs
+          </a>
+        
+        
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["header.autohide", "navigation.tracking", "navigation.top", "search.highlight", "search.share", "search.suggest", "content.code.annotate"], "search": "../../../assets/javascripts/workers/search.fcfe8b6d.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\uff0c\\u3002]+", "search.placeholder": "\u641c\u7d22", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.b1047164.min.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+      
+    
+  </body>
+</html>

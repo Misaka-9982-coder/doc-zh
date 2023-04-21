@@ -1,0 +1,1356 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-7.3.6">
+    
+    
+      
+        <title>4. trap 与系统调用 - doc-zh</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.a57b2b03.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.3f5d1f46.min.css">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font-family:"Roboto";--md-code-font-family:"Roboto Mono"}</style>
+      
+    
+    
+    
+    
+      
+
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="light-blue" data-md-color-accent="deep-purple">
+  
+    
+    <script>function __prefix(e){return new URL("../..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+    
+      <script>var palette=__get("__palette");if(null!==palette&&"object"==typeof palette.color)for(var key in palette.color)document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#4-trap" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="doc-zh" class="md-header__button md-logo" aria-label="doc-zh" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            doc-zh
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              4. trap 与系统调用
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="light-blue" data-md-color-accent="deep-purple"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+          
+            <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5c-.84 0-1.65.15-2.39.42L12 2M3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29L3.34 7m.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14L3.36 17M20.65 7l-1.77 3.79a7.023 7.023 0 0 0-2.38-4.15l4.15.36m-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29L20.64 17M12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44L12 22z"/></svg>
+            </label>
+          
+        
+          
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="cyan" data-md-color-accent="deep-purple"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
+          
+            <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3 3.19.09m3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95 2.06.05m-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31z"/></svg>
+            </label>
+          
+        
+      </form>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7 0-.24-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91 1.61 0 2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08z"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        
+<a href="https://github.com/Misaka-9982-coder/doc-zh" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    doc-zh
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="doc-zh" class="md-nav__button md-logo" aria-label="doc-zh" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    doc-zh
+  </label>
+  
+    <div class="md-nav__source">
+      
+<a href="https://github.com/Misaka-9982-coder/doc-zh" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    doc-zh
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1" type="checkbox" id="__nav_1" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_1">
+          xv6-book
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="xv6-book" data-md-level="1">
+        <label class="md-nav__title" for="__nav_1">
+          <span class="md-nav__icon md-icon"></span>
+          xv6-book
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../0.%20%E5%89%8D%E8%A8%80%E5%92%8C%E8%87%B4%E8%B0%A2/" class="md-nav__link">
+        0. 前言和致谢
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1.%20%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E6%8E%A5%E5%8F%A3/" class="md-nav__link">
+        1. 操作系统接口
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2.%20%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84/" class="md-nav__link">
+        2. 操作系统架构
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3.%20%E9%A1%B5%E8%A1%A8/" class="md-nav__link">
+        3. 页表
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          4. trap 与系统调用
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        4. trap 与系统调用
+      </a>
+      
+        
+
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#risc-v-trap" class="md-nav__link">
+    RISC-V trap机制
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#trap" class="md-nav__link">
+    从用户空间的trap
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    代码：调用系统调用
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    代码：系统调用参数
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#trap_1" class="md-nav__link">
+    内核空间的trap
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    页错误异常
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    实际应用
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5.%20%E4%B8%AD%E6%96%AD%E5%92%8C%E8%AE%BE%E5%A4%87%E9%A9%B1%E5%8A%A8%E7%A8%8B%E5%BA%8F/" class="md-nav__link">
+        5. 中断和设备驱动程序
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../6.%20%E9%94%81/" class="md-nav__link">
+        6. 锁
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../7.%20%E8%B0%83%E5%BA%A6/" class="md-nav__link">
+        7. 调度
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../8.%20%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/" class="md-nav__link">
+        8. 文件系统
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../9.%20%E5%86%8D%E6%AC%A1%E6%8E%A2%E8%AE%A8%E5%B9%B6%E5%8F%91%E6%80%A7/" class="md-nav__link">
+        9. 再次探讨并发性
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2">
+          craftinginterpreters
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="craftinginterpreters" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          craftinginterpreters
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../craftinginterpreters/0_00.contents/contents/" class="md-nav__link">
+        0.00.contents
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../craftinginterpreters/0_01.acknowledgements/acknowledgements/" class="md-nav__link">
+        0.01.acknowledgements
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../craftinginterpreters/1_00.Welcome/Welcome/" class="md-nav__link">
+        一、WELCOME
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../craftinginterpreters/1_01.Introduction/Introduction/" class="md-nav__link">
+        1.01.Introduction
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../craftinginterpreters/1_02.A%20Map%20of%20the%20Territory/A%20Map%20of%20the%20Territory/" class="md-nav__link">
+        1.02.A Map of the Territory
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../craftinginterpreters/1_03.The%20Lox%20Language/The%20Lox%20Language/" class="md-nav__link">
+        1.03.The Lox Language
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../craftinginterpreters/2_00.A%20TREE-WALK%20INTERPRETER/A%20TREE-WALK%20INTERPRETER/" class="md-nav__link">
+        二、A TREE-WALK INTERPRETER
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../craftinginterpreters/2_04.Scanning/Scanning/" class="md-nav__link">
+        2.04.Scanning
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../craftinginterpreters/2_05.Representing%20Code/Representing%20Code/" class="md-nav__link">
+        2.05.Representing Code
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../craftinginterpreters/2_06.Parsing%20Expressions/Parsing%20Expressions/" class="md-nav__link">
+        2.06.Parsing Expressions
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../craftinginterpreters/2_07.Evaluating%20Expressions/Evaluating%20Expressions/" class="md-nav__link">
+        2.07.Evaluating Expressions
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../craftinginterpreters/2_08.Statements%20and%20State/Statements%20and%20State/" class="md-nav__link">
+        2.08.Statements and State
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../craftinginterpreters/2_09.Control%20Flow/Control%20Flow/" class="md-nav__link">
+        2.09.Control Flow
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../craftinginterpreters/2_10.Functions/Functions/" class="md-nav__link">
+        2.10.Functions
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../craftinginterpreters/2_11.Resolving%20and%20Binding/Resolving%20and%20Binding/" class="md-nav__link">
+        2.11.Resolving and Binding
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../craftinginterpreters/2_12.Classes/Classes/" class="md-nav__link">
+        2.12.Classes
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../craftinginterpreters/2_13.Inheritance/Inheritance/" class="md-nav__link">
+        2.13.Inheritance
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../craftinginterpreters/3_00.A%20BYTECODE%20VIRTUAL%20MACHINE/A%20BYTECODE%20VIRTUAL%20MACHINE/" class="md-nav__link">
+        三、A BYTECODE VIRTUAL MACHINE
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../craftinginterpreters/3_14.Chunks%20of%20Bytecode/Chunks%20of%20Bytecode/" class="md-nav__link">
+        3.14.Chunks of Bytecode
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../craftinginterpreters/3_15.A%20Virtual%20Machine/A%20Virtual%20Machine/" class="md-nav__link">
+        3.15.A Virtual Machine
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../craftinginterpreters/3_16.Scanning%20on%20Demand/Scanning%20on%20Demand/" class="md-nav__link">
+        3.16.Scanning on Demand
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../craftinginterpreters/3_17.Compiling%20Expressions/Compiling%20Expressions/" class="md-nav__link">
+        3.17.Compiling Expressions
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../craftinginterpreters/3_18.Types%20of%20Values/Types%20of%20Values/" class="md-nav__link">
+        3.18.Types of Values
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../craftinginterpreters/3_19.Strings/Strings/" class="md-nav__link">
+        3.19.Strings
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../craftinginterpreters/3_20.Hash%20Tables/Hash%20Tables/" class="md-nav__link">
+        3.20.Hash Tables
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../craftinginterpreters/3_21.Global%20Variables/Global%20Variables/" class="md-nav__link">
+        3.21.Global Variables
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../craftinginterpreters/3_22.Local%20Variables/Local%20Variables/" class="md-nav__link">
+        3.22.Local Variables
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../craftinginterpreters/3_23.Jumping%20Back%20and%20Forth/Jumping%20Back%20and%20Forth/" class="md-nav__link">
+        3.23.Jumping Back and Forth
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../craftinginterpreters/3_24.Calls%20and%20Functions/Calls%20and%20Functions/" class="md-nav__link">
+        3.24.Calls and Functions
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../craftinginterpreters/3_25.Closures/Closures/" class="md-nav__link">
+        3.25.Closures
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../craftinginterpreters/3_26.Garbage%20Collection/Garbage%20Collection/" class="md-nav__link">
+        3.26.Garbage Collection
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../craftinginterpreters/3_27.Classes%20and%20Instances/Classes%20and%20Instances/" class="md-nav__link">
+        3.27.Classes and Instances
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../craftinginterpreters/3_28.Methods%20and%20Initializers/Methods%20and%20Initializers/" class="md-nav__link">
+        3.28.Methods and Initializers
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../craftinginterpreters/3_29.Superclasses/Superclasses/" class="md-nav__link">
+        3.29.Superclasses
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../craftinginterpreters/3_30.Optimization/Optimization/" class="md-nav__link">
+        3.30.Optimization
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../craftinginterpreters/4_01.A1.Appendix%20I%20Lox%20Grammar/A1.Appendix%20I%20Lox%20Grammar/" class="md-nav__link">
+        A1.Appendix I Lox Grammar
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../craftinginterpreters/4_02.A2.Appendix%20II%20Generated%20Syntax%20Tree%20Classes/A2.Appendix%20II%20Generated%20Syntax%20Tree%20Classes/" class="md-nav__link">
+        A2.Appendix II Generated Syntax Tree Classes
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#risc-v-trap" class="md-nav__link">
+    RISC-V trap机制
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#trap" class="md-nav__link">
+    从用户空间的trap
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    代码：调用系统调用
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    代码：系统调用参数
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#trap_1" class="md-nav__link">
+    内核空间的trap
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    页错误异常
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    实际应用
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/Misaka-9982-coder/doc-zh/edit/master/docs/S081/4. trap 与系统调用.md" title="编辑此页" class="md-content__button md-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
+                  </a>
+                
+                
+                <h1 id="4-trap">4. trap 与系统调用</h1>
+<p>CPU 在遇到以下三种事件时会中止正常的指令执行，并强制将控制权转移到处理该事件的特殊代码。</p>
+<ul>
+<li>一种情况是<strong>系统调用</strong>，当用户程序执行 <code>ecall</code> 指令以请求内核为其执行操作时。</li>
+<li>另一种情况是<strong>异常</strong>：指令（用户或内核）执行非法操作，例如除以零或使用无效的虚拟地址。</li>
+<li>第三种情况是<strong>设备中断</strong>，当设备发出需要关注的信号时，例如磁盘硬件完成读或写请求。</li>
+</ul>
+<p>本书将这些情况统称为 <strong>trap</strong> 。通常，trap 发生时的代码后续会需要恢复，并且不需要意识到发生了任何特殊的事情。也就是说，我们通常希望 trap 是透明的；这对设备中断尤其重要，因为被中断的代码通常不会预料到这种情况。通常的顺序是 trap 迫使控制权转移到内核；内核保存寄存器和其他状态以便恢复执行；内核执行适当的处理程序代码（例如，系统调用实现或设备驱动程序）；内核恢复已保存的状态并从 trap 返回；原始代码从中断处恢复。</p>
+<p>Xv6 在内核中处理所有 trap；trap 不会传递给用户代码。对于系统调用，这种在内核中处理 trap 的方式是很自然的。对于中断，这是有道理的，因为隔离要求只允许内核使用设备，以及因为内核是在多个进程之间共享设备的便捷机制。对于异常，这也是有道理的，因为 xv6 会对来自用户空间的所有异常进行响应并终止相关程序。</p>
+<p>Xv6 的 trap 处理分为四个阶段：</p>
+<ul>
+<li>RISC-V CPU 执行的硬件操作</li>
+<li>一些汇编指令准备内核 C 代码的方式</li>
+<li>决定如何处理trap的 C 函数</li>
+<li>以及系统调用或设备驱动程序的服务例程</li>
+</ul>
+<p>尽管三种 trap 类型之间的相似性表明内核可以使用单一的代码路径处理所有 trap，但实际上，对于三个明确的情况（来自用户空间的 trap、来自内核空间的 trap 和 定时器中断）具有独立的代码是很方便的。处理 trap 的内核代码（汇编或 C 语言）通常称为 <strong>handler</strong> ；第一个处理程序指令通常以汇编（而非 C 语言）编写，有时被称为 <strong>vector</strong>。</p>
+<h2 id="risc-v-trap">RISC-V trap机制</h2>
+<p>每个 RISC-V CPU 都有一组控制寄存器，内核可以写入这些寄存器以告知 CPU 如何处理trap，也可以读取这些寄存器以了解已发生的 trap。RISC-V 文档包含了完整的信息。<code>riscv.h</code> (kernel/riscv.h:1) 包含了 xv6 使用的定义。以下是最重要的寄存器概述：</p>
+<ul>
+<li><strong>stvec</strong>：内核将其 trap 处理程序的地址写入此处；RISC-V 在处理 trap 时跳转到 <strong>stvec</strong> 中的地址。</li>
+<li><strong>sepc</strong>：当 trap 发生时，RISC-V 将程序计数器保存在此处（因为 pc 随后被  stvec 中的值覆盖）。 sret（从trap返回）指令将 sepc 复制到 pc。内核可以写入  sepc 以控制  sret 的跳转位置。</li>
+<li><strong>scause</strong>：RISC-V 将描述 trap 原因的数字放在这里。</li>
+<li><strong>sscratch</strong>：trap 处理程序代码使用  sscratch 来帮助它在保存用户寄存器之前避免覆盖它们。</li>
+<li><strong>sstatus</strong>： sstatus 中的 SIE 位控制设备中断是否启用。如果内核清除 SIE 位，则 RISC-V 将推迟设备中断，直到内核设置 SIE 位。SPP 位表示 trap 是从用户模式还是监视器模式发出的，并控制 sret 返回到哪个模式。</li>
+</ul>
+<p>上述寄存器与在监视器模式下处理的 trap 相关，而在用户模式下无法读取或写入它们。还有一组类似的控制寄存器用于在机器模式下处理 trap；xv6 仅将它们用于定时器中断的特殊情况。</p>
+<p>一个多核芯片上的每个 CPU 都有这些寄存器的一组，而且在任何给定时间，可能有多个 CPU 正在处理 trap。</p>
+<p>当需要强制 trap 时，除定时器中断外，RISC-V 硬件对所有 trap 类型执行以下操作：</p>
+<ol>
+<li>如果 trap 是设备中断，并且 sstatus 的 SIE 位已清除，则不执行以下任何操作。</li>
+<li>通过清除 sstatus 中的 SIE 位禁用中断。</li>
+<li>将 pc 复制到 sepc。</li>
+<li>在  sstatus 中的 SPP 位保存当前模式（用户或监视器）。</li>
+<li>将 scause 设置为反映 trap 的原因。</li>
+<li>将模式设置为监督者。</li>
+<li>将 stvec 复制到 pc。</li>
+<li>在新的 pc 处开始执行。</li>
+</ol>
+<p>请注意，CPU 不会切换到内核页表，不会切换到内核中的堆栈，也不会保存除  pc 以外的任何寄存器。内核软件必须执行这些任务。在 trap 期间，CPU 执行最少的工作是为了提供软件的灵活性；例如，某些操作系统在某些情况下省略页面表切换以提高trap性能。</p>
+<p>值得思考的是，上面列出的步骤中是否有任何步骤可以省略，也许是为了寻求更快的trap。虽然在某些情况下可以使用更简单的序列，但在一般情况下，省略许多步骤可能是危险的。例如，假设 CPU 不切换程序计数器。那么从用户空间发出的 trap 可能在仍在运行用户指令的情况下切换到监视器模式。这些用户指令可能会破坏用户/内核隔离，例如通过修改 satp 寄存器指向允许访问所有物理内存的页表。因此，CPU 切换到内核指定的指令地址（即  stvec）是非常重要的。</p>
+<h2 id="trap">从用户空间的trap</h2>
+<p>Xv6 根据 trap 发生在内核代码还是用户代码中的情况进行不同的处理。这里讲述的是从用户代码发生的 trap；第 4.5 节描述了从内核代码发生的 trap。</p>
+<p>当在用户空间执行时，用户程序发起系统调用（<code>ecall</code> 指令），或执行非法操作，或设备中断时，可能会发生 trap。从用户空间的 trap 的处理路径是：</p>
+<ul>
+<li><code>uservec</code>(kernel/trampoline.S:21)，</li>
+<li>然后是 <code>usertrap</code>(kernel/trap.c:37)；</li>
+<li>返回时，执行 <code>usertrapret</code>(kernel/trap.c:90)</li>
+<li>然后执行 <code>userret</code>(kernel/trampoline.S:101)。</li>
+</ul>
+<p>xv6 的 trap 处理设计的一个主要约束是 RISC-V 硬件在强制 trap 时不切换页表。这意味着 <code>stvec</code> 中的 trap 处理程序地址必须在用户页表中具有有效映射，因为当 trap 处理代码开始执行时，该页表是有效的。此外，xv6 的 trap 处理代码需要切换到内核页表；为了在切换后能够继续执行，内核页表还必须为 <code>stvec</code> 指向的处理程序提供映射。</p>
+<p>Xv6 使用一个<strong><em>trampoline</em></strong>页面来满足这些要求。<em>trampoline</em> 页面包含 <code>uservec</code>，即 <code>stvec</code> 指向的 xv6 trap 处理代码。跳板页面在每个进程的页表中映射到地址 <code>TRAMPOLINE</code>，该地址位于虚拟地址空间的顶部，以便位于程序自己使用的内存之上。跳板页面也映射到内核页表中的地址 <code>TRAMPOLINE</code>。请参见图2.3 和图3.3 。由于跳板页面映射到用户页表中，没有 <code>PTE_U</code> 标志，trap 可以在监视器模式下开始执行。由于跳板页面在内核地址空间中映射到相同的地址，trap 处理程序可以在切换到内核页表后继续执行。</p>
+<p><img alt="" src="http://xv6.dgs.zone/tranlate_books/book-riscv-rev1/images/c2/p2.png" /></p>
+<p><img alt="" src="http://xv6.dgs.zone/tranlate_books/book-riscv-rev1/images/c3/p3.png" /></p>
+<p><img alt="" src="http://xv6.dgs.zone/tranlate_books/book-riscv-rev1/images/c3/p4.png" /></p>
+<p><code>uservec</code> trap处理程序的代码位于 <code>trampoline.S</code>(kernel/trampoline.S:21)。当 <code>uservec</code> 开始时，所有 32 个寄存器都包含中断用户代码的值。这些 32 个值需要保存到内存的某个地方，以便在 trap 返回到用户空间时可以恢复。存储到内存需要使用一个寄存器来保存地址，但在这一点上没有通用寄存器可用! 幸运的是，RISC-V 提供了一个帮助手，即 <code>sscratch</code> 寄存器。<code>uservec</code> 开始时的 <code>csrw</code> 指令将 <code>a0</code> 保存在 <code>sscratch</code> 中。现在 <code>uservec</code> 有一个可用的寄存器（<code>a0</code>）。</p>
+<p><code>uservec</code> 的下一个任务是保存 32 个用户寄存器。内核为每个进程分配一个内存页来存储 <code>trapframe</code> 结构，该结构（除其他外）有空间保存 32 个用户寄存器(kernel/proc.h:43)。因为 <code>satp</code> 仍然引用用户页表，<code>uservec</code> 需要将 trapframe 映射到用户地址空间。Xv6 在每个进程的用户页表中将其 trapframe 映射到虚拟地址 <code>TRAPFRAME</code>；<code>TRAPFRAME</code> 位于 <code>TRAMPOLINE</code> 下方。进程的 <code>p-&gt;trapframe</code> 也指向 trapframe，不过是以其物理地址表示，以便内核通过内核页表使用它。</p>
+<p>因此，<code>uservec</code> 将地址 <code>TRAPFRAME</code> 加载到 <code>a0</code> 中并将所有用户寄存器保存在那里，包括从 <code>sscratch</code> 读回的用户的 <code>a0</code>。</p>
+<p><code>trapframe</code> 包含当前进程的内核栈地址、当前 CPU 的 <code>hartid</code>、<code>usertrap</code> 函数的地址以及内核页表的地址。<code>uservec</code> 检索这些值，切换到内核页表，然后调用 <code>usertrap</code>。</p>
+<p><code>usertrap</code> 的任务是确定 trap 的原因，处理它并返回(kernel/trap.c:37)。它首先将 <code>stvec</code> 更改为在内核中的 trap 由 <code>kernelvec</code> 而不是 <code>uservec</code> 处理。它保存 <code>sepc</code> 寄存器（保存的用户程序计数器），因为 <code>usertrap</code> 可能会调用 <code>yield</code> 切换到另一个进程的内核线程，该进程可能返回到用户空间，其过程中会修改 <code>sepc</code>。如果 trap 是系统调用，<code>usertrap</code> 调用 <code>syscall</code> 来处理它；如果是设备中断，则调用 <code>devintr</code>；否则是异常，内核将杀死出错的进程。系统调用路径会在保存的用户程序计数器上加 4，因为 RISC-V 在系统调用的情况下，将程序指针指向 <code>ecall</code> 指令，但用户代码需要在后续指令处恢复执行。在返回之前，<code>usertrap</code> 检查进程是否已被杀死或应该放弃 CPU（如果此 trap 是计时器中断）。</p>
+<p>返回用户空间的第一步是调用 <code>usertrapret</code>(kernel/trap.c:90)。此函数设置 RISC-V 控制寄存器，为将来从用户空间发生的 trap 做准备。这包括更改 <code>stvec</code> 以引用 <code>uservec</code>，准备 <code>uservec</code> 依赖的 trapframe 字段，并将 <code>sepc</code> 设置为之前保存的用户程序计数器。最后，<code>usertrapret</code> 在用户和内核页表中都映射的 trampoline 页上调用 <code>userret</code>；原因是 <code>userret</code> 中的汇编代码将切换页表。</p>
+<p><code>usertrapret</code> 对 <code>userret</code> 的调用通过 <code>a0</code> 传递指向进程用户页表的指针(kernel/trampoline.S:101)。<code>userret</code> 将 <code>satp</code> 切换到进程的用户页表。回想一下，用户页表映射了 trampoline 页面和 <code>TRAPFRAME</code>，但没有映射内核的其他内容。trampoline 页在用户和内核页表中的相同虚拟地址允许 <code>userret</code> 在更改 <code>satp</code> 后继续执行。从这一点开始，<code>userret</code> 唯一可以使用的数据是寄存器内容和 trapframe 的内容。<code>userret</code> 将 <code>TRAPFRAME</code> 地址加载到 <code>a0</code>，通过 <code>a0</code> 从 trapframe 恢复保存的用户寄存器，恢复保存的用户 <code>a0</code>，并执行 <code>sret</code> 返回到用户空间。</p>
+<h2 id="_1">代码：调用系统调用</h2>
+<p>第 2 章在<code>initcode.S</code> 使用<code>exec</code>系统调用(user/initcode.S:11)结束。让我们看看用户调用如何到达内核中<code>exec</code>系统调用的实现。</p>
+<p>在 <code>initcode.S</code> 中，<code>exec</code>的参数放在寄存器<code>a0</code>和<code>a1</code>中，并将系统调用编号放入<code>a7</code>。系统调用编号与<code>syscalls</code>数组中的条目相匹配，该数组是函数指针的表(kernel/syscall.c:107)。<code>ecall</code>指令陷入内核并导致<code>uservec</code>、<code>usertrap</code>和<code>syscall</code>按照我们之前所看到的顺序执行。</p>
+<p><code>syscall</code>(kernel/syscall.c:132)从 trapframe 中保存的 a7 中检索系统调用编号，并用它索引<code>syscalls</code>。对于第一个系统调用，a7 包含<code>SYS_exec</code>(kernel/syscall.h:8)，从而调用系统调用实现函数<code>sys_exec</code>。</p>
+<p>当 <code>sys_exec</code> 返回时，<code>syscall</code> 将其返回值记录在 <code>p-&gt;trapframe-&gt;a0</code> 中。这将导致原始用户空间对<code>exec()</code>的调用返回该值，因为 RISC-V 上的 C 调用约定将返回值放在 <code>a0</code> 中。系统调用通常返回负数以表示错误，返回零或正数表示成功。如果系统调用编号无效，<code>syscall</code> 会打印错误并返回<span class="arithmatex">\(-1\)</span>。</p>
+<h2 id="_2">代码：系统调用参数</h2>
+<p>内核中的系统调用实现需要找到用户代码传递的参数。因为用户代码调用系统调用包装函数，所以参数最初位于 RISC-V C 调用约定将其放置的寄存器中。内核trap代码将用户寄存器保存到当前进程的trap帧中，内核代码可以在那里找到它们。内核函数 <code>argint</code>、<code>argaddr</code> 和 <code>argfd</code> 从trap帧中检索第  n 个系统调用参数，作为整数、指针或文件描述符。它们都调用 <code>argraw</code> 来检索适当的保存的用户寄存器(kernel/syscall.c:34)。</p>
+<p>有些系统调用传递指针作为参数，内核必须使用这些指针来读取或写入用户内存。例如，<code>exec</code> 系统调用将一个指针数组传递给内核，这些指针引用用户空间中的字符串参数。这些指针带来了两个挑战。首先，用户程序可能有缺陷或恶意，并且可能向内核传递无效指针或旨在欺骗内核访问内核内存而非用户内存的指针。其次，xv6 内核页表映射与用户页表映射不同，因此内核不能使用普通指令从用户提供的地址加载或存储。</p>
+<p>内核实现了可以安全地将数据传输到和从用户提供的地址的函数。<code>fetchstr</code> 是一个例子(kernel/syscall.c:25)。诸如 <code>exec</code> 之类的文件系统调用使用 <code>fetchstr</code> 从用户空间检索字符串文件名参数。<code>fetchstr</code> 调用 <code>copyinstr</code> 来完成繁重的工作。</p>
+<p><code>copyinstr</code>(kernel/vm.c:403) 从用户页表 <code>pagetable</code> 中的虚拟地址 <code>srcva</code> 复制至多 <code>max</code> 字节到 <code>dst</code>。由于 <code>pagetable</code> 不是当前页表，<code>copyinstr</code> 使用 <code>walkaddr</code>（调用 <code>walk</code>）在 <code>pagetable</code> 中查找 <code>srcva</code>，得到物理地址 <code>pa0</code>。内核将每个物理 RAM 地址映射到相应的内核虚拟地址，因此 <code>copyinstr</code> 可以直接从 <code>pa0</code> 复制字符串字节到 <code>dst</code>。<code>walkaddr</code> (kernel/vm.c:109) 检查用户提供的虚拟地址是否是进程的用户地址空间的一部分，因此程序不能欺骗内核读取其他内存。</p>
+<h2 id="trap_1">内核空间的trap</h2>
+<p>根据用户或内核代码是否在执行，Xv6 对 CPU trap寄存器的配置略有不同。当内核在 CPU 上执行时，内核将 <code>stvec</code> 指向汇编代码 <code>kernelvec</code> (kernel/kernelvec.S:12) 。由于 xv6 已经在内核中，<code>kernelvec</code> 可以依赖于 <code>satp</code> 被设置为内核页表，并且栈指针指向有效的内核栈。<code>kernelvec</code> 将所有 32 个寄存器压入栈中，以便稍后从中恢复它们，这样被中断的内核代码可以在不受干扰的情况下恢复。</p>
+<p><code>kernelvec</code> 将寄存器保存在被中断的内核线程的栈上，这是有道理的，因为寄存器值属于那个线程。如果trap导致切换到另一个线程，这尤其重要 -- 在这种情况下，trap实际上会从新线程的栈返回，使被中断的线程的已保存寄存器安全地留在其栈上。</p>
+<p>在保存寄存器之后，<code>kernelvec</code> 跳转到 <code>kerneltrap</code> (kernel/trap.c:135)。<code>kerneltrap</code> 准备处理两种类型的 trap：设备中断和异常。它调用 <code>devintr</code> (kernel/trap.c:178) 来检查并处理前者。如果 trap 不是设备中断，那么它一定是异常，在 xv6 内核中这总是一个致命错误；内核调用 <code>panic</code> 并停止执行。</p>
+<p>如果由于定时器中断而调用了 <code>kerneltrap</code>，并且一个进程的内核线程正在运行（而不是调度器线程），<code>kerneltrap</code> 调用 <code>yield</code> 以给其他线程一个运行的机会。在某个时刻，其中一个线程会让步，并让我们的线程和它的 <code>kerneltrap</code> 再次恢复。第 7 章解释了在 <code>yield</code> 中发生了什么。</p>
+<p>当 <code>kerneltrap</code> 完成工作时，它需要返回到被 trap 中断的代码。由于 <code>yield</code> 可能已经干扰了 <code>sepc</code> 和 <code>sstatus</code> 中的先前模式，因此 <code>kerneltrap</code> 在启动时保存它们。现在它恢复这些控制寄存器并返回到 <code>kernelvec</code>（kernel/kernelvec.S:50）。<code>kernelvec</code> 从堆栈中弹出保存的寄存器并执行 <code>sret</code>，将 <code>sepc</code> 复制到 <code>pc</code> 并恢复中断的内核代码。</p>
+<p>值得考虑的是，如果 <code>kerneltrap</code> 由于计时器中断而调用了 <code>yield</code>， trap 返回是如何发生的。</p>
+<p>当 CPU 从用户空间进入内核时，Xv6 将 CPU 的 <code>stvec</code> 设置为 <code>kernelvec</code>；您可以在 <code>usertrap</code>（kernel/trap.c:29）中看到这一点。 在内核开始执行但 <code>stvec</code> 仍设置为 <code>uservec</code> 的时间窗口中，至关重要的是在该窗口期间不要发生设备中断。 幸运的是，当 RISC-V 开始处理 trap 时，它总是禁用中断，而 xv6 直到设置 <code>stvec</code> 之后才再次启用它们。</p>
+<h2 id="_3">页错误异常</h2>
+<p>Xv6 对异常的响应相当简单：如果异常发生在用户空间，内核将终止出错的进程。如果异常发生在内核中，内核将发生恐慌。实际的操作系统通常以更有趣的方式进行响应。</p>
+<p>以许多内核使用的页错误来实现 copy-on-write（COW）fork 为例。为了解释写时复制 fork ，考虑在第 3 章中描述的 xv6 的 <code>fork</code>。 <code>fork</code> 使子进程的初始内存内容与 fork 时父进程的内容相同。Xv6 使用 <code>uvmcopy</code>(kernel/vm.c:306) 来实现，它为子进程分配物理内存，并将父进程的内存复制到其中。如果子进程和父进程可以共享父进程的物理内存，那将更高效。然而，这样的实现不起作用，因为它会导致父进程和子进程在共享堆栈和堆上的写入相互干扰。</p>
+<p>通过适当使用页表权限和页错误，父进程和子进程可以安全地共享物理内存。当虚拟地址在页表中没有映射，或者具有映射但其 <code>PTE_V</code>) 标志被清除，或者映射的权限位（<code>PTE_R</code>，<code>PTE_W</code>，<code>PTE_X</code>，<code>PTE_U</code>）禁止正在尝试的操作时，CPU 会引发 <em>page-fault exception</em>。RISC-V 区分三种类型的页错误：</p>
+<ul>
+<li>加载页错误（当加载指令无法转换其虚拟地址时）</li>
+<li>存储页错误（当存储指令无法转换其虚拟地址时）</li>
+<li>以及指令页错误（当程序计数器中的地址无法转换时）</li>
+</ul>
+<p><code>scause</code> 寄存器指示页错误的类型，<code>stval</code> 寄存器包含无法转换的地址。</p>
+<p>COW fork 的基本设计是，父进程和子进程最初共享所有物理页，但每个进程都将它们映射为只读（清除 <code>PTE_W</code> 标志）。父进程和子进程可以从共享的物理内存中读取。如果任一进程写入给定页，RISC-V CPU 会引发页错误异常。内核的 trap 处理程序会响应分配一个新的物理内存页，并将故障地址映射到的物理页复制到其中。内核更改故障进程的页表中的相关 PTE 以指向副本，并允许读写操作，然后在引起故障的指令处恢复故障进程。因为 PTE 允许写入，所以重新执行的指令现在可以在没有错误的情况下执行。写时复制需要进行记录以帮助确定何时可以释放物理页，因为每个页面可以根据 fork 、页面错误、执行和退出的历史记录由多个页面表引用。这种记录允许一个重要的优化：如果一个进程发生存储页面错误，并且物理页面只从该进程的页面表中引用，就不需要复制。</p>
+<p>写时复制使 <code>fork</code> 更快，因为 <code>fork</code> 不需要复制内存。部分内存稍后需要在写入时复制，但通常情况下，大部分内存永远不需要复制。一个常见的例子是 <code>fork</code> 后跟 <code>exec</code>：在 <code>fork</code> 之后可能会写入几个页面，但随后子进程的 <code>exec</code> 会释放从父进程继承的大部分内存。写时复制 <code>fork</code> 消除了对这些内存复制的需求。此外，COW  fork 是透明的：对应用程序进行修改以使它们受益是不必要的。</p>
+<p>页表和页错误的组合为除 COW  fork 之外的有趣功能提供了广泛的可能性。另一个广泛使用的功能称为 <em>lazy allocation</em>，分为两部分。首先，当应用程序通过调用 <code>sbrk</code> 请求更多内存时，内核记录大小的增加，但不分配物理内存，也不为新的虚拟地址范围创建 PTE。其次，在对这些新地址的页面错误上，内核分配一个物理内存页面并将其映射到页面表中。与 COW  fork 一样，内核可以透明地实现延迟分配(lazy allocation)。</p>
+<p>由于应用程序经常请求比它们需要的更多内存，延迟分配(lazy allocation)是一个优势：对于应用程序永远不使用的页面，内核根本不需要做任何工作。此外，如果应用程序要求增加很多地址空间，那么没有延迟分配(lazy allocation)的 <code>sbrk</code> 是昂贵的：如果应用程序请求一千兆字节的内存，内核必须分配和清零 262,144 个 4096 字节的页面。延迟分配(lazy allocation)允许此成本分摊。另一方面，延迟分配(lazy allocation)会导致页面错误的额外开销，这涉及内核/用户转换。操作系统可以通过每个页面错误分配一批连续页面而不仅分配一个页面来减少页错误的开销。</p>
+<p>另一个广泛使用的特性是利用页错误实现的<strong>按需分页</strong> (<em>demand paging</em>)。在<code>exec</code>中，xv6 将应用程序的所有文本和数据立即加载到内存中。由于应用程序可能很大且从磁盘读取代价高昂，这种启动成本可能会被用户察觉到：当用户从 shell 启动大型应用程序时，在用户看到响应之前可能需要很长时间。为了提高响应速度，现代内核会为用户地址空间创建页表，但将页面的 PTE 标记为无效。在发生页错误时，内核从磁盘读取页面内容并将其映射到用户地址空间。与 COW  fork 和延迟分配(lazy allocation)一样，内核可以透明地实现这个功能。</p>
+<p>在计算机上运行的程序可能需要比计算机具有的 RAM 更多的内存。为了应对这种情况，操作系统可以实现<strong>磁盘分页</strong> (<em>paging to disk</em>)。其思想是仅将用户页面的一部分存储在 RAM 中，其余部分存储在磁盘上的<strong>分页区域</strong>(<em>paging area</em>)。内核将对应于分页区域中存储的内存（因此不在 RAM 中）的 PTE 标记为无效。如果应用程序尝试使用已经<strong>换出</strong>(<em>paged out</em>)到磁盘的页面，应用程序将产生页错误，页面必须<strong>换入</strong>(<em>paged in</em>)：内核trap处理程序将分配一个物理 RAM 页面，将页面从磁盘读取到 RAM 中，并修改相关 PTE 指向 RAM。</p>
+<p>如果需要换入页面，但没有可用的物理 RAM 怎么办？在这种情况下，内核必须先通过将页面换出或<strong>驱逐</strong>(<em>evicting</em>)到磁盘上的分页区域来释放物理页面，并将引用该物理页面的 PTE 标记为无效。驱逐操作代价高昂，所以分页性能最佳的情况是它很少发生：如果应用程序只使用它们内存页面的一个子集，并且子集的并集适应于 RAM。这个属性通常被称为具有良好的局部性引用。与许多虚拟内存技术一样，内核通常以对应用程序透明的方式实现磁盘分页。</p>
+<p>计算机通常在几乎没有<strong>可用</strong>物理内存的情况下运行，无论硬件提供了多少 RAM。例如，云提供商在单台机器上复用许多客户，以有效地使用硬件。另一个例子是，用户在较少的物理内存中运行许多智能手机应用程序。在这种环境中，分配页面可能需要先驱逐现有页面。因此，当可用物理内存稀缺时，分配页面是昂贵的。</p>
+<p>当可用内存稀缺时，延迟分配(lazy allocation)和按需分页尤其有优势。在<code>sbrk</code>或<code>exec</code>中预先分配内存会导致额外的驱逐成本以释放内存。此外，预先分配的工作可能会被浪费，因为在应用程序使用页面之前，操作系统可能已经将其驱逐。</p>
+<p>其他将分页和页错误异常结合在一起的功能包括自动扩展堆栈和内存映射文件。</p>
+<h2 id="_4">实际应用</h2>
+<p>弹簧板和trap帧可能看起来过于复杂。一个驱动力是 RISC-V 故意在强制 trap 时尽量做得很少，以允许非常快速的 trap 处理，这实际上非常重要。因此，内核trap处理程序的前几条指令实际上必须在用户环境中执行：用户页表和用户寄存器内容。并且 trap 处理程序最初对有用的事实（如正在运行的进程的身份或内核页表的地址）一无所知。由于 RISC-V 提供了受保护的地方，内核在进入用户空间之前可以将信息存储起来：<code>sscratch</code> 寄存器，以及指向内核内存的用户页表条目，但受到缺少 <code>PTE_U</code> 的保护。Xv6 的弹簧板和 trap 帧利用了这些 RISC-V 功能。</p>
+<p>如果将内核内存映射到每个进程的用户页表中（具有适当的 PTE 权限标志），则可以消除对特殊弹簧板页面的需求。这也将消除在从用户空间陷入内核时切换页表的需求。反过来，这将允许内核中的系统调用实现利用当前进程的用户内存被映射的优势，从而允许内核代码直接解引用用户指针。许多操作系统已经使用这些想法来提高效率。Xv6 避免使用它们，以减少内核中由于意外使用用户指针而导致的安全漏洞的可能性，并减少确保用户和内核虚拟地址不重叠所需的一些复杂性。</p>
+<p>生产操作系统实现了写时复制 fork 、延迟分配(lazy allocation)、按需分页、磁盘分页、内存映射文件等功能。此外，生产操作系统会尽量使用所有物理内存，无论是用于应用程序还是缓存（例如，文件系统的缓冲区缓存，我们将在第 8.2 节中介绍）。在这方面，Xv6 相当简单：你希望你的操作系统使用你购买的物理内存，但 xv6 并没有这样做。此外，如果 xv6 内存耗尽，它会向正在运行的应用程序返回错误或杀死它，而不是例如驱逐另一个应用程序的页面。</p>
+                
+              
+              
+<script src="https://giscus.app/client.js" data-repo="PKUFlyingPig/cs-self-learning" data-repo-id="R_kgDOGP67ng"
+    data-category="Announcements" data-category-id="DIC_kwDOGP67ns4COM9Q" data-mapping="title"
+    data-reactions-enabled="1" data-emit-metadata="0" data-input-position="top" data-theme="light_protanopia"
+    data-lang="zh-CN" data-loading="lazy" crossorigin="anonymous" async>
+</script>
+
+<script>
+    var palette = __get("__palette")
+    if (palette && typeof palette.color === "object") {
+        if (palette.color.scheme === "slate") {
+            const giscus = document.querySelector("script[src*=giscus]")
+            giscus.setAttribute("data-theme", "dark_protanopia")
+        }
+    }
+
+    document.addEventListener("DOMContentLoaded", function () {
+        const ref = document.querySelector("[data-md-component=palette]")
+        ref.addEventListener("change", function () {
+            var palette = __get("__palette")
+            if (palette && typeof palette.color === "object") {
+                const theme = palette.color.scheme === "slate" ? "dark_protanopia" : "light_protanopia"
+                const frame = document.querySelector(".giscus-frame")
+                frame.contentWindow.postMessage({
+                    giscus: { setConfig: { theme } }
+                }, "https://giscus.app")
+            }
+        })
+    })
+</script>
+
+            </article>
+          </div>
+        </div>
+        
+          <a href="#" class="md-top md-icon" data-md-component="top" data-md-state="hidden">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"/></svg>
+            Back to top
+          </a>
+        
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href="../3.%20%E9%A1%B5%E8%A1%A8/" class="md-footer__link md-footer__link--prev" aria-label="上一页: 3. 页表" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                上一页
+              </span>
+              3. 页表
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../5.%20%E4%B8%AD%E6%96%AD%E5%92%8C%E8%AE%BE%E5%A4%87%E9%A9%B1%E5%8A%A8%E7%A8%8B%E5%BA%8F/" class="md-footer__link md-footer__link--next" aria-label="下一页: 5. 中断和设备驱动程序" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                下一页
+              </span>
+              5. 中断和设备驱动程序
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        
+          Made with
+          <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+            Material for MkDocs
+          </a>
+        
+        
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["header.autohide", "navigation.tracking", "navigation.top", "search.highlight", "search.share", "search.suggest", "content.code.annotate"], "search": "../../assets/javascripts/workers/search.fcfe8b6d.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\uff0c\\u3002]+", "search.placeholder": "\u641c\u7d22", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.b1047164.min.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+      
+    
+  </body>
+</html>

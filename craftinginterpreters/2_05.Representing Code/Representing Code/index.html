@@ -1,0 +1,1976 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-7.3.6">
+    
+    
+      
+        <title>2.05.Representing Code - doc-zh</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.a57b2b03.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.3f5d1f46.min.css">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font-family:"Roboto";--md-code-font-family:"Roboto Mono"}</style>
+      
+    
+    
+    
+    
+      
+
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="light-blue" data-md-color-accent="deep-purple">
+  
+    
+    <script>function __prefix(e){return new URL("../../..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+    
+      <script>var palette=__get("__palette");if(null!==palette&&"object"==typeof palette.color)for(var key in palette.color)document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="doc-zh" class="md-header__button md-logo" aria-label="doc-zh" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            doc-zh
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              2.05.Representing Code
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="light-blue" data-md-color-accent="deep-purple"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+          
+            <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5c-.84 0-1.65.15-2.39.42L12 2M3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29L3.34 7m.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14L3.36 17M20.65 7l-1.77 3.79a7.023 7.023 0 0 0-2.38-4.15l4.15.36m-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29L20.64 17M12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44L12 22z"/></svg>
+            </label>
+          
+        
+          
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="cyan" data-md-color-accent="deep-purple"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
+          
+            <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3 3.19.09m3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95 2.06.05m-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31z"/></svg>
+            </label>
+          
+        
+      </form>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7 0-.24-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91 1.61 0 2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08z"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        
+<a href="https://github.com/Misaka-9982-coder/doc-zh" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    doc-zh
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="doc-zh" class="md-nav__button md-logo" aria-label="doc-zh" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    doc-zh
+  </label>
+  
+    <div class="md-nav__source">
+      
+<a href="https://github.com/Misaka-9982-coder/doc-zh" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    doc-zh
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1" type="checkbox" id="__nav_1" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_1">
+          xv6-book
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="xv6-book" data-md-level="1">
+        <label class="md-nav__title" for="__nav_1">
+          <span class="md-nav__icon md-icon"></span>
+          xv6-book
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../S081/0.%20%E5%89%8D%E8%A8%80%E5%92%8C%E8%87%B4%E8%B0%A2/" class="md-nav__link">
+        0. 前言和致谢
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../S081/1.%20%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E6%8E%A5%E5%8F%A3/" class="md-nav__link">
+        1. 操作系统接口
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../S081/2.%20%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84/" class="md-nav__link">
+        2. 操作系统架构
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../S081/3.%20%E9%A1%B5%E8%A1%A8/" class="md-nav__link">
+        3. 页表
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../S081/4.%20trap%20%E4%B8%8E%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8/" class="md-nav__link">
+        4. trap 与系统调用
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../S081/5.%20%E4%B8%AD%E6%96%AD%E5%92%8C%E8%AE%BE%E5%A4%87%E9%A9%B1%E5%8A%A8%E7%A8%8B%E5%BA%8F/" class="md-nav__link">
+        5. 中断和设备驱动程序
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../S081/6.%20%E9%94%81/" class="md-nav__link">
+        6. 锁
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../S081/7.%20%E8%B0%83%E5%BA%A6/" class="md-nav__link">
+        7. 调度
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../S081/8.%20%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/" class="md-nav__link">
+        8. 文件系统
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../S081/9.%20%E5%86%8D%E6%AC%A1%E6%8E%A2%E8%AE%A8%E5%B9%B6%E5%8F%91%E6%80%A7/" class="md-nav__link">
+        9. 再次探讨并发性
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2">
+          craftinginterpreters
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="craftinginterpreters" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          craftinginterpreters
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../0_00.contents/contents/" class="md-nav__link">
+        0.00.contents
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../0_01.acknowledgements/acknowledgements/" class="md-nav__link">
+        0.01.acknowledgements
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1_00.Welcome/Welcome/" class="md-nav__link">
+        一、WELCOME
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1_01.Introduction/Introduction/" class="md-nav__link">
+        1.01.Introduction
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1_02.A%20Map%20of%20the%20Territory/A%20Map%20of%20the%20Territory/" class="md-nav__link">
+        1.02.A Map of the Territory
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1_03.The%20Lox%20Language/The%20Lox%20Language/" class="md-nav__link">
+        1.03.The Lox Language
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2_00.A%20TREE-WALK%20INTERPRETER/A%20TREE-WALK%20INTERPRETER/" class="md-nav__link">
+        二、A TREE-WALK INTERPRETER
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2_04.Scanning/Scanning/" class="md-nav__link">
+        2.04.Scanning
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          2.05.Representing Code
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        2.05.Representing Code
+      </a>
+      
+        
+
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#51" class="md-nav__link">
+    5.1 上下文无关文法
+  </a>
+  
+    <nav class="md-nav" aria-label="5.1 上下文无关文法">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#511" class="md-nav__link">
+    5.1.1 语法规则
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#512" class="md-nav__link">
+    5.1.2 增强的文法表示
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#513-lox" class="md-nav__link">
+    5.1.3 Lox 表达式的语法
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#52" class="md-nav__link">
+    5.2 实现语法树
+  </a>
+  
+    <nav class="md-nav" aria-label="5.2 实现语法树">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#521" class="md-nav__link">
+    5.2.1 不怎么面向对象
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#522" class="md-nav__link">
+    5.2.2 对树进行元编程
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#53" class="md-nav__link">
+    5.3 处理树
+  </a>
+  
+    <nav class="md-nav" aria-label="5.3 处理树">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#531" class="md-nav__link">
+    5.3.1 表达式问题
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#532" class="md-nav__link">
+    5.3.2 访问者模式
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#533" class="md-nav__link">
+    5.3.3 表达式访问者
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#54" class="md-nav__link">
+    5.4 好看的打印
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    挑战
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2_06.Parsing%20Expressions/Parsing%20Expressions/" class="md-nav__link">
+        2.06.Parsing Expressions
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2_07.Evaluating%20Expressions/Evaluating%20Expressions/" class="md-nav__link">
+        2.07.Evaluating Expressions
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2_08.Statements%20and%20State/Statements%20and%20State/" class="md-nav__link">
+        2.08.Statements and State
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2_09.Control%20Flow/Control%20Flow/" class="md-nav__link">
+        2.09.Control Flow
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2_10.Functions/Functions/" class="md-nav__link">
+        2.10.Functions
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2_11.Resolving%20and%20Binding/Resolving%20and%20Binding/" class="md-nav__link">
+        2.11.Resolving and Binding
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2_12.Classes/Classes/" class="md-nav__link">
+        2.12.Classes
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2_13.Inheritance/Inheritance/" class="md-nav__link">
+        2.13.Inheritance
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3_00.A%20BYTECODE%20VIRTUAL%20MACHINE/A%20BYTECODE%20VIRTUAL%20MACHINE/" class="md-nav__link">
+        三、A BYTECODE VIRTUAL MACHINE
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3_14.Chunks%20of%20Bytecode/Chunks%20of%20Bytecode/" class="md-nav__link">
+        3.14.Chunks of Bytecode
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3_15.A%20Virtual%20Machine/A%20Virtual%20Machine/" class="md-nav__link">
+        3.15.A Virtual Machine
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3_16.Scanning%20on%20Demand/Scanning%20on%20Demand/" class="md-nav__link">
+        3.16.Scanning on Demand
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3_17.Compiling%20Expressions/Compiling%20Expressions/" class="md-nav__link">
+        3.17.Compiling Expressions
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3_18.Types%20of%20Values/Types%20of%20Values/" class="md-nav__link">
+        3.18.Types of Values
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3_19.Strings/Strings/" class="md-nav__link">
+        3.19.Strings
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3_20.Hash%20Tables/Hash%20Tables/" class="md-nav__link">
+        3.20.Hash Tables
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3_21.Global%20Variables/Global%20Variables/" class="md-nav__link">
+        3.21.Global Variables
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3_22.Local%20Variables/Local%20Variables/" class="md-nav__link">
+        3.22.Local Variables
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3_23.Jumping%20Back%20and%20Forth/Jumping%20Back%20and%20Forth/" class="md-nav__link">
+        3.23.Jumping Back and Forth
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3_24.Calls%20and%20Functions/Calls%20and%20Functions/" class="md-nav__link">
+        3.24.Calls and Functions
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3_25.Closures/Closures/" class="md-nav__link">
+        3.25.Closures
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3_26.Garbage%20Collection/Garbage%20Collection/" class="md-nav__link">
+        3.26.Garbage Collection
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3_27.Classes%20and%20Instances/Classes%20and%20Instances/" class="md-nav__link">
+        3.27.Classes and Instances
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3_28.Methods%20and%20Initializers/Methods%20and%20Initializers/" class="md-nav__link">
+        3.28.Methods and Initializers
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3_29.Superclasses/Superclasses/" class="md-nav__link">
+        3.29.Superclasses
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3_30.Optimization/Optimization/" class="md-nav__link">
+        3.30.Optimization
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../4_01.A1.Appendix%20I%20Lox%20Grammar/A1.Appendix%20I%20Lox%20Grammar/" class="md-nav__link">
+        A1.Appendix I Lox Grammar
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../4_02.A2.Appendix%20II%20Generated%20Syntax%20Tree%20Classes/A2.Appendix%20II%20Generated%20Syntax%20Tree%20Classes/" class="md-nav__link">
+        A2.Appendix II Generated Syntax Tree Classes
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#51" class="md-nav__link">
+    5.1 上下文无关文法
+  </a>
+  
+    <nav class="md-nav" aria-label="5.1 上下文无关文法">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#511" class="md-nav__link">
+    5.1.1 语法规则
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#512" class="md-nav__link">
+    5.1.2 增强的文法表示
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#513-lox" class="md-nav__link">
+    5.1.3 Lox 表达式的语法
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#52" class="md-nav__link">
+    5.2 实现语法树
+  </a>
+  
+    <nav class="md-nav" aria-label="5.2 实现语法树">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#521" class="md-nav__link">
+    5.2.1 不怎么面向对象
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#522" class="md-nav__link">
+    5.2.2 对树进行元编程
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#53" class="md-nav__link">
+    5.3 处理树
+  </a>
+  
+    <nav class="md-nav" aria-label="5.3 处理树">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#531" class="md-nav__link">
+    5.3.1 表达式问题
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#532" class="md-nav__link">
+    5.3.2 访问者模式
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#533" class="md-nav__link">
+    5.3.3 表达式访问者
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#54" class="md-nav__link">
+    5.4 好看的打印
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    挑战
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/Misaka-9982-coder/doc-zh/edit/master/docs/craftinginterpreters/2_05.Representing Code/Representing Code.md" title="编辑此页" class="md-content__button md-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
+                  </a>
+                
+                
+                <h1 id="_1">代码的表示</h1>
+<blockquote>
+<p>对于森林里的居民来说，几乎每一种树都有它的声音和特征。</p>
+<p>-- Thomas Hardy,?<em>Under the Greenwood Tree</em></p>
+</blockquote>
+<p>在<a href="http://craftinginterpreters.com/scanning.html">上一章</a>中，我们将原始源代码作为字符串并将其转换为稍微高级的表示形式：一系列token。我们将在<a href="http://craftinginterpreters.com/parsing-expressions.html">下一章</a>编写的解析器获取这些token并再次将它们转换为更丰富、更复杂的表示。</p>
+<p>在可以生成该表示之前，我们需要定义它。这就是本章的主题。在此过程中，我们将介绍一些关于形式语法的理论，感受函数式编程和面向对象编程之间的区别，复习几个设计模式，并进行一些元编程。</p>
+<blockquote>
+<p>我非常担心这是本书中最无聊的章节之一，以至于我一直在其中塞入更多有趣的想法，直到我用完了篇幅。</p>
+</blockquote>
+<p>在做所有这些之前，让我们关注主要目标——代码的表示。它应该易于解析器生成并且易于解释器使用。如果您还没有编写解析器或解释器，那么这些要求并不能完全说明问题。也许您的直觉可以提供帮助。当你扮演<em>人类</em>口译员的角色时，你的大脑在做什么？你如何在心理上评估这样的算术表达式：</p>
+<pre><code class="language-java">1 + 2 * 3 - 4
+</code></pre>
+<p>因为你了解运算顺序——老式的“<a href="https://en.wikipedia.org/wiki/Order_of_operations#Mnemonics">Please Excuse My Dear Aunt Sally</a>”——你知道乘法先于加法或减法求值。可视化该优先级的一种方法是使用树。叶节点是数字，内部节点是运算符，每个操作数都有分支。</p>
+<p>为了评估一个算术节点，需要知道它的子树的数值，所以必须先评估它们。这意味着从叶到根的工作方式——后<em>序</em>遍历：</p>
+<p><img alt="" src="../assets/da1997a1e6c6e8a7bbf9304b66ff5d86b9d3b7c5.png" /></p>
+<blockquote>
+<p>A. 从整棵树开始，评估最底部的操作，<code>2 * 3</code>。</p>
+<p>B. 接下来评估<code>+</code>.</p>
+<p>C. 接下来，<code>-</code>.
+D、最终答案。</p>
+</blockquote>
+<p>如果我给你一个算术表达式，你可以很容易地画出其中一棵树。给定一棵树，您可以毫不费力地对其进行评估。因此，直觉上代码的可行表示似乎是一棵与语言的语法结构（运算符嵌套）相匹配的树。</p>
+<blockquote>
+<p>这并不是说树是我们代码的<em>唯一</em>可能表示。在<a href="http://craftinginterpreters.com/a-bytecode-virtual-machine.html">第 III 部分</a>中，我们将生成字节码，这是另一种对人类不友好但更接近机器的表示形式。</p>
+</blockquote>
+<p>我们需要更准确地了解那个语法是什么。就像上一章的词法文法一样，有大量关于句法文法的理论。与扫描时相比，我们对这个理论的研究要多一些，因为事实证明它是贯穿大部分解释器的有用工具。<a href="https://en.wikipedia.org/wiki/Chomsky_hierarchy">我们首先将Chomsky 层次结构</a>向上移动一个级别...</p>
+<h2 id="51">5.1 上下文无关文法</h2>
+<p>在上一章中，我们用来定义词法的形式——字符如何分组为token的规则——被称为<em>正则语言(</em>regular language<em>)</em>。这对扫描器来说很好，它会发出一个扁平的token序列。但是正则语言(<em>regular language</em>)的功能不足以处理可以<strong>任意深度嵌套</strong>的表达式。</p>
+<p>我们需要一个更大的锤子，而那个锤子就是<strong>上下文无关文法</strong>(<strong>CFG</strong>)。它是<a href="https://en.wikipedia.org/wiki/Formal_grammar">形式语法(formal grammar)</a>工具箱中下一个重量级的工具。形式语法(formal grammar)采用一组称为“字母表(alphabet)”的原子片段。然后它定义了一组（通常是无限的）语法中的“字符串”，每个字符串 都是字母表中的一系列“字母”。</p>
+<p>我使用所有这些引号是因为当你从词法转向句法语法时，这些术语会变得有点混乱。在我们的扫描器语法中，字母表由单个字符组成，字符串是有效的词素——大致是“单词”。在我们现在谈论的句法语法中，我们处于不同的粒度级别。现在字母表中的每个“字母”都是一个完整的token，而“字符串”是一个<em>token序列</em>——一个完整的表达式。</p>
+<p>下边这个表格会有所帮助：</p>
+<table>
+<thead>
+<tr>
+<th>术语</th>
+<th></th>
+<th>词汇语法</th>
+<th>句法文法</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>The “alphabet” is...</td>
+<td>→</td>
+<td>Characters</td>
+<td>Tokens</td>
+</tr>
+<tr>
+<td>A “string” is...</td>
+<td>→</td>
+<td>Lexeme or token</td>
+<td>Expression</td>
+</tr>
+<tr>
+<td>It’s implemented by the...</td>
+<td>→</td>
+<td>Scanner</td>
+<td>Parser</td>
+</tr>
+</tbody>
+</table>
+<p>形式语法(formal grammar)的工作是指定哪些字符串有效，哪些无效。如果我们为英语句子定义一个语法，“eggs are tasty for breakfast”语法是正确的，但“tasty breakfast for are eggs”可能不在语法中。</p>
+<h3 id="511">5.1.1 语法规则</h3>
+<p>我们如何写下包含无限个有效字符串的语法？我们显然不能一一列举。相反，我们创建了一组有限的规则。您可以将它们视为可以在两个方向“玩”的游戏。</p>
+<p>如果从规则开始，可以使用它们来<em>生成</em>语法中的字符串。以这种方式创建的字符串称为<strong>派生</strong>，因为每个 字符串都是从语法规则中<em>派生</em>出来的。在游戏的每一步中，都选择一个规则并按照它告诉您的去做。大多数关于形式语法的行话都来自于在这个方向上的发挥。规则被称为<strong>产生</strong>式，因为它们在语法中<em>产生</em>字符串。</p>
+<p>上下文无关文法中的每个产生式都有一个<strong>head</strong>（它的名字）和一个<strong>body</strong>（描述它生成的内容）。在其纯粹的形式中，身体(body)只是一个符号列表。符号列表中的符号有两种：</p>
+<ul>
+<li><strong>终结符</strong>是语法字母表中的一个字母。您可以将其视为文字值。在我们定义的句法中，终结符是单独的词素——来自扫描器的token，例如<code>if</code>或<code>1234</code>。</li>
+</ul>
+<p>这些被称为“终端”，在“终点”的意义上，因为它们不会导致游戏中的任何进一步“移动”。你只需产生那个符号。</p>
+<ul>
+<li><strong>非终结符</strong>是对语法中另一条规则的命名引用。它的意思是“玩那个规则并在这里插入它产生的任何东西”。这样，文法就组成了。</li>
+</ul>
+<blockquote>
+<p>将head 限制为单个符号是上下文无关文法的一个定义特征。更强大的形式主义，如<a href="https://en.wikipedia.org/wiki/Unrestricted_grammar">不受限制的语法</a>，允许在头部(head)和身体(body)中使用一系列符号。</p>
+</blockquote>
+<p>还有最后一项改进：可能有多个同名规则。当到达具有该名称的非终端时，可以为它选择任何同名规则，以您的选中为准。</p>
+<p>为了具体化，需要一种方法来写下这些生产规则。人们一直在努力使语法具体化，一直追溯到 Pā?ini 的<em>Ashtadhyayi</em>，它在几千年前编纂了梵语语法。在 John Backus 和他的公司需要一种符号来指定 ALGOL 58 并提出<a href="https://en.wikipedia.org/wiki/Backus%E2%80%93Naur_form"><strong>Backus-Naur 形式</strong></a>(<strong>BNF</strong>) 之前，并没有取得太大进展。从那时起，几乎每个人都使用一些 BNF 的味道，根据自己的口味进行调整。</p>
+<p>我试图想出一些整洁的东西。每个规则都是一个名称，后面跟着一个箭头 (<code>→</code>)，然后是一系列符号，最后以分号 (<code>;</code>) 结尾。终结符是带引号的字符串，非终结符是小写单词。</p>
+<blockquote>
+<p>是的，我们需要定义一种语法以用于定义语法的规则。我们是否也应该指定<em>元语法</em>？我们用什么表示法呢？一路向下都是语言！</p>
+</blockquote>
+<p>这里使用早餐菜单的语法：</p>
+<blockquote>
+<p>是的，我真的会在整本书中使用早餐示例。抱歉。</p>
+</blockquote>
+<pre><code>breakfast  → protein &quot;with&quot; breakfast &quot;on the side&quot; ;
+breakfast  → protein ;
+breakfast  → bread ;
+
+protein    → crispiness &quot;crispy&quot; &quot;bacon&quot; ;
+protein    → &quot;sausage&quot; ;
+protein    → cooked &quot;eggs&quot; ;
+
+crispiness → &quot;really&quot; ;
+crispiness → &quot;really&quot; crispiness ;
+
+cooked     → &quot;scrambled&quot; ;
+cooked     → &quot;poached&quot; ;
+cooked     → &quot;fried&quot; ;
+
+bread      → &quot;toast&quot; ;
+bread      → &quot;biscuits&quot; ;
+bread      → &quot;English muffin&quot; ;
+</code></pre>
+<p>可以使用这个语法来生成随机早餐。让我们玩一局，看看效果如何。按照古老的惯例，游戏从语法中的第一条规则开始，这里是<code>breakfast</code>。一共有三个同名产品，随机选择第一个。得到的字符串如下所示：</p>
+<pre><code>protein &quot;with&quot; breakfast &quot;on the side&quot;
+</code></pre>
+<p>我们需要扩展第一个非终结符 <code>protein</code>，因此我们为此选择一个产生式。让我们选择：</p>
+<pre><code>protein → cooked &quot;eggs&quot; ;
+</code></pre>
+<p>接下来，我们需要 的产生式<code>cooked</code>，所以我们选择<code>"poached"</code>。那是一个终端，所以我们添加它。现在字符串看起来像：</p>
+<pre><code>&quot;poached&quot; &quot;eggs&quot; &quot;with&quot; breakfast &quot;on the side&quot;
+</code></pre>
+<p>下一个非终端又是<code>breakfast</code>。我们选择的第一个<code>breakfast</code>产生式递归地引用回<code>breakfast</code>规则。语法中的递归是一个好兆头，表明所定义的语言是上下文无关的，而不是常规的。特别是，递归非终结符在两边都有产生式的递归意味着该语言是不规则的。</p>
+<blockquote>
+<p>想象一下，我们在<code>breakfast</code>这里多次递归地扩展了规则，比如“培根加培根加培根加...” 为了正确地完成字符串，需要在末尾添加<em>相等</em>数量的“on the side”位。跟踪所需尾随部分的数量超出了正则语法(regular grammar)的能力。正则文法可以表示<em>重复</em>，但它们无法<em>计算</em>有多少重复，这是确保字符串具有相同数量的<code>with</code>和<code>on the side</code>部分所必需的。</p>
+</blockquote>
+<p>我们可以一遍又一遍地挑选第一个产品<code>breakfast</code>，产生各种各样的早餐，比如“培根配香肠配炒鸡蛋配培根...” ,但我们不会。这次我们选择<code>bread</code>.有三个规则，每个规则只包含一个终端。我们会选择“English muffin 英式松饼”。</p>
+<p>这样，字符串中的每个非终结符都被扩展，直到它最终只包含终结符，结果是：</p>
+<p><img alt="" src="../assets/26414d1be1b2d1970872934bbf5c3c334c9bea3b.png" /></p>
+<p>加入一些火腿和荷兰酱，你就有班尼迪克蛋了。</p>
+<p>每当我们遇到一个有多个产品的规则时，就任意选择一个。正是这种灵活性允许少量的语法规则对组合更大的字符串集进行编码。事实上，规则可以直接或间接地引用自身这一事实更能激发让我们将无限数量的字符串打包到一个有限的语法中。</p>
+<h3 id="512">5.1.2 增强的文法表示</h3>
+<p>在少量规则中填充无限组字符串是非常了不起的，但让我们更进一步。我们的表示法有效，但很乏味。所以，就像任何优秀的语言设计师一样，我们会在上面撒上一点语法糖——一些额外的方便符号。除了终结符和非终结符之外，我们还允许在规则主体中使用其他几种表达式：</p>
+<ul>
+<li>每次我们想为它添加另一个产生式时，我们不会重复规则名称，我们将允许一系列由管道 (<code>|</code>) 分隔的产生式。</li>
+</ul>
+<p>bread → "toast" | "biscuits" | "English muffin" ;</p>
+<ul>
+<li>此外，我们将允许使用括号进行分组，然后允许<code>|</code>在其中从作品中间的一系列选项中选择一个。</li>
+</ul>
+<p>protein → ( "scrambled" | "poached" | "fried" ) "eggs" ;</p>
+<ul>
+<li>使用递归来支持重复的符号序列具有一定的吸引力，但是每次我们想要循环时创建一个单独的命名子规则有点麻烦。因此，我们还使用后缀<code>*</code>来允许前面的符号或组重复零次或多次。</li>
+</ul>
+<p>crispiness → "really" "really"* ;</p>
+<blockquote>
+<p>这就是 Scheme 编程语言的工作原理。它根本没有内置的循环功能。相反，<em>所有</em>重复都以递归的形式表达。</p>
+</blockquote>
+<ul>
+<li>后缀<code>+</code>类似，但要求前面的产生式至少出现一次。</li>
+</ul>
+<p>crispiness → "really"+ ;</p>
+<ul>
+<li>后缀<code>?</code>用于可选产生式。它之前的东西可以出现零次或一次，但不能更多。</li>
+</ul>
+<p>breakfast → protein ( "with" breakfast "on the side" )? ;</p>
+<p>有了所有这些语法细节，我们的早餐语法浓缩为：</p>
+<pre><code>breakfast → protein ( &quot;with&quot; breakfast &quot;on the side&quot; )?
+          | bread ;
+
+protein   → &quot;really&quot;+ &quot;crispy&quot; &quot;bacon&quot;
+          | &quot;sausage&quot;
+          | ( &quot;scrambled&quot; | &quot;poached&quot; | &quot;fried&quot; ) &quot;eggs&quot; ;
+
+bread     → &quot;toast&quot; | &quot;biscuits&quot; | &quot;English muffin&quot; ;
+</code></pre>
+<p>还不错，但愿。如果您习惯在文本编辑器中使用 grep 或<a href="https://en.wikipedia.org/wiki/Regular_expression#Standards">正则表达式</a>，那么应该熟悉大部分标点符号。主要区别在于这里的符号代表整个token，而不是单个字符。</p>
+<p>我们将在本书的其余部分使用这种符号来精确描述 Lox 的语法。当您使用编程语言时，您会发现上下文无关语法（使用 这种 或<a href="https://en.wikipedia.org/wiki/Extended_Backus%E2%80%93Naur_form">EBNF</a>或其他一些表示法）可以帮助明确您的非正式语法设计思想。它们也是与其他语言黑客就语法进行交流的便捷媒介。</p>
+<p>我们为 Lox 定义的规则和产生式也是我们将要实现以表示内存中代码的树数据结构的指南。在这样做之前，我们需要一个 Lox 的实际语法，或者至少有一个可以让我们开始。</p>
+<h3 id="513-lox">5.1.3 Lox 表达式的语法</h3>
+<p>在上一章中，我们一口气把Lox的整个词法语法搞定了。每个关键字和标点符号都在那里。句法语法更大，在真正启动并运行解释器之前研究整个东西真的很无聊。</p>
+<p>相反，我们将在接下来的几章中快速浏览该语言的一个子集。一旦我们对这种微型语言进行了表示、解析和解释，后面的章节就会逐步向它添加新的特性，包括新的语法。现在，我们只需要关心少数几个表达式：</p>
+<ul>
+<li>
+<p><strong>Literals</strong>。数字、字符串、布尔值和<code>nil</code>.</p>
+</li>
+<li>
+<p><strong>一元表达式。</strong><code>!</code>执行逻辑非和<code>-</code>否定数字的前缀。</p>
+</li>
+<li>
+<p><strong>二元表达式</strong>。我们熟知并喜爱的中缀算术 (<code>+</code>,<code>-</code>,<code>*</code>,<code>/</code>) 和逻辑运算符 (<code>==</code>,<code>!=</code>,<code>&lt;</code>,<code>&lt;=</code>,<code>&gt;</code>,<code>&gt;=</code> )。</p>
+</li>
+<li>
+<p><strong>括号</strong>。一对<code>(</code>和<code>)</code> 包围的表达式。</p>
+</li>
+</ul>
+<p>这为我们提供了足够的表达式语法，例如：</p>
+<pre><code>1 - (2 * 3) &lt; 4 == false
+</code></pre>
+<p>使用增强的表示方法，语法如下：</p>
+<pre><code>expression     → literal
+               | unary
+               | binary
+               | grouping ;
+
+literal        → NUMBER | STRING | &quot;true&quot; | &quot;false&quot; | &quot;nil&quot; ;
+grouping       → &quot;(&quot; expression &quot;)&quot; ;
+unary          → ( &quot;-&quot; | &quot;!&quot; ) expression ;
+binary         → expression operator expression ;
+operator       → &quot;==&quot; | &quot;!=&quot; | &quot;&lt;&quot; | &quot;&lt;=&quot; | &quot;&gt;&quot; | &quot;&gt;=&quot;
+               | &quot;+&quot;  | &quot;-&quot;  | &quot;*&quot; | &quot;/&quot; ;
+</code></pre>
+<p>这里有一点额外的元语法。除了为终端匹配精确词素的引号字符串外，我们<code>CAPITALIZE</code>的终端是单个词素，其文本表示可能会有所不同。<code>NUMBER</code>是任何数字文字，并且<code>STRING</code>是任何字符串文字。稍后，我们将为<code>IDENTIFIER</code> 做同样的事情。</p>
+<p>这个语法实际上是有歧义的，我们将在解析它时看到这一点。但现在已经足够好了。</p>
+<blockquote>
+<p>如果您愿意，可以尝试使用此语法生成一些表达式，就像之前使用早餐语法所做的那样。生成的表达式是否适合您？你能让它产生任何错误<code>1 + / 3</code>吗？</p>
+</blockquote>
+<h2 id="52">5.2 实现语法树</h2>
+<p>最后，我们开始编写一些代码。那个小表达式语法是我们的骨架。由于语法是递归的——注意<code>grouping</code>,<code>unary</code>, 和<code>binary</code>都是如何引用回<code>expression</code>——我们的数据结构将形成一棵树。由于这个结构代表了我们语言的语法，所以它被称为<strong>语法树</strong>。</p>
+<blockquote>
+<p>特别是，我们正在定义一个抽象语法树 abstract syntax tree(<strong>AST</strong>)。在<strong>解析树</strong>中，每个单独的语法产生式都成为树中的一个节点。AST 省略了后续阶段不需要的产生式。</p>
+</blockquote>
+<p>我们的扫描器使用单个 Token 类来表示各种词素。为了区分不同的类型——想想数字<code>123</code>与字符串<code>"123"</code>——我们包含了一个简单的 TokenType 枚举。语法树不是那么同质。一元表达式只有一个操作数，二元表达式有两个，字面量没有。</p>
+<p>我们<em>可以</em>将它们全部合并到一个具有任意子项列表的表达式类中。一些编译器会。但我喜欢充分利用 Java 的类型系统。所以我们将为表达式定义一个基类。然后，对于每种表达式——每个产生式<code>expression</code>——我们创建一个子类，其中包含特定于该规则的非终结符的字段。这样，如果我们尝试访问一元表达式的第二个操作数，就会出现编译错误。</p>
+<blockquote>
+<p>token也不是完全同质的。字面量 token存储值，但其他种类的词素不需要该状态。我已经看到扫描器对字面量和其他类型的词素使用不同的类，但我想让事情变得更简单。</p>
+</blockquote>
+<p>是这样的：</p>
+<pre><code class="language-java">package com.craftinginterpreters.lox;
+
+abstract class Expr { 
+  static class Binary extends Expr {
+    Binary(Expr left, Token operator, Expr right) {
+      this.left = left;
+      this.operator = operator;
+      this.right = right;
+    }
+
+    final Expr left;
+    final Token operator;
+    final Expr right;
+  }
+
+  // Other expressions...
+}
+</code></pre>
+<blockquote>
+<p>我避免在代码中使用缩写，因为它们会让不知道它们代表什么的读者感到困惑。但在我看过的编译器中，“Expr”和“Stmt”无处不在，我不妨现在开始让您习惯它们。</p>
+</blockquote>
+<p>Expr 是所有表达式类继承自的基类。从中可以看出<code>Binary</code>子类嵌套在其中。对此没有技术需求，但它可以让我们将所有类塞进一个 Java 文件中。</p>
+<h3 id="521">5.2.1 不怎么面向对象</h3>
+<p>您会注意到，与 Token 类非常相似，这里没有任何方法。这是一个很简单的类,排列的很整齐，但只是一堆数据。这在像 Java 这样的面向对象语言中感觉很奇怪。不应该用 class 做点什么吗？</p>
+<p>问题是这些树类不属于任何一个域。他们是否应该有解析方法，因为那是创建树的地方？或者解释，因为那是他们被消费的地方？树节点跨越这些领域之间的边界，这意味着它们实际上不属于任何一方。</p>
+<p>事实上，这些类型的存在是为了让解析器和解释器能够进行通信。这适用于没有关联行为的简单数据类型。<em>这种风格在像 Lisp 和 ML 这样所有</em>数据都与行为分离的函数式语言中非常自然，但在 Java 中感觉很奇怪。</p>
+<p>函数式编程爱好者现在正跳起来惊呼“看！面向对象的语言不适合解释器!”  我不会走那么远。您会记得扫描器本身非常适合面向对象。它具有所有可变状态以跟踪它在源代码中的位置、一组定义良好的公共方法和一些私有辅助函数。</p>
+<p>我的感觉是，解释器的每个阶段或部分都以面向对象的风格工作得很好。正是在它们之间流动的数据结构被剥夺了行为。</p>
+<h3 id="522">5.2.2 对树进行元编程</h3>
+<p>Java 可以表达无行为类，但我不会说它在这方面特别出色。十一行代码来填充一个对象中的三个字段非常乏味，当全部完成后，我们将拥有 21 个这样的类。</p>
+<p>我不想浪费你的时间或我的墨水写下所有这些。真的，每个子类的本质是什么？名称和具有类型字段的列表。就是这样。我们是聪明的语言黑客，对吧？让我们自动化。</p>
+<blockquote>
+<p>想象一下，当你读到那篇文章时，我在跳笨拙的机器人舞。“AU-TO-MATE.”</p>
+</blockquote>
+<p>与其繁琐地手写每个类定义、字段声明、构造函数和初始值设定项，我们将拼凑一个脚本来为我们完成这些工作。它有每个树类型的描述——它的名称和字段——它会打印出定义具有该名称和状态的类所需的 Java 代码。</p>
+<p>这个脚本是一个微型 Java 命令行应用程序，它生成一个名为“Expr.java”的文件：</p>
+<blockquote>
+<p>我从 Jython 和 IronPython 的创建者 Jim Hugunin 那里得到了编写语法树类脚本的想法。</p>
+<p>实际的脚本语言比 Java 更适合这个，但我尽量不向您抛出太多语言。</p>
+</blockquote>
+<pre><code class="language-java">package com.craftinginterpreters.tool;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.Arrays;
+import java.util.List;
+
+public class GenerateAst {
+  public static void main(String[] args) throws IOException {
+    if (args.length != 1) {
+      System.err.println(&quot;Usage: generate_ast &lt;output directory&gt;&quot;);
+      System.exit(64);
+    }
+    String outputDir = args[0];
+  }
+}
+// tool/GenerateAst.java, create new file
+</code></pre>
+<p>请注意，此文件位于不同的包中，<code>.tool</code>而不是<code>.lox</code>.该脚本不是解释器本身的一部分。这是<em>我们</em>这些破解解释器的人自己运行以生成语法树类的工具。完成后，我们将“Expr.java”视为实现中的任何其他文件。我们只是自动化该文件的创作方式。</p>
+<p>要生成类，它需要对每种类型及其字段进行一些描述。</p>
+<pre><code class="language-java"> String outputDir = args[0];
+    defineAst(outputDir, &quot;Expr&quot;, Arrays.asList(
+      &quot;Binary   : Expr left, Token operator, Expr right&quot;,
+      &quot;Grouping : Expr expression&quot;,
+      &quot;Literal  : Object value&quot;,
+      &quot;Unary    : Token operator, Expr right&quot;
+    ));
+  }
+// tool/GenerateAst.java, in main()
+</code></pre>
+<p>为了简洁起见，我将表达式类型的描述塞进了字符串。每个都是类的名称，后面<code>:</code>是字段列表，用逗号分隔。每个字段都有一个类型和一个名称。</p>
+<pre><code class="language-java"> private static void defineAst(
+      String outputDir, String baseName, List&lt;String&gt; types)
+      throws IOException {
+    String path = outputDir + &quot;/&quot; + baseName + &quot;.java&quot;;
+    PrintWriter writer = new PrintWriter(path, &quot;UTF-8&quot;);
+
+    writer.println(&quot;package com.craftinginterpreters.lox;&quot;);
+    writer.println();
+    writer.println(&quot;import java.util.List;&quot;);
+    writer.println();
+    writer.println(&quot;abstract class &quot; + baseName + &quot; {&quot;);
+
+    writer.println(&quot;}&quot;);
+    writer.close();
+  }
+// tool/GenerateAst.java, add after main()
+</code></pre>
+<p>当我们调用它时，<code>baseName</code>是“Expr”，它既是类的名称，也是它输出的文件的名称。我们将其作为参数传递而不是对名称进行硬编码，因为稍后我们将为语句添加一个单独的类族。</p>
+<p>在基类内部，我们定义了每个子类。</p>
+<pre><code class="language-java">writer.println(&quot;abstract class &quot; + baseName + &quot; {&quot;);
+
+    // The AST classes.
+    for (String type : types) {
+      String className = type.split(&quot;:&quot;)[0].trim();
+      String fields = type.split(&quot;:&quot;)[1].trim(); 
+      defineType(writer, baseName, className, fields);
+    }
+    writer.println(&quot;}&quot;);
+// tool/GenerateAst.java, in defineAst()
+</code></pre>
+<p>这不是世界上最优雅的字符串操作代码，但没关系。它只运行在我们给它的一组准确的类定义上。健壮性不是优先事项。</p>
+<p>该代码依次调用：</p>
+<pre><code class="language-java">private static void defineType(
+      PrintWriter writer, String baseName,
+      String className, String fieldList) {
+    writer.println(&quot;  static class &quot; + className + &quot; extends &quot; +
+        baseName + &quot; {&quot;);
+
+    // Constructor.
+    writer.println(&quot;    &quot; + className + &quot;(&quot; + fieldList + &quot;) {&quot;);
+
+    // Store parameters in fields.
+    String[] fields = fieldList.split(&quot;, &quot;);
+    for (String field : fields) {
+      String name = field.split(&quot; &quot;)[1];
+      writer.println(&quot;      this.&quot; + name + &quot; = &quot; + name + &quot;;&quot;);
+    }
+
+    writer.println(&quot;    }&quot;);
+
+    // Fields.
+    writer.println();
+    for (String field : fields) {
+      writer.println(&quot;    final &quot; + field + &quot;;&quot;);
+    }
+
+    writer.println(&quot;  }&quot;);
+  }
+// tool/GenerateAst.java, add after defineAst()  
+</code></pre>
+<p>差不多了，所有出色的 Java 样板文件都已完成。它声明类主体中的每个字段。它为类定义了一个构造函数，每个字段都有参数，并在主体中初始化它们。</p>
+<p>现在编译并运行这个 Java 程序，它会生成一个包含几十行代码的新“.java”文件。该文件即将变得更长。</p>
+<blockquote>
+<p><a href="http://craftinginterpreters.com/appendix-ii.html">附录 II</a>包含在我们完成 jlox 的实现并定义其所有语法树节点后由该脚本生成的代码。</p>
+</blockquote>
+<h2 id="53">5.3 处理树</h2>
+<p>戴上你的想象力帽子思考一会儿。即使我们还没有做到这一点，请考虑解释器将如何处理语法树。Lox 中的每种表达式在运行时的行为都不同。这意味着解释器需要选择不同的代码块来处理每种表达式类型。在处理token时，我们可以简单地判断 TokenType。但是我们没有语法树的“类型”枚举，每个语法树只有一个单独的 Java 类。</p>
+<p>我们可以编写一长串类型测试：</p>
+<pre><code class="language-java">if (expr instanceof Expr.Binary) {
+  // ...
+} else if (expr instanceof Expr.Grouping) {
+  // ...
+} else // ...
+</code></pre>
+<p>但是所有这些按顺序的类型测试都很慢。名称按字母顺序排列在后面的表达式类型将需要更长的时间来执行，因为它们<code>if</code>在找到正确的类型之前会经历更多的情况。这不是我认为的优雅解决方案。</p>
+<p>我们有一系列类，我们需要<strong>将一大块行为与每个类相关联</strong>。在像 Java 这样的面向对象语言中，自然的解决方案是将这些行为放入类本身的方法中。我们可以在 Expr 上添加一个抽象<code>interpret()</code>方法，然后每个子类都会实现它来解释自己。</p>
+<blockquote>
+<p>这个确切的东西在<em>Design Patterns: Elements of Reusable Object-Oriented Software</em>中被字面称为<a href="https://en.wikipedia.org/wiki/Interpreter_pattern">“解释器模式”</a>，Erich Gamma 等人著。</p>
+</blockquote>
+<p>这适用于小型项目，但扩展性很差。正如我之前提到的，这些树类跨越了几个领域。至少，解析器和解释器都会搞砸它们。正如<a href="http://craftinginterpreters.com/resolving-and-binding.html">您稍后将看到</a>的，我们需要对它们进行名称解析。如果我们的语言是静态类型的，我们就会通过类型检查。</p>
+<p>如果我们为这些操作中的每一个都向表达式类添加实例方法，那将会把一堆不同的域混在一起。这违反<a href="https://en.wikipedia.org/wiki/Separation_of_concerns">了关注点分离</a>并导致难以维护的代码。</p>
+<h3 id="531">5.3.1 表达式问题</h3>
+<p>这个问题比乍看起来比较基础。我们有一些类型，以及一些像“解释”这样的高级操作。对于每一对类型和操作，我们需要一个特定的实现。想象一个表格：</p>
+<p><img alt="" src="../assets/697f9cd10628d1a8e1a7d5ac8ed5558c03ff8de6.png" /></p>
+<p>行是类型，列是操作。每个单元格代表在该类型上实现该操作的唯一代码段。</p>
+<p>像 Java 这样的面向对象语言假定<strong>一行中的所有代码自然地组合在一起</strong>。它表明您对一个类型所做的所有事情都可能彼此相关，并且该语言使将它们一起定义为同一类中的方法变得容易。</p>
+<p><img alt="" src="../assets/ad3ae308561e227fd6a870a464d3a316aeba95a2.png" /></p>
+<p>这使得通过添加<strong>新行</strong>来扩展表变得容易。只需定义一个新类。无需触及现有代码。但是想象一下，如果你想添加一个新的<em>操作</em>——一个新的列。在 Java 中，这意味着破解每个现有的类并向其中添加一个方法。</p>
+<p>ML家族中的函数式范式语言扭转了这种局面。在那里，您没有带有方法的类。类型和函数是完全不同的。要为多种不同类型实现一个操作，可以定义一个函数。在该函数的主体中，您使用<em>模式匹配</em>——一种基于类型的类固醇开关——在一个地方实现每种类型的操作。</p>
+<blockquote>
+<p>ML 是“metalanguage”的缩写，由罗宾·米尔纳 (Robin Milner) 和他的朋友们创建，构成了伟大的编程语言家族树中的主要分支之一。它的子语言包括 SML、Caml、OCaml、Haskell 和 F#。甚至 Scala、Rust 和 Swift 也非常相似。</p>
+<p>与 Lisp 非常相似，它是一种充满好创意的语言，以至于今天的语言设计者在 40 多年后仍在重新发现它们。</p>
+</blockquote>
+<p>这使得添加新操作变得很简单——只需定义另一个在所有类型上进行模式匹配的函数。</p>
+<p><img alt="" src="../assets/1428ead2c71d60c9907378e10f0b4821051e5f4a.png" /></p>
+<p>但是，相反，添加一个新类型是很困难的。您必须返回并向所有现有函数中的所有模式匹配添加一个新情景。</p>
+<p>每种风格都有一定的不足。这就是范式名称的字面意思——面向对象的语言希望您根据类型行来<em>定位代码。</em>相反，函数式语言鼓励您将每一列的代码价值集中到一个<em>函数</em>中。</p>
+<p>一群聪明的语言书呆子注意到这两种风格都不能轻松地将<em>行</em>和列添加到表格中。他们将这个困难称为“表达式问题”，因为——就像我们现在一样——他们在试图找出在编译器中对表达式语法树节点建模的最佳方法时第一次遇到了这个问题。</p>
+<blockquote>
+<p>具有多种方法的语言，如 Common Lisp 的<em>CLOS</em>、Dylan 和 Julia 确实支持轻松添加新类型和操作。他们通常牺牲的是静态类型检查或单独编译。</p>
+</blockquote>
+<p>人们已经抛出了各种语言特性、设计模式和编程技巧来试图解决这个问题，但还没有完美的语言能够解决这个问题。与此同时，我们能做的最好的事情就是尝试选择一种语言，其方向与我们正在编写的程序中的自然架构接缝相匹配。</p>
+<p>面向对象对我们的解释器的许多部分都适用，但这些树类与 Java 的本质相冲突。幸运的是，我们可以使用一种设计模式来处理它。</p>
+<h3 id="532">5.3.2 访问者模式</h3>
+<p><strong>访问者模式</strong>是所有<em>设计模式</em>中被最普遍误解的模式，当您查看过去几十年的软件架构过剩时，它确实在说明一些事情。</p>
+<p>麻烦始于术语。该模式与“访问”无关，其中的“接受”方法也不会让人联想到任何有用的东西。<strong>许多人认为该模式与遍历树有关</strong>，但事实并非如此。我们将在一组树状类上使用它，但这是巧合。正如您将看到的，该模式<strong>同样适用于单个对象</strong>。</p>
+<p>Visitor 模式实际上是关于在 OOP 语言中近似函数式风格。它使我们可以轻松地向该表添加新列。我们可以在一个地方为一组类型定义新操作的所有行为，而不必触及类型本身。它的实现方式与我们解决计算机科学中几乎所有问题的方式相同：通过添加一个间接层。</p>
+<p>在我们将它应用到我们自动生成的 Expr 类之前，让我们来看一个更简单的例子。假设我们有两种糕点：甜甜圈(beignets)和油条(crullers)。</p>
+<blockquote>
+<p>beignet（发音为“ben-yay”，两个音节同等重音）是一种油炸糕点，与甜甜圈(doughnuts)属于同一家族。当法国人在 1700 年代殖民北美时，他们带来了甜菜根。今天，在美国，它们与新奥尔良的美食有着最密切的联系。</p>
+<p>我最喜欢的消费方式是在 Café du Monde 刚从油炸锅里拿出来，堆满糖粉，然后喝一杯牛奶咖啡，而我看着游客们摇摇晃晃地四处走动，试图摆脱前一晚狂欢带来的宿醉.</p>
+</blockquote>
+<pre><code class="language-java">  abstract class Pastry {
+  }
+
+  class Beignet extends Pastry {
+  }
+
+  class Cruller extends Pastry {
+  }
+</code></pre>
+<p>我们希望能够定义新的糕点操作——烹饪(cooking)、食用(eating)、装饰(decorating)等——而不必每次都向每个类添加新方法。我们是这样做的。首先，我们定义一个单独的接口。</p>
+<pre><code class="language-java">interface PastryVisitor {
+    void visitBeignet(Beignet beignet); 
+    void visitCruller(Cruller cruller);
+} 
+</code></pre>
+<blockquote>
+<p>在<em>Design Patterns</em>中，这两种方法的命名容易混淆<code>visit()</code>，它们依靠重载来区分。这导致一些读者认为正确的访问方法是<em>在运行时</em>根据其参数类型选择的。事实并非如此。与 overriding 不同，overloading是在编译时静态调度的。</p>
+<p>为每个方法使用不同的名称使派发更加明显，并且还向您展示了如何在不支持重载(overloading)的语言中应用此模式。</p>
+</blockquote>
+<p>可以对糕点(Pastry)执行的每个操作都是一个实现该接口的新类。每种糕点都有具体的方法。这使得两种类型的操作代码都紧密地放在一个类中。</p>
+<p>给定一些糕点(Pastry)，我们如何根据其类型将其路由到访问者的正确方法 ,这依靠多态性！我们将此方法添加到 Pastry：</p>
+<pre><code class="language-java"> abstract class Pastry {
+    abstract void accept(PastryVisitor visitor);
+  }
+</code></pre>
+<p>每个子类都实现它。</p>
+<pre><code class="language-java">class Beignet extends Pastry {
+    @Override
+    void accept(PastryVisitor visitor) {
+      visitor.visitBeignet(this);
+    }
+  }
+</code></pre>
+<p>和：</p>
+<pre><code class="language-java">class Cruller extends Pastry {
+    @Override
+    void accept(PastryVisitor visitor) {
+      visitor.visitCruller(this);
+    }
+  }  
+</code></pre>
+<p>要对糕点(pastry)执行操作，我们调用它的<code>accept()</code>方法并为我们要执行的操作传入访问者。糕点(pastry)特定子类的重写实现<code>accept()</code>——反过来调用访问者的适当访问方法并将<em>其自身</em>传递给它。</p>
+<p>这就是技巧的核心。它允许我们在<em>糕点(pastry)类上使用多态分派来为</em><em>访问者</em>类选择合适的方法。在表中，每个糕点类都是一行，但如果您查看单个访问者的所有方法，它们会形成一<em>列</em>。</p>
+<p><img alt="" src="../assets/978ec89ab4c7ce809090049726ea91e6b397170b.png" /></p>
+<p>我们为每个类添加了一个<code>accept()</code>方法，我们可以为任意数量的访问者使用它，而无需再次接触糕点(pastry)类。这是一个聪明的模式。</p>
+<h3 id="533">5.3.3 表达式访问者</h3>
+<p>好的，让我们把它融入到我们的表达式类中。我们还将稍微改进一下模式。在糕点(pastry)示例中，访问和<code>accept()</code>方法不返回任何内容。实际上，访问者通常希望定义产生值的操作。但是<code>accept()</code>返回类型应该是什么？我们不能假设每个访问者类都想产生相同的类型，所以我们将使用泛型让每个实现填充一个返回类型。</p>
+<blockquote>
+<p>另一个常见的改进是传递给访问方法的附加“上下文(context)”参数，然后作为参数发送回<code>accept()</code>.这让操作采用额外的参数。我们将在本书中定义的访问者不需要它，所以我省略了它。</p>
+</blockquote>
+<p>首先，我们定义访问者接口。同样，将它嵌套在基类中，以便可以将所有内容保存在一个文件中。</p>
+<pre><code class="language-java">    writer.println(&quot;abstract class &quot; + baseName + &quot; {&quot;);
+
+    defineVisitor(writer, baseName, types);
+
+    // The AST classes.
+// tool/GenerateAst.java, in defineAst()
+</code></pre>
+<p>该函数生成访问者接口。</p>
+<pre><code class="language-java">  private static void defineVisitor(
+      PrintWriter writer, String baseName, List&lt;String&gt; types) {
+    writer.println(&quot;  interface Visitor&lt;R&gt; {&quot;);
+
+    for (String type : types) {
+      String typeName = type.split(&quot;:&quot;)[0].trim();
+      writer.println(&quot;    R visit&quot; + typeName + baseName + &quot;(&quot; +
+          typeName + &quot; &quot; + baseName.toLowerCase() + &quot;);&quot;);
+    }
+
+    writer.println(&quot;  }&quot;);
+  }
+// tool/GenerateAst.java, add after defineAst()  
+</code></pre>
+<p>在这里，我们遍历所有子类并为每个子类声明一个访问方法。当我们稍后定义新的表达式类型时，这将自动包含它们。</p>
+<p>在基类内部，我们定义了抽象<code>accept()</code>方法。</p>
+<pre><code class="language-java">      defineType(writer, baseName, className, fields);
+    }
+
+    // The base accept() method.
+    writer.println();
+    writer.println(&quot;  abstract &lt;R&gt; R accept(Visitor&lt;R&gt; visitor);&quot;);
+
+    writer.println(&quot;}&quot;);
+// tool/GenerateAst.java, in defineAst()
+</code></pre>
+<p>最后，每个子类实现它并为自己的类型调用正确的访问方法。</p>
+<pre><code class="language-java">    writer.println(&quot;    }&quot;);
+
+    // Visitor pattern.
+    writer.println();
+    writer.println(&quot;    @Override&quot;);
+    writer.println(&quot;    &lt;R&gt; R accept(Visitor&lt;R&gt; visitor) {&quot;);
+    writer.println(&quot;      return visitor.visit&quot; +
+        className + baseName + &quot;(this);&quot;);
+    writer.println(&quot;    }&quot;);
+
+    // Fields.
+// tool/GenerateAst.java, in defineType()
+</code></pre>
+<p>好了。现在我们可以在表达式上定义操作，而无需处理类或我们的生成器脚本。编译并运行此生成器脚本以输出更新的“Expr.java”文件。它包含一个生成的 Visitor 接口和一组支持使用它的 Visitor 模式的表达式节点类。</p>
+<p>在我们结束这个杂乱无章的章节之前，让我们实现那个 Visitor 接口并查看模式的实际应用。</p>
+<h2 id="54">5.4 好看的打印</h2>
+<p>当我们调试解析器和解释器时，查看解析后的语法树并确保它具有我们期望的结构通常很有用。我们可以在调试器中检查它，但这可能很麻烦。</p>
+<p>相反，我们想要一些代码，在给定语法树的情况下，生成它的明确字符串表示形式。将树转换为字符串在某种程度上与解析器相反，当目标是生成在源语言中是有效语法的文本字符串时，通常称为“好看的打印”。</p>
+<p>这不是我们的目标。我们希望字符串非常明确地显示树的嵌套结构。<code>1 + 2 * 3</code>如果我们要调试的是运算符优先级是否得到正确处理，则返回的打印结果不是很有用。我们想知道<code>+</code>or<code>*</code>是否在树的顶部。</p>
+<p>为此，我们生成的字符串表示不会是 Lox 语法。相反，它看起来很像 Lisp。每个表达式都明确地括在括号中，并且它的所有子表达式和标记都包含在其中。</p>
+<p>给定一个语法树，例如：</p>
+<p><img alt="" src="../assets/21ec7e7df03cbfde518a1bd164f2c2ddb79b0901.png" /></p>
+<p>它产生：</p>
+<pre><code class="language-java">(* (- 123) (group 45.67))
+</code></pre>
+<p>不完全“好看”，但它确实显示了嵌套和分组。为了实现这一点，我们定义了一个新类。</p>
+<pre><code class="language-java">package com.craftinginterpreters.lox;
+
+class AstPrinter implements Expr.Visitor&lt;String&gt; {
+  String print(Expr expr) {
+    return expr.accept(this);
+  }
+}
+// lox/AstPrinter.java, create new file
+</code></pre>
+<p>如您所见，它实现了访问者接口。这意味着我们需要为目前为止的每种表达式类型访问方法。</p>
+<pre><code class="language-java">   return expr.accept(this);
+  }
+
+  @Override
+  public String visitBinaryExpr(Expr.Binary expr) {
+    return parenthesize(expr.operator.lexeme,
+                        expr.left, expr.right);
+  }
+
+  @Override
+  public String visitGroupingExpr(Expr.Grouping expr) {
+    return parenthesize(&quot;group&quot;, expr.expression);
+  }
+
+  @Override
+  public String visitLiteralExpr(Expr.Literal expr) {
+    if (expr.value == null) return &quot;nil&quot;;
+    return expr.value.toString();
+  }
+
+  @Override
+  public String visitUnaryExpr(Expr.Unary expr) {
+    return parenthesize(expr.operator.lexeme, expr.right);
+  }
+}
+// lox/AstPrinter.java, add after print()
+</code></pre>
+<p>字面量(Literal)表达式很简单——它们将值转换为字符串并进行一些检查以处理 Java<code>null</code>对 Lox 的替代<code>nil</code>。其他表达式有子表达式，所以它们使用这个<code>parenthesize()</code>辅助方法：</p>
+<pre><code class="language-java">  private String parenthesize(String name, Expr... exprs) {
+    StringBuilder builder = new StringBuilder();
+
+    builder.append(&quot;(&quot;).append(name);
+    for (Expr expr : exprs) {
+      builder.append(&quot; &quot;);
+      builder.append(expr.accept(this));
+    }
+    builder.append(&quot;)&quot;);
+
+    return builder.toString();
+  }
+// lox/AstPrinter.java, add after visitUnaryExpr()
+</code></pre>
+<p>它需要一个名称和一个子表达式列表，并将它们全部括在括号中，生成如下字符串：</p>
+<pre><code class="language-c">(+ 1 2)
+</code></pre>
+<p>请注意，它调用<code>accept()</code>每个子表达式并传入自身。这是让我们打印整棵树的递归步骤。</p>
+<blockquote>
+<p>这种递归也是人们认为访问者模式本身与树有关的原因。</p>
+</blockquote>
+<p>我们还没有解析器，所以很难看到它的实际效果。现在，我们在<code>main()</code>实现手动实例化树并打印它的小方法。</p>
+<pre><code class="language-java">public static void main(String[] args) {
+    Expr expression = new Expr.Binary(
+        new Expr.Unary(
+            new Token(TokenType.MINUS, &quot;-&quot;, null, 1),
+            new Expr.Literal(123)),
+        new Token(TokenType.STAR, &quot;*&quot;, null, 1),
+        new Expr.Grouping(
+            new Expr.Literal(45.67)));
+
+    System.out.println(new AstPrinter().print(expression));
+  }
+// lox/AstPrinter.java, add after parenthesize()
+</code></pre>
+<p>如果我们做的一切正确，它会打印：</p>
+<pre><code>(* (- 123) (group 45.67))
+</code></pre>
+<p>您可以删除此方法。我们不需要它。此外，当我们添加新的语法树类型时，我不会费心在 AstPrinter 中显示它们的必要访问方法。如果您想要（并且您希望 Java 编译器不会对您大喊大叫），请继续并自己添加它们。当我们开始将 Lox 代码解析为语法树时，它会在下一章派上用场。或者，如果您不想维护 AstPrinter，请随意删除它。我们不会再需要它了。</p>
+<hr />
+<h2 id="_2"><a href="http://craftinginterpreters.com/representing-code.html#challenges">挑战</a></h2>
+<ol>
+<li>早些时候，我说过我们添加到语法元语法中的 , <code>|</code>，<code>*</code>和<code>+</code> 形式只是语法糖。拿这个语法：</li>
+</ol>
+<p><code>expr → expr ( "(" ( expr ( "," expr )* )? ")" | "." IDENTIFIER )+
+        | IDENTIFIER
+        | NUMBER</code></p>
+<p>产生一个匹配相同语言但不使用任何符号糖的语法。</p>
+<p><em>奖励：</em>这段语法编码了什么样的表达式？</p>
+<ol>
+<li>访问者模式让您可以在面向对象的语言中模拟函数式风格。为函数式语言设计一个互补模式。它应该让您将对一种类型的所有操作捆绑在一起，并让您轻松定义新类型。</li>
+</ol>
+<p>（SML 或 Haskell 是本练习的理想选择，但 Scheme 或其他 Lisp 也适用。）</p>
+<ol>
+<li>在<a href="https://en.wikipedia.org/wiki/Reverse_Polish_notation">逆波兰表示法 reverse Polish notation (RPN)</a>中，算术运算符的操作数都放在运算符之前，因此<code>1 + 2</code>变为<code>1 2 +</code>   ，评估从左到右进行。数字被压入隐式堆栈。算术运算符弹出前两个数字，执行操作，然后推送结果。因此，这：</li>
+</ol>
+<p><code>( 1 + 2 ) * ( 4 - 3 )</code></p>
+<p>在 RPN 中变为：</p>
+<p><code>1  2 + 4  3 - *</code></p>
+<p>为我们的语法树类定义一个访问者类，它接受一个表达式，将其转换为 RPN，并返回结果字符串。</p>
+                
+              
+              
+<script src="https://giscus.app/client.js" data-repo="PKUFlyingPig/cs-self-learning" data-repo-id="R_kgDOGP67ng"
+    data-category="Announcements" data-category-id="DIC_kwDOGP67ns4COM9Q" data-mapping="title"
+    data-reactions-enabled="1" data-emit-metadata="0" data-input-position="top" data-theme="light_protanopia"
+    data-lang="zh-CN" data-loading="lazy" crossorigin="anonymous" async>
+</script>
+
+<script>
+    var palette = __get("__palette")
+    if (palette && typeof palette.color === "object") {
+        if (palette.color.scheme === "slate") {
+            const giscus = document.querySelector("script[src*=giscus]")
+            giscus.setAttribute("data-theme", "dark_protanopia")
+        }
+    }
+
+    document.addEventListener("DOMContentLoaded", function () {
+        const ref = document.querySelector("[data-md-component=palette]")
+        ref.addEventListener("change", function () {
+            var palette = __get("__palette")
+            if (palette && typeof palette.color === "object") {
+                const theme = palette.color.scheme === "slate" ? "dark_protanopia" : "light_protanopia"
+                const frame = document.querySelector(".giscus-frame")
+                frame.contentWindow.postMessage({
+                    giscus: { setConfig: { theme } }
+                }, "https://giscus.app")
+            }
+        })
+    })
+</script>
+
+            </article>
+          </div>
+        </div>
+        
+          <a href="#" class="md-top md-icon" data-md-component="top" data-md-state="hidden">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"/></svg>
+            Back to top
+          </a>
+        
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href="../../2_04.Scanning/Scanning/" class="md-footer__link md-footer__link--prev" aria-label="上一页: 2.04.Scanning" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                上一页
+              </span>
+              2.04.Scanning
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../../2_06.Parsing%20Expressions/Parsing%20Expressions/" class="md-footer__link md-footer__link--next" aria-label="下一页: 2.06.Parsing Expressions" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                下一页
+              </span>
+              2.06.Parsing Expressions
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        
+          Made with
+          <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+            Material for MkDocs
+          </a>
+        
+        
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["header.autohide", "navigation.tracking", "navigation.top", "search.highlight", "search.share", "search.suggest", "content.code.annotate"], "search": "../../../assets/javascripts/workers/search.fcfe8b6d.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\uff0c\\u3002]+", "search.placeholder": "\u641c\u7d22", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.b1047164.min.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+      
+    
+  </body>
+</html>

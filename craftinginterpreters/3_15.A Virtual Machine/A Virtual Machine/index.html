@@ -1,0 +1,1906 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-7.3.6">
+    
+    
+      
+        <title>3.15.A Virtual Machine - doc-zh</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.a57b2b03.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.3f5d1f46.min.css">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font-family:"Roboto";--md-code-font-family:"Roboto Mono"}</style>
+      
+    
+    
+    
+    
+      
+
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="light-blue" data-md-color-accent="deep-purple">
+  
+    
+    <script>function __prefix(e){return new URL("../../..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+    
+      <script>var palette=__get("__palette");if(null!==palette&&"object"==typeof palette.color)for(var key in palette.color)document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="doc-zh" class="md-header__button md-logo" aria-label="doc-zh" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            doc-zh
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              3.15.A Virtual Machine
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="light-blue" data-md-color-accent="deep-purple"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+          
+            <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5c-.84 0-1.65.15-2.39.42L12 2M3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29L3.34 7m.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14L3.36 17M20.65 7l-1.77 3.79a7.023 7.023 0 0 0-2.38-4.15l4.15.36m-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29L20.64 17M12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44L12 22z"/></svg>
+            </label>
+          
+        
+          
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="cyan" data-md-color-accent="deep-purple"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
+          
+            <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3 3.19.09m3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95 2.06.05m-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31z"/></svg>
+            </label>
+          
+        
+      </form>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7 0-.24-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91 1.61 0 2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08z"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        
+<a href="https://github.com/Misaka-9982-coder/doc-zh" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    doc-zh
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="doc-zh" class="md-nav__button md-logo" aria-label="doc-zh" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    doc-zh
+  </label>
+  
+    <div class="md-nav__source">
+      
+<a href="https://github.com/Misaka-9982-coder/doc-zh" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    doc-zh
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1" type="checkbox" id="__nav_1" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_1">
+          xv6-book
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="xv6-book" data-md-level="1">
+        <label class="md-nav__title" for="__nav_1">
+          <span class="md-nav__icon md-icon"></span>
+          xv6-book
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../S081/0.%20%E5%89%8D%E8%A8%80%E5%92%8C%E8%87%B4%E8%B0%A2/" class="md-nav__link">
+        0. 前言和致谢
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../S081/1.%20%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E6%8E%A5%E5%8F%A3/" class="md-nav__link">
+        1. 操作系统接口
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../S081/2.%20%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84/" class="md-nav__link">
+        2. 操作系统架构
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../S081/3.%20%E9%A1%B5%E8%A1%A8/" class="md-nav__link">
+        3. 页表
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../S081/4.%20trap%20%E4%B8%8E%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8/" class="md-nav__link">
+        4. trap 与系统调用
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../S081/5.%20%E4%B8%AD%E6%96%AD%E5%92%8C%E8%AE%BE%E5%A4%87%E9%A9%B1%E5%8A%A8%E7%A8%8B%E5%BA%8F/" class="md-nav__link">
+        5. 中断和设备驱动程序
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../S081/6.%20%E9%94%81/" class="md-nav__link">
+        6. 锁
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../S081/7.%20%E8%B0%83%E5%BA%A6/" class="md-nav__link">
+        7. 调度
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../S081/8.%20%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/" class="md-nav__link">
+        8. 文件系统
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../S081/9.%20%E5%86%8D%E6%AC%A1%E6%8E%A2%E8%AE%A8%E5%B9%B6%E5%8F%91%E6%80%A7/" class="md-nav__link">
+        9. 再次探讨并发性
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2">
+          craftinginterpreters
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="craftinginterpreters" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          craftinginterpreters
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../0_00.contents/contents/" class="md-nav__link">
+        0.00.contents
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../0_01.acknowledgements/acknowledgements/" class="md-nav__link">
+        0.01.acknowledgements
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1_00.Welcome/Welcome/" class="md-nav__link">
+        一、WELCOME
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1_01.Introduction/Introduction/" class="md-nav__link">
+        1.01.Introduction
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1_02.A%20Map%20of%20the%20Territory/A%20Map%20of%20the%20Territory/" class="md-nav__link">
+        1.02.A Map of the Territory
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1_03.The%20Lox%20Language/The%20Lox%20Language/" class="md-nav__link">
+        1.03.The Lox Language
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2_00.A%20TREE-WALK%20INTERPRETER/A%20TREE-WALK%20INTERPRETER/" class="md-nav__link">
+        二、A TREE-WALK INTERPRETER
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2_04.Scanning/Scanning/" class="md-nav__link">
+        2.04.Scanning
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2_05.Representing%20Code/Representing%20Code/" class="md-nav__link">
+        2.05.Representing Code
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2_06.Parsing%20Expressions/Parsing%20Expressions/" class="md-nav__link">
+        2.06.Parsing Expressions
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2_07.Evaluating%20Expressions/Evaluating%20Expressions/" class="md-nav__link">
+        2.07.Evaluating Expressions
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2_08.Statements%20and%20State/Statements%20and%20State/" class="md-nav__link">
+        2.08.Statements and State
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2_09.Control%20Flow/Control%20Flow/" class="md-nav__link">
+        2.09.Control Flow
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2_10.Functions/Functions/" class="md-nav__link">
+        2.10.Functions
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2_11.Resolving%20and%20Binding/Resolving%20and%20Binding/" class="md-nav__link">
+        2.11.Resolving and Binding
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2_12.Classes/Classes/" class="md-nav__link">
+        2.12.Classes
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2_13.Inheritance/Inheritance/" class="md-nav__link">
+        2.13.Inheritance
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3_00.A%20BYTECODE%20VIRTUAL%20MACHINE/A%20BYTECODE%20VIRTUAL%20MACHINE/" class="md-nav__link">
+        三、A BYTECODE VIRTUAL MACHINE
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3_14.Chunks%20of%20Bytecode/Chunks%20of%20Bytecode/" class="md-nav__link">
+        3.14.Chunks of Bytecode
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          3.15.A Virtual Machine
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        3.15.A Virtual Machine
+      </a>
+      
+        
+
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#151" class="md-nav__link">
+    15.1 执行指令的机器
+  </a>
+  
+    <nav class="md-nav" aria-label="15.1 执行指令的机器">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1511" class="md-nav__link">
+    15.1.1 执行指令
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1512" class="md-nav__link">
+    15.1.2 执行跟踪
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#152" class="md-nav__link">
+    15.2 堆栈管理
+  </a>
+  
+    <nav class="md-nav" aria-label="15.2 堆栈管理">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1521" class="md-nav__link">
+    15.2.1 虚拟机的堆栈
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1522" class="md-nav__link">
+    15.2.2 堆栈跟踪
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#153" class="md-nav__link">
+    15.3 算术计算器
+  </a>
+  
+    <nav class="md-nav" aria-label="15.3 算术计算器">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1531" class="md-nav__link">
+    15.3.1 二元运算符
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    挑战
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    设计说明：基于寄存器的字节码
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3_16.Scanning%20on%20Demand/Scanning%20on%20Demand/" class="md-nav__link">
+        3.16.Scanning on Demand
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3_17.Compiling%20Expressions/Compiling%20Expressions/" class="md-nav__link">
+        3.17.Compiling Expressions
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3_18.Types%20of%20Values/Types%20of%20Values/" class="md-nav__link">
+        3.18.Types of Values
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3_19.Strings/Strings/" class="md-nav__link">
+        3.19.Strings
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3_20.Hash%20Tables/Hash%20Tables/" class="md-nav__link">
+        3.20.Hash Tables
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3_21.Global%20Variables/Global%20Variables/" class="md-nav__link">
+        3.21.Global Variables
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3_22.Local%20Variables/Local%20Variables/" class="md-nav__link">
+        3.22.Local Variables
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3_23.Jumping%20Back%20and%20Forth/Jumping%20Back%20and%20Forth/" class="md-nav__link">
+        3.23.Jumping Back and Forth
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3_24.Calls%20and%20Functions/Calls%20and%20Functions/" class="md-nav__link">
+        3.24.Calls and Functions
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3_25.Closures/Closures/" class="md-nav__link">
+        3.25.Closures
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3_26.Garbage%20Collection/Garbage%20Collection/" class="md-nav__link">
+        3.26.Garbage Collection
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3_27.Classes%20and%20Instances/Classes%20and%20Instances/" class="md-nav__link">
+        3.27.Classes and Instances
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3_28.Methods%20and%20Initializers/Methods%20and%20Initializers/" class="md-nav__link">
+        3.28.Methods and Initializers
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3_29.Superclasses/Superclasses/" class="md-nav__link">
+        3.29.Superclasses
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3_30.Optimization/Optimization/" class="md-nav__link">
+        3.30.Optimization
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../4_01.A1.Appendix%20I%20Lox%20Grammar/A1.Appendix%20I%20Lox%20Grammar/" class="md-nav__link">
+        A1.Appendix I Lox Grammar
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../4_02.A2.Appendix%20II%20Generated%20Syntax%20Tree%20Classes/A2.Appendix%20II%20Generated%20Syntax%20Tree%20Classes/" class="md-nav__link">
+        A2.Appendix II Generated Syntax Tree Classes
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#151" class="md-nav__link">
+    15.1 执行指令的机器
+  </a>
+  
+    <nav class="md-nav" aria-label="15.1 执行指令的机器">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1511" class="md-nav__link">
+    15.1.1 执行指令
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1512" class="md-nav__link">
+    15.1.2 执行跟踪
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#152" class="md-nav__link">
+    15.2 堆栈管理
+  </a>
+  
+    <nav class="md-nav" aria-label="15.2 堆栈管理">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1521" class="md-nav__link">
+    15.2.1 虚拟机的堆栈
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1522" class="md-nav__link">
+    15.2.2 堆栈跟踪
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#153" class="md-nav__link">
+    15.3 算术计算器
+  </a>
+  
+    <nav class="md-nav" aria-label="15.3 算术计算器">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1531" class="md-nav__link">
+    15.3.1 二元运算符
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    挑战
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    设计说明：基于寄存器的字节码
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/Misaka-9982-coder/doc-zh/edit/master/docs/craftinginterpreters/3_15.A Virtual Machine/A Virtual Machine.md" title="编辑此页" class="md-content__button md-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
+                  </a>
+                
+                
+                <h1 id="_1">虚拟机</h1>
+<blockquote>
+<p>魔术师保护他们的秘密，不是因为秘密很大很重要，而是因为它们很小很微不足道。舞台上创造的美妙效果往往是一个如此荒谬的秘密的结果，以至于魔术师都不好意思承认它是如何做到的。</p>
+<p>-- Christopher Priest,?<em>The Prestige</em></p>
+</blockquote>
+<p>我们花了很多时间讨论如何将程序表示为字节码指令序列，但这感觉就像只使用填充的、死去的动物来学习生物学。我们知道理论上的指令是什么，但从未见过它们的实际应用，因此很难真正理解它们的<em>作用</em>。当对字节码的行为方式没有很好的理解时，很难编写一个输出字节码的编译器。</p>
+<p>因此，在开始构建新解释器的前端之前，我们将从后端开始——执行指令的虚拟机。它给了字节码生命。观察这些指令让我们更清楚地了解编译器如何将用户的源代码翻译成一系列指令。</p>
+<h2 id="151">15.1 执行指令的机器</h2>
+<p>虚拟机是解释器内部架构的一部分。将一段代码交给它——实际上是一个块——它会运行它。VM 的代码和数据结构实现在一个新模块中。</p>
+<pre><code class="language-c">#ifndef clox_vm_h
+#define clox_vm_h
+
+#include &quot;chunk.h&quot;
+
+typedef struct {
+  Chunk* chunk;
+} VM;
+
+void initVM();
+void freeVM();
+
+#endif
+// vm.h, create new file
+</code></pre>
+<p>像往常一样，我们从简单开始。VM 将逐渐获得它需要跟踪的一整堆状态，因此现在定义一个结构来填充所有内容。目前，存储的只是它执行的块。</p>
+<p>就像对创建的大多数数据结构所做的那样，还定义了创建和销毁 VM 的函数。这是实现：</p>
+<pre><code class="language-c">#include &quot;common.h&quot;
+#include &quot;vm.h&quot;
+
+VM vm; 
+
+void initVM() {
+}
+
+void freeVM() {
+}
+// vm.c, create new file
+</code></pre>
+<p>好的，将这些函数称为“实现”有点牵强。目前还没有任何有趣的状态可以初始化或销毁，所以函数是空的。相信我，我们会到达那里。</p>
+<p>这里稍微有趣一点的是变量<code>vm</code>的声明.该模块将来会具有很多函数，将 VM 的指针传递给所有这些函数将是一件苦差事。所以，我们声明了一个单一的全局 VM 对象。无论如何，我们只需要一个，这样可以使书中的代码在页面上更简洁。</p>
+<blockquote>
+<p>选择拥有静态 VM 实例是本书的让步，但对于真正的语言实现来说不一定是合理的工程选择。如果您正在构建一个旨在嵌入到其他主机应用程序中的 VM，那么如果您明确采用 VM 指针并四处传递它，它会为主机提供更大的<em>灵活性</em>。</p>
+<p>这样，主机应用程序可以控制何时何地为 VM 分配内存、并行运行多个 VM 等。</p>
+<p>我在这里做的是一个全局变量，<a href="http://gameprogrammingpatterns.com/singleton.html">你听说过的关于全局变量的所有不好</a>的事情在大范围编程时仍然是正确的。但是当为了一本书而保持小的东西时...</p>
+</blockquote>
+<p>在开始将有趣的代码注入我们的 VM 之前，让我们继续将它连接到解释器的主入口点。</p>
+<pre><code class="language-c">int main(int argc, const char* argv[]) {
+  initVM();
+
+  Chunk chunk;
+// main.c, in main()
+</code></pre>
+<p>在解释器首次启动时启动虚拟机。然后，当退出时，将其关闭。</p>
+<pre><code class="language-c">  disassembleChunk(&amp;chunk, &quot;test chunk&quot;);
+  freeVM();
+  freeChunk(&amp;chunk);
+// main.c, in main()  
+</code></pre>
+<p>最后一项是导入头文件vm.h：</p>
+<pre><code class="language-c">#include &quot;debug.h&quot;
+#include &quot;vm.h&quot;
+
+int main(int argc, const char* argv[]) {
+// main.c
+</code></pre>
+<p>现在，当您运行 clox 时，它会在创建<a href="http://craftinginterpreters.com/chunks-of-bytecode.html#disassembling-chunks">上一章</a>中的手写块之前启动 VM 。VM 已准备就绪并等待，所以让我们教它做一些事情。</p>
+<h3 id="1511">15.1.1 执行指令</h3>
+<p>当我们命令 VM 解释一大块字节码时，VM 就会开始行动。</p>
+<pre><code class="language-c">  disassembleChunk(&amp;chunk, &quot;test chunk&quot;);
+  interpret(&amp;chunk);
+  freeVM();
+// main.c, in main()
+</code></pre>
+<p>此函数是进入 VM 的主要入口点。它是这样声明的：</p>
+<pre><code class="language-c">void freeVM();
+InterpretResult interpret(Chunk* chunk);
+
+#endif
+// vm.h, add after freeVM()
+</code></pre>
+<p>VM 运行该块，然后使用此枚举中的值进行响应：</p>
+<pre><code class="language-c">} VM;
+
+typedef enum {
+  INTERPRET_OK,
+  INTERPRET_COMPILE_ERROR,
+  INTERPRET_RUNTIME_ERROR
+} InterpretResult;
+
+void initVM();
+void freeVM();
+// vm.h, add after struct VM
+</code></pre>
+<p>我们还没有使用结果，但是当我们有一个报告静态错误的编译器和一个检测运行时错误的 VM 时，解释器将使用它来知道如何设置进程的退出代码。</p>
+<p>我们正在逐步实现代码。</p>
+<pre><code class="language-c">InterpretResult interpret(Chunk* chunk) {
+  vm.chunk = chunk;
+  vm.ip = vm.chunk-&gt;code;
+  return run();
+}
+// vm.c, add after freeVM()
+</code></pre>
+<p>首先，将正在执行的块存储在 VM 中。然后我们调用<code>run()</code>，一个实际运行字节码指令的内部辅助函数。在这两个部分之间有一条耐人寻味的关联。<code>ip</code>有什么用？</p>
+<p>当 VM 处理字节码时，它会跟踪它的位置——当前正在执行的指令的位置。我们不为此在<code>run()</code>内部使用局部变量，因为最终其他函数将需要访问它。作为替代，我们将其存储为 VM 中的一个字段。</p>
+<blockquote>
+<p>如果我们试图从字节码解释器中榨取每一丝的速度，将会把<code>ip</code>存储在一个局部变量中。它在执行期间被频繁修改，所以我们希望 C 编译器将它保存在寄存器中。</p>
+</blockquote>
+<pre><code class="language-c">typedef struct {
+  Chunk* chunk;
+  uint8_t* ip;
+} VM;
+// vm.h, in struct VM
+</code></pre>
+<p>它的类型是byte指针。使用一个真正的 C 指针指向字节码数组，而不是像整数索引这样的东西，因为引用指针比通过索引在数组中查找元素更快。</p>
+<p>“IP”这个名称很传统，而且——与 CS 中的许多传统名称不同——实际上是有道理的：它是一个<a href="https://en.wikipedia.org/wiki/Program_counter">指令指针</a>。世界上几乎每一个指令集，无论是真实的还是虚拟的，都有一个这样的寄存器或变量。</p>
+<blockquote>
+<p>x86、x64 和 CLR 称之为“IP”。68k、PowerPC、ARM、p-code 和 JVM 称其为“PC”，表示<strong>程序计数器</strong>。</p>
+</blockquote>
+<p>通过将<code>ip</code>指向块中代码的第一个字节来进行初始化。还没有执行那条指令，所以<code>ip</code>指向<em>即将执行</em>的指令。在 VM 运行的整个过程中都是如此：IP 始终指向下一条指令，而不是当前正在处理的指令。</p>
+<p>真正有意思的发生在<code>run</code>（）。</p>
+<pre><code class="language-c">static InterpretResult run() {
+#define READ_BYTE() (*vm.ip++)
+
+  for (;;) {
+    uint8_t instruction;
+    switch (instruction = READ_BYTE()) {
+      case OP_RETURN: {
+        return INTERPRET_OK;
+      }
+    }
+  }
+
+#undef READ_BYTE
+}
+// vm.c, add after freeVM()
+</code></pre>
+<p>到目前为止，这是所有 clox 中最重要的功能。当解释器执行用户的程序时，它会花费大约 90% 的时间在里面<code>run()</code>。它是虚拟机跳动的心脏。</p>
+<blockquote>
+<p>或者，至少，当它有足够的内容有用时，它<em>会</em>在几章中出现。现在，这还算不上软件魔法的奇迹。</p>
+</blockquote>
+<p>尽管有戏剧性的介绍，但它在概念上非常简单。有一个不断运行的外循环。每次通过该循环，都会读取并执行一条字节码指令。</p>
+<p>要处理一条指令，首先要弄清楚正在处理的是哪种指令。<code>READ_BYTE</code>宏读取<code>ip</code>当前指向的字节，然后前进指令指针。任何指令的第一个字节都是操作码。给定一个数字操作码，需要找到实现该指令语义的正确 C 代码。这个过程称为<strong>解码</strong>或<strong>分派</strong>指令。</p>
+<blockquote>
+<p>请注意<code>ip</code>，在真正开始执行指令之前，一旦我们读取了操作码，它就会前进。因此，再次<code>ip</code>指向要使用的<em>下一个</em>字节。</p>
+</blockquote>
+<p>每条指令都执行该过程，每次执行一次，因此这是整个虚拟机中性能最关键的部分。编程语言知识充满了高效执行字节码派发的巧妙技术，可以追溯到计算机的早期。</p>
+<blockquote>
+<p>如果您想学习其中一些技术，请查找“direct threaded code”、“direct threaded code”和“computed goto”。</p>
+</blockquote>
+<p>但是，最快的解决方案要么需要对 C 的非标准扩展，要么需要手写汇编代码。对于 clox，我们将保持简单。就像我们的反汇编程序一样，有一个巨大的<code>switch</code>语句，每个操作码都有一个case。每个case的主体都实现了该操作码的行为。</p>
+<p>到目前为止，我们只处理了一条指令，<code>OP_RETURN</code>它所做的唯一一件事就是完全退出循环。最终，该指令将用于从当前 Lox 函数返回，但还没有函数，因此将暂时重新调整用途用来结束执行。</p>
+<p>让我们继续支持另一条指令。</p>
+<pre><code class="language-c">   switch (instruction = READ_BYTE()) {
+      case OP_CONSTANT: {
+        Value constant = READ_CONSTANT();
+        printValue(constant);
+        printf(&quot;\n&quot;);
+        break;
+      }
+      case OP_RETURN: {
+// vm.c, in run()
+</code></pre>
+<p>我们还没有足够的机制来用常量做任何有用的事情。现在，只是将其打印出来，这样解释器黑客就可以看到 VM 内部发生了什么。该调用<code>printf()</code>需要包含。</p>
+<pre><code class="language-c">#include &lt;stdio.h&gt;
+
+#include &quot;common.h&quot;
+// vm.c, add to top of file
+</code></pre>
+<p>我们还有一个新的宏要定义。</p>
+<pre><code class="language-c">#define READ_BYTE() (*vm.ip++)
+#define READ_CONSTANT() (vm.chunk-&gt;constants.values[READ_BYTE()])
+
+  for (;;) {
+
+// vm.c, in run()
+</code></pre>
+<p><code>READ_CONSTANT()</code>从字节码中读取下一个字节，将结果数字视为索引，并在块的常量表中查找相应的值。在后面的章节中，我们将添加一些带有引用常量的操作数的指令，因此我们现在设置这个辅助宏。</p>
+<p>和前面的<code>READ_BYTE</code>宏一样，<code>READ_CONSTANT</code>只在<code>run()</code>内部使用。为了使该范围更加明确，宏定义本身仅限于该函数。在开始时定义它们，并且——因为我们关心——在最后取消定义它们。</p>
+<pre><code class="language-c">#undef READ_BYTE
+#undef READ_CONSTANT
+}
+// vm.c, in run()
+</code></pre>
+<blockquote>
+<p>显式地取消定义这些宏似乎是不必要的挑剔，但 C 倾向于惩罚草率的用户，而 C 预处理器更是如此。</p>
+</blockquote>
+<h3 id="1512">15.1.2 执行跟踪</h3>
+<p>如果你现在运行 clox，它会执行上一章中手工编写的块并输出<code>1.2</code>到终端。我们可以看到它正在工作，但这只是因为我们实现的<code>OP_CONSTANT</code>是用临时代码来输出值。一旦该指令执行了它应该执行的操作并将该常量与其他想要使用它的操作一起使用，VM 将变成一个黑匣子。这让我们作为 VM 实现者的工作更加艰难。</p>
+<p>为了帮助我们自己，现在是向 VM 添加一些诊断日志记录的好时机，就像对块本身所做的那样。事实上，我们甚至会重用相同的代码。不希望一直启用此日志记录——它只是为了我们 VM 黑客，而不是 Lox 用户——所以首先创建一个标志来隐藏它。</p>
+<pre><code class="language-c">#include &lt;stdint.h&gt;
+
+#define DEBUG_TRACE_EXECUTION
+
+#endif
+// common.h
+</code></pre>
+<p>定义此标志后，VM 会在执行前反汇编并打印每条指令。之前的反汇编器静态地遍历整个块一次，而这个动态地动态反汇编指令。</p>
+<pre><code class="language-c">for (;;) {
+#ifdef DEBUG_TRACE_EXECUTION
+    disassembleInstruction(vm.chunk,
+                           (int)(vm.ip - vm.chunk-&gt;code));
+#endif
+
+    uint8_t instruction;
+// vm.c, in run()  
+</code></pre>
+<p>由于<code>disassembleInstruction()</code>采用整数字节<em>偏移量</em>并且我们将当前指令引用存储为直接指针，因此进行一点指针数学运算以转换<code>ip</code>为相对字节码开头的偏移量。然后我们反汇编从该字节开始的指令。</p>
+<p>和以往一样，先引入函数的声明，然后调用它。</p>
+<pre><code class="language-c">#include &quot;common.h&quot;
+#include &quot;debug.h&quot;
+#include &quot;vm.h&quot;
+// vm.c
+</code></pre>
+<p>我知道这段代码到目前为止还不是特别令人印象深刻——它实际上是一个包裹在<code>for</code>循环中的 switch 语句，但不管你信不信，这是VM 的两个主要组件之一。有了这个，我们可以命令式地执行指令。它的简单性是一种美德——它做的工作越少，它就能做得越快。将此与我们在 jlox 中使用访问者模式遍历 AST 的所有复杂性和开销进行对比。</p>
+<h2 id="152">15.2 堆栈管理</h2>
+<p>除了命令式副作用之外，Lox 还具有生成、修改和使用值的表达式。因此，我们编译的字节码需要一种方法来在需要它们的不同指令之间穿梭。例如：</p>
+<pre><code>print 3 - 2;
+</code></pre>
+<p>显然，我们需要常数 3 和 2、<code>print</code>语句和减法的指令。但是减法指令怎么知道3是被减数，2是减数呢？print 指令如何知道打印内容？</p>
+<blockquote>
+<p>是的，我确实不得不在字典中查找“减数”和“被减数”。但这不是令人愉快的话吗？“被减数”听起来像是一种伊丽莎白时代的舞蹈，而“减数”可能是某种地下旧石器时代的纪念碑。</p>
+</blockquote>
+<p>为了更好地说明这一点，请看这里的这个东西：</p>
+<pre><code class="language-c">fun echo(n) {
+  print n;
+  return n;
+}
+
+print echo(echo(1) + echo(2)) + echo(echo(4) + echo(5));
+</code></pre>
+<p>我将每个子表达式包装在对<code>echo()</code>打印的调用中并返回其参数。这种副作用意味着我们可以看到确切的操作顺序。</p>
+<p>暂时不要担心 VM。只考虑 Lox 本身的语义。算术运算符的操作数显然需要先求值，然后才能执行运算本身。（如果你不知道什么是<code>a</code>什么是<code>b</code>，就很难计算<code>a + b</code>。）另外，当我们在 jlox 中实现表达式时，我们决定必须先计算左操作数，然后再计算右操作数。</p>
+<blockquote>
+<p>我们可以不指定评估顺序，让每个实现来决定。这为优化编译器以重新排序算术表达式以提高效率打开了大门，即使在操作数具有明显副作用的情况下也是如此。C 和 Scheme 未指定评估顺序。Java 指定了从左到右的评估，就像我们为 Lox 所做的那样。</p>
+<p>我认为确定这样的东西通常对用户来说更好。当表达式未按照用户直觉的顺序求值时——可能在不同的实现中以不同的顺序求值！-弄清楚发生了什么可能是一种痛苦的痛苦。</p>
+</blockquote>
+<p>这是该<code>print</code>语句的语法树：</p>
+<p><img alt="" src="../assets/7f5efeb0fe660a754a41e9037368994313fae0ae.png" /></p>
+<p>给定从左到右的评估以及表达式的嵌套方式，任何正确的 Lox 实现都<em>必须</em>按以下顺序打印这些数字：</p>
+<pre><code class="language-c">1  // from echo(1)
+2  // from echo(2)
+3  // from echo(1 + 2)
+4  // from echo(4)
+5  // from echo(5)
+9  // from echo(4 + 5)
+12 // from print 3 + 9
+</code></pre>
+<p>之前的 jlox 解释器通过递归遍历 AST 来实现这一点。它进行后序遍历。首先它向下递归左操作数分支，然后是右操作数分支，最后计算节点本身。</p>
+<p>在评估左操作数之后，jlox 需要在忙于向下遍历右操作数树时将结果临时存储在某个地方。为此，我们在 Java 中使用局部变量。递归树遍历解释器为每个被评估的节点创建了一个唯一的 Java 调用栈帧，因此可以根据需要拥有尽可能多的局部变量。</p>
+<p>在 clox 中，<code>run()</code>函数不是递归的——嵌套的表达式树被展平为一系列线性指令。我们没有使用 C 局部变量的豪华享受，那么应该如何以及在哪里存储这些临时值呢？您可能已经猜到了，但我想真正深入研究这一点，因为这是我们认为理所当然的编程的一个方面，但我们很少了解<em>为什么</em>计算机是这样设计的。</p>
+<blockquote>
+<p>提示：它在本节的名称中，它是 Java 和 C 管理函数递归调用的方式。</p>
+</blockquote>
+<p>让我们做一个奇怪的练习。我们将逐步执行上述程序：</p>
+<p><img alt="" src="../assets/2cd92da8ae4a9b65dc6038ace726de19de324034.png" /></p>
+<p>左边是代码的步骤。右边是我们正在跟踪的值。每个条代表一个数字。它在第一次产生值时开始——无论是常数还是加法的结果。条形的长度跟踪先前生成的值何时需要保留，并在该值最终被操作消耗时结束。</p>
+<p>当您逐步执行时，您会看到值出现，然后被消耗。寿命最长的是从加法的左侧产生的值。当我们处理右侧的操作数表达式时，那些会留下来。</p>
+<p>在上图中，我为每个唯一编号提供了自己的可视列。让我们更节俭一点。一旦一个数字被消耗，我们允许它的列被重新用于另一个以后的值。换句话说，我们把所有这些空白都放在上面并填补它们，从右边推入数字：</p>
+<p><img alt="" src="../assets/b2dfc018b725ecf0a0da926c0b523c14385f8477.png" /></p>
+<p>这里发生了一些有趣的事情。当我们把所有东西都移过来时，每个数字在其整个生命周期中仍然设法留在一个列中。此外，没有留下任何间隙。换句话说，只要一个数字比另一个数字出现得早，那么它至少会和第二个数字一样长。第一个出现的数字是最后一个被消耗的。啊...后进先出...为什么，那是堆！</p>
+<blockquote>
+<p>这也是一个堆栈：</p>
+</blockquote>
+<p><img alt="" src="../assets/de0e41f00a3e22a94a2f582af50adf0094f8f900.png" /></p>
+<p>在第二张图中，每次我们引入一个数字时，我们都会将其从右侧压入堆栈。当数字被消耗时，它们总是从最右边到左边弹出。</p>
+<p>由于我们需要跟踪的临时值很自然的具有类似堆栈的行为，因此 VM 将使用堆栈来管理它们。当一条指令“产生”一个值时，它会将它压入堆栈。当它需要使用一个或多个值时，它通过将它们从堆栈中弹出来获取它们。</p>
+<h3 id="1521">15.2.1 虚拟机的堆栈</h3>
+<p>也许这看起来不像是一个启示，但我<em>喜欢</em>基于堆栈的虚拟机。当您第一次看到魔术时，会觉得它真的很神奇。但随后你了解了它是如何工作的——通常是一些机械的噱头或误导——而惊奇感消失了。计算机科学中有一些想法，即使在我将它们分开并了解所有来龙去脉之后，一些最初的火花仍然存在。基于堆栈的虚拟机就是其中之一。</p>
+<blockquote>
+<p>堆——<a href="https://en.wikipedia.org/wiki/Heap_(data_structure)">数据结构</a>，而不是<a href="https://en.wikipedia.org/wiki/Memory_management#HEAP">内存管理</a>——是另一回事。还有 Vaughan Pratt 的自上而下的运算符优先级解析方案，我们将<a href="http://craftinginterpreters.com/compiling-expressions.html">在适当的时候</a>了解它。</p>
+</blockquote>
+<p>正如您将在本章中看到的，在基于堆栈的 VM 中执行指令非常简单。在后面的章节中，您还会发现将源语言编译为基于堆栈的指令集是小菜一碟。然而，这种架构足够快，可以被生产语言实现使用。这几乎感觉像是在编程语言游戏中作弊。</p>
+<blockquote>
+<p>摘掉一点光彩：基于堆栈的解释器不是灵丹妙药。它们通常是<em>足够的</em>，但 JVM、CLR 和 JavaScript 的现代实现都使用复杂的<a href="https://en.wikipedia.org/wiki/Just-in-time_compilation">即时编译</a>管道来动态生成<em>更快</em>的本机代码。</p>
+</blockquote>
+<p>好吧，现在是编码时间！这是堆栈：</p>
+<pre><code class="language-c">typedef struct {
+  Chunk* chunk;
+  uint8_t* ip;
+  Value stack[STACK_MAX];
+  Value* stackTop;
+} VM;
+// vm.h, in struct VM
+</code></pre>
+<p>我们自己在原始 C 数组之上实现堆栈语义。堆栈的底部——第一个被压入的值和最后一个被弹出的值——位于数组中的元素 0 处，随后压入的值紧随其后。如果我们按顺序将“crepe”（我最喜欢的可堆叠早餐食品）的字母压入堆栈，生成的 C 数组如下所示：</p>
+<p><img alt="" src="../assets/036a9dadd2779151b5b471efe571668ed4be58c8.png" /></p>
+<p>由于堆栈随着值的压入和弹出而增长和收缩，因此我们需要跟踪堆栈顶部在数组中的位置。与<code>ip</code> 一样，使用直接指针而不是整数索引，因为取消引用指针比每次我们需要时从索引计算偏移量更快。</p>
+<p>指针指向刚好<em>超过</em>包含堆栈顶部值的元素的数组元素。这看起来有点奇怪，但几乎每个实现都这样做。这意味着我们可以通过指向数组中的元素零来指示堆栈为空。</p>
+<p><img alt="" src="../assets/56497ff25ddbeb5335956d0ed68882cb6ec5f81d.png" /></p>
+<p>如果我们指向顶部元素，那么对于一个空堆栈，我们需要指向元素 -1。这在 C 中是未定义的。当我们将值压入堆栈时...</p>
+<blockquote>
+<p>聪明的读者，当堆栈已满时怎么办？C标准比你领先一步。允许并明确规定有一个指向数组末尾的数组指针。</p>
+</blockquote>
+<p><img alt="" src="../assets/dae4feefa14d79eabbefd8e7ffaa473e7800913c.png" /></p>
+<p>...<code>stackTop</code>总是指向刚刚过去的最后一项。</p>
+<p><img alt="" src="../assets/e2d39bb8d3704b9af20bb1abb53e67160900aeb3.png" /></p>
+<p>我记得是这样的：<code>stackTop</code>指向下一个要push的值的位置。可以在堆栈中存储的值的最大数量（至少现在）是：</p>
+<pre><code class="language-c">#include &quot;chunk.h&quot;
+
+#define STACK_MAX 256
+
+typedef struct {
+// vm.h
+</code></pre>
+<p>为VM 提供固定的堆栈大小意味着某些指令序列可能会压入过多的值并耗尽堆栈空间——经典的“堆栈溢出”。可以根据需要动态地增加堆栈，但现在将保持简单。由于 VM 使用 Value，需要包含它的声明。</p>
+<pre><code class="language-c">#include &quot;chunk.h&quot;
+#include &quot;value.h&quot;
+
+#define STACK_MAX 256
+// vm.h
+</code></pre>
+<p>现在 VM 有一些有趣的状态，我们开始初始化它。</p>
+<pre><code class="language-c">void initVM() {
+  resetStack();
+}
+// vm.c, in initVM()
+</code></pre>
+<p>使用这个辅助函数：</p>
+<pre><code class="language-c">static void resetStack() {
+  vm.stackTop = vm.stack;
+}
+// vm.c, add after variable vm
+</code></pre>
+<p>由于堆栈数组是在 VM 结构中直接内联声明的，<strong>因此不需要分配它</strong>。甚至不需要清除数组中未使用的单元格——在值存储在其中之前我们不会访问它们。我们唯一需要的初始化是设置<code>stackTop</code>指向数组的开头以指示堆栈为空。</p>
+<p>堆栈协议支持两种操作：</p>
+<pre><code class="language-c">InterpretResult interpret(Chunk* chunk);
+void push(Value value);
+Value pop();
+
+#endif
+// vm.h, add after interpret()
+</code></pre>
+<p>您可以将新值压入栈顶，然后弹出最近压入的值。这是第一个功能：</p>
+<pre><code class="language-c">void push(Value value) {
+  *vm.stackTop = value;
+  vm.stackTop++;
+}
+// vm.c, add after freeVM()
+</code></pre>
+<p>如果您对 C 指针语法和操作感到生疏，这是一个很好的热身。第一行存储<code>value</code>在栈顶的数组元素中。请记住，<code>stackTop</code>指向刚刚<em>过去</em>的最后一个使用的元素，指向下一个可用的元素。这会将值存储在该插槽中。然后我们增加指针本身以指向数组中下一个未使用的槽，因为前一个槽已被占用。</p>
+<p>弹出是值。</p>
+<pre><code class="language-c">Value pop() {
+  vm.stackTop--;
+  return *vm.stackTop;
+}
+// vm.c, add after push()
+</code></pre>
+<p>首先，我们将堆栈指针<em>移回</em>数组中最近使用的槽位。然后我们查找该索引处的值并将其返回。我们不需要明确地将它从数组中“移除”——向下移动<code>stackTop</code>就足以将该槽标记为不再使用。</p>
+<h3 id="1522">15.2.2 堆栈跟踪</h3>
+<p>现在有一个工作堆栈，但很难<em>看出</em>它在工作。当开始实现更复杂的指令并编译和运行更大的代码段时，我们最终会在该数组中塞入大量值。如果我们对堆栈有一定的了解，这将使我们作为 VM 黑客的生活变得更轻松。</p>
+<p>为此，每当跟踪执行时，我们还会在解释每条指令之前显示堆栈的当前内容。</p>
+<pre><code class="language-c">#ifdef DEBUG_TRACE_EXECUTION
+    printf(&quot;          &quot;);
+    for (Value* slot = vm.stack; slot &lt; vm.stackTop; slot++) {
+      printf(&quot;[ &quot;);
+      printValue(*slot);
+      printf(&quot; ]&quot;);
+    }
+    printf(&quot;\n&quot;);
+    disassembleInstruction(vm.chunk,
+// vm.c, in run()
+</code></pre>
+<p>我们循环打印数组中的每个值，从第一个（堆栈底部）开始，到顶部结束。这让我们可以观察每条指令对堆栈的影响。输出非常冗长，但当我们通过外科手术从解释器的内部提取一个讨厌的错误时，它很有用。</p>
+<p>堆栈在手，让我们重新审视我们的两条指令。第一：</p>
+<pre><code class="language-c"> case OP_CONSTANT: {
+        Value constant = READ_CONSTANT();
+        push(constant);
+        break;
+// vm.c, in run(), replace 2 lines
+</code></pre>
+<p>在上一章中，我对<code>OP_CONSTANT</code>指令如何“加载”一个常量一窍不通。现在我们有了一个堆栈，您知道实际产生一个值意味着什么：它被压入堆栈。</p>
+<pre><code class="language-c"> case OP_RETURN: {
+        printValue(pop());
+        printf(&quot;\n&quot;);
+        return INTERPRET_OK;
+// vm.c, in run()
+</code></pre>
+<p>然后我们<code>OP_RETURN</code>弹出堆栈并在退出前打印顶部值。当我们向 clox 添加对实函数的支持时，我们将更改此代码。但是，就目前而言，它为我们提供了一种让 VM 执行简单指令序列并显示结果的方法。</p>
+<h2 id="153">15.3 算术计算器</h2>
+<p>我们 VM 的核心和灵魂现在就位。字节码循环分派和执行指令。<strong>堆栈随着值流过它而增长和收缩</strong>。这两部分工作，但很难感觉到它们与我们目前仅有的两条基本指令的相互作用有多巧妙。所以让我们教解释器做算术。</p>
+<p>我们将从最简单的算术运算开始，一元取反。</p>
+<pre><code class="language-c">var a = 1.2;
+print -a; // -1.2.
+</code></pre>
+<p>前缀<code>-</code>运算符接受一个操作数，即要求反的值。它产生一个结果。现在还没法使用解析器，所以要添加上述语法将编译成的字节码指令。</p>
+<pre><code class="language-c">  OP_CONSTANT,
+  OP_NEGATE,
+  OP_RETURN,
+// chunk.h, in enum OpCode
+</code></pre>
+<p>我们像这样执行它：</p>
+<pre><code class="language-c">      }
+      case OP_NEGATE:   push(-pop()); break;
+      case OP_RETURN: {
+// vm.c, in run()
+</code></pre>
+<p>该指令需要一个值来操作，它从堆栈中弹。对这个值取反，然后将结果放回以供以后使用。没有比这更容易的了。我们也可以反汇编它。</p>
+<pre><code class="language-c">    case OP_CONSTANT:
+      return constantInstruction(&quot;OP_CONSTANT&quot;, chunk, offset);
+    case OP_NEGATE:
+      return simpleInstruction(&quot;OP_NEGATE&quot;, offset);
+    case OP_RETURN:
+// debug.c, in disassembleInstruction()
+</code></pre>
+<p>可以在测试块中尝试一下。</p>
+<pre><code class="language-c">  writeChunk(&amp;chunk, constant, 123);
+  writeChunk(&amp;chunk, OP_NEGATE, 123);
+
+  writeChunk(&amp;chunk, OP_RETURN, 123);
+// main.c, in main() 
+</code></pre>
+<p>在加载常量之后，但在返回之前，执行取反指令。这用它的取反后的值替换了堆栈上的常量。然后返回指令打印出来：</p>
+<pre><code>-1.2
+</code></pre>
+<p>我噻！好神奇。</p>
+<h3 id="1531">15.3.1 二元运算符</h3>
+<p>好吧，一元运算符并没有<em>那么</em>令人印象深刻。我们在堆栈上仍然只有一个值。要真正看到一些深层次的东西，需要二元运算符。Lox 有四个二进制算术运算符：加法、减法、乘法和除法。我们将继续实现它们。</p>
+<blockquote>
+<p>Lox 还有其他一些二元运算符——比较和相等——但它们不会产生数字，所以我们还没有为它们做好准备。</p>
+</blockquote>
+<pre><code class="language-c">  OP_CONSTANT,
+  OP_ADD,
+  OP_SUBTRACT,
+  OP_MULTIPLY,
+  OP_DIVIDE,
+  OP_NEGATE,
+// chunk.h, in enum OpCode  
+</code></pre>
+<p>回到字节码循环，它们是这样执行的：</p>
+<pre><code class="language-c">      }
+      case OP_ADD:      BINARY_OP(+); break;
+      case OP_SUBTRACT: BINARY_OP(-); break;
+      case OP_MULTIPLY: BINARY_OP(*); break;
+      case OP_DIVIDE:   BINARY_OP(/); break;
+      case OP_NEGATE:   push(-pop()); break;
+// vm.c, in run()
+</code></pre>
+<p>这四个指令之间的唯一区别是它们最终使用哪个底层 C 运算符来组合两个操作数。核心算术表达式周围是一些样板代码，用于从堆栈中提取值并推送结果。当稍后添加动态类型时，该样板文件将会增长。为了避免重复该代码四次，将其封装在一个宏中。</p>
+<pre><code class="language-c">#define READ_CONSTANT() (vm.chunk-&gt;constants.values[READ_BYTE()])
+#define BINARY_OP(op) \
+    do { \
+      double b = pop(); \
+      double a = pop(); \
+      push(a op b); \
+    } while (false)
+
+  for (;;) {
+// vm.c, in run()
+</code></pre>
+<p>我承认这是对 C 预处理器的一种相当冒险的使用。我犹豫是否要这样做，但在后面的章节中，当我们需要为每个操作数和其他东西添加类型检查时，你会很高兴的。引导您四次完成相同的代码将是一件苦差事。</p>
+<blockquote>
+<p>您是否知道可以将<em>运算符</em>作为参数传递给宏？你现在可以了。预处理器不关心运算符不是 C 中元素。就它而言，它只是文本标记。</p>
+<p>我知道，你可以<em>感受到</em>滥用它的诱惑，不是吗？</p>
+</blockquote>
+<p>如果您还不熟悉这个技巧，那么外层<code>do while</code>循环可能看起来很奇怪。这个宏需要展开成一系列语句。宏的作者要小心，我们要确保这些语句在扩展宏时都在相同的范围内结束。想象一下，如果您定义：</p>
+<pre><code class="language-c">#define WAKE_UP() makeCoffee(); drinkCoffee();
+</code></pre>
+<p>然后像这样使用它：</p>
+<pre><code class="language-c">if (morning) WAKE_UP();
+</code></pre>
+<p>目的是仅当<code>morning</code>为真时才执行宏主体的两个语句。但它扩展到：</p>
+<pre><code class="language-c">if (morning) makeCoffee(); drinkCoffee();;
+</code></pre>
+<p>呀。<code>if</code>仅附加到第一个<em>语句</em>。您可能认为可以使用块来解决此问题。</p>
+<pre><code class="language-c">#define WAKE_UP() { makeCoffee(); drinkCoffee(); }
+</code></pre>
+<p>那更好，但你仍然有风险：</p>
+<pre><code class="language-c">if (morning)
+  WAKE_UP();
+else
+  sleepIn();
+</code></pre>
+<p>现在你会在<code>else</code>得到一个编译错误，因为在宏块之后<code>;</code>。在宏中使用<code>do while</code>循环看起来很有趣，但它为您<strong>提供了一种在块内包含多个语句的方法</strong>，而且该块<em>还</em>允许在末尾使用分号。</p>
+<p>我们刚刚说到哪了？是的，所以该宏的主体所做的事情很简单。二元运算符有两个操作数，所以它弹出两次。它对这两个值执行操作，然后push结果。</p>
+<p>密切注意两个 pop 操作 的<em>顺序</em>。请注意，将第一个弹出的操作数分配给<code>b</code>，而不是<code>a</code>。它向后看。当计算操作数本身时，首先评估左侧，然后评估右侧。这意味着左操作数被push到右操作数之前。所以右操作数会在栈顶。因此，我们弹出的第一个值是<code>b</code>。</p>
+<p>例如，如果我们编译<code>3 - 1</code>，指令之间的数据流如下所示：</p>
+<p><img alt="" src="../assets/72d491ffb221da6ed08bf9be7e959866b84684e4.png" /></p>
+<p>正如对内部的其他宏所做的那样<code>run()</code>，在函数结束时清理。</p>
+<pre><code class="language-c">#undef READ_CONSTANT
+#undef BINARY_OP
+}
+// vm.c, in run()
+</code></pre>
+<p>最后是反汇编支持</p>
+<pre><code class="language-c">    case OP_CONSTANT:
+      return constantInstruction(&quot;OP_CONSTANT&quot;, chunk, offset);
+    case OP_ADD:
+      return simpleInstruction(&quot;OP_ADD&quot;, offset);
+    case OP_SUBTRACT:
+      return simpleInstruction(&quot;OP_SUBTRACT&quot;, offset);
+    case OP_MULTIPLY:
+      return simpleInstruction(&quot;OP_MULTIPLY&quot;, offset);
+    case OP_DIVIDE:
+      return simpleInstruction(&quot;OP_DIVIDE&quot;, offset);
+    case OP_NEGATE:
+// debug.c, in disassembleInstruction()
+</code></pre>
+<p>算术指令格式很简单，如<code>OP_RETURN</code>.即使算术运算<em>符</em>采用操作数——在堆栈中找到——算术<em>字节码指令</em>也没有。</p>
+<p>让我们通过评估一个更大的表达式来完成一些新指令：</p>
+<p><img alt="" src="../assets/a3c0183591c817dbd840fc8d4227384d020a8f4d.png" /></p>
+<p>在现有的示例块的基础上，这里是我们需要手动将该 AST 编译为字节码的附加指令。</p>
+<pre><code class="language-c">  int constant = addConstant(&amp;chunk, 1.2);
+  writeChunk(&amp;chunk, OP_CONSTANT, 123);
+  writeChunk(&amp;chunk, constant, 123);
+
+  constant = addConstant(&amp;chunk, 3.4);
+  writeChunk(&amp;chunk, OP_CONSTANT, 123);
+  writeChunk(&amp;chunk, constant, 123);
+
+  writeChunk(&amp;chunk, OP_ADD, 123);
+
+  constant = addConstant(&amp;chunk, 5.6);
+  writeChunk(&amp;chunk, OP_CONSTANT, 123);
+  writeChunk(&amp;chunk, constant, 123);
+
+  writeChunk(&amp;chunk, OP_DIVIDE, 123);
+  writeChunk(&amp;chunk, OP_NEGATE, 123);
+
+  writeChunk(&amp;chunk, OP_RETURN, 123);
+// main.c, in main() 
+</code></pre>
+<p>加法操作在前。左侧常量 1.2 的指令已经存在，因此添加另一个指令3.4。然后 把两个使用<code>OP_ADD</code>计算加法，将其push堆栈中。这是除法的左侧。接下来我们push 5.6，并将加法结果除以它。最后，我们对结果取反。</p>
+<p>请注意<code>OP_ADD</code> 的输出是如何隐式成为<code>OP_DIVIDE</code>操作数的，而没有任何一条指令直接相互耦合。这就是堆栈的魔力。它让我们可以自由地编写指令，而不需要任何复杂性或对数据流的了解。堆栈就像一个共享的工作区，他们都可以从中读取和写入。</p>
+<p>在这个微小的示例块中，堆栈仍然只有两个值的高度，但是当开始将 Lox 源代码编译为字节码时，将拥有使用更多堆栈的块。同时，尝试使用这个手工编写的块来计算不同的嵌套算术表达式，并查看值如何流经指令和堆栈。</p>
+<p>你现在也可以把它从你的系统中取出来。这是我们将手动构建的最后一个块。当我们下次重新访问字节码时，我们将编写一个编译器来为我们生成它。</p>
+<hr />
+<h2 id="_2"><a href="http://craftinginterpreters.com/a-virtual-machine.html#challenges">挑战</a></h2>
+<ol>
+<li>您将为以下表达式生成什么字节码指令序列：</li>
+</ol>
+<p><code>c
+   1 * 2 + 3
+   1 + 2 * 3
+   3 - 2 - 1
+   1 + 2 * 3 - 4 / -5</code></p>
+<p>（请记住，Lox 没有负数文字的语法，因此<code>-5</code>它对数字 5 取反。）</p>
+<ol>
+<li>如果我们真的想要一个最小的指令集，我们可以消除<code>OP_NEGATE</code>或<code>OP_SUBTRACT</code>。显示您将为以下内容生成的字节码指令序列：</li>
+</ol>
+<p><code>c
+   4 - 3 * -2</code></p>
+<p>首先，不使用<code>OP_NEGATE</code>.然后，不使用<code>OP_SUBTRACT</code>.</p>
+<p>鉴于上述情况，您认为同时拥有这两条指令是否有意义？为什么或者为什么不？您是否会考虑包括任何其他冗余指令？</p>
+<ol>
+<li>我们的 VM 堆栈有固定大小，我们不检查压入一个值是否溢出它。这意味着错误的指令系列可能会导致我们的解释器崩溃或进入未定义的行为。通过根据需要动态增长堆栈来避免这种情况。</li>
+</ol>
+<p>这样做的成本和收益是什么？</p>
+<ol>
+<li>为了解释<code>OP_NEGATE</code>，我们pop操作数，取反，然后push结果。这是一个简单的实现，但它会不必要地递增和递减<code>stackTop</code>，因为堆栈最终达到相同的高度。简单地取反堆栈中的值并保持<code>stackTop</code>原样可能会更快。尝试一下，看看是否可以衡量性能差异。</li>
+</ol>
+<p>还有其他说明可以进行类似的优化吗？</p>
+<h2 id="_3"><a href="http://craftinginterpreters.com/a-virtual-machine.html#design-note">设计说明：基于寄存器的字节码</a></h2>
+<p>对于本书的其余部分，我们将围绕基于堆栈的字节码指令集精心实现一个解释器。还有另一个字节码架构家族——<em>基于寄存器的</em>.尽管名称如此，但这些字节码指令并不像x64等实际芯片中的寄存器那样难以使用。对于真正的硬件寄存器，您通常只有少数几个用于整个程序，因此您需要花费大量精力<a href="https://en.wikipedia.org/wiki/Register_allocation">来尝试有效地使用它们并在其中穿梭进出</a>。</p>
+<p>基于寄存器的字节码更接近SPARC 芯片支持的<a href="https://en.wikipedia.org/wiki/Register_window"><em>寄存器窗口。</em></a></p>
+<p>在基于寄存器的 VM 中，您仍然有一个堆栈。临时值仍然会被推送到它上面，并在不再需要时弹出。主要区别在于指令可以从堆栈中的任何位置读取它们的输入，并且可以将它们的输出存储到特定的堆栈槽中。</p>
+<p>拿这个小 Lox 脚本来说：</p>
+<pre><code class="language-c">var a = 1;
+var b = 2;
+var c = a + b;
+</code></pre>
+<p>在我们基于堆栈的 VM 中，最后一条语句将被编译为如下内容：</p>
+<pre><code class="language-c">load &lt;a&gt;  // Read local variable a and push onto stack.
+load &lt;b&gt;  // Read local variable b and push onto stack.
+add       // Pop two values, add, push result.
+store &lt;c&gt; // Pop value and store in local variable c.
+</code></pre>
+<p><a href="http://craftinginterpreters.com/global-variables.html">（如果您还没有完全理解加载和存储指令，请不要担心。我们将在实现变量时</a>更详细地介绍它们。）我们有四个独立的指令。这意味着通过字节码解释循环四次，解码和分派四个指令。它至少有七个字节的代码——四个用于操作码，另外三个用于标识要加载和存储哪些局部变量的操作数。三push三pop。很多工作！</p>
+<p>在基于寄存器的指令集中，指令可以直接读取和存储局部变量。上面最后一条语句的字节码如下所示：</p>
+<pre><code class="language-c">add &lt;a&gt; &lt;b&gt; &lt;c&gt; // Read values from a and b, add, store in c.
+</code></pre>
+<p>add 指令更大——它有三个指令操作数，它们定义了它在堆栈中读取输入并将结果写入的位置。但由于局部变量存在于堆栈中，它可以直接读取<code>a</code>，<code>b</code>然后将结果直接存储到<code>c</code>.</p>
+<p>只有一条指令用于解码和分派，整个指令只占四个字节。由于额外的操作数，解码更加复杂，但它仍然是一个净赢。没有push和pop或其他堆栈操作。</p>
+<p>Lua 的主要实现曾经是基于堆栈的。对于Lua 5.0，实现者切换到寄存器指令集并注意到速度有所提高。自然，改进的数量在很大程度上取决于语言语义、特定指令集和编译器复杂性的细节，但这应该引起您的注意。</p>
+<p>Lua 开发团队——Roberto Ierusalimschy、Waldemar Celes 和 Luiz Henrique de Figueiredo——就此写了一篇<em>精彩</em>的论文，这是我一直以来最喜欢的计算机科学论文之一，“<a href="https://www.lua.org/doc/jucs05.pdf">Lua 5.0 的实现</a>”</p>
+<p>这就提出了一个明显的问题，即为什么我要用本书的其余部分来编写基于堆栈的字节码。寄存器 VM 很简洁，但要为其编写编译器要困难得多。对于可能是您的第一个编译器，我想坚持使用易于生成和执行的指令集。基于堆栈的字节码非常简单。</p>
+<p>它在文学和社区中也<em>更</em>为人所知。即使您最终可能会转向更高级的东西，但与您的其他语言黑客同行分享这是一个很好的共同点。</p>
+                
+              
+              
+<script src="https://giscus.app/client.js" data-repo="PKUFlyingPig/cs-self-learning" data-repo-id="R_kgDOGP67ng"
+    data-category="Announcements" data-category-id="DIC_kwDOGP67ns4COM9Q" data-mapping="title"
+    data-reactions-enabled="1" data-emit-metadata="0" data-input-position="top" data-theme="light_protanopia"
+    data-lang="zh-CN" data-loading="lazy" crossorigin="anonymous" async>
+</script>
+
+<script>
+    var palette = __get("__palette")
+    if (palette && typeof palette.color === "object") {
+        if (palette.color.scheme === "slate") {
+            const giscus = document.querySelector("script[src*=giscus]")
+            giscus.setAttribute("data-theme", "dark_protanopia")
+        }
+    }
+
+    document.addEventListener("DOMContentLoaded", function () {
+        const ref = document.querySelector("[data-md-component=palette]")
+        ref.addEventListener("change", function () {
+            var palette = __get("__palette")
+            if (palette && typeof palette.color === "object") {
+                const theme = palette.color.scheme === "slate" ? "dark_protanopia" : "light_protanopia"
+                const frame = document.querySelector(".giscus-frame")
+                frame.contentWindow.postMessage({
+                    giscus: { setConfig: { theme } }
+                }, "https://giscus.app")
+            }
+        })
+    })
+</script>
+
+            </article>
+          </div>
+        </div>
+        
+          <a href="#" class="md-top md-icon" data-md-component="top" data-md-state="hidden">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"/></svg>
+            Back to top
+          </a>
+        
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href="../../3_14.Chunks%20of%20Bytecode/Chunks%20of%20Bytecode/" class="md-footer__link md-footer__link--prev" aria-label="上一页: 3.14.Chunks of Bytecode" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                上一页
+              </span>
+              3.14.Chunks of Bytecode
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../../3_16.Scanning%20on%20Demand/Scanning%20on%20Demand/" class="md-footer__link md-footer__link--next" aria-label="下一页: 3.16.Scanning on Demand" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                下一页
+              </span>
+              3.16.Scanning on Demand
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        
+          Made with
+          <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+            Material for MkDocs
+          </a>
+        
+        
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["header.autohide", "navigation.tracking", "navigation.top", "search.highlight", "search.share", "search.suggest", "content.code.annotate"], "search": "../../../assets/javascripts/workers/search.fcfe8b6d.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\uff0c\\u3002]+", "search.placeholder": "\u641c\u7d22", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.b1047164.min.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+      
+    
+  </body>
+</html>

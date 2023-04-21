@@ -1,0 +1,1857 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-7.3.6">
+    
+    
+      
+        <title>2.07.Evaluating Expressions - doc-zh</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.a57b2b03.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.3f5d1f46.min.css">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font-family:"Roboto";--md-code-font-family:"Roboto Mono"}</style>
+      
+    
+    
+    
+    
+      
+
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="light-blue" data-md-color-accent="deep-purple">
+  
+    
+    <script>function __prefix(e){return new URL("../../..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+    
+      <script>var palette=__get("__palette");if(null!==palette&&"object"==typeof palette.color)for(var key in palette.color)document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="doc-zh" class="md-header__button md-logo" aria-label="doc-zh" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            doc-zh
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              2.07.Evaluating Expressions
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="light-blue" data-md-color-accent="deep-purple"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+          
+            <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5c-.84 0-1.65.15-2.39.42L12 2M3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29L3.34 7m.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14L3.36 17M20.65 7l-1.77 3.79a7.023 7.023 0 0 0-2.38-4.15l4.15.36m-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29L20.64 17M12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44L12 22z"/></svg>
+            </label>
+          
+        
+          
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="cyan" data-md-color-accent="deep-purple"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
+          
+            <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3 3.19.09m3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95 2.06.05m-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31z"/></svg>
+            </label>
+          
+        
+      </form>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7 0-.24-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91 1.61 0 2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08z"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        
+<a href="https://github.com/Misaka-9982-coder/doc-zh" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    doc-zh
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="doc-zh" class="md-nav__button md-logo" aria-label="doc-zh" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    doc-zh
+  </label>
+  
+    <div class="md-nav__source">
+      
+<a href="https://github.com/Misaka-9982-coder/doc-zh" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    doc-zh
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1" type="checkbox" id="__nav_1" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_1">
+          xv6-book
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="xv6-book" data-md-level="1">
+        <label class="md-nav__title" for="__nav_1">
+          <span class="md-nav__icon md-icon"></span>
+          xv6-book
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../S081/0.%20%E5%89%8D%E8%A8%80%E5%92%8C%E8%87%B4%E8%B0%A2/" class="md-nav__link">
+        0. 前言和致谢
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../S081/1.%20%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E6%8E%A5%E5%8F%A3/" class="md-nav__link">
+        1. 操作系统接口
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../S081/2.%20%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84/" class="md-nav__link">
+        2. 操作系统架构
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../S081/3.%20%E9%A1%B5%E8%A1%A8/" class="md-nav__link">
+        3. 页表
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../S081/4.%20trap%20%E4%B8%8E%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8/" class="md-nav__link">
+        4. trap 与系统调用
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../S081/5.%20%E4%B8%AD%E6%96%AD%E5%92%8C%E8%AE%BE%E5%A4%87%E9%A9%B1%E5%8A%A8%E7%A8%8B%E5%BA%8F/" class="md-nav__link">
+        5. 中断和设备驱动程序
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../S081/6.%20%E9%94%81/" class="md-nav__link">
+        6. 锁
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../S081/7.%20%E8%B0%83%E5%BA%A6/" class="md-nav__link">
+        7. 调度
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../S081/8.%20%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/" class="md-nav__link">
+        8. 文件系统
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../S081/9.%20%E5%86%8D%E6%AC%A1%E6%8E%A2%E8%AE%A8%E5%B9%B6%E5%8F%91%E6%80%A7/" class="md-nav__link">
+        9. 再次探讨并发性
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2">
+          craftinginterpreters
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="craftinginterpreters" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          craftinginterpreters
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../0_00.contents/contents/" class="md-nav__link">
+        0.00.contents
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../0_01.acknowledgements/acknowledgements/" class="md-nav__link">
+        0.01.acknowledgements
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1_00.Welcome/Welcome/" class="md-nav__link">
+        一、WELCOME
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1_01.Introduction/Introduction/" class="md-nav__link">
+        1.01.Introduction
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1_02.A%20Map%20of%20the%20Territory/A%20Map%20of%20the%20Territory/" class="md-nav__link">
+        1.02.A Map of the Territory
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1_03.The%20Lox%20Language/The%20Lox%20Language/" class="md-nav__link">
+        1.03.The Lox Language
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2_00.A%20TREE-WALK%20INTERPRETER/A%20TREE-WALK%20INTERPRETER/" class="md-nav__link">
+        二、A TREE-WALK INTERPRETER
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2_04.Scanning/Scanning/" class="md-nav__link">
+        2.04.Scanning
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2_05.Representing%20Code/Representing%20Code/" class="md-nav__link">
+        2.05.Representing Code
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2_06.Parsing%20Expressions/Parsing%20Expressions/" class="md-nav__link">
+        2.06.Parsing Expressions
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          2.07.Evaluating Expressions
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        2.07.Evaluating Expressions
+      </a>
+      
+        
+
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#71" class="md-nav__link">
+    7.1 值的表示
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#72" class="md-nav__link">
+    7.2 评估表达式
+  </a>
+  
+    <nav class="md-nav" aria-label="7.2 评估表达式">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#721" class="md-nav__link">
+    7.2.1 评估字面值
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#722" class="md-nav__link">
+    7.2.2 计算括号
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#723" class="md-nav__link">
+    7.2.3 评估一元表达式
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#724" class="md-nav__link">
+    7.2.4  真值与假值
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#725" class="md-nav__link">
+    7.2.5 评估二元运算符
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#73" class="md-nav__link">
+    7.3 运行时错误
+  </a>
+  
+    <nav class="md-nav" aria-label="7.3 运行时错误">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#731" class="md-nav__link">
+    7.3.1 检测运行时错误
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#74" class="md-nav__link">
+    7.4 接通解释器
+  </a>
+  
+    <nav class="md-nav" aria-label="7.4 接通解释器">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#741" class="md-nav__link">
+    7.4.1 报告运行时错误
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#742" class="md-nav__link">
+    7.4.2 运行解释器
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    挑战
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    设计说明：静态和动态类型
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2_08.Statements%20and%20State/Statements%20and%20State/" class="md-nav__link">
+        2.08.Statements and State
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2_09.Control%20Flow/Control%20Flow/" class="md-nav__link">
+        2.09.Control Flow
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2_10.Functions/Functions/" class="md-nav__link">
+        2.10.Functions
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2_11.Resolving%20and%20Binding/Resolving%20and%20Binding/" class="md-nav__link">
+        2.11.Resolving and Binding
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2_12.Classes/Classes/" class="md-nav__link">
+        2.12.Classes
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2_13.Inheritance/Inheritance/" class="md-nav__link">
+        2.13.Inheritance
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3_00.A%20BYTECODE%20VIRTUAL%20MACHINE/A%20BYTECODE%20VIRTUAL%20MACHINE/" class="md-nav__link">
+        三、A BYTECODE VIRTUAL MACHINE
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3_14.Chunks%20of%20Bytecode/Chunks%20of%20Bytecode/" class="md-nav__link">
+        3.14.Chunks of Bytecode
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3_15.A%20Virtual%20Machine/A%20Virtual%20Machine/" class="md-nav__link">
+        3.15.A Virtual Machine
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3_16.Scanning%20on%20Demand/Scanning%20on%20Demand/" class="md-nav__link">
+        3.16.Scanning on Demand
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3_17.Compiling%20Expressions/Compiling%20Expressions/" class="md-nav__link">
+        3.17.Compiling Expressions
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3_18.Types%20of%20Values/Types%20of%20Values/" class="md-nav__link">
+        3.18.Types of Values
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3_19.Strings/Strings/" class="md-nav__link">
+        3.19.Strings
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3_20.Hash%20Tables/Hash%20Tables/" class="md-nav__link">
+        3.20.Hash Tables
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3_21.Global%20Variables/Global%20Variables/" class="md-nav__link">
+        3.21.Global Variables
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3_22.Local%20Variables/Local%20Variables/" class="md-nav__link">
+        3.22.Local Variables
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3_23.Jumping%20Back%20and%20Forth/Jumping%20Back%20and%20Forth/" class="md-nav__link">
+        3.23.Jumping Back and Forth
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3_24.Calls%20and%20Functions/Calls%20and%20Functions/" class="md-nav__link">
+        3.24.Calls and Functions
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3_25.Closures/Closures/" class="md-nav__link">
+        3.25.Closures
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3_26.Garbage%20Collection/Garbage%20Collection/" class="md-nav__link">
+        3.26.Garbage Collection
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3_27.Classes%20and%20Instances/Classes%20and%20Instances/" class="md-nav__link">
+        3.27.Classes and Instances
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3_28.Methods%20and%20Initializers/Methods%20and%20Initializers/" class="md-nav__link">
+        3.28.Methods and Initializers
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3_29.Superclasses/Superclasses/" class="md-nav__link">
+        3.29.Superclasses
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3_30.Optimization/Optimization/" class="md-nav__link">
+        3.30.Optimization
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../4_01.A1.Appendix%20I%20Lox%20Grammar/A1.Appendix%20I%20Lox%20Grammar/" class="md-nav__link">
+        A1.Appendix I Lox Grammar
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../4_02.A2.Appendix%20II%20Generated%20Syntax%20Tree%20Classes/A2.Appendix%20II%20Generated%20Syntax%20Tree%20Classes/" class="md-nav__link">
+        A2.Appendix II Generated Syntax Tree Classes
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#71" class="md-nav__link">
+    7.1 值的表示
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#72" class="md-nav__link">
+    7.2 评估表达式
+  </a>
+  
+    <nav class="md-nav" aria-label="7.2 评估表达式">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#721" class="md-nav__link">
+    7.2.1 评估字面值
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#722" class="md-nav__link">
+    7.2.2 计算括号
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#723" class="md-nav__link">
+    7.2.3 评估一元表达式
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#724" class="md-nav__link">
+    7.2.4  真值与假值
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#725" class="md-nav__link">
+    7.2.5 评估二元运算符
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#73" class="md-nav__link">
+    7.3 运行时错误
+  </a>
+  
+    <nav class="md-nav" aria-label="7.3 运行时错误">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#731" class="md-nav__link">
+    7.3.1 检测运行时错误
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#74" class="md-nav__link">
+    7.4 接通解释器
+  </a>
+  
+    <nav class="md-nav" aria-label="7.4 接通解释器">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#741" class="md-nav__link">
+    7.4.1 报告运行时错误
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#742" class="md-nav__link">
+    7.4.2 运行解释器
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    挑战
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    设计说明：静态和动态类型
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/Misaka-9982-coder/doc-zh/edit/master/docs/craftinginterpreters/2_07.Evaluating Expressions/Evaluating Expressions.md" title="编辑此页" class="md-content__button md-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
+                  </a>
+                
+                
+                <h1 id="_1">评估表达式</h1>
+<blockquote>
+<p>你是我的创造者，但我是你的主人；遵守！</p>
+<p>--Mary Shelley,<em>Frankenstein</em></p>
+</blockquote>
+<p>如果你想为这一章设定适当的基调，试着想象一场雷雨，一种喜欢在故事高潮时猛拉开百叶窗的漩涡风暴。也许扔几道闪电。在本章中，我们的解释器将深吸一口气，睁开眼睛，并执行一些代码。</p>
+<p><img alt="" src="../assets/f693555e20dd988f18e05ce74a34023f37b8e376.png" /></p>
+<blockquote>
+<p>破旧的维多利亚式豪宅是可选的，但增加了氛围。</p>
+</blockquote>
+<p>语言实现可以通过多种方式使计算机执行用户源代码中的命令。他们可以将其编译为机器代码，将其翻译成另一种高级语言，或将其简化为某种字节码格式以供虚拟机运行。不过，对于我们的第一个解释器，我们将采用最简单、最短的路径并执行语法树本身。</p>
+<p>现在，我们的解析器只支持表达式。因此，为了“执行”代码，我们将评估一个表达式并产生一个值。对于我们可以解析的每种表达式语法——字面量、运算符等——我们需要一个相应的代码块来知道如何评估该树并产生结果。这就提出了两个问题：</p>
+<ol>
+<li>
+<p>我们产生什么样的值？</p>
+</li>
+<li>
+<p>我们如何组织这些代码块？</p>
+</li>
+</ol>
+<p>下边依次解决问题...</p>
+<h2 id="71">7.1 值的表示</h2>
+<p>在 Lox 中，值由字面量创建，由表达式计算，并存储在变量中。用户将这些视为<em>Lox</em>对象，但它们是用我们的解释器编写的底层语言实现的。这意味着在 Lox 的动态类型和 Java 的静态类型之间架起桥梁。Lox中的一个变量可以存储任意（Lox）类型的值，甚至可以存储不同时间点的不同类型的值。我们可以使用什么 Java 类型来表示它？</p>
+<blockquote>
+<p>在这里，我几乎可以互换使用“值”和“对象”。</p>
+<p>稍后在 C 解释器中，我们将对它们进行细微区分，但这主要是针对实现的两个不同角落使用独特的术语——就地数据与堆分配数据。从用户的角度来看，这些术语是同义词。</p>
+</blockquote>
+<p>给定一个具有该静态类型的 Java 变量，我们还必须能够确定它在运行时持有哪种类型的值。当解释器执行一个<code>+</code>运算符时，它需要判断它是在添加两个数字还是连接两个字符串。是否有一种 Java 类型可以容纳数字、字符串、布尔值等？有没有一个可以告诉我们它的运行时类型是什么？有！就是 java.lang.Object。</p>
+<p>在解释器中需要存储 Lox 值的地方，我们可以使用 Object 作为类型。Java 有其原始类型的包装类型，它们都是 Object 的子类，因此我们可以将它们用于 Lox 的内置类型：</p>
+<table>
+<thead>
+<tr>
+<th>Lox type</th>
+<th>Java representation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Any Lox value</td>
+<td>Object</td>
+</tr>
+<tr>
+<td><code>nil</code></td>
+<td><code>null</code></td>
+</tr>
+<tr>
+<td>Boolean</td>
+<td>Boolean</td>
+</tr>
+<tr>
+<td>number</td>
+<td>Double</td>
+</tr>
+<tr>
+<td>string</td>
+<td>String</td>
+</tr>
+</tbody>
+</table>
+<p>给定一个静态类型 Object 的值，我们可以使用 Java 的内置<code>instanceof</code>运算符确定运行时值是数字还是字符串或其他任何内容。换句话说，JVM自己的对象表示方便地为我们提供了实现 Lox 内置类型所需的一切。稍后当我们添加 Lox 的函数、类和实例的概念时，我们将不得不做更多的工作，但是 Object 和装箱的原始类足以满足我们现在需要的类型。</p>
+<blockquote>
+<p>我们需要对值做的另一件事是管理它们的内存，Java 也这样做。方便的对象表示和非常好的垃圾收集器是我们用 Java 编写第一个解释器的主要原因。</p>
+</blockquote>
+<h2 id="72">7.2 评估表达式</h2>
+<p>接下来，我们需要一堆代码来为解析的每种表达式实现求值逻辑。可以将该代码以类似<code>interpret()</code>方法的方式填充到语法树类中。实际上，我们可以告诉每个语法树节点，“解释你自己”。这就是四人帮的<a href="https://en.wikipedia.org/wiki/Interpreter_pattern">解释器设计模式</a>。这是一个简洁的模式，但正如我之前提到的，如果我们将各种逻辑塞进树类中，它会变得混乱。</p>
+<p>相反，我们将重用流行的<a href="http://craftinginterpreters.com/representing-code.html#the-visitor-pattern">Visitor 模式</a>。在上一章中，我们创建了一个 AstPrinter 类。它接受语法树并递归遍历它，构建一个最终返回的字符串。这几乎正是真正的解释器所做的，除了它不是连接字符串，而是计算值。</p>
+<p>我们从一个新class开始。</p>
+<pre><code class="language-java">package com.craftinginterpreters.lox;
+
+class Interpreter implements Expr.Visitor&lt;Object&gt; {
+}
+// lox/Interpreter.java, create new file
+</code></pre>
+<p>该类声明它是一个访问者。访问方法的返回类型将是 Object，这是我们用来在 Java 代码中引用 Lox 值的根类。为了实现 Visitor 接口，我们需要为解析器生成的四个表达式树类中的每一个定义访问方法。将从最简单的开始...</p>
+<h3 id="721">7.2.1 评估字面值</h3>
+<p>表达式树的叶子——所有其他表达式组成的语法的原子——是字面值。字面值几乎已经是值，但区别很重要。字面值是产生值的一些语法。字面值总是出现在用户源代码的某处。许多值是由计算产生的，并不存在于代码本身的任何地方。那些不是字面值。字面值来自解析器的域。值是一个解释器概念，是运行时世界的一部分。</p>
+<blockquote>
+<p>在<a href="http://craftinginterpreters.com/statements-and-state.html">下一章</a>中，我们在实现变量时，会添加标识符表达式，它也是叶节点。</p>
+</blockquote>
+<p>因此，就像我们在解析器中将字面值<em>token</em>转换为字面值<em>语法树节点</em>一样 ，现在我们将字面值树节点转换为运行时值。事实证明这很简单。</p>
+<pre><code class="language-java">  @Override
+  public Object visitLiteralExpr(Expr.Literal expr) {
+    return expr.value;
+  }
+// lox/Interpreter.java, in class Interpreter  
+</code></pre>
+<p>我们在扫描过程中急切地产生了运行时值并将其填充到token中。解析器获取该值并将其插入字面值树节点中，因此要评估字面值，我们只需将其直接返回即可。</p>
+<h3 id="722">7.2.2 计算括号</h3>
+<p>下一个要评估的最简单的节点是分组——由于在表达式中使用显式括号而得到的节点。</p>
+<pre><code class="language-java">  @Override
+  public Object visitGroupingExpr(Expr.Grouping expr) {
+    return evaluate(expr.expression);
+  }
+// lox/Interpreter.java, in class Interpreter  
+</code></pre>
+<p>分组节点具有对包含在括号内的表达式的内部节点的引用。为了评估分组表达式本身，我们递归地评估该子表达式并将其返回。</p>
+<p>我们依赖这个辅助方法，它简单地将表达式发送回解释器的访问者实现：</p>
+<p>一些解析器不为括号定义树节点。相反，在解析带括号的表达式时，它们只是返回内部表达式的节点。我们确实在 Lox 中为括号创建了一个节点，因为稍后我们需要它来正确处理赋值表达式的左侧。</p>
+<pre><code class="language-java">  private Object evaluate(Expr expr) {
+    return expr.accept(this);
+  }
+// lox/Interpreter.java, in class Interpreter 
+</code></pre>
+<h3 id="723">7.2.3 评估一元表达式</h3>
+<p>与分组一样，一元表达式有一个我们必须首先求值的子表达式。不同之处在于，一元表达式本身会在之后做一些工作。</p>
+<pre><code class="language-java">  @Override
+  public Object visitUnaryExpr(Expr.Unary expr) {
+    Object right = evaluate(expr.right);
+
+    switch (expr.operator.type) {
+      case MINUS:
+        return -(double)right;
+    }
+
+    // Unreachable.
+    return null;
+  }
+// lox/Interpreter.java, add after visitLiteralExpr()  
+</code></pre>
+<p>首先，我们评估操作数表达式。然后我们将一元运算符本身应用于其结果。有两种不同的一元表达式，由运算符token的类型标识。</p>
+<p>这里显示的是<code>-</code>，它否定子表达式的结果。子表达式必须是数字。由于在 Java 中我们<em>静态</em>地不知道这一点，所以在执行操作之前对其进行转换。这种类型转换发生在运行时<code>-</code>评估 时。这是使语言动态输入的核心。</p>
+<blockquote>
+<p>您可能想知道如果转换失败会发生什么。别担心，我们很快就会谈到这一点。</p>
+</blockquote>
+<p>您可以开始了解求值如何递归地遍历树。在我们评估其操作数子表达式之前，我们无法评估一元运算符本身。这意味着我们的解释器正在进行<strong>后序遍历</strong>——每个节点在执行自己的工作之前评估其子节点。</p>
+<p>另一个一元运算符是逻辑非。</p>
+<pre><code class="language-java">   switch (expr.operator.type) {
+      case BANG:
+        return !isTruthy(right);
+      case MINUS:
+// lox/Interpreter.java, in visitUnaryExpr()
+</code></pre>
+<p>实现很简单，但是这个“truthy”的东西是什么？我们需要稍微顺便谈谈西方哲学的一个重大问题：什么是真值?</p>
+<h3 id="724">7.2.4  真值与假值</h3>
+<p>好吧，也许我们不会真正进入普遍问题，但至少在 Lox 的世界里，我们需要决定会返回什么？当你在使用除<code>true</code>或<code>false</code>逻辑运算之外的东西比如逻辑运算<code>!</code>或任何其他期待是布尔值的地方。</p>
+<p>我们<em>可以</em>说这是一个错误，因为我们不使用隐式转换，但大多数动态类型语言并不是那么苦行僧。相反，他们将所有类型的值的宇宙分为两组，其中一组定义为“真”或“真实”或（我最喜欢的）“真值”，其余为“假” ”或“虚假”。这种划分有些随意，并且在一些语言中变得很奇怪。</p>
+<blockquote>
+<p>在 JavaScript 中，字符串是真实的，但空字符串不是。数组是真实的，但空数组是真实的?。.?.?也很真实。数字<code>0</code>是虚假的，但<em>字符串</em>?<code>"0"</code>是真实的。</p>
+<p>在 Python 中，空字符串和 JS 一样是假的，但其他空序列也是假的。</p>
+<p>在 PHP 中，数字<code>0</code>和字符串<code>"0"</code>都是假的。大多数其他非空字符串都是真实的。</p>
+<p>明白了吗？</p>
+</blockquote>
+<p>Lox 遵循 Ruby 的简单规则：<code>false</code>并且<code>nil</code>是假的，其他一切都是真的。我们这样实现：</p>
+<pre><code class="language-java"> private boolean isTruthy(Object object) {
+    if (object == null) return false;
+    if (object instanceof Boolean) return (boolean)object;
+    return true;
+  }
+// lox/Interpreter.java, add after visitUnaryExpr()
+</code></pre>
+<h3 id="725">7.2.5 评估二元运算符</h3>
+<p>关于最后一个表达式树类，二元运算符。其中有一些，我们将从算术开始。</p>
+<pre><code class="language-java">@Override
+  public Object visitBinaryExpr(Expr.Binary expr) {
+    Object left = evaluate(expr.left);
+    Object right = evaluate(expr.right); 
+
+    switch (expr.operator.type) {
+      case MINUS:
+        return (double)left - (double)right;
+      case SLASH:
+        return (double)left / (double)right;
+      case STAR:
+        return (double)left * (double)right;
+    }
+
+    // Unreachable.
+    return null;
+  }
+// lox/Interpreter.java, add after evaluate()  
+</code></pre>
+<blockquote>
+<p>您是否注意到我们在这里固定了语言语义的一个微妙角落？在二进制表达式中，我们按从左到右的顺序计算操作数。如果这些操作数有副作用，则该选择是用户可见的，因此这不仅仅是一个实现细节。</p>
+<p>如果我们希望我们的两个解释器保持一致（提示：我们这样做），我们需要确保 clox 做同样的事情。</p>
+</blockquote>
+<p>我想你可以弄清楚这里发生了什么。与一元否定运算符的主要区别在于我们有两个要计算的操作数。</p>
+<p>我省略了一个算术运算符，因为它有点特殊。</p>
+<pre><code class="language-java">    switch (expr.operator.type) {
+      case MINUS:
+        return (double)left - (double)right;
+      case PLUS:
+        if (left instanceof Double &amp;&amp; right instanceof Double) {
+          return (double)left + (double)right;
+        } 
+
+        if (left instanceof String &amp;&amp; right instanceof String) {
+          return (String)left + (String)right;
+        }
+
+        break;
+      case SLASH:
+// lox/Interpreter.java, in visitBinaryExpr()
+</code></pre>
+<p>该<code>+</code>运算符也可用于连接两个字符串。为了处理这个问题，我们不只是假设操作数是某种类型并<em>强制转换</em>它们，我们动态地<em>检查</em>类型并选择适当的操作。这就是为什么我们需要我们的对象表示来支持<code>instanceof</code>。</p>
+<blockquote>
+<p>我们可以专门为字符串连接定义一个运算符。这就是 Perl (<code>.</code>)、Lua (<code>..</code>)、Smalltalk (<code>,</code>)、Haskell (<code>++</code>) 和其他语言所做的。</p>
+<p>我认为使用与 Java、JavaScript、Python 和其他语言相同的语法会使 Lox 更易于使用。这意味着<code>+</code>运算符被<strong>重载</strong>以支持添加数字和连接字符串。即使在不用<code>+</code>于字符串的语言中，它们仍然经常重载它以添加整数和浮点数。</p>
+</blockquote>
+<p>接下来是比较运算符。</p>
+<pre><code class="language-java">    switch (expr.operator.type) {
+      case GREATER:
+        return (double)left &gt; (double)right;
+      case GREATER_EQUAL:
+        return (double)left &gt;= (double)right;
+      case LESS:
+        return (double)left &lt; (double)right;
+      case LESS_EQUAL:
+        return (double)left &lt;= (double)right;
+      case MINUS:
+// lox/Interpreter.java, in visitBinaryExpr()
+</code></pre>
+<p>它们与算术基本相同。唯一的区别是算术运算符产生的值与操作数（数字或字符串）的类型相同，而比较运算符总是产生布尔值。</p>
+<p>最后一对运算符是相等的。</p>
+<pre><code class="language-java">      case BANG_EQUAL: return !isEqual(left, right);
+      case EQUAL_EQUAL: return isEqual(left, right);
+// lox/Interpreter.java, in visitBinaryExpr()
+</code></pre>
+<p>与需要数字的比较运算符不同，相等运算符支持任何类型的操作数，甚至是混合操作数。你不能问 Lox 3 是否<em>小于</em>，<code>"three"</code>?,但你可以问它是否<em>等于</em>它。</p>
+<blockquote>
+<p>剧透警告：不是。</p>
+</blockquote>
+<p>与真值测试一样，相等逻辑被提升到一个单独的方法中。</p>
+<pre><code class="language-java">private boolean isEqual(Object a, Object b) {
+    if (a == null &amp;&amp; b == null) return true;
+    if (a == null) return false;
+
+    return a.equals(b);
+  }
+// lox/Interpreter.java, add after isTruthy() 
+</code></pre>
+<p>这是我们如何用 Java 表示 Lox 对象的细节的角落之一。我们需要正确实现<em>Lox 的</em>相等性概念，这可能与 Java 不同。</p>
+<p>幸运的是，两者非常相似。Lox 不进行相等性的隐式转换，而 Java 也不做。我们确实必须特别处理<code>nil</code>/<code>null</code>，以便在我们尝试在<code>null</code>上调用<code>equals()</code>时不会抛出 NullPointerException。还好，这对我们很友好。Java 的<code>equals()</code>Boolean、Double 和 String 方法具有我们想要的 Lox 行为。</p>
+<blockquote>
+<p>您希望它评估什么：</p>
+<p><code>java
+( 0 / 0 ) == ( 0 / 0 )</code></p>
+<p>根据指定双精度数行为的<a href="https://en.wikipedia.org/wiki/IEEE_754">IEEE 754</a>，零除以零会得到特殊的<strong>NaN</strong>（“非数字”）值。奇怪的是，NaN<em>不</em>等于自身。</p>
+<p>在 Java 中，<code>==</code>原始双打上的运算符保留了该行为，但?<code>equals()</code>Double 类上的方法没有。Lox 使用后者，因此不遵循 IEEE。这些微妙的不兼容性占据了语言实现者生活中令人沮丧的一小部分。</p>
+</blockquote>
+<p>就这些！这就是我们正确解释有效 Lox 表达式所需的所有代码。但是<em>无效</em>的呢？特别是，当子表达式的计算结果为执行操作的错误类型的对象时会发生什么？</p>
+<h2 id="73">7.3 运行时错误</h2>
+<p>每当一个子表达式产生一个对象并且运算符要求它是一个数字或一个字符串时，我就很随意地干扰强制转换。这些操作可能会失败。虽然用户的代码是错误的，如果我们想要创建可用的语言，我们也有责任优雅地处理该错误。</p>
+<blockquote>
+<p>我们根本无法检测或报告类型错误。如果您将指针转换为某种与实际指向的数据不匹配的类型，这就是 C 所做的。C 通过允许这样做获得了灵活性和速度，但也是出了名的危险。一旦你误解了内存中的位，所有的赌注都会落空。</p>
+<p>很少有现代语言接受这样的不安全操作。相反，大多数都是<strong>内存安全</strong>的，并通过静态和运行时检查的组合确保程序永远不会错误地解释存储在一块内存中的值。</p>
+</blockquote>
+<p>现在是我们讨论<strong>运行时错误</strong>的时候了。在前面的章节中，我在谈论错误处理时泼了很多墨，但那些都是<em>语法</em>或<em>静态</em>错误。<em>在执行任何</em>代码之前检测并报告这些。运行时错误是语言语义要求我们在程序运行时检测和报告的故障（因此得名）。</p>
+<p>现在，如果操作数对于正在执行的操作而言是错误的类型，则 Java 转换将失败并且 JVM 将抛出 ClassCastException。这将展开整个堆栈并退出应用程序，向用户吐出 Java 堆栈跟踪。这可能不是我们想要的。Lox 是用 Java 实现的这一事实应该是对用户隐藏的细节。相反，我们希望他们了解发生了<em>Lox</em>运行时错误，并向他们提供与我们的语言和他们的程序相关的错误消息。</p>
+<p>不过，Java 行为确实有其优点。当错误发生时，它会正确地停止执行任何代码。假设用户输入了一些表达式，例如：</p>
+<pre><code class="language-java">2 * (3 / -&quot;muffin&quot;)
+</code></pre>
+<p>您不能 否定muffin，因此我们需要在该内部<code>-</code>表达式中报告运行时错误。这反过来意味着我们无法评估<code>/</code>表达式，因为它没有有意义的右操作数。对于<code>*</code>也一样.所以当某个表达式深处发生运行时错误时，我们需要一路逃逸出去。</p>
+<blockquote>
+<p>我不知道，伙计，你<em>能</em>拒绝松饼吗？</p>
+</blockquote>
+<p><img alt="" src="../assets/d98df7197f0bd09d25e9bc8b8832048fb0d06b48.png" /></p>
+<p>我们可以打印运行时错误，然后中止进程并完全退出应用程序。这具有一定的情节剧天赋。类似于麦克风下降的编程语言解释器。</p>
+<p>尽管这很诱人，但我们或许应该做一些不那么灾难性的事情。虽然运行时错误需要停止计算<em>表达式</em>，但它不应该杀死<em>解释器</em>。如果用户正在运行 REPL 并且在一行代码中有拼写错误，他们仍然应该能够继续进行会话并在此之后输入更多代码。</p>
+<h3 id="731">7.3.1 检测运行时错误</h3>
+<p>我们的树遍历解释器使用递归方法调用评估嵌套表达式，我们需要跳出这些嵌套方法。在 Java 中抛出异常是实现这一点的好方法。但是，我们将定义一个特定的 Lox 的错误，而不是使用 Java 自己的转换错误，以便我们可以按照自己的意愿处理它。</p>
+<p>在我们进行转换之前，我们自己检查对象的类型。因此，对于一元<code>-</code>，我们添加：</p>
+<pre><code class="language-java">      case MINUS:
+        checkNumberOperand(expr.operator, right);
+        return -(double)right;
+// lox/Interpreter.java, in visitUnaryExpr()
+</code></pre>
+<p>检查操作数的代码是：</p>
+<pre><code class="language-java">private void checkNumberOperand(Token operator, Object operand) {
+    if (operand instanceof Double) return;
+    throw new RuntimeError(operator, &quot;Operand must be a number.&quot;);
+  }
+// lox/Interpreter.java, add after visitUnaryExpr()
+</code></pre>
+<p>当检查失败时，它会抛出以下之一：</p>
+<pre><code class="language-java">package com.craftinginterpreters.lox;
+
+class RuntimeError extends RuntimeException {
+  final Token token;
+
+  RuntimeError(Token token, String message) {
+    super(message);
+    this.token = token;
+  }
+}
+// lox/RuntimeError.java, create new file
+</code></pre>
+<p>与 Java 转换异常不同，我们的类跟踪token，该token标识用户代码中运行时错误的来源。与静态错误一样，这有助于用户知道在哪里修复他们的代码。</p>
+<blockquote>
+<p>我承认“RuntimeError”这个名字令人困惑，因为 Java 定义了一个 RuntimeException 类。构建解释器的一个烦人的事情是你的名字经常与实现语言已经采用的名字冲突。等到我们支持 Lox 类。</p>
+</blockquote>
+<p>我们需要对二元运算符进行类似的检查。由于我向您保证过实现解释器所需的每一行代码，所以我将逐一检查它们。</p>
+<p>大于：</p>
+<pre><code class="language-java">      case GREATER:
+        checkNumberOperands(expr.operator, left, right);
+        return (double)left &gt; (double)right;
+// lox/Interpreter.java, in visitBinaryExpr()
+</code></pre>
+<p>大于或等于：</p>
+<pre><code class="language-java">      case GREATER_EQUAL:
+        checkNumberOperands(expr.operator, left, right);
+        return (double)left &gt;= (double)right;
+// lox/Interpreter.java, in visitBinaryExpr()
+</code></pre>
+<p>小于：</p>
+<pre><code class="language-java">      case LESS:
+        checkNumberOperands(expr.operator, left, right);
+        return (double)left &lt; (double)right;
+// lox/Interpreter.java, in visitBinaryExpr()
+</code></pre>
+<p>小于或等于：</p>
+<pre><code class="language-java">      case LESS_EQUAL:
+        checkNumberOperands(expr.operator, left, right);
+        return (double)left &lt;= (double)right;
+// lox/Interpreter.java, in visitBinaryExpr()
+</code></pre>
+<p>减法：</p>
+<pre><code class="language-java">      case MINUS:
+        checkNumberOperands(expr.operator, left, right);
+        return (double)left - (double)right;
+// lox/Interpreter.java, in visitBinaryExpr()
+</code></pre>
+<p>除法：</p>
+<pre><code class="language-java">      case SLASH:
+        checkNumberOperands(expr.operator, left, right);
+        return (double)left / (double)right;
+// lox/Interpreter.java, in visitBinaryExpr()
+</code></pre>
+<p>乘法：</p>
+<pre><code class="language-java">      case STAR:
+        checkNumberOperands(expr.operator, left, right);
+        return (double)left * (double)right;
+// lox/Interpreter.java, in visitBinaryExpr()
+</code></pre>
+<p>所有这些都依赖于这个验证器，它实际上与一元验证器相同：</p>
+<pre><code class="language-java">  private void checkNumberOperands(Token operator,
+                                   Object left, Object right) {
+    if (left instanceof Double &amp;&amp; right instanceof Double) return;
+
+    throw new RuntimeError(operator, &quot;Operands must be numbers.&quot;);
+  }
+// lox/Interpreter.java, add after checkNumberOperand()  
+</code></pre>
+<blockquote>
+<p>另一个微妙的语义选择：我们在检查其中一个的类型之前评估<em>两个</em>操作<em>数</em>。想象一下，我们有一个函数打印它的参数然后返回它。使用它，我们写：<code>say()</code></p>
+</blockquote>
+<pre><code class="language-java">say(&quot;left&quot;) - say(&quot;right&quot;);
+</code></pre>
+<blockquote>
+<p>我们的解释器在报告运行时错误之前打印“left”和“right”。我们本可以指定在评估右操作数之前先检查左操作数。</p>
+</blockquote>
+<p>剩下的最后一个运算符，也是奇葩的运算符，是加法。由于<code>+</code>对数字和字符串进行了重载，因此它已经具有检查类型的代码。如果两个成功案例都不匹配，我们需要做的就是失败。</p>
+<pre><code class="language-java">          return (String)left + (String)right;
+        }
+
+        throw new RuntimeError(expr.operator,
+            &quot;Operands must be two numbers or two strings.&quot;);
+      case SLASH:
+// lox/Interpreter.java, in visitBinaryExpr(), replace 1 line
+</code></pre>
+<p>这让我们能够检测到评估器内部深处的运行时错误。错误正在被抛出。下一步是编写捕获它们的代码。为此，我们需要将 Interpreter 类连接到驱动它的主 Lox 类中。</p>
+<h2 id="74">7.4 接通解释器</h2>
+<p>visit 方法是 Interpreter 类的核心，真正的工作发生在这里。我们需要在它们周围包裹一层皮肤以与程序的其余部分进行交互。Interpreter 的公共 API 只是一种方法。</p>
+<pre><code class="language-java">  void interpret(Expr expression) { 
+    try {
+      Object value = evaluate(expression);
+      System.out.println(stringify(value));
+    } catch (RuntimeError error) {
+      Lox.runtimeError(error);
+    }
+  }
+// lox/Interpreter.java, in class Interpreter  
+</code></pre>
+<p>这接受表达式的语法树并对其求值。如果成功，<code>evaluate()</code>则返回结果值的对象。<code>interpret()</code>将其转换为字符串并将其显示给用户。要将 Lox 值转换为字符串，我们依赖于：</p>
+<pre><code class="language-java">  private String stringify(Object object) {
+    if (object == null) return &quot;nil&quot;;
+
+    if (object instanceof Double) {
+      String text = object.toString();
+      if (text.endsWith(&quot;.0&quot;)) {
+        text = text.substring(0, text.length() - 2);
+      }
+      return text;
+    }
+
+    return object.toString();
+  }
+// lox/Interpreter.java, add after isEqual()  
+</code></pre>
+<p>这是另一段类似<code>isTruthy()</code>的代码，它跨越 Lox 对象的用户视图和它们在 Java 中的内部表示之间的隔阂。</p>
+<p>这很简单。由于 Lox 被设计为熟悉 Java 的人，因此布尔值之类的东西在两种语言中看起来是一样的。两种边缘情况是<code>nil</code>，我们使用 Java 表示<code>null</code>，和数字。</p>
+<p>Lox 甚至对整数值也使用双精度数。在这种情况下，他们应该不带小数点打印。由于 Java 同时具有浮点数和整数类型，它希望您知道您使用的是哪一种。它通过将显式添加<code>.0</code>到整数值双打来告诉您。我们不关心这个，所以我们把它砍掉了。</p>
+<blockquote>
+<p>再一次，我们用数字来处理这种边缘情况，以确保 jlox 和 clox 工作相同。像这样处理语言的奇怪角落会让你发疯，但这是工作的重要组成部分。</p>
+<p>用户有意或无意地依赖这些细节，如果实现不一致，他们的程序在不同的解释器上运行时就会崩溃。</p>
+</blockquote>
+<h3 id="741">7.4.1 报告运行时错误</h3>
+<p>如果在评估表达式时抛出运行时错误，则<code>interpret()</code>捕获它。这让我们可以向用户报告错误，然后优雅地继续。我们现有的所有错误报告代码都位于 Lox 类中，因此我们也将此方法放在那里：</p>
+<pre><code class="language-java">  static void runtimeError(RuntimeError error) {
+    System.err.println(error.getMessage() +
+        &quot;\n[line &quot; + error.token.line + &quot;]&quot;);
+    hadRuntimeError = true;
+  }
+// lox/Lox.java, add after error() 
+</code></pre>
+<p>我们使用与 RuntimeError 关联的标记来告诉用户发生错误时正在执行哪一行代码。更好的办法是为用户提供完整的调用堆栈，以显示他们如何<em>执行</em>该代码。但是我们还没有函数调用，所以我想我们不必担心。</p>
+<p>显示错误后，<code>runtimeError()</code>设置此字段：</p>
+<pre><code class="language-java">  static boolean hadError = false;
+  static boolean hadRuntimeError = false;
+
+  public static void main(String[] args) throws IOException {
+// lox/Lox.java, in class Lox  
+</code></pre>
+<p>该字段很小但起着很重要的作用。</p>
+<pre><code class="language-java">    run(new String(bytes, Charset.defaultCharset()));
+
+    // Indicate an error in the exit code.
+    if (hadError) System.exit(65);
+    if (hadRuntimeError) System.exit(70);
+  }
+// lox/Lox.java, in runFile()
+</code></pre>
+<p>如果用户正在从文件运行 Lox 脚本并且发生运行时错误，我们会在进程退出时设置退出代码以告知调用进程。不是每个人都关心shell规则，但我们关心。</p>
+<blockquote>
+<p>如果用户正在运行 REPL，我们不关心跟踪运行时错误。在他们被报告后，我们简单地循环并让他们输入新代码并继续进行。</p>
+</blockquote>
+<h3 id="742">7.4.2 运行解释器</h3>
+<p>现在我们有了解释器，Lox 类就可以开始使用它了。</p>
+<pre><code class="language-java">public class Lox {
+  private static final Interpreter interpreter = new Interpreter();
+  static boolean hadError = false;
+// lox/Lox.java, in class Lox
+</code></pre>
+<p>我们将字段设为静态，以便对<code>run()</code>REPL 会话内部的连续调用重用同一个解释器。现在这没有什么区别，但是稍后当解释器存储全局变量时它会有所不同。这些变量应该在整个 REPL 会话中持续存在。</p>
+<p>最后，我们删除了<a href="http://craftinginterpreters.com/parsing-expressions.html">上一章</a>中用于打印语法树的临时代码行，并将其替换为：</p>
+<pre><code class="language-java">    // Stop if there was a syntax error.
+    if (hadError) return;
+
+    interpreter.interpret(expression);
+  }
+// lox/Lox.java, in run(), replace 1 line
+</code></pre>
+<p>我们现在有一个完整的语言管道：扫描、解析和执行。恭喜，您现在拥有了自己的算术计算器。</p>
+<p>如您所见，解释器非常简单。但是我们今天设置的 Interpreter 类和 Visitor 模式构成了骨架，后面的章节将充满有趣的内容——变量、函数等。现在，解释器并没有做太多事情，但它有了生命！</p>
+<p><img alt="" src="../assets/f11df8c9bff3af55c57c8476211a1024cc4f93ad.png" /></p>
+<hr />
+<h2 id="_2"><a href="http://craftinginterpreters.com/evaluating-expressions.html#challenges">挑战</a></h2>
+<ol>
+<li>允许对数字以外的类型进行比较可能很有用。运算符可能对字符串有合理的解释。即使是混合类型之间的比较，<code>3 &lt; "pancake"</code>也可以很方便地启用异构类型的有序集合之类的东西。或者它可能只会导致错误和混乱。</li>
+</ol>
+<p>你会扩展 Lox 以支持比较其他类型吗？如果是这样，您允许哪些类型对以及如何定义它们的顺序？证明你的选择是合理的，并将它们与其他语言进行比较。</p>
+<ol>
+<li>
+<p>许多语言都这样定义<code>+</code>，如果<em>其中一个</em>操作数是字符串，则将另一个操作数转换为字符串，然后将结果连接起来。例如，<code>"scone" + 4</code>会产生<code>scone4</code>.扩展代码使<code>visitBinaryExpr()</code>支持它。</p>
+</li>
+<li>
+<p>如果你将一个数除以零，现在会发生什么？你认为应该发生什么？证明你的选择。您知道的其他语言如何处理被零除，以及它们为什么会做出这样的选择？</p>
+</li>
+</ol>
+<p>更改中的实现<code>visitBinaryExpr()</code>以检测并报告此案例的运行时错误。</p>
+<h2 id="_3"><a href="http://craftinginterpreters.com/evaluating-expressions.html#design-note">设计说明：静态和动态类型</a></h2>
+<p>某些语言（如 Java）是静态类型的，这意味着在运行任何代码之前的编译时会检测并报告类型错误。其他的，如 Lox，是动态类型的，并且将类型错误检查推迟到运行时尝试操作之前。我们倾向于认为这是一个非黑即白的选择，但实际上它们之间存在连续统一体。</p>
+<p>事实证明，即使是大多数静态类型语言也会在运行时进行<em>一些</em>类型检查。类型系统静态地检查大多数类型规则，但在生成的代码中为其他操作插入运行时检查。</p>
+<p>例如，在 Java 中，<em>静态</em>类型系统假定强制转换表达式总是安全地成功。在转换一些值后，您可以将其静态地视为目标类型，而不会出现任何编译错误。但很明显，沮丧可能会失败。静态检查器可以假定转换总是成功而不违反语言的健全性保证的唯一原因是因为转换<em>在运行时</em>被检查并在失败时抛出异常。</p>
+<p>一个更微妙的例子是Java 和 C# 中的<a href="https://en.wikipedia.org/wiki/Covariance_and_contravariance_(computer_science)#Covariant_arrays_in_Java_and_C.23">协变数</a>组。数组的静态子类型规则允许不合理的操作。考虑：</p>
+<pre><code class="language-java">Object[] stuff = new Integer[1];
+stuff[0] = &quot;not an int!&quot;;
+</code></pre>
+<p>这段代码编译没有任何错误。第一行向上转换 Integer 数组并将其存储在 Object 数组类型的变量中。第二行在其中一个单元格中存储一个字符串。对象数组类型静态地允许——字符串<em>是</em>对象——但在运行时引用的实际整数数组<code>stuff</code>不应该包含字符串！为了避免这种灾难，当您将值存储在数组中时，JVM 会执行<em>运行时</em>检查以确保它是允许的类型。否则，它会抛出 ArrayStoreException。</p>
+<p>Java 可以通过在第一行禁止转换来避免在运行时检查它。它可以使数组<em>不变</em>，使得整数数组<em>不是</em>对象数组。这在静态上是合理的，但它禁止仅从数组中读取的常见且安全的代码模式。如果您从不<em>写入</em>数组，则协方差是安全的。在 Java 1.0 支持泛型之前，这些模式对于可用性特别重要。James Gosling 和其他 Java 设计师在一些静态安全性和性能上进行了权衡——那些数组存储检查需要时间——以换取一些灵活性。</p>
+<p><em>很少有现代静态类型语言不会在某处</em>做出这种权衡?。甚至 Haskell 也会让你运行带有非穷尽匹配的代码。如果您发现自己在设计一种静态类型语言，请记住，您有时可以通过将某些类型检查推迟到运行时来为用户提供更大的灵活性，而不会牺牲<em>太多静态安全的好处。</em></p>
+<p>另一方面，用户选择静态类型语言的一个关键原因是因为这种语言让他们相信，在他们的程序运行时，某些类型的错误<em>永远不会发生。</em>将太多的类型检查推迟到运行时，你会削弱这种信心。</p>
+                
+              
+              
+<script src="https://giscus.app/client.js" data-repo="PKUFlyingPig/cs-self-learning" data-repo-id="R_kgDOGP67ng"
+    data-category="Announcements" data-category-id="DIC_kwDOGP67ns4COM9Q" data-mapping="title"
+    data-reactions-enabled="1" data-emit-metadata="0" data-input-position="top" data-theme="light_protanopia"
+    data-lang="zh-CN" data-loading="lazy" crossorigin="anonymous" async>
+</script>
+
+<script>
+    var palette = __get("__palette")
+    if (palette && typeof palette.color === "object") {
+        if (palette.color.scheme === "slate") {
+            const giscus = document.querySelector("script[src*=giscus]")
+            giscus.setAttribute("data-theme", "dark_protanopia")
+        }
+    }
+
+    document.addEventListener("DOMContentLoaded", function () {
+        const ref = document.querySelector("[data-md-component=palette]")
+        ref.addEventListener("change", function () {
+            var palette = __get("__palette")
+            if (palette && typeof palette.color === "object") {
+                const theme = palette.color.scheme === "slate" ? "dark_protanopia" : "light_protanopia"
+                const frame = document.querySelector(".giscus-frame")
+                frame.contentWindow.postMessage({
+                    giscus: { setConfig: { theme } }
+                }, "https://giscus.app")
+            }
+        })
+    })
+</script>
+
+            </article>
+          </div>
+        </div>
+        
+          <a href="#" class="md-top md-icon" data-md-component="top" data-md-state="hidden">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"/></svg>
+            Back to top
+          </a>
+        
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href="../../2_06.Parsing%20Expressions/Parsing%20Expressions/" class="md-footer__link md-footer__link--prev" aria-label="上一页: 2.06.Parsing Expressions" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                上一页
+              </span>
+              2.06.Parsing Expressions
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../../2_08.Statements%20and%20State/Statements%20and%20State/" class="md-footer__link md-footer__link--next" aria-label="下一页: 2.08.Statements and State" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                下一页
+              </span>
+              2.08.Statements and State
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        
+          Made with
+          <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+            Material for MkDocs
+          </a>
+        
+        
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["header.autohide", "navigation.tracking", "navigation.top", "search.highlight", "search.share", "search.suggest", "content.code.annotate"], "search": "../../../assets/javascripts/workers/search.fcfe8b6d.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\uff0c\\u3002]+", "search.placeholder": "\u641c\u7d22", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.b1047164.min.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+      
+    
+  </body>
+</html>

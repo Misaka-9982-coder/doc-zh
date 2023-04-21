@@ -1,0 +1,2061 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-7.3.6">
+    
+    
+      
+        <title>3.17.Compiling Expressions - doc-zh</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.a57b2b03.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.3f5d1f46.min.css">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font-family:"Roboto";--md-code-font-family:"Roboto Mono"}</style>
+      
+    
+    
+    
+    
+      
+
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="light-blue" data-md-color-accent="deep-purple">
+  
+    
+    <script>function __prefix(e){return new URL("../../..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+    
+      <script>var palette=__get("__palette");if(null!==palette&&"object"==typeof palette.color)for(var key in palette.color)document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="doc-zh" class="md-header__button md-logo" aria-label="doc-zh" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            doc-zh
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              3.17.Compiling Expressions
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="light-blue" data-md-color-accent="deep-purple"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+          
+            <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5c-.84 0-1.65.15-2.39.42L12 2M3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29L3.34 7m.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14L3.36 17M20.65 7l-1.77 3.79a7.023 7.023 0 0 0-2.38-4.15l4.15.36m-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29L20.64 17M12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44L12 22z"/></svg>
+            </label>
+          
+        
+          
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="cyan" data-md-color-accent="deep-purple"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
+          
+            <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3 3.19.09m3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95 2.06.05m-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31z"/></svg>
+            </label>
+          
+        
+      </form>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7 0-.24-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91 1.61 0 2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08z"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        
+<a href="https://github.com/Misaka-9982-coder/doc-zh" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    doc-zh
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="doc-zh" class="md-nav__button md-logo" aria-label="doc-zh" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    doc-zh
+  </label>
+  
+    <div class="md-nav__source">
+      
+<a href="https://github.com/Misaka-9982-coder/doc-zh" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    doc-zh
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1" type="checkbox" id="__nav_1" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_1">
+          xv6-book
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="xv6-book" data-md-level="1">
+        <label class="md-nav__title" for="__nav_1">
+          <span class="md-nav__icon md-icon"></span>
+          xv6-book
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../S081/0.%20%E5%89%8D%E8%A8%80%E5%92%8C%E8%87%B4%E8%B0%A2/" class="md-nav__link">
+        0. 前言和致谢
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../S081/1.%20%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E6%8E%A5%E5%8F%A3/" class="md-nav__link">
+        1. 操作系统接口
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../S081/2.%20%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84/" class="md-nav__link">
+        2. 操作系统架构
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../S081/3.%20%E9%A1%B5%E8%A1%A8/" class="md-nav__link">
+        3. 页表
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../S081/4.%20trap%20%E4%B8%8E%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8/" class="md-nav__link">
+        4. trap 与系统调用
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../S081/5.%20%E4%B8%AD%E6%96%AD%E5%92%8C%E8%AE%BE%E5%A4%87%E9%A9%B1%E5%8A%A8%E7%A8%8B%E5%BA%8F/" class="md-nav__link">
+        5. 中断和设备驱动程序
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../S081/6.%20%E9%94%81/" class="md-nav__link">
+        6. 锁
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../S081/7.%20%E8%B0%83%E5%BA%A6/" class="md-nav__link">
+        7. 调度
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../S081/8.%20%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/" class="md-nav__link">
+        8. 文件系统
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../S081/9.%20%E5%86%8D%E6%AC%A1%E6%8E%A2%E8%AE%A8%E5%B9%B6%E5%8F%91%E6%80%A7/" class="md-nav__link">
+        9. 再次探讨并发性
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2">
+          craftinginterpreters
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="craftinginterpreters" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          craftinginterpreters
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../0_00.contents/contents/" class="md-nav__link">
+        0.00.contents
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../0_01.acknowledgements/acknowledgements/" class="md-nav__link">
+        0.01.acknowledgements
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1_00.Welcome/Welcome/" class="md-nav__link">
+        一、WELCOME
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1_01.Introduction/Introduction/" class="md-nav__link">
+        1.01.Introduction
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1_02.A%20Map%20of%20the%20Territory/A%20Map%20of%20the%20Territory/" class="md-nav__link">
+        1.02.A Map of the Territory
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1_03.The%20Lox%20Language/The%20Lox%20Language/" class="md-nav__link">
+        1.03.The Lox Language
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2_00.A%20TREE-WALK%20INTERPRETER/A%20TREE-WALK%20INTERPRETER/" class="md-nav__link">
+        二、A TREE-WALK INTERPRETER
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2_04.Scanning/Scanning/" class="md-nav__link">
+        2.04.Scanning
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2_05.Representing%20Code/Representing%20Code/" class="md-nav__link">
+        2.05.Representing Code
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2_06.Parsing%20Expressions/Parsing%20Expressions/" class="md-nav__link">
+        2.06.Parsing Expressions
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2_07.Evaluating%20Expressions/Evaluating%20Expressions/" class="md-nav__link">
+        2.07.Evaluating Expressions
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2_08.Statements%20and%20State/Statements%20and%20State/" class="md-nav__link">
+        2.08.Statements and State
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2_09.Control%20Flow/Control%20Flow/" class="md-nav__link">
+        2.09.Control Flow
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2_10.Functions/Functions/" class="md-nav__link">
+        2.10.Functions
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2_11.Resolving%20and%20Binding/Resolving%20and%20Binding/" class="md-nav__link">
+        2.11.Resolving and Binding
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2_12.Classes/Classes/" class="md-nav__link">
+        2.12.Classes
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2_13.Inheritance/Inheritance/" class="md-nav__link">
+        2.13.Inheritance
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3_00.A%20BYTECODE%20VIRTUAL%20MACHINE/A%20BYTECODE%20VIRTUAL%20MACHINE/" class="md-nav__link">
+        三、A BYTECODE VIRTUAL MACHINE
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3_14.Chunks%20of%20Bytecode/Chunks%20of%20Bytecode/" class="md-nav__link">
+        3.14.Chunks of Bytecode
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3_15.A%20Virtual%20Machine/A%20Virtual%20Machine/" class="md-nav__link">
+        3.15.A Virtual Machine
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3_16.Scanning%20on%20Demand/Scanning%20on%20Demand/" class="md-nav__link">
+        3.16.Scanning on Demand
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          3.17.Compiling Expressions
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        3.17.Compiling Expressions
+      </a>
+      
+        
+
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#171-single-pass-compilation" class="md-nav__link">
+    17.1 单趟编译  Single-pass Compilation
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#172-tokens" class="md-nav__link">
+    17.2 解析tokens
+  </a>
+  
+    <nav class="md-nav" aria-label="17.2 解析tokens">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1721" class="md-nav__link">
+    17.2.1 处理语法错误
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#173" class="md-nav__link">
+    17.3 发射字节码
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#174" class="md-nav__link">
+    17.4 解析前缀表达式
+  </a>
+  
+    <nav class="md-nav" aria-label="17.4 解析前缀表达式">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1741-token" class="md-nav__link">
+    17.4.1 解析token
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1742" class="md-nav__link">
+    17.4.2 括号
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1743" class="md-nav__link">
+    17.4.3 一元取反操作
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#175" class="md-nav__link">
+    17.5 解析中缀表达式
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#176-pratt" class="md-nav__link">
+    17.6 Pratt解析器
+  </a>
+  
+    <nav class="md-nav" aria-label="17.6 Pratt解析器">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1761" class="md-nav__link">
+    17.6.1 解析优先级
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#177" class="md-nav__link">
+    17.7  转储块
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    挑战
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    设计说明：只是解析
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3_18.Types%20of%20Values/Types%20of%20Values/" class="md-nav__link">
+        3.18.Types of Values
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3_19.Strings/Strings/" class="md-nav__link">
+        3.19.Strings
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3_20.Hash%20Tables/Hash%20Tables/" class="md-nav__link">
+        3.20.Hash Tables
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3_21.Global%20Variables/Global%20Variables/" class="md-nav__link">
+        3.21.Global Variables
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3_22.Local%20Variables/Local%20Variables/" class="md-nav__link">
+        3.22.Local Variables
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3_23.Jumping%20Back%20and%20Forth/Jumping%20Back%20and%20Forth/" class="md-nav__link">
+        3.23.Jumping Back and Forth
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3_24.Calls%20and%20Functions/Calls%20and%20Functions/" class="md-nav__link">
+        3.24.Calls and Functions
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3_25.Closures/Closures/" class="md-nav__link">
+        3.25.Closures
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3_26.Garbage%20Collection/Garbage%20Collection/" class="md-nav__link">
+        3.26.Garbage Collection
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3_27.Classes%20and%20Instances/Classes%20and%20Instances/" class="md-nav__link">
+        3.27.Classes and Instances
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3_28.Methods%20and%20Initializers/Methods%20and%20Initializers/" class="md-nav__link">
+        3.28.Methods and Initializers
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3_29.Superclasses/Superclasses/" class="md-nav__link">
+        3.29.Superclasses
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3_30.Optimization/Optimization/" class="md-nav__link">
+        3.30.Optimization
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../4_01.A1.Appendix%20I%20Lox%20Grammar/A1.Appendix%20I%20Lox%20Grammar/" class="md-nav__link">
+        A1.Appendix I Lox Grammar
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../4_02.A2.Appendix%20II%20Generated%20Syntax%20Tree%20Classes/A2.Appendix%20II%20Generated%20Syntax%20Tree%20Classes/" class="md-nav__link">
+        A2.Appendix II Generated Syntax Tree Classes
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#171-single-pass-compilation" class="md-nav__link">
+    17.1 单趟编译  Single-pass Compilation
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#172-tokens" class="md-nav__link">
+    17.2 解析tokens
+  </a>
+  
+    <nav class="md-nav" aria-label="17.2 解析tokens">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1721" class="md-nav__link">
+    17.2.1 处理语法错误
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#173" class="md-nav__link">
+    17.3 发射字节码
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#174" class="md-nav__link">
+    17.4 解析前缀表达式
+  </a>
+  
+    <nav class="md-nav" aria-label="17.4 解析前缀表达式">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1741-token" class="md-nav__link">
+    17.4.1 解析token
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1742" class="md-nav__link">
+    17.4.2 括号
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1743" class="md-nav__link">
+    17.4.3 一元取反操作
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#175" class="md-nav__link">
+    17.5 解析中缀表达式
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#176-pratt" class="md-nav__link">
+    17.6 Pratt解析器
+  </a>
+  
+    <nav class="md-nav" aria-label="17.6 Pratt解析器">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1761" class="md-nav__link">
+    17.6.1 解析优先级
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#177" class="md-nav__link">
+    17.7  转储块
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    挑战
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    设计说明：只是解析
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/Misaka-9982-coder/doc-zh/edit/master/docs/craftinginterpreters/3_17.Compiling Expressions/Compiling Expressions.md" title="编辑此页" class="md-content__button md-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
+                  </a>
+                
+                
+                <h1 id="_1">编译表达式</h1>
+<blockquote>
+<p>在我们人生旅途的中途，我发现自己置身于一片漆黑的树林中，那里已经迷失了正路。</p>
+<p>-- Dante Alighieri,<em>Inferno</em></p>
+</blockquote>
+<p>这一章令人兴奋的原因不是一个，也不是两个，而是<em>三个</em>。首先，它提供了我们 VM 执行管道的最后一部分。一旦到位，我们就可以从扫描一直到执行它的过程中探测用户的源代码。</p>
+<p><img alt="" src="../assets/b7e41281e677a3da44726dc52324ce9a48d0a4ea.png" /></p>
+<p>其次，我们开始编写一个真正的、诚实的<em>编译器</em>。它解析源代码并输出一系列低级二进制指令。当然，它是字节码而不是某些芯片的本机指令集，但它比 jlox 更接近机器码。我们即将成为真正的语言黑客。</p>
+<blockquote>
+<p>字节码对 Niklaus Wirth 来说已经足够好了，没有人质疑他的街头信誉。</p>
+</blockquote>
+<p>第三，也是最后，我要向您展示我最喜欢的算法之一：Vaughan Pratt 的“自上而下的运算符优先级解析”。这是我所知道的解析表达式的最优雅的方式。它可以优雅地处理前缀运算符、后缀、中缀、<em>mixfix</em>以及您获得的任何类型的-fix 。它毫不费力地处理优先级和关联性。我喜欢它。</p>
+<blockquote>
+<p>Pratt 解析器是行业中的一种口头传统。我读过的编译器或语言书籍都没有教过他们。学术界非常关注生成的解析器，而 Pratt 的技术是针对手写的，因此被忽视了。</p>
+<p>但是在生产编译器中，手动解析器很常见，你会惊讶有多少人知道它。问他们是从哪里学来的，他们总是说，“哦，我几年前研究过这个编译器，我的同事说他们是从这个旧的前端学来的..."。 </p>
+</blockquote>
+<p>像往常一样，在开始有趣的事情之前，需要做一些准备工作。在吃甜点之前，你必须先吃蔬菜。首先，让我们放弃为测试扫描器而编写的临时脚手架，并用更有用的东西取而代之。</p>
+<pre><code class="language-c">InterpretResult interpret(const char* source) {
+  Chunk chunk;
+  initChunk(&amp;chunk);
+
+  if (!compile(source, &amp;chunk)) {
+    freeChunk(&amp;chunk);
+    return INTERPRET_COMPILE_ERROR;
+  }
+
+  vm.chunk = &amp;chunk;
+  vm.ip = vm.chunk-&gt;code;
+
+  InterpretResult result = run();
+
+  freeChunk(&amp;chunk);
+  return result;
+}
+// vm.c, in interpret(), replace 2 lines
+</code></pre>
+<p>我们创建一个新的chunk并将其传递给编译器。编译器将获取用户的程序并用字节码填充chunk。至少，如果程序没有任何编译错误，它就会这样做。如果确实遇到错误，则<code>compile()</code>返回<code>false</code>并且丢弃不可用的chunk。</p>
+<p>否则，将完成的chunk发送到 VM 以执行。当 VM 完成时，释放chunk，就完成了。如您所见，现在的<code>compile()</code>签名不同了。</p>
+<pre><code class="language-c">#define clox_compiler_h
+
+#include &quot;vm.h&quot;
+
+bool compile(const char* source, Chunk* chunk);
+
+#endif
+// compiler.h, replace 1 line
+</code></pre>
+<p>我们传入编译器将写入代码的块，然后<code>compile()</code>返回是否编译成功。在实现中对签名进行了相同的更改。</p>
+<pre><code class="language-c">#include &quot;scanner.h&quot;
+
+bool compile(const char* source, Chunk* chunk) {
+  initScanner(source);
+// compiler.c, function compile(), replace 1 line
+</code></pre>
+<p>对<code>initScanner()</code>调用是本章唯一幸存下来的代码行。删除我们为测试扫描器而编写的临时代码，并将其替换为以下三行：</p>
+<pre><code class="language-c">  initScanner(source);
+  advance();
+  expression();
+  consume(TOKEN_EOF, &quot;Expect end of expression.&quot;);
+}
+// compiler.c, in compile(), replace 13 lines 
+</code></pre>
+<p>调用<code>advance()</code>启动扫描器。我们很快就会看到它的作用。然后解析一个表达式。我们还没有语句，所以这是我们支持的语法的唯一子集。<a href="http://craftinginterpreters.com/global-variables.html">当我们在几章中添加语句</a>时，将重新讨论这一点。在编译表达式之后，应该在源代码的末尾，所以检查哨兵 EOF 标记。</p>
+<p>我们将用本章的其余部分来使这个函数起作用，尤其是那个小<code>expression()</code>调用。通常，会直接深入到该函数定义中，并从上到下完成实现。</p>
+<p>这一章不一样。Pratt 的解析技术非常简单，一旦您将其全部加载到您的脑海中，但分解成小的片段就有点棘手。当然，它是递归的，这是问题的一部分。它也依赖于一个大数据表。当构建算法时，该表会增加额外的列。</p>
+<blockquote>
+<p>如果本章不合您的胃口，并且您希望从另一个角度理解这些概念，我写了一篇文章，教授相同的算法，但使用 Java 和面向对象的风格：<a href="http://journal.stuffwithstuff.com/2011/03/19/pratt-parsers-expression-parsing-made-easy/">“Pratt Parsing：让表达式解析变得简单”</a>。</p>
+</blockquote>
+<p>我不想每次扩展表格时都重新访问 40 多行代码。因此，我们将从外部进入解析器的核心，并在到达多汁的中心之前覆盖所有周围的部分。与大多数章节相比，这将需要更多的耐心和脑力存储空间，但这是我能做的最好的。</p>
+<h2 id="171-single-pass-compilation">17.1 单趟编译  Single-pass Compilation</h2>
+<p>编译器大致有两个工作。它解析用户的源代码以了解其含义。然后它获取这些知识并输出产生相同语义的低级指令。许多语言在实现中将这两个角色分成两个单独的阶段。解析器生成AST——就像 jlox 所做的那样——然后代码生成器遍历 AST 并输出目标代码。</p>
+<blockquote>
+<p>事实上，大多数复杂的优化编译器都不止两次遍历。不仅要确定优化传递有<em>哪些</em>，还要确定如何命令它们从编译器中获得最大性能——因为优化通常以复杂的方式相互作用——介于“开放研究领域”和“黑暗艺术”之间。</p>
+</blockquote>
+<p>在 clox 中，我们采用了一种老派的方法，将这两趟合并为一趟。过去，语言黑客之所以这样做，是因为计算机实际上没有足够的内存来存储整个源文件的 AST。我们这样做是因为它使我们的编译器更简单，这在用 C 编程时是一项真正的优势。</p>
+<p>像我们要构建的单趟编译器并不适用于所有语言。由于编译器在生成代码时只能窥视用户的程序，因此语言的设计必须使您不需要太多周围的上下文来理解一段语法。幸运的是，微型、动态类型的 Lox非常适合这种情况。</p>
+<blockquote>
+<p>并不是说这应该让人感到意外。毕竟我确实专门为这本书设计了语言。</p>
+</blockquote>
+<p><img alt="" src="../assets/3386068ed32f4dfafc3b17bd70731e98ea9bf54d.png" /></p>
+<p>这实际上意味着我们的“编译器”C 模块具有您将从 jlox 中识别的用于解析的功能——使用token、匹配预期的token类型等。它还具有代码生成功能——发出字节码并将常量添加到目标块。（这意味着我将在本章和后面的章节中交替使用“解析”和“编译”。）</p>
+<p>我们将首先构建解析和代码生成部分。然后我们将它们与中间的代码拼接在一起，中间使用 Pratt 的技术来解析 Lox 的特定语法并输出正确的字节码。</p>
+<h2 id="172-tokens">17.2 解析tokens</h2>
+<p>首先，编译器的前半部分。这个函数的名字应该听起来很熟悉。</p>
+<pre><code class="language-c">#include &quot;scanner.h&quot;
+
+static void advance() {
+  parser.previous = parser.current;
+
+  for (;;) {
+    parser.current = scanToken();
+    if (parser.current.type != TOKEN_ERROR) break;
+
+    errorAtCurrent(parser.current.start);
+  }
+}
+// compiler.c
+</code></pre>
+<p>就像在 jlox 中一样，它沿着token流向前推进。它向扫描器询问下一个token并将其保存以备后用。在此之前，它会获取旧<code>current</code>  token并将其存储在一个<code>previous</code>字段中。这稍后会派上用场，这样我们就可以在匹配token后获取词素。</p>
+<p>读取下一个token的代码包含在一个循环中。请记住，clox 的扫描器不会报告词法错误。相反，它创建特殊的<em>错误标记</em>并将其留给解析器来报告它们。我们在这里这样做。</p>
+<p>不断循环，读取token并报告错误，直到遇到一个非错误的或到达终点。这样，解析器的其余部分只会看到有效的token。当前和之前的token存储在这个结构中：</p>
+<pre><code class="language-c">#include &quot;scanner.h&quot;
+
+typedef struct {
+  Token current;
+  Token previous;
+} Parser;
+
+Parser parser;
+
+static void advance() {
+// compiler.c
+</code></pre>
+<p>就像我们在其他模块中所做的那样，有一个这种结构类型的全局变量，因此我们不需要在编译器中将状态从一个函数传递到另一个函数。</p>
+<h3 id="1721">17.2.1 处理语法错误</h3>
+<p>如果扫描器给我们一个错误token，我们需要告诉用户。使用这个会发生这种情况：</p>
+<pre><code class="language-c">static void errorAtCurrent(const char* message) {
+  errorAt(&amp;parser.current, message);
+}
+// compiler.c, add after variable parser
+</code></pre>
+<p>我们从当前token中提取位置，以便告诉用户错误发生的位置并将其转发给<code>errorAt()</code>。更常见的是，会在刚刚使用的token位置报告错误，因此我们为这个其他函数提供更短的名称：</p>
+<pre><code class="language-c">static void error(const char* message) {
+  errorAt(&amp;parser.previous, message);
+}
+// compiler.c, add after variable parser
+</code></pre>
+<p>实际工作发生在这里：</p>
+<pre><code class="language-c">static void errorAt(Token* token, const char* message) {
+  fprintf(stderr, &quot;[line %d] Error&quot;, token-&gt;line);
+
+  if (token-&gt;type == TOKEN_EOF) {
+    fprintf(stderr, &quot; at end&quot;);
+  } else if (token-&gt;type == TOKEN_ERROR) {
+    // Nothing.
+  } else {
+    fprintf(stderr, &quot; at '%.*s'&quot;, token-&gt;length, token-&gt;start);
+  }
+
+  fprintf(stderr, &quot;: %s\n&quot;, message);
+  parser.hadError = true;
+}
+// compiler.c, add after variable parser
+</code></pre>
+<p>首先，我们打印错误发生的地方。如果它是人类可读的，我们会尝试显示词素。然后打印错误信息本身。之后，我们设置这个<code>hadError</code>标志。记录编译过程中是否出现错误。该字段也存在于解析器结构中。</p>
+<pre><code class="language-c">  Token previous;
+  bool hadError;
+} Parser;
+// compiler.c, in struct Parser
+</code></pre>
+<p>早些时候我说过如果发生错误<code>compile()</code>应该返回<code>false</code>。现在我们可以让它做到这一点。</p>
+<pre><code class="language-c">  consume(TOKEN_EOF, &quot;Expect end of expression.&quot;);
+  return !parser.hadError;
+}
+// compiler.c, in compile() 
+</code></pre>
+<p>还有另一个标志要用于错误处理。我们想避免错误级联。如果用户在他们的代码中有错误并且解析器对它在语法中的位置感到困惑，我们不希望它在第一个错误之后喷出一大堆无意义的连锁错误。</p>
+<p>在 jlox 中我们使用恐慌模式错误恢复修复了该问题。在 Java 解释器中，我们抛出一个异常以从所有解析器代码中展开到可以跳过token并重新同步。在 C 中没有异常机制。作为替代，我们添加一个标志来跟踪当前是否处于恐慌模式。</p>
+<blockquote>
+<p>有<code>setjmp()</code>和<code>longjmp()</code>，但我不想去那里。这些使得内存泄漏、忘记维护不变量或以其他方式度过非常糟糕的一天变得太容易了。</p>
+</blockquote>
+<pre><code class="language-c">  bool hadError;
+  bool panicMode;
+} Parser;
+// compiler.c, in struct Parser
+</code></pre>
+<p>当发生错误时，我们设置它。</p>
+<pre><code class="language-c">static void errorAt(Token* token, const char* message) {
+  parser.panicMode = true;
+  fprintf(stderr, &quot;[line %d] Error&quot;, token-&gt;line);
+// compiler.c, in errorAt()
+</code></pre>
+<p>之后，继续正常编译，就好像错误从未发生过一样。字节码永远不会被执行，所以继续是无害的。诀窍是，当设置了恐慌模式标志时，我们只是简单地抑制检测到的任何其他错误。</p>
+<pre><code class="language-c">static void errorAt(Token* token, const char* message) {
+  if (parser.panicMode) return;
+  parser.panicMode = true;
+// compiler.c, in errorAt()
+</code></pre>
+<p>解析器很可能会在杂草中消失，但用户不会知道，因为错误都被吞没了。当解析器到达同步点时，恐慌模式结束。对于 Lox，我们选择了语句边界，因此当我们稍后将它们添加到编译器时，我们将清除那里的标志。</p>
+<p>这些新字段需要初始化。</p>
+<pre><code class="language-c">initScanner(source);
+
+  parser.hadError = false;
+  parser.panicMode = false;
+
+  advance();
+// compiler.c, in compile()  
+</code></pre>
+<p>为了显示错误，我们需要一个标准库头文件stdlib.h。</p>
+<pre><code class="language-c">#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+
+#include &quot;common.h&quot;
+// compiler.c
+</code></pre>
+<p>最后一个解析函数，来自 jlox 的另一个老朋友。</p>
+<pre><code class="language-c">static void consume(TokenType type, const char* message) {
+  if (parser.current.type == type) {
+    advance();
+    return;
+  }
+
+  errorAtCurrent(message);
+}
+// compiler.c, add after advance()
+</code></pre>
+<p>它类似于<code>advance()</code>读取下一个令牌。但它也验证token是否具有预期的类型。如果没有，它会报告错误。这个函数是编译器中大多数语法错误的基础。</p>
+<p>好的，现在前端完成的差不多了。</p>
+<h2 id="173">17.3 发射字节码</h2>
+<p>在我们解析并理解一段用户程序之后，下一步就是将其翻译成一系列字节码指令。它从最简单的步骤开始：将单个字节附加到块中。</p>
+<pre><code class="language-c">static void emitByte(uint8_t byte) {
+  writeChunk(currentChunk(), byte, parser.previous.line);
+}
+// compiler.c, add after consume()
+</code></pre>
+<p>很难相信伟大的事情会调用这样一个简单的函数。它写入给定字节，该字节可能是指令的操作码或操作数。它发送前一个token的行信息，以便运行时错误与该行相关联。</p>
+<p>正在被写入的Chunk需要传递给<code>compile()</code>，但它先需要传给<code>emitByte()</code>。为此，我们依赖于这个中介函数：</p>
+<pre><code class="language-c">Parser parser;
+Chunk* compilingChunk;
+
+static Chunk* currentChunk() {
+  return compilingChunk;
+}
+
+static void errorAt(Token* token, const char* message) {
+// compiler.c, add after variable parser
+</code></pre>
+<p>现在，Chunk指针存储在模块级变量中，就像我们存储其他全局状态一样。后边，当我们开始编译用户定义的函数时，“current chunk”的概念变得更加复杂。为了避免返回并更改大量代码，我将该逻辑封装在<code>currentChunk()</code>函数中。</p>
+<p>我们在编写任何字节码之前初始化这个新的模块变量：</p>
+<pre><code class="language-c">bool compile(const char* source, Chunk* chunk) {
+  initScanner(source);
+  compilingChunk = chunk;
+
+  parser.hadError = false;
+// compiler.c, in compile()
+</code></pre>
+<p>然后，在最后，当完成块的编译时，把一起都结束。</p>
+<pre><code class="language-c">  consume(TOKEN_EOF, &quot;Expect end of expression.&quot;);
+  endCompiler();
+  return !parser.hadError;
+// compiler.c, in compile() 
+</code></pre>
+<p>这就是所谓的：</p>
+<pre><code class="language-c">static void endCompiler() {
+  emitReturn();
+}
+// compiler.c, add after emitByte()
+</code></pre>
+<p>在本章中，虚拟机只处理表达式。当您运行 clox 时，它将解析、编译和执行单个表达式，然后打印结果。要打印该值，我们暂时使用该<code>OP_RETURN</code>指令。所以我们让编译器将其中一个添加到块的末尾。</p>
+<pre><code class="language-c">static void emitReturn() {
+  emitByte(OP_RETURN);
+}
+// compiler.c, add after emitByte()
+</code></pre>
+<p>当我们在后端时，我们不妨让我们的生活更轻松。</p>
+<pre><code class="language-c">static void emitBytes(uint8_t byte1, uint8_t byte2) {
+  emitByte(byte1);
+  emitByte(byte2);
+}
+// compiler.c, add after emitByte()
+</code></pre>
+<p>随着时间的推移，我们将有足够多的情况需要写入一个操作码，后跟一个单字节操作数，因此值得定义这个方便的函数。</p>
+<h2 id="174">17.4 解析前缀表达式</h2>
+<p>我们已经组装了解析和代码生成实用程序函数。缺少的部分是中间将它们连接在一起的代码。</p>
+<p><img alt="" src="../assets/67bcc0f3dd8b56031dc8f07afa12ebcad28889ef.png" /></p>
+<p>要<code>compile()</code> 中剩下的唯一需要实现的是这个函数：</p>
+<pre><code class="language-c">static void expression() {
+  // What goes here?
+}
+// compiler.c, add after endCompiler()
+</code></pre>
+<p>我们还没有准备好在 Lox 中实现每一种表达式。呀，我们甚至没有布尔值。对于本章，我们只需要担心四个：</p>
+<ul>
+<li>数字        ：<code>123</code></li>
+<li>分组括号：<code>(123)</code></li>
+<li>一元取反：<code>-123</code></li>
+<li>算术        ：<code>+</code>,<code>-</code>,<code>*</code>,<code>/</code></li>
+</ul>
+<p>当通过函数来编译每一种表达式时，我们通过table-driven的解析器来完成这个功能。</p>
+<h3 id="1741-token">17.4.1 解析token</h3>
+<p>现在，让我们关注 Lox 表达式，每个表达式都只是一个token。在本章中，这只是数字，但稍后会有更多内容。以下是如何编译它们：</p>
+<p>将每个token类型映射到不同类型的表达式。为每个输出适当字节码的表达式定义一个函数。然后构建一个函数指针数组。数组中的索引对应于<code>TokenType</code>枚举值，每个索引处的函数是编译该token类型的表达式的代码。</p>
+<p>为了编译数字，将指向以下函数的指针存储在数组的<code>TOKEN_NUMBER</code>索引处。</p>
+<pre><code class="language-c">static void number() {
+  double value = strtod(parser.previous.start, NULL);
+  emitConstant(value);
+}
+// compiler.c, add after endCompiler()
+</code></pre>
+<p>假设数字的token已经被消费并存储在<code>previous</code>中.我们获取该词素并使用 C 标准库将其转换为双精度值。然后使用此函数生成加载该值的代码：</p>
+<pre><code class="language-c">static void emitConstant(Value value) {
+  emitBytes(OP_CONSTANT, makeConstant(value));
+}
+// compiler.c, add after emitReturn()
+</code></pre>
+<p>首先，我们将值添加到常量表，然后发出一条<code>OP_CONSTANT</code>指令，在运行时将其压入堆栈。要在常量表中插入一个条目，依赖于：</p>
+<pre><code class="language-c">static uint8_t makeConstant(Value value) {
+  int constant = addConstant(currentChunk(), value);
+  if (constant &gt; UINT8_MAX) {
+    error(&quot;Too many constants in one chunk.&quot;);
+    return 0;
+  }
+
+  return (uint8_t)constant;
+}
+// compiler.c, add after emitReturn()
+</code></pre>
+<p>大部分工作发生在<code>addConstant()</code>我们在<a href="http://craftinginterpreters.com/chunks-of-bytecode.html">前面的章节</a>中定义的地方。这将给定值添加到块的常量表的末尾并返回其索引。新函数的工作主要是确保我们没有太多常量。由于该<code>OP_CONSTANT</code>指令使用单个字节作为索引操作数，最多只能在一个块中存储和加载256个常量。</p>
+<blockquote>
+<p>是的，这个限制很低。如果这是一个完整的语言实现，我们希望添加另一条指令，例如<code>OP_CONSTANT_16</code>将索引存储为一个双字节操作数，以便我们可以在需要时处理更多常量。</p>
+<p>支持它的代码并不是特别有启发性，所以我从 clox 中省略了它，但您会希望您的 VM 扩展到更大的程序。</p>
+</blockquote>
+<p>这基本上就是全部。如果有一些代码使用<code>TOKEN_NUMBER</code> token，在函数指针数组中查找<code>number()</code>，然后调用它，现在可以将数字编译为字节码。</p>
+<h3 id="1742">17.4.2 括号</h3>
+<p>如果每个表达式都只有一个token长，那么我们想象中的解析函数指针数组会很棒。然而，大多数很长。<strong>但是，许多表达式以特定token开头。我们称这些为前缀表达式。</strong> 例如，当解析一个表达式并且当前token是<code>(</code>时，我们知道我们肯定在查看一个带括号的分组表达式。</p>
+<p>事实证明我们的函数指针数组也可以处理这些。表达式类型的解析函数可以使用它想要的任何额外token，就像在常规递归下降解析器中一样。下面是括号的工作原理：</p>
+<pre><code class="language-c">static void grouping() {
+  expression();
+  consume(TOKEN_RIGHT_PAREN, &quot;Expect ')' after expression.&quot;);
+}
+// compiler.c, add after endCompiler()
+</code></pre>
+<p>同样，我们假设初始值<code>(</code>已经被消耗掉。我们递归地回调 <code>expression()</code>来编译括号之间的表达式，然后解析最后的结尾<code>)</code>。</p>
+<blockquote>
+<p>Pratt 解析器不是递归<em>下降</em>解析器，但它仍然是递归的。这是意料之中的，因为语法本身是递归的。</p>
+</blockquote>
+<p>就后端而言，分组表达式实际上没有任何意义。它的唯一功能是语法-它允许在预期具有较高优先级的地方插入一个较低优先级的表达式。因此，它本身没有运行时语义，因此不会发出任何字节码。内部调用<code>expression()</code>负责为括号内的表达式生成字节码。</p>
+<h3 id="1743">17.4.3 一元取反操作</h3>
+<p>一元取反也是一个前缀表达式，所以它也适用于我们的模型。</p>
+<pre><code class="language-c">static void unary() {
+  TokenType operatorType = parser.previous.type;
+
+  // Compile the operand.
+  expression();
+
+  // Emit the operator instruction.
+  switch (operatorType) {
+    case TOKEN_MINUS: emitByte(OP_NEGATE); break;
+    default: return; // Unreachable.
+  }
+}
+// compiler.c, add after number()
+</code></pre>
+<p>前边的<code>-</code>token已被消耗并位于<code>parser.previous</code>.我们从中获取token类型以记录我们正在处理的是哪个一元运算符。现在没有必要，但是当我们在<a href="http://craftinginterpreters.com/types-of-values.html">下一章</a>中使用相同的函数来编译<code>!</code>运算符时，这将更有意义。</p>
+<p>与<code>grouping()</code>一样，递归调用<code>expression()</code>编译操作数。之后，我们发出字节码来执行取反。由于<code>-</code>出现在左侧，因此在其操作数之后写入取反指令似乎有点奇怪，但请按照执行顺序考虑：</p>
+<ol>
+<li>
+<p>首先评估操作数，将其值留在堆栈中。</p>
+</li>
+<li>
+<p>然后我们pop 值，取反，然后push结果。</p>
+</li>
+</ol>
+<blockquote>
+<p>所以<code>OP_NEGATE</code>指令应该最后发出。这是编译器工作的一部分——按照程序在源代码中出现的顺序解析程序，并将其重新排列为执行发生的顺序。</p>
+<p>在操作数之后发出<code>OP_NEGATE</code>指令确实意味着写入字节码时的当前标记不是<code>-</code>token。这基本上无关紧要，除了我们使用该标记作为行号以与该指令相关联。</p>
+<p>这意味着如果您有一个多行否定表达式，例如：</p>
+<p><code>print -
+  true</code></p>
+<p>那么会在错误的行报运行时错误。在这里，它会在第 2 行显示错误，即使它<code>-</code>在第 1 行。更稳健的方法是在编译操作数之前存储token的行，然后将其传递给<code>emitByte()</code>，但我想让本书保持简单.</p>
+</blockquote>
+<p>但是，这段代码存在一个问题。它调用的<code>expression()</code>函数将解析操作数的任何表达式，而不考虑优先级。一旦我们添加二元运算符和其他语法，那将做错事。考虑：</p>
+<pre><code class="language-c">-a.b + c;
+</code></pre>
+<p>在这里，<code>-</code>的操作数应该只是<code>a.b</code>表达式，而不是整个<code>a.b + c</code>.但如果<code>unary()</code>调用<code>expression()</code>，后者将愉快地消耗所有剩余的代码，包括<code>+</code>.它会错误地将 <code>-</code>的优先级低于<code>+</code>的优先级.</p>
+<p>在解析一元<code>-</code>的操作数时，只需要编译当前优先级或更高优先级的表达式。在 jlox 的递归下降解析器中，通过调用我们希望允许的最低优先级表达式的解析方法（在本例中为<code>call()</code>）来实现这一点。用于解析当前优先级表达式的每个方法也解析了任何更高优先级的表达式，因此包括了优先级表的其余部分。</p>
+<p>clox 中的解析函数 如：<code>number()</code>和<code>unary()</code> 是不同的。每个只解析一种类型的表达式。它们也不会级联以包含更高优先级的表达式类型。我们需要一个不同的解决方案，它看起来像这样：</p>
+<pre><code class="language-c">static void parsePrecedence(Precedence precedence) {
+  // What goes here?
+}
+// compiler.c, add after unary()
+</code></pre>
+<p>这个函数——一旦我们实现它——从当前token开始解析当前优先级或更高优先级的任何表达式。在编写此函数之前，我们还有一些其他设置需要完成，但您可能猜到它将使用我一直在谈论的解析函数指针表。现在，不要太担心它是如何工作的。为了将“优先级”作为参数，我们用数字来定义它。</p>
+<pre><code class="language-c">} Parser;
+
+typedef enum {
+  PREC_NONE,
+  PREC_ASSIGNMENT,  // =
+  PREC_OR,          // or
+  PREC_AND,         // and
+  PREC_EQUALITY,    // == !=
+  PREC_COMPARISON,  // &lt; &gt; &lt;= &gt;=
+  PREC_TERM,        // + -
+  PREC_FACTOR,      // * /
+  PREC_UNARY,       // ! -
+  PREC_CALL,        // . ()
+  PREC_PRIMARY
+} Precedence;
+
+Parser parser;
+// compiler.c, add after struct Parser
+</code></pre>
+<p>这些都是 Lox 的优先级别，从低到高排列。由于 C 隐式地为枚举给出连续更大的数字，这意味着它<code>PREC_CALL</code>在数值上大于<code>PREC_UNARY</code>.例如，假设编译器正在处理如下代码块：</p>
+<pre><code class="language-c">-a.b + c
+</code></pre>
+<p>如果调用<code>parsePrecedence(PREC_ASSIGNMENT)</code>，那么它将解析整个表达式，因为<code>+</code>的优先级高于赋值。相反，如果调用<code>parsePrecedence(PREC_UNARY)</code>，它将编译<code>-a.b</code>并停在那里。它不会继续执行，<code>+</code>因为加法的优先级低于一元运算符。</p>
+<p>有了这个函数在手，可以很快完成<code>expression()</code>缺失的部分.</p>
+<pre><code class="language-c">static void expression() {
+  parsePrecedence(PREC_ASSIGNMENT);
+}
+// compiler.c, in expression(), replace 1 line
+</code></pre>
+<p>开始只是解析最低优先级，它也包含所有更高优先级的表达式。现在，要为一元表达式编译操作数，调用这个新函数并将其限制在适当的级别：</p>
+<pre><code class="language-c">  // Compile the operand.
+  parsePrecedence(PREC_UNARY);
+
+  // Emit the operator instruction.
+// compiler.c, in unary(), replace 1 line 
+</code></pre>
+<p>我们使用一元运算符自己所在的优先级<code>PREC_UNARY</code>来允许嵌套的一元表达式，例如<code>!!doubleNegative</code>.由于一元运算符具有相当高的优先级，因此可以正确排除二元运算符之类的东西。</p>
+<blockquote>
+<p>并不是说嵌套一元表达式在 Lox 中特别有用。但是其他语言允许您这样做，所以我们也这样做。</p>
+</blockquote>
+<h2 id="175">17.5 解析中缀表达式</h2>
+<p>二元运算符与前面的表达式不同，因为它们是中缀。对于其他表达式，我们从第一个token就知道正在解析什么。使用中缀表达式，我们不知道我们处于二元运算符的中间，直到解析了它的左操作数然后偶然发现中间的运算符token。</p>
+<p>看这个例子：</p>
+<pre><code>1 + 2
+</code></pre>
+<p>让我们</p>
+<p>尝试用我们目前所知道的来编译它：</p>
+<ol>
+<li>
+<p>在<code>expression()</code>中会调用<code>parsePrecedence(PREC_ASSIGNMENT)</code>.</p>
+</li>
+<li>
+<p>该函数（一旦我们实现它）看到前导数字token并识别它正在解析数字。它将控制权交给<code>number()</code>.</p>
+</li>
+<li>
+<p><code>number()</code>创建一个常量，发出一个<code>OP_CONSTANT</code>，然后返回到<code>parsePrecedence()</code>。</p>
+</li>
+</ol>
+<p>现在怎么办？对<code>parsePrecedence()</code>的调用应该消耗整个加法表达式，因此它需要以某种方式继续进行。幸运的是，解析器就处于我们需要它的地方。现在已经编译了前导数字表达式，下一个token是<code>+</code>。这正是<code>parsePrecedence()</code>需要检测的token， 这个token表示解析器正处于中缀表达式中间 ， 而且前边已经编译的表达式实际上是它的一个操作数。</p>
+<p>所以这个假设的函数指针数组不只是列出函数来解析以给定token开头的表达式。相反，它是一个函数指针<em>表</em>。第一列将前缀解析器函数与token类型相关联。第二列将中缀解析器函数与token类型相关联。</p>
+<p>以下是用作<code>TOKEN_PLUS</code>,<code>TOKEN_MINUS</code>,<code>TOKEN_STAR</code>, 和<code>TOKEN_SLASH</code>的中缀解析器的函数：</p>
+<pre><code class="language-c">static void binary() {
+  TokenType operatorType = parser.previous.type;
+  ParseRule* rule = getRule(operatorType);
+  parsePrecedence((Precedence)(rule-&gt;precedence + 1));
+
+  switch (operatorType) {
+    case TOKEN_PLUS:          emitByte(OP_ADD); break;
+    case TOKEN_MINUS:         emitByte(OP_SUBTRACT); break;
+    case TOKEN_STAR:          emitByte(OP_MULTIPLY); break;
+    case TOKEN_SLASH:         emitByte(OP_DIVIDE); break;
+    default: return; // Unreachable.
+  }
+}
+// compiler.c, add after endCompiler()
+</code></pre>
+<p>当调用前缀解析器函数时，前边的token已经被使用。中缀解析器函数实现起来很直接——整个左边操作数表达式已经被编译并且后续的中缀运算符被消耗。</p>
+<p>左操作数首先被编译。这意味着在运行时，代码首先被执行。当它运行时，它产生的值最终会出现在堆栈中。这正是中缀运算符需要它的地方。</p>
+<p>然后<code>binary()</code>处理其余的算术运算符。这个函数编译正确的操作数，就像<code>unary()</code>编译它自己的尾部操作数一样。最后，它发出执行二进制操作的字节码指令。</p>
+<p>运行时，VM 将按顺序执行左右操作数代码，将它们的值留在堆栈中。然后它执行操作符指令。这会 pop 两个值、计算操作并push结果。</p>
+<p>此处可能引起您注意的代码是那一<code>getRule()</code>行。当我们解析右边的操作数时，我们再次需要担心优先级。采取这样的表达：</p>
+<pre><code>2 * 3 + 4
+</code></pre>
+<p>当解析<code>*</code>表达式的右操作数时，只需要捕获<code>3</code>, 而不是<code>3 + 4</code>，因为<code>+</code>优先级低于<code>*</code>。我们可以为每个二元运算符定义一个单独的函数。每个都会调用<code>parsePrecedence()</code>并传递正确的优先级。</p>
+<p>但这有点乏味。每个二元运算符的右操作数优先级都比它自己高一级（对于+和 / 来说, PREC_FACTOR/ 优先级大于PREC_TERM+）。接下来 可以用<code>getRule()</code> 动态地查找 当前规则(rule)。使用当前规则优先级的高一级作为参数调用<code>parsePrecedence()</code>来解析右操作数。</p>
+<p>这样，我们可以<code>binary()</code>对所有二元运算符使用单个函数，即使它们具有不同的优先级。</p>
+<blockquote>
+<p>我们对右操作数使用<em>更高</em>级别的优先级，因为二元运算符是左结合的。给定一系列<em>相同</em>的运算符，例如：</p>
+<p>1 + 2 + 3 + 4</p>
+<p>我们想像这样解析它：</p>
+<p>(( 1 + 2 ) + 3 ) + 4</p>
+<p>因此，当将右侧操作数解析为第一个<code>+</code>时，我们希望使用<code>2</code>，而不是其余部分，因此我们使用<code>+</code>的上一级优先级。但是，如果我们的运算符是<em>右</em>结合的，那么这就是错误的。对于：
+a = b = c = d</p>
+<p>由于赋值是右结合的，我们想将其解析为：</p>
+<p>a = ( b = ( c = d ))</p>
+<p>为此，我们将<code>parsePrecedence()</code>使用与当前运算符相同的优先级进行调用。</p>
+</blockquote>
+<h2 id="176-pratt">17.6 Pratt解析器</h2>
+<p>现在已经完成了编译器的大部分。对于每个语法产生式都有一个函数：<code>number()</code>,<code>grouping()</code>,<code>unary()</code>, 和<code>binary()</code>。仍然需要实现<code>parsePrecedence()</code>, 和<code>getRule()</code>。我们也知道我们需要一个表，给定一个token类型，让我们找到</p>
+<ul>
+<li>
+<p>编译以该类型的token开头的前缀表达式的函数，</p>
+</li>
+<li>
+<p>编译中缀表达式的函数，其左操作数后跟该类型的token，以及</p>
+</li>
+<li>
+<p>使用该token作为运算符的中缀表达式的优先级。</p>
+</li>
+</ul>
+<blockquote>
+<p>我们不需要跟踪以给定token开头的<em>前缀表达式的优先级，因为 Lox 中的所有前缀运算符都具有相同的优先级。</em></p>
+</blockquote>
+<p>将这三个属性包装在一个小结构ParseRule中，该结构代表解析器表中的一行。</p>
+<pre><code class="language-c">} Precedence;
+
+typedef struct {
+  ParseFn prefix;
+  ParseFn infix;
+  Precedence precedence;
+} ParseRule;
+
+Parser parser;
+// compiler.c, add after enum Precedence
+</code></pre>
+<p>该 ParseFn 类型是一个简单的typedef，用于不接受任何参数且不返回任何内容的函数类型。</p>
+<p>C 函数指针类型的语法非常糟糕，我总是将它隐藏在 typedef 后面。我理解语法背后的意图——整个“声明反映使用”的东西——但我认为这是一个失败的语法实验。</p>
+<pre><code class="language-c">} Precedence;
+
+typedef void (*ParseFn)();
+
+typedef struct {
+// compiler.c, add after enum Precedence
+</code></pre>
+<p>驱动整个解析器的表是一个 ParseRules 数组。我们一直在谈论它，最后你会看到它。</p>
+<pre><code class="language-c">ParseRule rules[] = {
+  [TOKEN_LEFT_PAREN]    = {grouping, NULL,   PREC_NONE},
+  [TOKEN_RIGHT_PAREN]   = {NULL,     NULL,   PREC_NONE},
+  [TOKEN_LEFT_BRACE]    = {NULL,     NULL,   PREC_NONE}, 
+  [TOKEN_RIGHT_BRACE]   = {NULL,     NULL,   PREC_NONE},
+  [TOKEN_COMMA]         = {NULL,     NULL,   PREC_NONE},
+  [TOKEN_DOT]           = {NULL,     NULL,   PREC_NONE},
+  [TOKEN_MINUS]         = {unary,    binary, PREC_TERM},
+  [TOKEN_PLUS]          = {NULL,     binary, PREC_TERM},
+  [TOKEN_SEMICOLON]     = {NULL,     NULL,   PREC_NONE},
+  [TOKEN_SLASH]         = {NULL,     binary, PREC_FACTOR},
+  [TOKEN_STAR]          = {NULL,     binary, PREC_FACTOR},
+  [TOKEN_BANG]          = {NULL,     NULL,   PREC_NONE},
+  [TOKEN_BANG_EQUAL]    = {NULL,     NULL,   PREC_NONE},
+  [TOKEN_EQUAL]         = {NULL,     NULL,   PREC_NONE},
+  [TOKEN_EQUAL_EQUAL]   = {NULL,     NULL,   PREC_NONE},
+  [TOKEN_GREATER]       = {NULL,     NULL,   PREC_NONE},
+  [TOKEN_GREATER_EQUAL] = {NULL,     NULL,   PREC_NONE},
+  [TOKEN_LESS]          = {NULL,     NULL,   PREC_NONE},
+  [TOKEN_LESS_EQUAL]    = {NULL,     NULL,   PREC_NONE},
+  [TOKEN_IDENTIFIER]    = {NULL,     NULL,   PREC_NONE},
+  [TOKEN_STRING]        = {NULL,     NULL,   PREC_NONE},
+  [TOKEN_NUMBER]        = {number,   NULL,   PREC_NONE},
+  [TOKEN_AND]           = {NULL,     NULL,   PREC_NONE},
+  [TOKEN_CLASS]         = {NULL,     NULL,   PREC_NONE},
+  [TOKEN_ELSE]          = {NULL,     NULL,   PREC_NONE},
+  [TOKEN_FALSE]         = {NULL,     NULL,   PREC_NONE},
+  [TOKEN_FOR]           = {NULL,     NULL,   PREC_NONE},
+  [TOKEN_FUN]           = {NULL,     NULL,   PREC_NONE},
+  [TOKEN_IF]            = {NULL,     NULL,   PREC_NONE},
+  [TOKEN_NIL]           = {NULL,     NULL,   PREC_NONE},
+  [TOKEN_OR]            = {NULL,     NULL,   PREC_NONE},
+  [TOKEN_PRINT]         = {NULL,     NULL,   PREC_NONE},
+  [TOKEN_RETURN]        = {NULL,     NULL,   PREC_NONE},
+  [TOKEN_SUPER]         = {NULL,     NULL,   PREC_NONE},
+  [TOKEN_THIS]          = {NULL,     NULL,   PREC_NONE},
+  [TOKEN_TRUE]          = {NULL,     NULL,   PREC_NONE},
+  [TOKEN_VAR]           = {NULL,     NULL,   PREC_NONE},
+  [TOKEN_WHILE]         = {NULL,     NULL,   PREC_NONE},
+  [TOKEN_ERROR]         = {NULL,     NULL,   PREC_NONE},
+  [TOKEN_EOF]           = {NULL,     NULL,   PREC_NONE},
+};
+// compiler.c, add after unary()
+</code></pre>
+<blockquote>
+<p>明白我不想每次需要新列时都重新访问表格的意思了吗？这是一头野兽。</p>
+<p>如果您还没有看到<code>[TOKEN_DOT] =</code>C 数组文字中的语法，那就是 C99 的指定初始化程序语法。它比必须手动计算数组索引更清楚。</p>
+</blockquote>
+<p>您可以看到如何将<code>grouping</code>和<code>unary</code>插入到各自token类型的前缀解析器列中。在下一列中，<code>binary</code>连接到四个算术中缀运算符。这些中缀运算符也在最后一列中设置了它们的优先级。</p>
+<p>除了那些，表格的其余部分充满了<code>NULL</code>和<code>PREC_NONE</code>。大多数空单元格是因为没有与这些标记关联的表达式。表达式不能以，比方说<code>else</code>和<code>}</code> 开头，这会导致非常混乱的中缀运算符。</p>
+<p>但是，我们还没有填写整个语法。在后面的章节中，当添加新的表达式类型时，将会其中一些槽中填写函数。我喜欢这种解析方法的一个原因是，它可以很容易地查看语法正在使用哪些token以及哪些token可用。</p>
+<p>现在我们有了表，终于准备好编写使用它的代码了。这就是Pratt 解析器发挥作用的地方。最容易定义的函数是<code>getRule()</code>.</p>
+<pre><code class="language-c">static ParseRule* getRule(TokenType type) {
+  return &amp;rules[type];
+}
+// compiler.c, add after parsePrecedence()
+</code></pre>
+<p>它只是返回给定索引处的规则。它被<code>binary()</code>调用以查找当前运算符的优先级。此函数仅用于处理 C 代码中的循环声明。<em>在规则表之前</em><code>binary()</code>定义，以便该表可以存储指向它的指针。这意味着<code>binary()</code>主体不能直接访问表。</p>
+<p>相反，我们将查找包装在一个函数中。这让我们可以在 <code>binary()</code>的定义之前进行前向声明<code>getRule()</code>，然后在表之后进行*定义<code>getRule()</code>。 我们需要一些其他的前向声明来处理我们的语法是递归的这一事实，所以让我们把它们都放在一边。</p>
+<blockquote>
+<p>当您使用设计用于在 PDP-11 上编译的语言编写 VM 时，就会发生这种情况。</p>
+</blockquote>
+<pre><code class="language-c"> emitReturn();
+}
+
+static void expression();
+static ParseRule* getRule(TokenType type);
+static void parsePrecedence(Precedence precedence);
+
+static void binary() {
+// compiler.c, add after endCompiler()
+</code></pre>
+<p>如果您正在跟着自己实现 clox，请密切注意告诉您将这些代码片段放在哪里的小注释。不过别担心，如果你弄错了，C 编译器会很乐意告诉你。</p>
+<h3 id="1761">17.6.1 解析优先级</h3>
+<p>现在我们开始讨论有趣的事情了。协调我们定义的所有解析函数的大师是<code>parsePrecedence()</code>.让我们从解析前缀表达式开始。</p>
+<pre><code class="language-c">static void parsePrecedence(Precedence precedence) {
+  advance();
+  ParseFn prefixRule = getRule(parser.previous.type)-&gt;prefix;
+  if (prefixRule == NULL) {
+    error(&quot;Expect expression.&quot;);
+    return;
+  }
+
+  prefixRule();
+}
+// compiler.c, in parsePrecedence(), replace 1 line
+</code></pre>
+<p>我们读取下一个token并查找相应的 ParseRule。如果没有前缀解析器，则token一定是语法错误。我们报告并返回给调用者。</p>
+<p>否则，我们调用该前缀解析函数并让它做它的事情。该前缀解析器编译前缀表达式的其余部分，使用它需要的任何其他token，然后返回此处。自从优先级发挥作用后，中缀表达式就变得有趣了。实现非常简单。</p>
+<pre><code class="language-c">  prefixRule();
+
+  while (precedence &lt;= getRule(parser.current.type)-&gt;precedence) {
+    advance();
+    ParseFn infixRule = getRule(parser.previous.type)-&gt;infix;
+    infixRule();
+  }
+}
+// compiler.c, in parsePrecedence() 
+</code></pre>
+<p>这就是整个实现。真的。整个函数的工作原理如下： 在<code>parsePrecedence()</code>的开头，查找当前token的前缀解析器。根据定义，第一个token<em>总是</em>属于某种前缀表达式。它可能会作为一个操作数嵌套在一个或多个中缀表达式中，但是当您从左到右阅读代码时，您遇到的第一个标记始终属于前缀表达式。</p>
+<p>解析之后，可能会消耗更多的token，前缀表达式就完成了。现在我们寻找下一个token的中缀解析器。如果我们找到一个，这意味着我们已经编译的前缀表达式可能是它的一个操作数。<code>parsePrecedence()</code>函数的参数<code>precedence</code>,  这个优先级<code>precedence</code>必须低于这个中缀运算符优先级 (参考代码 while (precedence &lt;= getRule(parser.current.type)-&gt;precedence) )。</p>
+<p>如果下一个token的优先级太低，或者根本不是中缀运算符，解析结束。我们已经尽可能多地解析了表达式。否则，我们使用运算符并将控制权移交给我们找到的中缀解析器。它消耗它需要的任何其他token（通常是正确的操作数）并返回到<code>parsePrecedence()</code>.然后循环回来，看看<em>下一个</em> token是否也是一个有效的中缀运算符，它可以将整个前面的表达式作为其操作数。我们一直这样循环，处理中缀运算符及其操作数，直到我们遇到一个不是中缀运算符或优先级太低的token并停止。</p>
+<p>这里写了很多，但如果您真的想与 Vaughan Pratt 融合并完全理解该算法，请在调试器中逐步执行解析器，因为它会处理一些表达式。也许图片会有所帮助。只有少数函数，但它们奇妙地交织在一起：</p>
+<p><img alt="" src="../assets/d7d9b367bf41cbf0264501ffeb1ff702f26235cd.png" /></p>
+<blockquote>
+<p>箭头将<img alt="实心箭头。" src="http://craftinginterpreters.com/image/compiling-expressions/calls.png" />函数连接到它直接调用的另一个函数。<img alt="一个开放的箭头。" src="http://craftinginterpreters.com/image/compiling-expressions/points-to.png" />箭头显示表中指向解析函数的指针。</p>
+</blockquote>
+<p>稍后，我们需要调整本章中的代码来处理赋值。但是，除此之外，我们所写的内容涵盖了本书其余部分的所有表达式编译需求。当我们添加新类型的表达式时，我们将在表中插入额外的解析函数，但这<code>parsePrecedence()</code>是完整的。</p>
+<h2 id="177">17.7  转储块</h2>
+<p>当编写编译器的核心时，我们应该加入一些工具。为了帮助调试生成的字节码，我们将添加对编译器完成后转储块的支持。当我们手动编写块时，我们早些时候有一些临时日志记录。现在我们将输入一些真实的代码，以便我们可以随时启用它。</p>
+<p>由于这不是针对最终用户的，因此将其隐藏在标志后面。</p>
+<pre><code class="language-c">#include &lt;stdint.h&gt;
+
+#define DEBUG_PRINT_CODE
+#define DEBUG_TRACE_EXECUTION
+// common.h
+</code></pre>
+<p>定义该标志后，使用现有的“调试”模块打印出块的字节码。</p>
+<pre><code class="language-c">  emitReturn();
+#ifdef DEBUG_PRINT_CODE
+  if (!parser.hadError) {
+    disassembleChunk(currentChunk(), &quot;code&quot;);
+  }
+#endif
+}
+// compiler.c, in endCompiler()
+</code></pre>
+<p>只有当代码没有错误时，我们才会这样做。语法错误后，编译器继续运行，但它处于一种奇怪的状态，可能会产生损坏的代码。这是无害的，因为它不会被执行，但如果我们试图阅读它，我们只会感到困惑。</p>
+<p>最后，要访问<code>disassembleChunk()</code>，需要包含它的头文件。</p>
+<pre><code class="language-c">#include &quot;scanner.h&quot;
+
+#ifdef DEBUG_PRINT_CODE
+#include &quot;debug.h&quot;
+#endif
+
+typedef struct {
+// compiler.c
+</code></pre>
+<p>我们做到了！这是装配在我们 VM 的编译和执行管道中的最后一个主要部分。我们的解释器<em>看起来不怎么</em>样，但是里面在扫描、解析、编译成字节码、执行。</p>
+<p>启动虚拟机并输入一个表达式。如果我们做的一切都正确，它应该计算并打印结果。我们现在有一个设计过度的算术计算器。我们在接下来的章节中有很多语言特性要添加，但基础已经到位。</p>
+<hr />
+<h2 id="_2"><a href="http://craftinginterpreters.com/compiling-expressions.html#challenges">挑战</a></h2>
+<ol>
+<li>要真正理解解析器，您需要了解执行线程如何通过有趣的解析函数——<code>parsePrecedence()</code>以及存储在表中的解析器函数。采用这个（奇怪的）表达式：</li>
+</ol>
+<p><code>(- 1 + 2 ) * 3 - - 4</code></p>
+<p>写下这些函数是如何被调用的。显示它们被调用的顺序，哪个调用哪个，以及传递给它们的参数。</p>
+<ol>
+<li>ParseRule 的 <code>TOKEN_MINUS</code>行具有前缀和中缀函数指针。那是因为<code>-</code>既是前缀运算符（一元否定）又是中缀运算符（减法）。</li>
+</ol>
+<p>在完整的 Lox 语言中，还有哪些标记可以同时用于前缀和中缀位置？用 C 或您选择的其他语言怎么样？</p>
+<ol>
+<li>你可能想知道复杂的“mixfix”表达式有两个以上的操作数被token分隔。C 的条件或“三元”运算符<code>?:</code>是一个广为人知的运算符。</li>
+</ol>
+<p>向编译器添加对该运算符的支持。您不必生成任何字节码，只需展示如何将其连接到解析器并处理操作数。</p>
+<h2 id="_3"><a href="http://craftinginterpreters.com/compiling-expressions.html#design-note">设计说明：只是解析</a></h2>
+<p>我要在这里声明一些编译器和语言人员不喜欢的声明。不同意也没关系。就个人而言，与从几页限定词和模棱两可的文章中相比，我从强烈表达的我不同意的观点中学到了更多。我的主张是<em>解析无关紧要</em>。</p>
+<p>多年来，许多编程语言专家，尤其是学术界的专家，已经<em>真正</em>迷上了解析器并非常重视它们。最初，是编译器人员进入了compiler-compilers、 LALR 和其他类似的东西。龙书的前半部分是一封写给解析器生成器奇迹的长情书。</p>
+<p>我们所有人都患有“当你只有一把锤子时，一切看起来都像钉子”的恶习，但也许没有编译器人员那么明显。一旦您向编译器黑客寻求帮助，您就不会相信软件问题的广度奇迹般地似乎需要在他们的解决方案中使用一种新的小语言。</p>
+<p>Yacc 和其他编译器-编译器是最令人愉快的递归示例。“哇，编写编译器是一件苦差事。我知道，让我们编写一个编译器来为我们编写我们的编译器。”</p>
+<p>郑重声明，我并未声称对这种病痛具有免疫力。</p>
+<p>后来，函数式编程人员开始研究解析器组合器、Packrat 解析器和其他类型的东西。因为，很明显，如果你给函数式程序员一个问题，他们要做的第一件事就是拿出一大堆高阶函数。</p>
+<p>在数学和算法分析领域，长期以来一直在研究证明各种解析技术的时间和内存使用情况、将解析问题转换为其他问题并返回，以及将复杂性类别分配给不同的语法。</p>
+<p>在某种程度上，这些东西很重要。如果你正在实现一种语言，你需要一些保证，确保你的解析器不会呈指数级增长，并且不会花费 7,000 年的时间来解析语法中奇怪的边缘情况。解析器理论给了你这个界限。作为一项智力练习，学习解析技术也很有趣，也很有收获。</p>
+<p>但是，如果您的目标只是实现一种语言并将其呈现在用户面前，那么几乎所有这些东西都无关紧要。很容易被热衷于此的人们的热情所激怒<em>，</em>并认为您的前端?<em>需要</em>一些快速生成的组合器-解析器-工厂的东西。我见过人们花费大量时间使用当今热门的库或技术来编写和重写他们的解析器。</p>
+<p>那是不会为用户的生活增加任何价值的时间。如果您只是想完成解析器，请选择一种标准技术，使用它，然后继续。递归下降、Pratt 解析和流行的解析器生成器（如 ANTLR 或 Bison）都很好。</p>
+<p>把你节省下来的额外时间花在不重写你的解析代码上，并把它花在改进你的编译器向用户显示的编译错误消息上。良好的错误处理和报告对用户来说比您可以在前端投入时间的几乎任何其他事情都更有价值。</p>
+                
+              
+              
+<script src="https://giscus.app/client.js" data-repo="PKUFlyingPig/cs-self-learning" data-repo-id="R_kgDOGP67ng"
+    data-category="Announcements" data-category-id="DIC_kwDOGP67ns4COM9Q" data-mapping="title"
+    data-reactions-enabled="1" data-emit-metadata="0" data-input-position="top" data-theme="light_protanopia"
+    data-lang="zh-CN" data-loading="lazy" crossorigin="anonymous" async>
+</script>
+
+<script>
+    var palette = __get("__palette")
+    if (palette && typeof palette.color === "object") {
+        if (palette.color.scheme === "slate") {
+            const giscus = document.querySelector("script[src*=giscus]")
+            giscus.setAttribute("data-theme", "dark_protanopia")
+        }
+    }
+
+    document.addEventListener("DOMContentLoaded", function () {
+        const ref = document.querySelector("[data-md-component=palette]")
+        ref.addEventListener("change", function () {
+            var palette = __get("__palette")
+            if (palette && typeof palette.color === "object") {
+                const theme = palette.color.scheme === "slate" ? "dark_protanopia" : "light_protanopia"
+                const frame = document.querySelector(".giscus-frame")
+                frame.contentWindow.postMessage({
+                    giscus: { setConfig: { theme } }
+                }, "https://giscus.app")
+            }
+        })
+    })
+</script>
+
+            </article>
+          </div>
+        </div>
+        
+          <a href="#" class="md-top md-icon" data-md-component="top" data-md-state="hidden">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"/></svg>
+            Back to top
+          </a>
+        
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href="../../3_16.Scanning%20on%20Demand/Scanning%20on%20Demand/" class="md-footer__link md-footer__link--prev" aria-label="上一页: 3.16.Scanning on Demand" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                上一页
+              </span>
+              3.16.Scanning on Demand
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../../3_18.Types%20of%20Values/Types%20of%20Values/" class="md-footer__link md-footer__link--next" aria-label="下一页: 3.18.Types of Values" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                下一页
+              </span>
+              3.18.Types of Values
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        
+          Made with
+          <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+            Material for MkDocs
+          </a>
+        
+        
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["header.autohide", "navigation.tracking", "navigation.top", "search.highlight", "search.share", "search.suggest", "content.code.annotate"], "search": "../../../assets/javascripts/workers/search.fcfe8b6d.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\uff0c\\u3002]+", "search.placeholder": "\u641c\u7d22", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.b1047164.min.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+      
+    
+  </body>
+</html>

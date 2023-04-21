@@ -1,0 +1,2175 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-7.3.6">
+    
+    
+      
+        <title>2.11.Resolving and Binding - doc-zh</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.a57b2b03.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.3f5d1f46.min.css">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font-family:"Roboto";--md-code-font-family:"Roboto Mono"}</style>
+      
+    
+    
+    
+    
+      
+
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="light-blue" data-md-color-accent="deep-purple">
+  
+    
+    <script>function __prefix(e){return new URL("../../..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+    
+      <script>var palette=__get("__palette");if(null!==palette&&"object"==typeof palette.color)for(var key in palette.color)document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="doc-zh" class="md-header__button md-logo" aria-label="doc-zh" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            doc-zh
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              2.11.Resolving and Binding
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="light-blue" data-md-color-accent="deep-purple"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+          
+            <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5c-.84 0-1.65.15-2.39.42L12 2M3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29L3.34 7m.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14L3.36 17M20.65 7l-1.77 3.79a7.023 7.023 0 0 0-2.38-4.15l4.15.36m-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29L20.64 17M12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44L12 22z"/></svg>
+            </label>
+          
+        
+          
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="cyan" data-md-color-accent="deep-purple"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
+          
+            <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3 3.19.09m3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95 2.06.05m-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31z"/></svg>
+            </label>
+          
+        
+      </form>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7 0-.24-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91 1.61 0 2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08z"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        
+<a href="https://github.com/Misaka-9982-coder/doc-zh" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    doc-zh
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="doc-zh" class="md-nav__button md-logo" aria-label="doc-zh" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    doc-zh
+  </label>
+  
+    <div class="md-nav__source">
+      
+<a href="https://github.com/Misaka-9982-coder/doc-zh" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    doc-zh
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1" type="checkbox" id="__nav_1" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_1">
+          xv6-book
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="xv6-book" data-md-level="1">
+        <label class="md-nav__title" for="__nav_1">
+          <span class="md-nav__icon md-icon"></span>
+          xv6-book
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../S081/0.%20%E5%89%8D%E8%A8%80%E5%92%8C%E8%87%B4%E8%B0%A2/" class="md-nav__link">
+        0. 前言和致谢
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../S081/1.%20%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E6%8E%A5%E5%8F%A3/" class="md-nav__link">
+        1. 操作系统接口
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../S081/2.%20%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84/" class="md-nav__link">
+        2. 操作系统架构
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../S081/3.%20%E9%A1%B5%E8%A1%A8/" class="md-nav__link">
+        3. 页表
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../S081/4.%20trap%20%E4%B8%8E%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8/" class="md-nav__link">
+        4. trap 与系统调用
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../S081/5.%20%E4%B8%AD%E6%96%AD%E5%92%8C%E8%AE%BE%E5%A4%87%E9%A9%B1%E5%8A%A8%E7%A8%8B%E5%BA%8F/" class="md-nav__link">
+        5. 中断和设备驱动程序
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../S081/6.%20%E9%94%81/" class="md-nav__link">
+        6. 锁
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../S081/7.%20%E8%B0%83%E5%BA%A6/" class="md-nav__link">
+        7. 调度
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../S081/8.%20%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/" class="md-nav__link">
+        8. 文件系统
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../S081/9.%20%E5%86%8D%E6%AC%A1%E6%8E%A2%E8%AE%A8%E5%B9%B6%E5%8F%91%E6%80%A7/" class="md-nav__link">
+        9. 再次探讨并发性
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2">
+          craftinginterpreters
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="craftinginterpreters" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          craftinginterpreters
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../0_00.contents/contents/" class="md-nav__link">
+        0.00.contents
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../0_01.acknowledgements/acknowledgements/" class="md-nav__link">
+        0.01.acknowledgements
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1_00.Welcome/Welcome/" class="md-nav__link">
+        一、WELCOME
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1_01.Introduction/Introduction/" class="md-nav__link">
+        1.01.Introduction
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1_02.A%20Map%20of%20the%20Territory/A%20Map%20of%20the%20Territory/" class="md-nav__link">
+        1.02.A Map of the Territory
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1_03.The%20Lox%20Language/The%20Lox%20Language/" class="md-nav__link">
+        1.03.The Lox Language
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2_00.A%20TREE-WALK%20INTERPRETER/A%20TREE-WALK%20INTERPRETER/" class="md-nav__link">
+        二、A TREE-WALK INTERPRETER
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2_04.Scanning/Scanning/" class="md-nav__link">
+        2.04.Scanning
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2_05.Representing%20Code/Representing%20Code/" class="md-nav__link">
+        2.05.Representing Code
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2_06.Parsing%20Expressions/Parsing%20Expressions/" class="md-nav__link">
+        2.06.Parsing Expressions
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2_07.Evaluating%20Expressions/Evaluating%20Expressions/" class="md-nav__link">
+        2.07.Evaluating Expressions
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2_08.Statements%20and%20State/Statements%20and%20State/" class="md-nav__link">
+        2.08.Statements and State
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2_09.Control%20Flow/Control%20Flow/" class="md-nav__link">
+        2.09.Control Flow
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2_10.Functions/Functions/" class="md-nav__link">
+        2.10.Functions
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          2.11.Resolving and Binding
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        2.11.Resolving and Binding
+      </a>
+      
+        
+
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#111" class="md-nav__link">
+    11.1 静态范围
+  </a>
+  
+    <nav class="md-nav" aria-label="11.1 静态范围">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1111" class="md-nav__link">
+    11.1.1  作用域和可变环境
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1112" class="md-nav__link">
+    11.1.2 持久化环境
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#112" class="md-nav__link">
+    11.2 语义分析
+  </a>
+  
+    <nav class="md-nav" aria-label="11.2 语义分析">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1121" class="md-nav__link">
+    11.2.1 变量解析过程
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#113" class="md-nav__link">
+    11.3 变量解析类
+  </a>
+  
+    <nav class="md-nav" aria-label="11.3 变量解析类">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1131" class="md-nav__link">
+    11.3.1 解析块
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1132" class="md-nav__link">
+    11.3.2 解析变量声明
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1133" class="md-nav__link">
+    11.3.3 解析变量表达式
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1134" class="md-nav__link">
+    11.3.4 解析赋值表达式
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1135" class="md-nav__link">
+    11.3.5 解析函数声明
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1136" class="md-nav__link">
+    11.3.6 解析其他语法树节点
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#114" class="md-nav__link">
+    11.4 解释已解析的变量
+  </a>
+  
+    <nav class="md-nav" aria-label="11.4 解释已解析的变量">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1141" class="md-nav__link">
+    11.4.1 访问已解析的变量
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1142" class="md-nav__link">
+    11.4.2 给已解析的变量赋值
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1143" class="md-nav__link">
+    11.4.3 运行解析器
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#115" class="md-nav__link">
+    11.5 解析错误
+  </a>
+  
+    <nav class="md-nav" aria-label="11.5 解析错误">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1151" class="md-nav__link">
+    11.5.1 无效返回错误
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    挑战
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2_12.Classes/Classes/" class="md-nav__link">
+        2.12.Classes
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2_13.Inheritance/Inheritance/" class="md-nav__link">
+        2.13.Inheritance
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3_00.A%20BYTECODE%20VIRTUAL%20MACHINE/A%20BYTECODE%20VIRTUAL%20MACHINE/" class="md-nav__link">
+        三、A BYTECODE VIRTUAL MACHINE
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3_14.Chunks%20of%20Bytecode/Chunks%20of%20Bytecode/" class="md-nav__link">
+        3.14.Chunks of Bytecode
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3_15.A%20Virtual%20Machine/A%20Virtual%20Machine/" class="md-nav__link">
+        3.15.A Virtual Machine
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3_16.Scanning%20on%20Demand/Scanning%20on%20Demand/" class="md-nav__link">
+        3.16.Scanning on Demand
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3_17.Compiling%20Expressions/Compiling%20Expressions/" class="md-nav__link">
+        3.17.Compiling Expressions
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3_18.Types%20of%20Values/Types%20of%20Values/" class="md-nav__link">
+        3.18.Types of Values
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3_19.Strings/Strings/" class="md-nav__link">
+        3.19.Strings
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3_20.Hash%20Tables/Hash%20Tables/" class="md-nav__link">
+        3.20.Hash Tables
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3_21.Global%20Variables/Global%20Variables/" class="md-nav__link">
+        3.21.Global Variables
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3_22.Local%20Variables/Local%20Variables/" class="md-nav__link">
+        3.22.Local Variables
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3_23.Jumping%20Back%20and%20Forth/Jumping%20Back%20and%20Forth/" class="md-nav__link">
+        3.23.Jumping Back and Forth
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3_24.Calls%20and%20Functions/Calls%20and%20Functions/" class="md-nav__link">
+        3.24.Calls and Functions
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3_25.Closures/Closures/" class="md-nav__link">
+        3.25.Closures
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3_26.Garbage%20Collection/Garbage%20Collection/" class="md-nav__link">
+        3.26.Garbage Collection
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3_27.Classes%20and%20Instances/Classes%20and%20Instances/" class="md-nav__link">
+        3.27.Classes and Instances
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3_28.Methods%20and%20Initializers/Methods%20and%20Initializers/" class="md-nav__link">
+        3.28.Methods and Initializers
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3_29.Superclasses/Superclasses/" class="md-nav__link">
+        3.29.Superclasses
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3_30.Optimization/Optimization/" class="md-nav__link">
+        3.30.Optimization
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../4_01.A1.Appendix%20I%20Lox%20Grammar/A1.Appendix%20I%20Lox%20Grammar/" class="md-nav__link">
+        A1.Appendix I Lox Grammar
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../4_02.A2.Appendix%20II%20Generated%20Syntax%20Tree%20Classes/A2.Appendix%20II%20Generated%20Syntax%20Tree%20Classes/" class="md-nav__link">
+        A2.Appendix II Generated Syntax Tree Classes
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#111" class="md-nav__link">
+    11.1 静态范围
+  </a>
+  
+    <nav class="md-nav" aria-label="11.1 静态范围">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1111" class="md-nav__link">
+    11.1.1  作用域和可变环境
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1112" class="md-nav__link">
+    11.1.2 持久化环境
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#112" class="md-nav__link">
+    11.2 语义分析
+  </a>
+  
+    <nav class="md-nav" aria-label="11.2 语义分析">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1121" class="md-nav__link">
+    11.2.1 变量解析过程
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#113" class="md-nav__link">
+    11.3 变量解析类
+  </a>
+  
+    <nav class="md-nav" aria-label="11.3 变量解析类">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1131" class="md-nav__link">
+    11.3.1 解析块
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1132" class="md-nav__link">
+    11.3.2 解析变量声明
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1133" class="md-nav__link">
+    11.3.3 解析变量表达式
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1134" class="md-nav__link">
+    11.3.4 解析赋值表达式
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1135" class="md-nav__link">
+    11.3.5 解析函数声明
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1136" class="md-nav__link">
+    11.3.6 解析其他语法树节点
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#114" class="md-nav__link">
+    11.4 解释已解析的变量
+  </a>
+  
+    <nav class="md-nav" aria-label="11.4 解释已解析的变量">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1141" class="md-nav__link">
+    11.4.1 访问已解析的变量
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1142" class="md-nav__link">
+    11.4.2 给已解析的变量赋值
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1143" class="md-nav__link">
+    11.4.3 运行解析器
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#115" class="md-nav__link">
+    11.5 解析错误
+  </a>
+  
+    <nav class="md-nav" aria-label="11.5 解析错误">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1151" class="md-nav__link">
+    11.5.1 无效返回错误
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    挑战
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/Misaka-9982-coder/doc-zh/edit/master/docs/craftinginterpreters/2_11.Resolving and Binding/Resolving and Binding.md" title="编辑此页" class="md-content__button md-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
+                  </a>
+                
+                
+                <h1 id="_1">解析和绑定</h1>
+<blockquote>
+<p>偶尔你会发现自己处于一种奇怪的境地。你以最自然的方式逐步进入它，但当你身处其中时，你会突然感到惊讶，并问自己这一切到底是怎么来的。</p>
+<p>-- Thor Heyerdahl,<em>Kon-Tiki</em></p>
+</blockquote>
+<p>不好了！我们实现的语言正在漏水！回到我们<a href="http://craftinginterpreters.com/statements-and-state.html">添加变量和块</a>的时候，我们的作用域界定得很好而且很紧密。但是当后来<a href="http://craftinginterpreters.com/functions.html">添加闭包</a>时，我们以前防水的解释器上出现了一个洞。大多数真实的程序不太可能溜过这个洞，但作为语言的实现者，我们发誓要关心正确性，即使是在语义最深、最潮湿的角落。</p>
+<p>我们将用整整一章来探索这个漏洞，然后小心地修补它。在此过程中，我们将对 Lox 和 C 传统中的其他语言使用的词法作用域有更严格的理解。我们还将有机会了解<em>语义分析</em>——一种无需运行即可从用户源代码中提取含义的强大技术。</p>
+<h2 id="111">11.1 静态范围</h2>
+<p>快速复习一下：Lox 与大多数现代语言一样，使用<em>词法</em>作用域。这意味着可以通过阅读程序文本来弄清楚变量名引用的是哪个声明。例如：</p>
+<pre><code class="language-c">var a = &quot;outer&quot;;
+{
+  var a = &quot;inner&quot;;
+  print a;
+}
+</code></pre>
+<p>在这里，我们知道<code>print a</code> 的是其上一行声明的变量，而不是全局变量。运行程序不会——也不能影响这一点。作用域规则是语言<em>静态</em>语义的一部分，这就是它们也被称为<em>静态作用域</em>的原因。</p>
+<p>我还没有详细说明这些范围规则，但现在是精确的时候了：</p>
+<p><strong>使用的变量指向前面的变量声明， 该变量声明是指包含使用变量表达式的最内层范围且具有相同名称</strong>。</p>
+<blockquote>
+<p>这仍然远不及真正的语言规范那么精确。这些文档必须非常明确，即使是火星人或彻头彻尾的恶意程序员也将被迫实施正确的语义，前提是他们遵循规范的字面意思。</p>
+<p>当一种语言可能被竞争公司实施时，这种精确性很重要，这些公司希望他们的产品与其他公司不兼容，从而将客户锁定在他们的平台上。对于这本书，我们可以谢天谢地地忽略那些阴暗的恶作剧。</p>
+</blockquote>
+<p>其中有很多要展开解释的东西：</p>
+<ul>
+<li>
+<p>我说“变量用法 variable usage”而不是“变量表达式 variable expression”来涵盖变量表达式和赋值。与“使用变量的表达式”类似。</p>
+</li>
+<li>
+<p>“前边 Preceding”是<em>指出现在程序文本</em>之前。</p>
+</li>
+</ul>
+<p><code>c
+  var a = "outer";
+  {
+    print a;
+    var a = "inner";
+  }</code></p>
+<p>在这里，被打印的<code>a</code>是外部的，因为它出现在使用它的语句<code>print</code>之前。在大多数情况下，在直接的代码行中，文本中的声明出现在使用之前。但这并不总是正确的。正如我们将看到的，函数可能会延迟一段代码，这样它的<em>动态时间</em>执行就不再反映<em>静态文本</em>顺序。</p>
+<blockquote>
+<p>在 JavaScript 中，用var声明的变量隐式“提升”到块的开头。块中对该名称的任何使用都将引用该变量，即使该使用出现在声明之前也是如此。当你用 JavaScript 写这个时：</p>
+<p><code>js
+{
+  console.log(a);
+  var a = "value";
+}</code></p>
+<p>它的行为如下：</p>
+<p><code>js
+{
+  var a; // Hoist.
+  console.log(a);
+  a = "value";
+}</code></p>
+<p>这意味着在某些情况下，您可以在初始化程序运行之前读取变量——这是一个恼人的错误来源。稍后添加了<code>let</code>用于声明变量的备用语法以解决此问题。</p>
+</blockquote>
+<ul>
+<li>“Innermost”是因为变量遮蔽。在封闭范围内可能有多个具有给定名称的变量，如：</li>
+</ul>
+<p><code>js
+  var a = "outer";
+  {
+    var a = "inner";
+    print a;
+  }</code></p>
+<p>我们的规则通过说最里面的作用域获胜来消除这种情况的歧义。</p>
+<p>由于此规则没有提及任何运行时行为，这意味着<strong>变量表达式在整个程序执行过程中始终引用相同的声明</strong>。到目前为止，我们的解释器<em>大部分都</em>正确地执行了规则。但是当我们添加闭包时，一个错误悄悄进入了。</p>
+<pre><code class="language-js">var a = &quot;global&quot;;
+{
+  fun showA() {
+    print a;
+  }
+
+  showA();
+  var a = &quot;block&quot;;
+  showA();
+}
+</code></pre>
+<p>在你输入并运行它之前，决定你认为它<em>应该</em>打印什么。</p>
+<blockquote>
+<p>我知道，这是一个完全病态的、人为设计的程序。这很<em>奇怪</em>。任何有理智的人都不会编写这样的代码。但是，如果您长期从事编程语言游戏，那么您将花费比您预期更多的时间来处理这样奇怪的代码片段。</p>
+</blockquote>
+<p>OK...知道了吗？如果您熟悉其他语言的闭包，您会期望它打印两次“global”。第一次调用<code>showA()</code>肯定会打印“global”，因为我们还没有到达内部声明<code>a</code>。根据我们的规则，<strong>变量表达式总是解析为相同的变量</strong>，这意味着第二次调用<code>showA()</code>应该打印相同的东西。</p>
+<p>然而，它打印：</p>
+<pre><code>global
+block
+</code></pre>
+<p>让我强调一下，这个程序从不重新分配任何变量并且只包含一个<code>print</code>语句。然而，不知何故，<code>print</code>针对从未分配的变量的语句在不同的时间点打印了两个不同的值。我们肯定在某个地方弄坏了什么。</p>
+<h3 id="1111">11.1.1  作用域和可变环境</h3>
+<p>在我们的解释器中，环境是静态作用域的动态表现。两者大多保持同步——当进入一个新的作用域时，会创建一个新的环境，而当离开该作用域时，会丢弃它。我们对环境执行的另一项操作是：将一个变量绑定到一个环境中。这就是我们的错误所在。</p>
+<p>来看看这个有问题的例子，看看每一步的环境是什么样的。首先，我们在全局范围内声明<code>a</code>。</p>
+<p><img alt="" src="../assets/30cc5bd51734199b69d70dfbb2dd5735cc7d8cda.png" /></p>
+<p>这提供了一个包含单个变量的单一环境。然后进入块并执行 的声明<code>showA()</code>。</p>
+<p><img alt="" src="../assets/6e64122bc7e8a95f78a3f1ac9b3814950bb3f0ef.png" /></p>
+<p>我们为块获得了一个新环境。在那里，我们声明了一个名称<code>showA</code>它绑定到我们创建的 LoxFunction 对象来表示该函数。该对象有一个<code>closure</code>字段，用于捕获声明函数的环境，因此它有一个返回块环境的引用。</p>
+<p>现在调用<code>showA()</code>。</p>
+<p><img alt="" src="../assets/c36e46dca3ad5eacfb70aa33f58fe2ea4d235005.png" /></p>
+<p>解释器动态地为<code>showA()</code>的函数体创建一个新的环境?。它是空的，因为该函数没有声明任何变量。该环境的父级是函数的闭包——外部块环境。</p>
+<p>在<code>showA()</code>的函数体内，我们打印<code>a</code>的值。解释器通过遍历环境链来查找这个值。在找到它并打印之前，它一直到达全局环境<code>"global"</code>。很好。</p>
+<p>接下来，我们声明第二个<code>a</code>，这次是在块内。</p>
+<p><img alt="" src="../assets/b638e5816cd0e7171046c8587143b8d6bc827264.png" /></p>
+<p>它与<code>showA()</code>处于同一个块——同一个范围，所以它进入同一个环境，这也是同一个环境<code>showA()</code>的闭包所指的。这就是它变得有趣的地方。此时再次调用<code>showA()</code>。</p>
+<p><img alt="" src="../assets/3792b941d892bbd5bfdc3b5da272093bafe3b490.png" /></p>
+<p>我们又为<code>showA()</code>的函数体创建一个新的空环境，将其连接到那个闭包，然后运行函数体。当解释器遍历环境链以查找<code>a</code>时，它现在会在块环境中发现一个新的<code>a</code>  !!!。</p>
+<p>我选择以一种希望与您对作用域的非正式直觉一致的方式来实现环境。我们倾向于认为一个块中的所有代码都在同一范围内，因此我们的解释器使用单一环境来表示它。每个环境都是一个可变的哈希表。当声明一个新的局部变量时，它会被添加到该作用域的现有环境中。</p>
+<p>就像生活中的许多人一样，这种直觉并不完全正确。<strong>一个块不一定都是相同的范围</strong>。考虑：</p>
+<pre><code class="language-js">{
+  var a;
+  // 1.
+  var b;
+  // 2.
+}
+</code></pre>
+<p>在第一个标记行，只有<code>a</code>在范围内。在第二行，<code>a</code>和<code>b</code>两者都是。如果您将“作用域”定义为一组声明，那么它们显然不是同一个作用域——它们不包含相同的声明。这就像每个<code>var</code>语句将块分成两个单独的范围，声明变量之前的范围和声明之后的范围，其中包括新变量。</p>
+<blockquote>
+<p>一些语言使这种分裂变得明确。在 Scheme 和 ML 中，当您使用<code>let</code>声明局部变量时，您还描述了新变量在范围内的后续代码。没有隐含的“块的其余部分”。</p>
+</blockquote>
+<p>但在我们的实现中，环境确实表现得像整个块是一个范围，只是一个随时间变化的范围。闭包不喜欢那样。声明函数时，它会捕获对当前环境的引用。该函数<em>应</em>捕获<em>声明该函数时存在</em>的环境的冻结快照。但是，在 Java 代码中，它引用了实际的可变环境对象。当稍后在环境对应的范围内声明变量时，闭包会看到新变量，即使声明<em>不在</em>函数之前也是如此。</p>
+<h3 id="1112">11.1.2 持久化环境</h3>
+<p>有一种编程风格使用所谓的<strong>持久数据结构</strong>。与您在命令式编程中熟悉的松散数据结构不同，持久数据结构永远无法直接修改。相反，对现有结构的任何“修改”都会产生一个全新的对象，其中包含所有原始数据和新修改。原件保持不变。</p>
+<blockquote>
+<p>这听起来可能会浪费大量内存和时间来为每个操作复制结构。实际上，持久数据结构在不同的“副本”之间共享大部分数据。</p>
+</blockquote>
+<p>如果我们将该技术应用于环境，那么每次您声明一个变量时，它都会返回一个<em>新</em>环境，其中包含所有先前声明的变量以及一个新名称。声明一个变量会进行隐式“拆分”，在变量声明之前和之后都有一个环境：</p>
+<p><img alt="" src="../assets/8a7ab77fc920d7b6912c5e9d91d0c77493ef2902.png" /></p>
+<p>当函数被声明时，闭包保留对正在运行的环境实例的引用。由于该块中的任何后续声明都会产生新的 Environment 对象，闭包将看不到新变量，我们的错误将得到修复。</p>
+<p>这是解决问题的合法方法，也是在 Scheme 解释器中实现环境的经典方法。我们可以为 Lox 这样做，但这意味着返回并更改一堆现有代码。</p>
+<p>我不会拖你的后腿。我们将保持表示环境的方式不变。我们不会让数据更加静态结构化，而是将静态变量解析融入访问<em>操作</em>本身。</p>
+<h2 id="112">11.2 语义分析</h2>
+<p>解释器在每次评估变量表达式时都会<strong>解析</strong>一个变量——追踪它引用的声明。如果该变量被包裹在一个运行一千次的循环中，那么该变量将被重新解析一千次。</p>
+<p>我们知道静态范围意味着一个变量的使用总是解析到相同的声明，这可以通过查看源码文本来确定。既然如此，为什么每次都动态地做呢？这样做不仅会打开导致我们烦人的错误的漏洞，而且还会不必要地减慢速度。</p>
+<p>更好的解决方案是每个变量只解析一次。编写一段代码来检查用户的程序，找到提到的每个变量，并找出每个变量引用的声明。这个过程是一个<strong>语义分析</strong>的例子。解析器仅判断程序在语法上是否正确（<em>句法</em>分析），而语义分析则走得更远，开始弄清楚程序的实际含义。在这种情况下，我们的分析将解析变量绑定。我们不仅会知道一个表达式<em>是</em>一个变量，还会知道它是<em>哪个</em>变量。</p>
+<p>有很多方法可以存储变量与其声明之间的绑定。当我们使用 Lox 的 C 解释器时，我们将拥有一种<em>更</em>有效的存储和访问局部变量的方法。但对于 jlox，我想尽量减少我们对现有代码库造成的附带损害。我不想扔掉一堆大部分都很好的代码。</p>
+<p>相反，我们将以充分利用现有环境类的方式存储分辨率。回想一下在有问题的示例中如何解释 <code>a</code>的访问。</p>
+<p><img alt="" src="../assets/c36e46dca3ad5eacfb70aa33f58fe2ea4d235005.png" /></p>
+<p>在第一个（正确的）评估中，我们在找到<code>a</code>的全局声明之前查看链中的三个环境。然后，当稍后在块范围内声明内部<code>a</code>时，它会覆盖全局范围。</p>
+<p><img alt="" src="../assets/3792b941d892bbd5bfdc3b5da272093bafe3b490.png" /></p>
+<p>下一次查找遍历链，在<em>第二个</em>环境中找到<code>a</code>并停在那里。每个环境对应于声明变量的单个词法范围。如果能够确保变量查找始终遍历 环境链中<em>相同</em>数量的链接，那将确保它每次都能在相同范围内找到相同的变量。</p>
+<p>要“解析 resolve”一个变量的使用，我们只需要计算声明的变量将在环境链中“跳”多少次。有趣的问题是<em>什么时候</em>进行这种计算——或者换句话说，我们在解释器的实现中的什么地方填充它的代码？</p>
+<p>由于我们正在根据源代码的结构计算静态属性，因此显而易见的答案是在解析器中。那是传统的方法，我们稍后将把它放在 clox 中。它在这里也可以工作，但我想找个借口向您展示另一种技术。我们将把我们的解析器写成一个单独的遍历过程。</p>
+<h3 id="1121">11.2.1 变量解析过程</h3>
+<p>在解析器生成语法树之后，但在解释器开始执行它之前，我们将遍历树以解析它包含的所有变量。解析和执行之间的额外传递很常见。如果 Lox 有静态类型，我们可以在其中滑动类型检查器。优化通常也像这样在单独的遍历中实现。基本上，任何不依赖仅在运行时可用的状态的工作都可以通过这种方式完成。</p>
+<p>变量解析过程就像一种迷你解释器。它遍历树，访问每个节点，但静态分析不同于动态执行：</p>
+<ul>
+<li>
+<p><strong>没有副作用</strong>。当静态分析访问打印语句时，它实际上并没有打印任何东西。对原生函数的调用或其他与外界联系的操作被取消，没有任何效果。</p>
+</li>
+<li>
+<p><strong>没有控制流</strong>。循环只被访问一次。<code>if</code>在语句中访问两个分支。逻辑运算符没有短路。</p>
+</li>
+</ul>
+<blockquote>
+<p>变量解析过程访问每个节点一次，因此其性能为<em>O(n)</em>，其中<em>n</em>是语法树节点的数量。更复杂的分析可能具有更大的复杂性，但大多数都经过精心设计，使其呈线性或相差不远。如果您的编译器随着用户程序的增长而呈指数级变慢，那将是一个令人尴尬的失礼。</p>
+</blockquote>
+<h2 id="113">11.3 变量解析类</h2>
+<p>与 Java 中的所有内容一样，我们的变量解析过程实现在一个类中。</p>
+<pre><code class="language-java">package com.craftinginterpreters.lox;
+
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Stack;
+
+class Resolver implements Expr.Visitor&lt;Void&gt;, Stmt.Visitor&lt;Void&gt; {
+  private final Interpreter interpreter;
+
+  Resolver(Interpreter interpreter) {
+    this.interpreter = interpreter;
+  }
+}
+// lox/Resolver.java, create new file
+</code></pre>
+<p>由于解析器需要访问语法树中的每个节点，因此它实现了已有的访问者接口。在解析变量时，只有几种节点很有趣：</p>
+<ul>
+<li>
+<p>块语句为其包含的语句引入了一个新的范围。</p>
+</li>
+<li>
+<p>函数声明为其函数体引入了一个新范围，并将其参数绑定在该范围内。</p>
+</li>
+<li>
+<p>变量声明将新变量添加到当前作用域。</p>
+</li>
+<li>
+<p>变量和赋值表达式需要解析它们的变量。</p>
+</li>
+</ul>
+<p>其余的节点没有做任何特殊的事情，但我们仍然需要为它们实现遍历到它们的子树的访问方法。尽管<code>+</code>表达式<em>本身</em>没有任何变量需要解析，但它的任何一个操作数都可以。</p>
+<h3 id="1131">11.3.1 解析块</h3>
+<p>我们从块开始，因为它们创建了所有魔法发生的本地作用域。</p>
+<pre><code class="language-java">  @Override
+  public Void visitBlockStmt(Stmt.Block stmt) {
+    beginScope();
+    resolve(stmt.statements);
+    endScope();
+    return null;
+  }
+// lox/Resolver.java, add after Resolver()  
+</code></pre>
+<p>这开始了一个新的作用域，遍历到块内的语句，然后丢弃该作用域。有趣的东西存在于这些辅助方法中。我们从简单的开始。</p>
+<pre><code class="language-java">  void resolve(List&lt;Stmt&gt; statements) {
+    for (Stmt statement : statements) {
+      resolve(statement);
+    }
+  }
+// lox/Resolver.java, add after Resolver() 
+</code></pre>
+<p>这会遍历语句列表并解析每个语句。它依次调用：</p>
+<pre><code class="language-java">  private void resolve(Stmt stmt) {
+    stmt.accept(this);
+  }
+// lox/Resolver.java, add after visitBlockStmt()
+</code></pre>
+<p>当我们这样做时，需要添加另一个重载，稍后将需要它来解析表达式。</p>
+<pre><code class="language-java">  private void resolve(Expr expr) {
+    expr.accept(this);
+  }
+// lox/Resolver.java, add after resolve(Stmt stmt)
+</code></pre>
+<p>这些方法类似于Interpreter中的<code>evaluate()</code>和方法——它们反过来将访问者模式应用于给定的语法树节点。<code>execute()</code></p>
+<p>真正有趣的行为是围绕作用域的。像这样创建一个新的块作用域：</p>
+<pre><code class="language-java">  private void beginScope() {
+    scopes.push(new HashMap&lt;String, Boolean&gt;());
+  }
+// lox/Resolver.java, add after resolve() 
+</code></pre>
+<p>词法作用域嵌套在解释器和解析器中。它们的行为就像一个堆栈。解释器使用链表（环境对象链）实现该堆栈。在解析器中，我们使用实际的 Java 堆栈。</p>
+<pre><code class="language-java">  private final Interpreter interpreter;
+  private final Stack&lt;Map&lt;String, Boolean&gt;&gt; scopes = new Stack&lt;&gt;();
+
+  Resolver(Interpreter interpreter) {
+// lox/Resolver.java, in class Resolver  
+</code></pre>
+<p>scopes 字段跟踪当前作用域堆栈，嗯，在作用域内。堆栈中的每个元素都是一个表示单个块作用域的映射。与在环境中一样，键是变量名。值是布尔类型，原因我很快就会解释。</p>
+<p>作用域堆栈仅用于本地块作用域。在全局范围内在顶层声明的变量不会被解析器跟踪，因为它们在 Lox 中更具动态性。当解析一个变量时，如果在局部作用域的堆栈中找不到它，就假设它一定是全局的。</p>
+<p>由于作用域存储在显式堆栈中，因此退出一个很简单。</p>
+<pre><code class="language-java">  private void endScope() {
+    scopes.pop();
+  }
+// lox/Resolver.java, add after beginScope()
+</code></pre>
+<p>现在可以压入和弹出一堆空作用域。让我们把一些东西放进去。</p>
+<h3 id="1132">11.3.2 解析变量声明</h3>
+<p>解析变量声明会向当前最内层作用域的Map添加一个新条目。这看起来很简单，但我们需要跳一段小舞。</p>
+<pre><code class="language-java">  @Override
+  public Void visitVarStmt(Stmt.Var stmt) {
+    declare(stmt.name);
+    if (stmt.initializer != null) {
+      resolve(stmt.initializer);
+    }
+    define(stmt.name);
+    return null;
+  }
+// lox/Resolver.java, add after visitBlockStmt()
+</code></pre>
+<p>我们将绑定分为两个步骤，声明(declare)和定义(define)，以处理像这样有趣的边缘情况：</p>
+<pre><code class="language-js">var a = &quot;outer&quot;;
+{
+  var a = a;
+}
+</code></pre>
+<p>当局部变量的初始值设置项引用与声明的变量同名的变量时会发生什么？我们有几个选择：</p>
+<ol>
+<li><strong>运行初始化程序，然后将新变量放入作用域中</strong>。在这里，新的局部变量<code>a</code>将使用<em>全局</em>变量的值“outer”进行初始化。换句话说，先前的声明将脱糖为：</li>
+</ol>
+<p><code>js
+   var temp = a; // Run the initializer.
+   var a;        // Declare the variable.
+   a = temp;     // Initialize it.</code></p>
+<ol>
+<li><strong>将新变量放在作用域中，然后运行初始化程序</strong>。这意味着您可以在变量初始化之前观察它，因此我们需要弄清楚它在那时会有什么值。大概吧<code>nil</code>。这意味着新的局部<code>a</code>变量将被重新初始化为它自己的隐式初始化值<code>nil</code>，现在脱糖看起来像：</li>
+</ol>
+<p><code>js
+   var a; // Define the variable.
+   a = a; // Run the initializer.</code></p>
+<ol>
+<li><strong>使在其初始值设定项中引用变量成为错误</strong>。如果初始化程序提到正在初始化的变量，则让解释器在编译时或运行时失败。</li>
+</ol>
+<p>前两个选项中的任何一个看起来像用户真正<em>想要</em>的东西吗？变量遮蔽很少见并且通常是错误的，因此根据遮蔽变量的值初始化遮蔽变量似乎不太可能是故意的。</p>
+<p>第二种选择就更没用了。新变量的值<em>始终</em><code>nil</code>为。直呼其名毫无意义。您可以改用显式<code>nil</code>。</p>
+<p>由于前两个选项可能会掩盖用户错误，我们将采用第三个选项。此外，我们会将其设为编译错误而不是运行时错误。这样，在运行任何代码之前都会提醒用户注意问题。</p>
+<p>为了做到这一点，当我们访问表达式时，我们需要知道我们是否在某个变量的初始值设置项中。我们通过将绑定分成两个步骤来做到这一点。首先是<strong>声明</strong>它。</p>
+<pre><code class="language-java">  private void declare(Token name) {
+    if (scopes.isEmpty()) return;
+
+    Map&lt;String, Boolean&gt; scope = scopes.peek();
+    scope.put(name.lexeme, false);
+  }
+// lox/Resolver.java, add after endScope() 
+</code></pre>
+<p>声明将变量添加到最内层的作用域，以便它遮蔽任何外部作用域，这样我们就知道该变量存在。我们通过将其名称绑定到作用域Map中来将其标记<code>false</code>意思是 “尚未准备好” 。与作用域Map中的键关联的值表示我们是否已完成解析该变量的初始值设置项。</p>
+<p>声明变量后，在新变量现在存在但不可用的相同范围内解析其初始化表达式。一旦初始化表达式完成，变量就准备好了。我们通过<strong>defining</strong>来做到这一点。</p>
+<pre><code class="language-java">  private void define(Token name) {
+    if (scopes.isEmpty()) return;
+    scopes.peek().put(name.lexeme, true);
+  }
+// lox/Resolver.java, add after declare()
+</code></pre>
+<p>我们将作用域Map中变量的值设置为<code>true</code>以将其标记为已完全初始化并可供使用。OK 了！</p>
+<h3 id="1133">11.3.3 解析变量表达式</h3>
+<p>我们获取 变量声明和函数声明并写入作用域Map。当我们解析变量表达式时，会读取这些映射。</p>
+<pre><code class="language-java">  @Override
+  public Void visitVariableExpr(Expr.Variable expr) {
+    if (!scopes.isEmpty() &amp;&amp;
+        scopes.peek().get(expr.name.lexeme) == Boolean.FALSE) {
+      Lox.error(expr.name,
+          &quot;Can't read local variable in its own initializer.&quot;);
+    }
+
+    resolveLocal(expr, expr.name);
+    return null;
+  }
+// lox/Resolver.java, add after visitVarStmt()  
+</code></pre>
+<p>首先，我们检查变量是否在它自己的初始化器中被访问。这是作用域Map中的值发挥作用的地方。如果该变量存在于当前范围内但其值为<code>false</code>，则表示我们已经声明了它但尚未定义它。我们报告该错误。</p>
+<p>检查之后，我们实际上使用这个赋值方法解析了变量本身：</p>
+<pre><code class="language-java">  private void resolveLocal(Expr expr, Token name) {
+    for (int i = scopes.size() - 1; i &gt;= 0; i--) {
+      if (scopes.get(i).containsKey(name.lexeme)) {
+        interpreter.resolve(expr, scopes.size() - 1 - i);
+        return;
+      }
+    }
+  }
+// lox/Resolver.java, add after define() 
+</code></pre>
+<p>出于充分的理由，这看起来很像环境中用于评估变量的代码。我们从最里面的作用域开始向外工作，在每个Map中查找匹配的名称。如果找到变量，解析它，传递当前最内层作用域和找到变量的作用域之间的作用域数。所以，如果在当前范围内找到变量，我们传入 0。如果它在紧邻的范围内，则传入 1。你明白了。</p>
+<p>如果遍历所有块作用域而从未找到该变量，将其保留为未解析并假定它是全局的。稍后将介绍该<code>resolve()</code>方法的实现。现在，让我们继续浏览其他语法节点。</p>
+<h3 id="1134">11.3.4 解析赋值表达式</h3>
+<p>另一个引用变量的表达式是赋值。像这样解析：</p>
+<pre><code class="language-java">  @Override
+  public Void visitAssignExpr(Expr.Assign expr) {
+    resolve(expr.value);
+    resolveLocal(expr, expr.name);
+    return null;
+  }
+// lox/Resolver.java, add after visitVarStmt() 
+</code></pre>
+<p>首先，解析赋值的表达式，以防它还包含对其他变量的引用。然后使用现有的<code>resolveLocal()</code>方法来解析分配给的变量。</p>
+<h3 id="1135">11.3.5 解析函数声明</h3>
+<p>最后是，函数。函数既绑定名称又引入作用域。函数本身的名称绑定在声明函数的周围作用域内。当进入函数体时，还将其参数绑定到该内部函数作用域。</p>
+<pre><code class="language-java">  @Override
+  public Void visitFunctionStmt(Stmt.Function stmt) {
+    declare(stmt.name);
+    define(stmt.name);
+
+    resolveFunction(stmt);
+    return null;
+  }
+// lox/Resolver.java, add after visitBlockStmt()  
+</code></pre>
+<p>与 <code>visitVariableStmt()</code>类似，我们在当前作用域内声明并定义函数的名称。但是，与变量不同的是，在解析函数体之前就急切地定义了名称。这让一个函数在它自己的体内递归地引用它自己。</p>
+<p>然后使用这个解析函数的主体：</p>
+<pre><code class="language-java">  private void resolveFunction(Stmt.Function function) {
+    beginScope();
+    for (Token param : function.params) {
+      declare(param);
+      define(param);
+    }
+    resolve(function.body);
+    endScope();
+  }
+// lox/Resolver.java, add after resolve()
+</code></pre>
+<p>这是一个单独的方法，因为我们稍后添加类时还将使用它来解析 Lox 类方法。它为函数体创建一个新的作用域，然后为函数的每个参数绑定变量。</p>
+<p>一旦准备就绪，它就会解析该范围内的函数体。这与解释器处理函数声明的方式不同。在<em>运行时</em>，声明一个函数不会对函数体做任何事情。直到稍后调用该函数时，函数体才会被触及。在<em>静态</em>分析中，我们会立即遍历函数体。</p>
+<h3 id="1136">11.3.6 解析其他语法树节点</h3>
+<p>这涵盖了语法的有趣角落。我们处理声明、读取或写入变量的每个地方，以及创建或销毁作用域的每个地方。即使它们不受变量解析的影响，我们也需要访问所有其他语法树节点的方法，以便递归到它们的子树中。抱歉，这一段很无聊，但请耐心等待。我们将采取某种“自上而下”的方式，并从声明开始。</p>
+<blockquote>
+<p>我确实说过这本书会有这些解释器的每一行代码。我没说它们都会令人兴奋。</p>
+</blockquote>
+<p>表达式语句包含要遍历的单个表达式。</p>
+<pre><code class="language-java">  @Override
+  public Void visitExpressionStmt(Stmt.Expression stmt) {
+    resolve(stmt.expression);
+    return null;
+  }
+// lox/Resolver.java, add after visitBlockStmt()  
+</code></pre>
+<p>if 语句有一个条件表达式和一个或两个分支语句。</p>
+<pre><code class="language-java">  @Override
+  public Void visitIfStmt(Stmt.If stmt) {
+    resolve(stmt.condition);
+    resolve(stmt.thenBranch);
+    if (stmt.elseBranch != null) resolve(stmt.elseBranch);
+    return null;
+  }
+// lox/Resolver.java, add after visitFunctionStmt()  
+</code></pre>
+<p>在这里，我们看到 解析(resolution)与解释(interpretation)有何不同。当我们解析一个<code>if</code>语句时，没有控制流。我们解析了条件和<em>两个</em>分支。动态执行只进入运行的分支，<em>而</em>静态分析是保守的——它分析任何<em>可以</em>运行的分支。由于任何一个都可以在运行时到达，所以两个都解析了。</p>
+<p>与表达式语句一样，<code>print</code>语句包含单个子表达式。</p>
+<pre><code class="language-java">  @Override
+  public Void visitPrintStmt(Stmt.Print stmt) {
+    resolve(stmt.expression);
+    return null;
+  }
+// lox/Resolver.java, add after visitIfStmt()
+</code></pre>
+<p>return 语句也是同样的。</p>
+<pre><code class="language-java">  @Override
+  public Void visitReturnStmt(Stmt.Return stmt) {
+    if (stmt.value != null) {
+      resolve(stmt.value);
+    }
+
+    return null;
+  }
+// lox/Resolver.java, add after visitPrintStmt()  
+</code></pre>
+<p><code>while</code>语句和解析<code>if</code>语句一样，我们解析它的条件并解析循环体一次。</p>
+<pre><code class="language-java">  @Override
+  public Void visitWhileStmt(Stmt.While stmt) {
+    resolve(stmt.condition);
+    resolve(stmt.body);
+    return null;
+  }
+// lox/Resolver.java, add after visitVarStmt() 
+</code></pre>
+<p>这涵盖了所有语句。还有表达式...</p>
+<p>我们的老朋友二元表达式。我们遍历并解析两个操作数。</p>
+<pre><code class="language-java">  @Override
+  public Void visitBinaryExpr(Expr.Binary expr) {
+    resolve(expr.left);
+    resolve(expr.right);
+    return null;
+  }
+// lox/Resolver.java, add after visitAssignExpr()  
+</code></pre>
+<p>函数调用也是相似的——我们遍历参数列表并解析所有参数。被调用的东西也是一个表达式（通常是一个变量表达式），所以它也被解析了。</p>
+<pre><code class="language-java">  @Override
+  public Void visitCallExpr(Expr.Call expr) {
+    resolve(expr.callee);
+
+    for (Expr argument : expr.arguments) {
+      resolve(argument);
+    }
+
+    return null;
+  }
+// lox/Resolver.java, add after visitBinaryExpr()
+</code></pre>
+<p>括号很简单。</p>
+<pre><code class="language-java">  @Override
+  public Void visitGroupingExpr(Expr.Grouping expr) {
+    resolve(expr.expression);
+    return null;
+  }
+// lox/Resolver.java, add after visitCallExpr()
+</code></pre>
+<p>字面值是最简单的。</p>
+<pre><code class="language-java">  @Override
+  public Void visitLiteralExpr(Expr.Literal expr) {
+    return null;
+  }
+// lox/Resolver.java, add after visitGroupingExpr() 
+</code></pre>
+<p>字面表达式不提及任何变量，也不包含任何子表达式，因此无需执行任何操作。</p>
+<p>由于静态分析没有控制流或短路，因此逻辑表达式与其他二元运算符完全相同。</p>
+<pre><code class="language-java">  @Override
+  public Void visitLogicalExpr(Expr.Logical expr) {
+    resolve(expr.left);
+    resolve(expr.right);
+    return null;
+  }
+// lox/Resolver.java, add after visitLiteralExpr() 
+</code></pre>
+<p>好了，最后一个节点。我们解析一元操作数。</p>
+<pre><code class="language-java"> @Override
+  public Void visitUnaryExpr(Expr.Unary expr) {
+    resolve(expr.right);
+    return null;
+  }
+// lox/Resolver.java, add after visitLogicalExpr()
+</code></pre>
+<p>对于所有这些访问方法，Java 编译器应该实现 Resolver 完全实现 Stmt.Visitor 和 Expr.Visitor。现在是休息的好时机，吃点零食，也许小睡一会儿。</p>
+<h2 id="114">11.4 解释已解析的变量</h2>
+<p>让我们看看我们的解析器有什么用。每次访问一个变量时，它都会告诉解释器当前作用域和定义该变量的作用域之间有多少个作用域。在运行时，这恰好对应于当前环境和解释器可以在其中找到变量值的封闭环境之间的环境数。解析器通过调用以下命令将该数字交给解释器：</p>
+<pre><code class="language-java">  void resolve(Expr expr, int depth) {
+    locals.put(expr, depth);
+  }
+// lox/Interpreter.java, add after execute() 
+</code></pre>
+<p>我们想将解析信息存储在某个地方，以便我们可以在稍后执行变量或赋值表达式时使用它，但是在哪里呢？一个明显的地方就在语法树节点本身。这是一个很好的方法，许多编译器就是这样存储分析结果的。</p>
+<p>我们可以做到这一点，但这需要使用我们的语法树生成器。相反，我们将采用另一种常用方法并将其存储在外部的Map中，该Map将每个语法树节点与其解析的数据相关联。</p>
+<blockquote>
+<p>我<em>想</em>我听说过这张地图被称为“边表 side table”，因为它是一种表格数据结构，将数据与其相关的对象分开存储。但每当我尝试用谷歌搜索这个词时，我都会得到关于家具的页面。</p>
+</blockquote>
+<p>诸如 IDE 之类的交互式工具通常会逐步重新解析和重新解析用户程序的某些部分。当它们隐藏在语法树的叶子中时，可能很难找到所有需要重新计算的状态位。将此数据存储在节点外部的一个好处是可以很容易地<em>丢弃</em>它——只需清除Map即可。</p>
+<pre><code class="language-java">private Environment environment = globals;
+  private final Map&lt;Expr, Integer&gt; locals = new HashMap&lt;&gt;();
+
+  Interpreter() {
+// lox/Interpreter.java, in class Interpreter 
+</code></pre>
+<p>您可能认为需要某种嵌套的树结构以避免在有多个表达式引用同一变量时混淆，但每个表达式节点都是它自己的 Java 对象，具有自己的唯一标识。一个单一的整体Map将它们分开没有任何问题。</p>
+<p>像往常一样，使用集合需要导入几个包。</p>
+<pre><code class="language-java">import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+// lox/Interpreter.java
+</code></pre>
+<p>和：</p>
+<pre><code class="language-java">import java.util.List;
+import java.util.Map;
+
+class Interpreter implements Expr.Visitor&lt;Object&gt;,
+// lox/Interpreter.java
+</code></pre>
+<h3 id="1141">11.4.1 访问已解析的变量</h3>
+<p>我们的解释器现在可以访问每个变量的解析位置。最后，可以利用它。我们将变量表达式的访问方法替换为：</p>
+<pre><code class="language-java">  public Object visitVariableExpr(Expr.Variable expr) {
+    return lookUpVariable(expr.name, expr);
+  }
+// lox/Interpreter.java, in visitVariableExpr(), replace 1 line 
+</code></pre>
+<p>lookUpVariable 实现如下：</p>
+<pre><code class="language-java">  private Object lookUpVariable(Token name, Expr expr) {
+    Integer distance = locals.get(expr);
+    if (distance != null) {
+      return environment.getAt(distance, name.lexeme);
+    } else {
+      return globals.get(name);
+    }
+  }
+// lox/Interpreter.java, add after visitVariableExpr() 
+</code></pre>
+<p>这里发生了几件事。首先，我们在Map中查找已解析的距离。请记住，我们只解析了<em>局部</em>变量。全局变量被特殊对待，不会出现在Map中（因此得名<code>locals</code>）。所以，如果我们在Map上没有找到一个距离，它一定是全局的。在那种情况下，我们直接在全局环境中动态地查找它。如果未定义变量，则会引发运行时错误。</p>
+<p>如果<em>确实</em>得到了一个距离，我们就有了一个局部变量，我们就可以利用静态分析的结果。我们没有调用<code>get()</code>，而是在 Environment 上调用这个新方法：</p>
+<pre><code class="language-java">  Object getAt(int distance, String name) {
+    return ancestor(distance).values.get(name);
+  }
+// lox/Environment.java, add after define()
+</code></pre>
+<p>旧<code>get()</code>方法动态地遍历闭包环境链，搜索每个环境以查看变量是否可能隐藏在某处。但是现在我们确切地知道链中的哪个环境将具有变量。我们使用这个辅助方法到达它：</p>
+<pre><code class="language-java">  Environment ancestor(int distance) {
+    Environment environment = this;
+    for (int i = 0; i &lt; distance; i++) {
+      environment = environment.enclosing; 
+    }
+
+    return environment;
+  }
+// lox/Environment.java, add after define() 
+</code></pre>
+<p>这会沿着父链向上移动固定数量的跃点并返回那里的环境。一旦我们有了它，<code>getAt()</code>只需返回该环境映射中的变量值。它甚至不必检查变量是否存在——我们知道它会存在，因为解析器之前已经找到了它。</p>
+<blockquote>
+<p>解释器假设变量在Map中感觉就像盲目飞行。解释器代码相信解析器完成了它的工作并正确地解析了变量。这意味着这两个类之间存在深度耦合。在解析器中，接触范围的每一行代码都必须在解释器中精确匹配以修改环境。</p>
+<p>我亲身感受到了这种耦合，因为在我为本书编写代码时，我遇到了一些细微的错误，其中解析器和解释器代码略微不同步。追踪这些很困难。一种使这更容易的工具是让解释器明确断言——使用 Java 的断言语句或其他一些验证工具——它期望解析器已经支持的契约。</p>
+</blockquote>
+<h3 id="1142">11.4.2 给已解析的变量赋值</h3>
+<p>我们也可以通过赋值来使用变量。访问赋值表达式的变化是相似的。</p>
+<pre><code class="language-java">  public Object visitAssignExpr(Expr.Assign expr) {
+    Object value = evaluate(expr.value);
+
+    Integer distance = locals.get(expr);
+    if (distance != null) {
+      environment.assignAt(distance, expr.name, value);
+    } else {
+      globals.assign(expr.name, value);
+    }
+
+    return value;
+// lox/Interpreter.java, in visitAssignExpr(), replace 1 line  
+</code></pre>
+<p>同样，我们查找变量的作用域距离。如果没有找到，我们假设它是全局的，并像以前一样处理它。否则，我们调用这个新方法：</p>
+<pre><code class="language-java">  void assignAt(int distance, Token name, Object value) {
+    ancestor(distance).values.put(name.lexeme, value);
+  }
+// lox/Environment.java, add after getAt() 
+</code></pre>
+<p>如同<code>getAt()</code>对应<code>get()</code>，<code>assignAt()</code>对应<code>assign()</code>，assignAt 遍历固定数量的环境，然后将新值填充到该Map中。</p>
+<p>这些是对 Interpreter 的唯一更改。这就是为什么我为解析的数据选择了一种微创的表示形式。所有其余节点继续像以前一样工作。甚至修改环境的代码也没有改变。</p>
+<h3 id="1143">11.4.3 运行解析器</h3>
+<p>不过，我们确实需要实际<em>运行</em>解析器。我们在解析器施展魔法后插入新的通道。</p>
+<pre><code class="language-java">    // Stop if there was a syntax error.
+    if (hadError) return;
+
+    Resolver resolver = new Resolver(interpreter);
+    resolver.resolve(statements);
+
+    interpreter.interpret(statements);
+// lox/Lox.java, in run()
+</code></pre>
+<p>如果有任何解析错误，我们不会运行解析器。如果代码有语法错误，它永远不会运行，所以解析它的价值很小。如果语法是干净的，我们告诉解析器做它的事情。解析器有一个对解释器的引用，并在遍历变量时将解析数据直接插入其中。当解释器接下来运行时，它拥有它需要的一切。</p>
+<p>至少，如果解析器<em>成功</em>，情况就是如此。但是解析过程中的错误呢？</p>
+<h2 id="115">11.5 解析错误</h2>
+<p>由于我们正在进行语义分析，我们有机会使 Lox 的语义更加精确，并帮助用户在运行代码之前尽早发现错误。看看这个家伙：</p>
+<pre><code class="language-js">fun bad() {
+  var a = &quot;first&quot;;
+  var a = &quot;second&quot;;
+}
+</code></pre>
+<p><em>我们确实允许在全局</em>范围内声明多个具有相同名称的变量，但在局部范围内这样做可能是错误的。如果他们知道该变量已经存在，他们就会赋值给它而不是使用<code>var</code>.如果他们<em>不</em>知道它存在，他们可能不打算覆盖前一个。</p>
+<p>我们可以在解析时静态地检测到这个错误。</p>
+<pre><code class="language-java">    Map&lt;String, Boolean&gt; scope = scopes.peek();
+    if (scope.containsKey(name.lexeme)) {
+      Lox.error(name,
+          &quot;Already a variable with this name in this scope.&quot;);
+    }
+
+    scope.put(name.lexeme, false);
+// lox/Resolver.java, in declare()
+</code></pre>
+<p>当我们在局部范围内声明一个变量时，已经知道之前在同一范围内声明的每个变量的名称。如果我们看到碰撞，我们会报告错误。</p>
+<h3 id="1151">11.5.1 无效返回错误</h3>
+<p>这是另一个讨厌的小脚本：</p>
+<pre><code class="language-js">return &quot;at top level&quot;;
+</code></pre>
+<p>这会执行一条<code>return</code>语句，但它甚至根本不在函数内部。这是顶级代码。我不知道用户<em>认为</em>会发生什么，但我不认为我们希望 Lox 允许这样做。</p>
+<p>我们可以扩展解析器来静态检测这一点。就像我们在遍历树时跟踪作用域一样，我们可以跟踪当前访问的代码是否在函数声明中。</p>
+<pre><code class="language-js">  private final Stack&lt;Map&lt;String, Boolean&gt;&gt; scopes = new Stack&lt;&gt;();
+  private FunctionType currentFunction = FunctionType.NONE;
+
+  Resolver(Interpreter interpreter) {
+// lox/Resolver.java, in class Resolver 
+</code></pre>
+<p>我们使用这个有趣的枚举代替简单的布尔值：</p>
+<pre><code class="language-js">  private enum FunctionType {
+    NONE,
+    FUNCTION
+  }
+// lox/Resolver.java, add after Resolver() 
+</code></pre>
+<p>现在看起来有点愚蠢，但我们稍后会添加更多案例，然后它会更有意义。当我们解析函数声明时，我们将其传入。</p>
+<pre><code class="language-java">    define(stmt.name);
+
+    resolveFunction(stmt, FunctionType.FUNCTION);
+    return null;
+// lox/Resolver.java, in visitFunctionStmt(), replace 1 line
+</code></pre>
+<p>在<code>resolveFunction()</code>中，我们在解析正文之前获取该参数并将其存储在字段中。</p>
+<pre><code class="language-java">  private void resolveFunction(
+      Stmt.Function function, FunctionType type) {
+    FunctionType enclosingFunction = currentFunction;
+    currentFunction = type;
+
+    beginScope();
+// lox/Resolver.java, method resolveFunction(), replace 1 line
+</code></pre>
+<p>我们首先将字段的先前值存储在局部变量中。请记住，Lox 具有局部函数，因此您可以任意深度地嵌套函数声明。我们不仅需要跟踪我们在一个函数中，还需要跟踪我们在<em>多少</em>个函数中。</p>
+<p>我们可以为此使用 FunctionType 值的显式堆栈，但我们将搭载在 JVM 上。我们将先前的值存储在 Java 堆栈的本地中。当我们完成解析函数体时，我们将字段恢复为该值。</p>
+<pre><code class="language-java">    endScope();
+    currentFunction = enclosingFunction;
+  }
+// lox/Resolver.java, in resolveFunction()
+</code></pre>
+<p>现在我们总是可以判断我们是否在函数声明中，我们在解析<code>return</code>语句时检查它。</p>
+<pre><code class="language-java">  public Void visitReturnStmt(Stmt.Return stmt) {
+    if (currentFunction == FunctionType.NONE) {
+      Lox.error(stmt.keyword, &quot;Can't return from top-level code.&quot;);
+    }
+
+    if (stmt.value != null) {
+// lox/Resolver.java, in visitReturnStmt()
+</code></pre>
+<p>整洁，对吧？</p>
+<p>还有一点小问题。回到将所有内容拼接在一起的主 Lox 类，如果遇到任何解析错误，我们会小心不要运行解释器。该检查在解析器<em>之前</em>运行，这样我们就不会尝试解析语法无效的代码。</p>
+<p>但是如果有解析错误我们也需要跳过解释器，所以我们添加<em>另一个</em>检查。</p>
+<pre><code class="language-java">    resolver.resolve(statements);
+
+    // Stop if there was a resolution error.
+    if (hadError) return;
+
+    interpreter.interpret(statements);
+// lox/Lox.java, in run()
+</code></pre>
+<p>您可以想象在这里进行许多其他分析。例如，如果我们向 Lox 添加<code>break</code>语句，可能希望确保它们仅在循环内部使用。</p>
+<p>我们可以走得更远，为不一定是<em>错误</em>但可能没有用的代码报告警告。例如，如果您在<code>return</code>语句后有无法访问的代码，或者其值从未被读取的局部变量，许多 IDE 会发出警告。所有这些都可以很容易地添加到我们的静态访问遍历中，或者作为单独的遍历过程。</p>
+<blockquote>
+<p>很难选择将多少种不同的分析集中到一次遍历中。许多小的隔离遍历，每个都有自己的职责，更易于实施和维护。但是，遍历语法树本身会产生实际的运行时成本，因此将多个分析捆绑到一个过程中通常会更快。</p>
+</blockquote>
+<p>但是，就目前而言，我们将坚持进行有限的分析。重要的是修复了一个奇怪的烦人的边缘错误案例，尽管花费这么多工作可能会令人惊讶。</p>
+<hr />
+<h2 id="_2"><a href="http://craftinginterpreters.com/resolving-and-binding.html#challenges">挑战</a></h2>
+<ol>
+<li>
+<p>当其他变量必须等到它们被初始化之后才能使用时，为什么急切地定义绑定到函数名称的变量是安全的？</p>
+</li>
+<li>
+<p>您知道的其他语言如何处理在其初始化程序中引用相同名称的局部变量，例如：</p>
+</li>
+</ol>
+<p><code>js
+   var a = "outer";
+   {
+     var a = a;
+   }</code></p>
+<p>是运行时错误吗？编译错误？允许吗？他们对待全局变量的方式不同吗？你同意他们的选择吗？证明你的答案。</p>
+<ol>
+<li>
+<p>如果从未使用局部变量，则扩展解析器以报告错误。</p>
+</li>
+<li>
+<p>我们的解析器计算<em>在哪个</em>环境中找到变量，但它仍然在该映射中按名称查找。更有效的环境表示将局部变量存储在数组中并按索引查找它们。</p>
+</li>
+</ol>
+<p>扩展解析器，为范围内声明的每个局部变量关联一个唯一索引。在解析变量访问时，查找变量所在的范围及其索引并存储它。在解释器中，使用它通过索引快速访问变量，而不是使用映射。</p>
+                
+              
+              
+<script src="https://giscus.app/client.js" data-repo="PKUFlyingPig/cs-self-learning" data-repo-id="R_kgDOGP67ng"
+    data-category="Announcements" data-category-id="DIC_kwDOGP67ns4COM9Q" data-mapping="title"
+    data-reactions-enabled="1" data-emit-metadata="0" data-input-position="top" data-theme="light_protanopia"
+    data-lang="zh-CN" data-loading="lazy" crossorigin="anonymous" async>
+</script>
+
+<script>
+    var palette = __get("__palette")
+    if (palette && typeof palette.color === "object") {
+        if (palette.color.scheme === "slate") {
+            const giscus = document.querySelector("script[src*=giscus]")
+            giscus.setAttribute("data-theme", "dark_protanopia")
+        }
+    }
+
+    document.addEventListener("DOMContentLoaded", function () {
+        const ref = document.querySelector("[data-md-component=palette]")
+        ref.addEventListener("change", function () {
+            var palette = __get("__palette")
+            if (palette && typeof palette.color === "object") {
+                const theme = palette.color.scheme === "slate" ? "dark_protanopia" : "light_protanopia"
+                const frame = document.querySelector(".giscus-frame")
+                frame.contentWindow.postMessage({
+                    giscus: { setConfig: { theme } }
+                }, "https://giscus.app")
+            }
+        })
+    })
+</script>
+
+            </article>
+          </div>
+        </div>
+        
+          <a href="#" class="md-top md-icon" data-md-component="top" data-md-state="hidden">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"/></svg>
+            Back to top
+          </a>
+        
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href="../../2_10.Functions/Functions/" class="md-footer__link md-footer__link--prev" aria-label="上一页: 2.10.Functions" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                上一页
+              </span>
+              2.10.Functions
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../../2_12.Classes/Classes/" class="md-footer__link md-footer__link--next" aria-label="下一页: 2.12.Classes" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                下一页
+              </span>
+              2.12.Classes
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        
+          Made with
+          <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+            Material for MkDocs
+          </a>
+        
+        
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["header.autohide", "navigation.tracking", "navigation.top", "search.highlight", "search.share", "search.suggest", "content.code.annotate"], "search": "../../../assets/javascripts/workers/search.fcfe8b6d.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\uff0c\\u3002]+", "search.placeholder": "\u641c\u7d22", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.b1047164.min.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+      
+    
+  </body>
+</html>

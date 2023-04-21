@@ -1,0 +1,1917 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-7.3.6">
+    
+    
+      
+        <title>3.23.Jumping Back and Forth - doc-zh</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.a57b2b03.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.3f5d1f46.min.css">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font-family:"Roboto";--md-code-font-family:"Roboto Mono"}</style>
+      
+    
+    
+    
+    
+      
+
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="light-blue" data-md-color-accent="deep-purple">
+  
+    
+    <script>function __prefix(e){return new URL("../../..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+    
+      <script>var palette=__get("__palette");if(null!==palette&&"object"==typeof palette.color)for(var key in palette.color)document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="doc-zh" class="md-header__button md-logo" aria-label="doc-zh" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            doc-zh
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              3.23.Jumping Back and Forth
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="light-blue" data-md-color-accent="deep-purple"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+          
+            <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5c-.84 0-1.65.15-2.39.42L12 2M3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29L3.34 7m.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14L3.36 17M20.65 7l-1.77 3.79a7.023 7.023 0 0 0-2.38-4.15l4.15.36m-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29L20.64 17M12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44L12 22z"/></svg>
+            </label>
+          
+        
+          
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="cyan" data-md-color-accent="deep-purple"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
+          
+            <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3 3.19.09m3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95 2.06.05m-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31z"/></svg>
+            </label>
+          
+        
+      </form>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7 0-.24-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91 1.61 0 2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08z"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        
+<a href="https://github.com/Misaka-9982-coder/doc-zh" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    doc-zh
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="doc-zh" class="md-nav__button md-logo" aria-label="doc-zh" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    doc-zh
+  </label>
+  
+    <div class="md-nav__source">
+      
+<a href="https://github.com/Misaka-9982-coder/doc-zh" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    doc-zh
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1" type="checkbox" id="__nav_1" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_1">
+          xv6-book
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="xv6-book" data-md-level="1">
+        <label class="md-nav__title" for="__nav_1">
+          <span class="md-nav__icon md-icon"></span>
+          xv6-book
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../S081/0.%20%E5%89%8D%E8%A8%80%E5%92%8C%E8%87%B4%E8%B0%A2/" class="md-nav__link">
+        0. 前言和致谢
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../S081/1.%20%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E6%8E%A5%E5%8F%A3/" class="md-nav__link">
+        1. 操作系统接口
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../S081/2.%20%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84/" class="md-nav__link">
+        2. 操作系统架构
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../S081/3.%20%E9%A1%B5%E8%A1%A8/" class="md-nav__link">
+        3. 页表
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../S081/4.%20trap%20%E4%B8%8E%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8/" class="md-nav__link">
+        4. trap 与系统调用
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../S081/5.%20%E4%B8%AD%E6%96%AD%E5%92%8C%E8%AE%BE%E5%A4%87%E9%A9%B1%E5%8A%A8%E7%A8%8B%E5%BA%8F/" class="md-nav__link">
+        5. 中断和设备驱动程序
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../S081/6.%20%E9%94%81/" class="md-nav__link">
+        6. 锁
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../S081/7.%20%E8%B0%83%E5%BA%A6/" class="md-nav__link">
+        7. 调度
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../S081/8.%20%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/" class="md-nav__link">
+        8. 文件系统
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../S081/9.%20%E5%86%8D%E6%AC%A1%E6%8E%A2%E8%AE%A8%E5%B9%B6%E5%8F%91%E6%80%A7/" class="md-nav__link">
+        9. 再次探讨并发性
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2">
+          craftinginterpreters
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="craftinginterpreters" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          craftinginterpreters
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../0_00.contents/contents/" class="md-nav__link">
+        0.00.contents
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../0_01.acknowledgements/acknowledgements/" class="md-nav__link">
+        0.01.acknowledgements
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1_00.Welcome/Welcome/" class="md-nav__link">
+        一、WELCOME
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1_01.Introduction/Introduction/" class="md-nav__link">
+        1.01.Introduction
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1_02.A%20Map%20of%20the%20Territory/A%20Map%20of%20the%20Territory/" class="md-nav__link">
+        1.02.A Map of the Territory
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1_03.The%20Lox%20Language/The%20Lox%20Language/" class="md-nav__link">
+        1.03.The Lox Language
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2_00.A%20TREE-WALK%20INTERPRETER/A%20TREE-WALK%20INTERPRETER/" class="md-nav__link">
+        二、A TREE-WALK INTERPRETER
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2_04.Scanning/Scanning/" class="md-nav__link">
+        2.04.Scanning
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2_05.Representing%20Code/Representing%20Code/" class="md-nav__link">
+        2.05.Representing Code
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2_06.Parsing%20Expressions/Parsing%20Expressions/" class="md-nav__link">
+        2.06.Parsing Expressions
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2_07.Evaluating%20Expressions/Evaluating%20Expressions/" class="md-nav__link">
+        2.07.Evaluating Expressions
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2_08.Statements%20and%20State/Statements%20and%20State/" class="md-nav__link">
+        2.08.Statements and State
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2_09.Control%20Flow/Control%20Flow/" class="md-nav__link">
+        2.09.Control Flow
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2_10.Functions/Functions/" class="md-nav__link">
+        2.10.Functions
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2_11.Resolving%20and%20Binding/Resolving%20and%20Binding/" class="md-nav__link">
+        2.11.Resolving and Binding
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2_12.Classes/Classes/" class="md-nav__link">
+        2.12.Classes
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2_13.Inheritance/Inheritance/" class="md-nav__link">
+        2.13.Inheritance
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3_00.A%20BYTECODE%20VIRTUAL%20MACHINE/A%20BYTECODE%20VIRTUAL%20MACHINE/" class="md-nav__link">
+        三、A BYTECODE VIRTUAL MACHINE
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3_14.Chunks%20of%20Bytecode/Chunks%20of%20Bytecode/" class="md-nav__link">
+        3.14.Chunks of Bytecode
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3_15.A%20Virtual%20Machine/A%20Virtual%20Machine/" class="md-nav__link">
+        3.15.A Virtual Machine
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3_16.Scanning%20on%20Demand/Scanning%20on%20Demand/" class="md-nav__link">
+        3.16.Scanning on Demand
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3_17.Compiling%20Expressions/Compiling%20Expressions/" class="md-nav__link">
+        3.17.Compiling Expressions
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3_18.Types%20of%20Values/Types%20of%20Values/" class="md-nav__link">
+        3.18.Types of Values
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3_19.Strings/Strings/" class="md-nav__link">
+        3.19.Strings
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3_20.Hash%20Tables/Hash%20Tables/" class="md-nav__link">
+        3.20.Hash Tables
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3_21.Global%20Variables/Global%20Variables/" class="md-nav__link">
+        3.21.Global Variables
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3_22.Local%20Variables/Local%20Variables/" class="md-nav__link">
+        3.22.Local Variables
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          3.23.Jumping Back and Forth
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        3.23.Jumping Back and Forth
+      </a>
+      
+        
+
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#231-if" class="md-nav__link">
+    23.1 if语句
+  </a>
+  
+    <nav class="md-nav" aria-label="23.1 if语句">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#2311-else" class="md-nav__link">
+    23.1.1 Else子句
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#232" class="md-nav__link">
+    23.2 逻辑运算符
+  </a>
+  
+    <nav class="md-nav" aria-label="23.2 逻辑运算符">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#2321-or" class="md-nav__link">
+    23.2.1 or运算符
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#233-while" class="md-nav__link">
+    23.3 while语句
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#234-for" class="md-nav__link">
+    23.4 for 语句
+  </a>
+  
+    <nav class="md-nav" aria-label="23.4 for 语句">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#2341-for" class="md-nav__link">
+    23.4.1 for初始化子句
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2342-for" class="md-nav__link">
+    23.4.2 for 条件子句
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2343-for" class="md-nav__link">
+    23.4.3 for 自增子句
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    挑战
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#goto" class="md-nav__link">
+    设计说明：思考GOTO的坏处
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3_24.Calls%20and%20Functions/Calls%20and%20Functions/" class="md-nav__link">
+        3.24.Calls and Functions
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3_25.Closures/Closures/" class="md-nav__link">
+        3.25.Closures
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3_26.Garbage%20Collection/Garbage%20Collection/" class="md-nav__link">
+        3.26.Garbage Collection
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3_27.Classes%20and%20Instances/Classes%20and%20Instances/" class="md-nav__link">
+        3.27.Classes and Instances
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3_28.Methods%20and%20Initializers/Methods%20and%20Initializers/" class="md-nav__link">
+        3.28.Methods and Initializers
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3_29.Superclasses/Superclasses/" class="md-nav__link">
+        3.29.Superclasses
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3_30.Optimization/Optimization/" class="md-nav__link">
+        3.30.Optimization
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../4_01.A1.Appendix%20I%20Lox%20Grammar/A1.Appendix%20I%20Lox%20Grammar/" class="md-nav__link">
+        A1.Appendix I Lox Grammar
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../4_02.A2.Appendix%20II%20Generated%20Syntax%20Tree%20Classes/A2.Appendix%20II%20Generated%20Syntax%20Tree%20Classes/" class="md-nav__link">
+        A2.Appendix II Generated Syntax Tree Classes
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#231-if" class="md-nav__link">
+    23.1 if语句
+  </a>
+  
+    <nav class="md-nav" aria-label="23.1 if语句">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#2311-else" class="md-nav__link">
+    23.1.1 Else子句
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#232" class="md-nav__link">
+    23.2 逻辑运算符
+  </a>
+  
+    <nav class="md-nav" aria-label="23.2 逻辑运算符">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#2321-or" class="md-nav__link">
+    23.2.1 or运算符
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#233-while" class="md-nav__link">
+    23.3 while语句
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#234-for" class="md-nav__link">
+    23.4 for 语句
+  </a>
+  
+    <nav class="md-nav" aria-label="23.4 for 语句">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#2341-for" class="md-nav__link">
+    23.4.1 for初始化子句
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2342-for" class="md-nav__link">
+    23.4.2 for 条件子句
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2343-for" class="md-nav__link">
+    23.4.3 for 自增子句
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    挑战
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#goto" class="md-nav__link">
+    设计说明：思考GOTO的坏处
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/Misaka-9982-coder/doc-zh/edit/master/docs/craftinginterpreters/3_23.Jumping Back and Forth/Jumping Back and Forth.md" title="编辑此页" class="md-content__button md-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
+                  </a>
+                
+                
+                <h1 id="_1">跳转控制</h1>
+<blockquote>
+<p>我们头脑想象的规矩就像一张网，或者像一张梯子，是为了达到某种目的而建造的。但是后来你必须把梯子扔掉，因为你发现，即使它有用，也没有意义。</p>
+<p>-- Umberto Eco,<em>The Name of the Rose</em></p>
+</blockquote>
+<p>到达这里需要一段时间，但我们终于准备好将控制流添加到虚拟机。在我们为 jlox 构建的树遍历解释器中，我们根据 Java 实现了 Lox 的控制流。为了执行 Lox<code>if</code>语句，我们使用了 Java<code>if</code>语句来运行选定的分支。这行得通，但并不完全令人满意。<em>JVM 本身</em>或本机 CPU是通过什么魔法实现<code>if</code>语句的？现在我们有了自己的字节码 VM 可以破解，我们可以回答这个问题。</p>
+<p>当谈论“控制流”时，指的是什么？“流程flow”是指执行时移动通过程序文本的方式。几乎就像计算机内部有一个小机器人在代码中徘徊，到处执行点点滴滴。Flow 是机器人所走的路径，通过<em>控制</em>机器人，可以驱动它执行哪些代码。</p>
+<p>在 jlox 中，机器的关注点——当前的代码点——是隐含的，基于 存储在各种 Java 变量中哪些 AST 节点以及正在运行的 Java 代码。在 clox 中，它更加明确。VM 的<code>ip</code>字段存储当前字节码指令的地址。该字段的值恰好是程序中的“我们所在的位置”。</p>
+<p>执行时通过递增<code>ip</code>。但是可以随心所欲地改变那个变量。为了实现控制流，所有必要的就是以更有趣的方式改变<code>ip</code>。最简单的控制流结构是一个<code>if</code>但没有<code>else</code>子句的语句：</p>
+<pre><code class="language-c">if (condition) print(&quot;condition was truthy&quot;);
+</code></pre>
+<p>VM 计算条件表达式的字节码。如果结果为真，则它继续执行<code>print</code>主体中的语句。有趣的情况是条件为假时。当发生这种情况时，执行将跳过 then 分支并继续执行下一条语句。</p>
+<p>要跳过一段代码，我们只需将该<code>ip</code>字段设置为该代码之后的字节码指令的地址。要有条件地跳过某些代码，我们需要一条指令来查看堆栈顶部的值。如果它是假的，它会添加给定的偏移量以<code>ip</code>跳过一系列指令。否则，它什么都不做，让执行照常进行到下一条指令。</p>
+<p>当我们编译成字节码时，代码的显式嵌套块结构消失了，只留下一系列扁平的指令。Lox 是一种<a href="https://en.wikipedia.org/wiki/Structured_programming">结构化编程</a>语言，但 clox 字节码不是。正确或错误，取决于你如何看待它——一组字节码指令可以跳到一个块的中间，或者从一个范围跳到另一个范围。</p>
+<p>VM 会愉快地执行它，即使结果使堆栈处于未知的、不一致的状态。因此，即使字节码是非结构化的，我们也会注意确保编译器只生成保持与 Lox 本身相同的结构和嵌套的干净代码。</p>
+<p>这正是真实 CPU 的行为方式。即使我们可能使用结构化控制流的高级语言对它们进行编程，编译器也会将其降低为原始跳转。在底层，事实证明 goto 是唯一真正的控制流。</p>
+<p>不管怎样，我并不是要搞哲学。重要的一点是，如果我们有一个条件跳转指令，只要它没有<code>else</code>子句，就足以实现 Lox 的 <code>if</code>语句。因此，让我们继续并开始吧。</p>
+<h2 id="231-if">23.1 if语句</h2>
+<p>这么多章节了，你已经知道套路了。任何新功能都从前端开始，并通过管道发挥作用。一个<code>if</code>语句，嗯，一个语句，所以这是我们将它挂接到解析器的地方。</p>
+<pre><code class="language-c">  if (match(TOKEN_PRINT)) {
+    printStatement();
+  } else if (match(TOKEN_IF)) {
+    ifStatement();
+  } else if (match(TOKEN_LEFT_BRACE)) {
+// compiler.c, in statement()
+</code></pre>
+<p>当我们看到一个<code>if</code>关键字时，我们将编译交给这个函数：</p>
+<pre><code class="language-c">static void ifStatement() {
+  consume(TOKEN_LEFT_PAREN, &quot;Expect '(' after 'if'.&quot;);
+  expression();
+  consume(TOKEN_RIGHT_PAREN, &quot;Expect ')' after condition.&quot;); 
+
+  int thenJump = emitJump(OP_JUMP_IF_FALSE);
+  statement();
+
+  patchJump(thenJump);
+}
+// compiler.c, add after expressionStatement()
+</code></pre>
+<blockquote>
+<p>你有没有注意到关键字<code>if</code>之后的<code>(</code>实际上没有做任何有用的事情？如果没有它，该语言将同样明确且易于解析，例如：</p>
+<p><code>c
+if condition) print("looks weird");</code></p>
+<p>关闭的<code>)</code>很有用，因为它将条件表达式与正文分开。有些语言使用<code>then</code>关键字代替。但是开始的<code>(</code>并没有做任何事情。它仅在那里，因为不匹配的括号对我们人类来说看起来很糟糕。</p>
+</blockquote>
+<p>首先编译条件表达式，用圆括号括起来。在运行时，这会将条件值留在堆栈顶部。将使用它来确定是执行 then 分支还是跳过它。</p>
+<p>然后我们发出一条新<code>OP_JUMP_IF_FALSE</code>指令。它有一个操作数，表示要偏移多少<code>ip</code>——要跳过多少字节的代码。如果条件为假，它会<code>ip</code>按该数量调整。是这样的：</p>
+<blockquote>
+<p>此处带有撕裂边缘的框表示通过编译控制流构造的某些子句生成的字节码块。所以“条件表达式”框是我们编译该表达式时发出的所有指令。</p>
+</blockquote>
+<p><img alt="" src="../assets/7ede8290ab3f72fd450cc162d288598d49d12bfc.png" /></p>
+<p>但是有一个问题。当我们写<code>OP_JUMP_IF_FALSE</code>指令的操作数时，怎么知道要跳多远？还没有编译 then 分支，所以不知道它包含多少字节码。</p>
+<p>为了解决这个问题，使用了一个经典的技巧，叫做<strong>backpatching</strong>。首先使用占位符代替操作数发出跳转指令偏移。跟踪那条完成了一半的指令会跳转到哪里。接下来，编译 then 主体。一旦完成，现在就知道要跳多远。所以回去用真正的偏移量替换占位符偏移量，因为我们可以计算它了。有点像将补丁缝到已编译代码的现有结构上。</p>
+<p><img alt="" src="../assets/257d80a13ea1c217c9a2c41ba01540da6b9302f2.png" /></p>
+<p>我们将这个技巧编码为两个辅助函数。</p>
+<pre><code class="language-c">static int emitJump(uint8_t instruction) {
+  emitByte(instruction);
+  emitByte(0xff);
+  emitByte(0xff);
+  return currentChunk()-&gt;count - 2;
+}
+// compiler.c, add after emitBytes()
+</code></pre>
+<p>第一个发出操作码指令并为跳转偏移写入一个占位符操作数。我们将操作码作为参数传入，因为稍后将有两个不同的指令使用这个辅组函数。使用两个字节作为跳转偏移操作数。16 位偏移量让我们可以跳过多达 65,535 字节的代码，这应该足以满足我们的需要。</p>
+<blockquote>
+<p>一些指令集有单独的“长”跳转指令，当您需要跳转更远的距离时，这些指令需要更大的操作数。</p>
+</blockquote>
+<p>该函数返回块中发出的指令的偏移量。编译 then 分支后，获取该偏移量并将其传给此：</p>
+<pre><code class="language-c">static void patchJump(int offset) {
+  // -2 to adjust for the bytecode for the jump offset itself.
+  int jump = currentChunk()-&gt;count - offset - 2;
+
+  if (jump &gt; UINT16_MAX) {
+    error(&quot;Too much code to jump over.&quot;);
+  }
+
+  currentChunk()-&gt;code[offset] = (jump &gt;&gt; 8) &amp; 0xff;
+  currentChunk()-&gt;code[offset + 1] = jump &amp; 0xff;
+}
+// compiler.c, add after emitConstant()
+</code></pre>
+<p>这将返回到字节码，并用计算出的跳转偏移量替换给定位置的操作数。在发出下一条希望跳转的指令之前立即调用<code>patchJump()</code>，因此它使用当前字节码计数来确定跳转多远。在<code>if</code>语句的情况下，这意味着在编译 then 分支之后和编译下一个语句之前。</p>
+<p>这就是我们在编译时所需要的。让我们定义新指令。</p>
+<pre><code class="language-c">  OP_PRINT,
+  OP_JUMP_IF_FALSE,
+  OP_RETURN,
+// chunk.h, in enum OpCode
+</code></pre>
+<p>在 VM 中，我们让它像这样工作：</p>
+<pre><code class="language-c">        break;
+      }
+      case OP_JUMP_IF_FALSE: {
+        uint16_t offset = READ_SHORT();
+        if (isFalsey(peek(0))) vm.ip += offset;
+        break;
+      }
+      case OP_RETURN: {
+// vm.c, in run()
+</code></pre>
+<p>这是添加的第一条采用 16 位操作数的指令。为了从块中读取它，我们使用了一个新的宏。</p>
+<pre><code class="language-c">#define READ_CONSTANT() (vm.chunk-&gt;constants.values[READ_BYTE()])
+#define READ_SHORT() \
+    (vm.ip += 2, (uint16_t)((vm.ip[-2] &lt;&lt; 8) | vm.ip[-1]))
+#define READ_STRING() AS_STRING(READ_CONSTANT())
+// vm.c, in run()
+</code></pre>
+<p>它从块中抽出接下来的两个字节，并从中构建一个 16 位无符号整数。像往常一样，在用完后取消定义。</p>
+<pre><code class="language-c">#undef READ_BYTE
+#undef READ_SHORT
+#undef READ_CONSTANT
+// vm.c, in run()
+</code></pre>
+<p>读取偏移量后，我们检查栈顶部的条件值。如果它是假的，我们将这个跳跃偏移应用到<code>ip</code>.否则，我们不理<code>ip</code>会，执行将自动进行到跳转指令之后的下一条指令。</p>
+<p>在条件为假的情况下，不需要做任何其他工作。我们已经偏移了<code>ip</code>，因此当外部指令调度循环再次转动时，它将在该新指令处开始执行，经过 then 分支中的所有代码。</p>
+<blockquote>
+<p>我说了不会用C的<code>if</code>语句来实现Lox的控制流，但是这里确实用了一个来判断是否偏移指令指针。但我们并没有真正使用 C 来<em>控制流程</em>。如果我们愿意，我们可以纯算术地做同样的事情。假设我们有一个函数<code>falsey()</code>，它接受一个 Lox 值，如果它为假则返回 1，否则返回 0。然后我们可以像这样实现跳转指令：</p>
+<p><code>c
+case OP_JUMP_IF_FALSE: {
+  uint16_t offset = READ_SHORT();
+  vm.ip += falsey() * offset;
+  break;
+}</code></p>
+<p>该<code>falsey()</code>函数可能会使用一些控制流来处理不同的值类型，但这是该函数的实现细节，不会影响我们的 VM 如何执行自己的控制流。</p>
+</blockquote>
+<p>请注意，跳转指令不会将条件值弹出堆栈。所以这里还没有完全完成，因为这会在堆栈上留下一个额外的值。我们很快就会把它清理干净。暂时忽略这一点，现在在 Lox 中确实有一个可以工作的<code>if</code>语句，只需要一条小指令即可在 VM 运行时支持它。</p>
+<h3 id="2311-else">23.1.1 Else子句</h3>
+<p><code>if</code>语句没有<code>else</code>子句支持就像没有 Gomez 的 Morticia Addams。所以，在编译 then 分支之后，寻找一个<code>else</code>关键字。如果找到一个，则编译 else 分支。</p>
+<pre><code class="language-c">  patchJump(thenJump);
+
+  if (match(TOKEN_ELSE)) statement();
+}
+// compiler.c, in ifStatement()
+</code></pre>
+<p>当条件为假时，将跳过 then 分支。如果有 else 分支，<code>ip</code>则正好在else 的开始。但这还不够。这是导致的流程：</p>
+<p><img alt="" src="../assets/be3b37dc2ebbf40dad60d1adfb28320d1fd77629.png" /></p>
+<p>如果条件为真，将按照需要执行 then 分支。但在那之后，执行将直接进入 else 分支。哎呀！当条件为真时，我们运行 then 分支后，需要跳过 else 分支。这样，无论哪种情况，我们都只执行一个分支，如下所示：</p>
+<p><img alt="" src="../assets/5b22e69ca3ab0033fdcc2995739ef9db1dfe22da.png" /></p>
+<p>为了实现它，我们需要从 then 分支的末尾再次跳转。</p>
+<pre><code class="language-c">  statement();
+
+  int elseJump = emitJump(OP_JUMP);
+
+  patchJump(thenJump);
+// compiler.c, in ifStatement()
+</code></pre>
+<p>我们在 else 主体结束后修补该偏移量。</p>
+<pre><code class="language-c">  if (match(TOKEN_ELSE)) statement();
+  patchJump(elseJump);
+}
+// compiler.c, in ifStatement()
+</code></pre>
+<p>执行完 then 分支后，这会跳转到 else 分支之后的下一条语句。与其他跳跃不同，此跳跃是无条件的。我们总是接受它，所以需要另一条指令来表达这一点。</p>
+<pre><code class="language-c">  OP_PRINT,
+  OP_JUMP,
+  OP_JUMP_IF_FALSE,
+// chunk.h, in enum OpCode
+</code></pre>
+<p>我们这样解释：</p>
+<pre><code class="language-c">        break;
+      }
+      case OP_JUMP: {
+        uint16_t offset = READ_SHORT();
+        vm.ip += offset;
+        break;
+      }
+      case OP_JUMP_IF_FALSE: {
+// vm.c, in run()
+</code></pre>
+<p>这里没什么好奇怪的——唯一的区别是它不检查条件并且总是应用偏移量。</p>
+<p>现在then 和 else 分支都可以工作了，我们又完成了一点。最后一点是清理留在堆栈中的条件值。请记住，每条语句都必须具有零堆栈效应——语句执行完毕后，堆栈应与之前一样高。</p>
+<p>我们可以让<code>OP_JUMP_IF_FALSE</code>指令弹出条件本身，但后边将会在 不希望pop的 条件的逻辑运算符中使用相同的指令。所以，我们会让编译器在编译<code>if</code>语句时发出几条明确的<code>OP_POP</code>指令。需要注意通过生成代码的每个执行路径都要弹出条件。</p>
+<p>当条件为真时，我们就在 then 分支内的代码之前弹出它。</p>
+<pre><code class="language-c">  int thenJump = emitJump(OP_JUMP_IF_FALSE);
+  emitByte(OP_POP);
+  statement();
+// compiler.c, in ifStatement()
+</code></pre>
+<p>否则，我们将它弹出到 else 分支的开头。</p>
+<pre><code class="language-c">  patchJump(thenJump);
+  emitByte(OP_POP);
+
+  if (match(TOKEN_ELSE)) statement();
+// compiler.c, in ifStatement() 
+</code></pre>
+<p>这里的这条小指令还意味着每个<code>if</code>语句都有一个隐含的 else 分支，即使用户没有编写<code>else</code>子句。在他们离开的情况下，所有分支所做的就是丢弃条件值。</p>
+<p>完整的正确流程如下所示：</p>
+<p><img alt="" src="../assets/c0330ba49c00dfc6ea01cbc8074fa44832f5253f.png" /></p>
+<p>如果仔细查看，您会发现它始终执行单个分支并确保首先弹出条件。剩下的就是一点反汇编支持。</p>
+<pre><code class="language-c">      return simpleInstruction(&quot;OP_PRINT&quot;, offset);
+    case OP_JUMP:
+      return jumpInstruction(&quot;OP_JUMP&quot;, 1, chunk, offset);
+    case OP_JUMP_IF_FALSE:
+      return jumpInstruction(&quot;OP_JUMP_IF_FALSE&quot;, 1, chunk, offset);
+    case OP_RETURN:
+// debug.c, in disassembleInstruction()
+</code></pre>
+<p>这两条指令有一个 16 位操作数的新格式，因此我们添加了一个新的实用函数来反汇编它们。</p>
+<pre><code class="language-c">static int jumpInstruction(const char* name, int sign,
+                           Chunk* chunk, int offset) {
+  uint16_t jump = (uint16_t)(chunk-&gt;code[offset + 1] &lt;&lt; 8);
+  jump |= chunk-&gt;code[offset + 2];
+  printf(&quot;%-16s %4d -&gt; %d\n&quot;, name, offset,
+         offset + 3 + sign * jump);
+  return offset + 3;
+}
+// debug.c, add after byteInstruction()
+</code></pre>
+<p>好了，这是一个完整的控制流结构。如果这是一部 80 年代的电影，蒙太奇音乐就会开始，其余的控制流语法就会自行处理。l嗯，80 年代早已结束，所以我们必须自己努力。</p>
+<blockquote>
+<p>尽管我对 Depeche Mode 有着持久的热爱。</p>
+</blockquote>
+<h2 id="232">23.2 逻辑运算符</h2>
+<p>您可能还记得 jlox 中的这一点，但逻辑运算符<code>and</code>和<code>or</code>不仅仅是另一对二元运算符，例如<code>+</code>and<code>-</code>。因为它们短路并且可能不会根据左侧操作数的值来计算右侧操作数，所以它们更像是控制流表达式。</p>
+<p>它们基本上是<code>if</code>带有<code>else</code>子句的一些变体。解释它们的最简单方法是只向您展示编译器代码及其在生成的字节码中产生的控制流。从 <code>and</code>开始，我们将其挂接到这里的表达式解析表中：</p>
+<pre><code class="language-c">  [TOKEN_NUMBER]        = {number,   NULL,   PREC_NONE},
+  [TOKEN_AND]           = {NULL,     and_,   PREC_AND},
+  [TOKEN_CLASS]         = {NULL,     NULL,   PREC_NONE},
+// compiler.c, replace 1 line
+</code></pre>
+<p>这将交给一个新的解析器函数。</p>
+<pre><code class="language-c">static void and_(bool canAssign) {
+  int endJump = emitJump(OP_JUMP_IF_FALSE);
+
+  emitByte(OP_POP);
+  parsePrecedence(PREC_AND);
+
+  patchJump(endJump);
+}
+// compiler.c, add after defineVariable()
+</code></pre>
+<p>在这被调用时，左边的表达式已经被编译。这意味着在运行时，它的值将位于堆栈的顶部。如果那个值是假的，那么就知道整个表达式<code>and</code>一定是假的，所以我们跳过右边的操作数，把左边的值作为整个表达式的结果。否则，丢弃左边的值并计算右边的操作数，它成为整个<code>and</code>表达式的结果。</p>
+<p>那四行代码就是这样产生的。流程如下所示：</p>
+<p><img alt="" src="../assets/c8f33bc2d27701e6d1c42e2256d817aa120e7fd2.png" /></p>
+<p>现在您可以了解为什么<code>OP_JUMP_IF_FALSE</code>将值保留在堆栈顶部。当<code>and</code>的左侧为假时，该值会保留下来成为整个表达式的结果。</p>
+<blockquote>
+<p>我们的操作码范围内还有足够的空间，所以可以为隐式弹出和不弹出的条件跳转提供单独的指令。但我试图让这本书的东西最少。在您的字节码 VM 中，值得探索添加更多专用指令并查看它们如何影响性能。</p>
+</blockquote>
+<h3 id="2321-or">23.2.1 or运算符</h3>
+<p><code>or</code>运算符稍微复杂一些。首先我们将它添加到解析表中。</p>
+<pre><code class="language-c">  [TOKEN_NIL]           = {literal,  NULL,   PREC_NONE},
+  [TOKEN_OR]            = {NULL,     or_,    PREC_OR},
+  [TOKEN_PRINT]         = {NULL,     NULL,   PREC_NONE},
+// compiler.c, replace 1 line
+</code></pre>
+<p>当该解析器使用一个中缀<code>or</code> token时，它调用这个：</p>
+<pre><code class="language-c">static void or_(bool canAssign) {
+  int elseJump = emitJump(OP_JUMP_IF_FALSE);
+  int endJump = emitJump(OP_JUMP);
+
+  patchJump(elseJump);
+  emitByte(OP_POP);
+
+  parsePrecedence(PREC_OR);
+  patchJump(endJump);
+}
+// compiler.c, add after number()
+</code></pre>
+<p>在<code>or</code>表达式中，如果左侧为<em>真</em>，则我们跳过右侧操作数。因此，需要在值为真时跳转。我们可以添加一个单独的指令，但只是为了展示编译器如何自由地将语言的语义映射到它想要的任何指令序列，我根据我们已有的跳转指令来实现它。</p>
+<p>当左侧为 false 时，它会略微跳到下一个语句。该语句是无条件地跳过正确操作数的代码。当值为 truthy 时，这个小舞蹈有效地跳了起来。流程如下所示：</p>
+<p><img alt="" src="../assets/ba4c46d6023bb519ad5f0dc98363e2cc871ed7c0.png" /></p>
+<p>老实说，这不是最好的方法。需要更多的指令要执行和更多的开销。没有充分的理由证明为什么<code>or</code>应该比<code>and</code>. 但很有趣的是，可以在不添加任何新指令的情况下实现这两个运算符。原谅我的放纵。</p>
+<p>好的，这就是 Lox 中的三个<em>分支</em>结构。也就是说，我的意思是，这些控制流功能只会跳过代码。其他语言通常有某种多路分支语句，比如<code>switch</code>，也许还有条件表达式<code>?:</code>，但 Lox 保持简单。</p>
+<h2 id="233-while">23.3 while语句</h2>
+<p>这将我们带到<em>循环</em>语句，它<em>向后</em>跳转以便使代码可以多次执行。Lox 只有两个循环结构，<code>while</code>和<code>for</code>. <code>while</code>循环更简单，所以我们从这里开始</p>
+<pre><code class="language-c">    ifStatement();
+  } else if (match(TOKEN_WHILE)) {
+    whileStatement();
+  } else if (match(TOKEN_LEFT_BRACE)) {
+// compiler.c, in statement()
+</code></pre>
+<p>当我们到达一个<code>while</code>  token时，我们调用：</p>
+<pre><code class="language-c">static void whileStatement() {
+  consume(TOKEN_LEFT_PAREN, &quot;Expect '(' after 'while'.&quot;);
+  expression();
+  consume(TOKEN_RIGHT_PAREN, &quot;Expect ')' after condition.&quot;);
+
+  int exitJump = emitJump(OP_JUMP_IF_FALSE);
+  emitByte(OP_POP);
+  statement();
+
+  patchJump(exitJump);
+  emitByte(OP_POP);
+}
+// compiler.c, add after printStatement()
+</code></pre>
+<p>基本上和<code>if</code>语句一样——编译条件表达式，用强制性括号括起来。紧接着是一条跳转指令，如果条件为假，则跳过后续的主体语句。</p>
+<p>在编译主体后修补跳转，并注意从任一路径的堆栈中弹出条件值。与<code>if</code>语句的唯一区别是循环。看起来像这样：</p>
+<blockquote>
+<p>真的开始怀疑我对逻辑运算符使用相同跳转指令的决定。</p>
+</blockquote>
+<pre><code class="language-c">  statement();
+  emitLoop(loopStart);
+
+  patchJump(exitJump);
+// compiler.c, in whileStatement()
+</code></pre>
+<p>在主体之后，我们调用此函数来发出“loop”指令。该指令需要知道跳回多远。向前跳时，必须分两个阶段发出指令，因为在发出跳转指令之前不知道要跳多远。我们现在没有那个问题。我们已经编译了我们想要跳回的代码点——它就在条件表达式之前。</p>
+<p>我们需要做的就是在编译时捕获该位置。</p>
+<pre><code class="language-c">static void whileStatement() {
+  int loopStart = currentChunk()-&gt;count;
+  consume(TOKEN_LEFT_PAREN, &quot;Expect '(' after 'while'.&quot;);
+// compiler.c, in whileStatement()
+</code></pre>
+<p>执行<code>while</code>循环体后，我们一直跳回到条件之前。这样，在每次迭代时重新评估条件表达式。将块的当前指令计数存储在字节码中，<code>loopStart</code>以记录我们即将编译的条件表达式之前的字节码偏移量。然后将它传递给这个辅助函数：</p>
+<pre><code class="language-c">static void emitLoop(int loopStart) {
+  emitByte(OP_LOOP);
+
+  int offset = currentChunk()-&gt;count - loopStart + 2;
+  if (offset &gt; UINT16_MAX) error(&quot;Loop body too large.&quot;);
+
+  emitByte((offset &gt;&gt; 8) &amp; 0xff);
+  emitByte(offset &amp; 0xff);
+}
+// compiler.c, add after emitBytes()
+</code></pre>
+<p>有点像<code>emitJump()</code>和<code>patchJump()</code>的结合。它发出一个新的循环指令，该指令无条件地<em>向后</em>跳转给定的偏移量。像跳转指令一样，之后我们有一个 16 位操作数。计算从当前所在的指令到<code>loopStart</code>想要跳回的点的偏移量。这<code>+ 2</code>是为了考虑到<code>OP_LOOP</code> ，我们也需要跳过的指令自身操作数的大小。</p>
+<p>从 VM 的角度来看，<code>OP_LOOP</code>和<code>OP_JUMP</code>之间确实没有语义差异。两者都只是向<code>ip</code>增加偏移. 我们可以为两者使用一条指令，并给它一个带符号的偏移量操作数。但我认为避开手动将带符号的 16 位整数打包成两个字节所需的烦人的操作要容易一些，而且我们有可用的操作码空间，那么为什么不使用它呢？</p>
+<p>新指令在这里：</p>
+<pre><code class="language-c">  OP_JUMP_IF_FALSE,
+  OP_LOOP,
+  OP_RETURN,
+// chunk.h, in enum OpCode
+</code></pre>
+<p>在虚拟机中，我们这样实现：</p>
+<pre><code class="language-c">      }
+      case OP_LOOP: {
+        uint16_t offset = READ_SHORT();
+        vm.ip -= offset;
+        break;
+      }
+      case OP_RETURN: {
+// vm.c, in run()
+</code></pre>
+<p>唯一的区别<code>OP_JUMP</code>是减法而不是加法。反汇编也类似。</p>
+<pre><code class="language-c">      return jumpInstruction(&quot;OP_JUMP_IF_FALSE&quot;, 1, chunk, offset);
+    case OP_LOOP:
+      return jumpInstruction(&quot;OP_LOOP&quot;, -1, chunk, offset);
+    case OP_RETURN:
+// debug.c, in disassembleInstruction()
+</code></pre>
+<p>这是我们的<code>while</code>语句。它包含两个跳转-一个有条件的向前跳转，当条件不满足时跳出循环，以及一个无条件的向后循环，在执行完主体之后。流程如下所示：</p>
+<p><img alt="" src="../assets/d13ee3c70e31db5cb1ca93add0eeac5ca2b6a78b.png" /></p>
+<h2 id="234-for">23.4 for 语句</h2>
+<p>Lox 中的另一个循环语句是古老的<code>for</code>循环，它继承自 C。与<code>while</code>循环相比，它有更多的功能。它包含三个子句，所有子句都是可选的：</p>
+<ul>
+<li>
+<p>初始值设定项可以是变量声明或表达式。它在语句的开头运行一次。</p>
+</li>
+<li>
+<p>条件子句是一个表达式。就像在<code>while</code>循环中一样，当它的计算结果为错误时，我们退出循环。</p>
+</li>
+<li>
+<p>增量表达式在每次循环迭代结束时运行一次。</p>
+</li>
+</ul>
+<blockquote>
+<p>如果您想复习一下，第二部分中的相应章节<a href="http://craftinginterpreters.com/control-flow.html#for-loops">将更详细地介绍</a>语义。</p>
+</blockquote>
+<p>在 jlox 中，解析器将<code>for</code>循环脱糖为<code>while</code>循环之前和主体末尾添加一些额外的内容 的组合AST。我们将做类似的事情，尽管不会像 AST 那样经历任何事情。相反，字节码编译器将使用已有的跳转和循环指令。</p>
+<p>我们将逐步完成实现，从<code>for</code>关键字开始</p>
+<pre><code class="language-c">    printStatement();
+  } else if (match(TOKEN_FOR)) {
+    forStatement();
+  } else if (match(TOKEN_IF)) {
+// compiler.c, in statement()
+</code></pre>
+<p>它调用辅助函数。如果我们只支持<code>for</code>带有空子句的循环<code>for (;;)</code>，那么我们可以这样实现它：</p>
+<pre><code class="language-c">static void forStatement() {
+  consume(TOKEN_LEFT_PAREN, &quot;Expect '(' after 'for'.&quot;);
+  consume(TOKEN_SEMICOLON, &quot;Expect ';'.&quot;);
+
+  int loopStart = currentChunk()-&gt;count;
+  consume(TOKEN_SEMICOLON, &quot;Expect ';'.&quot;);
+  consume(TOKEN_RIGHT_PAREN, &quot;Expect ')' after for clauses.&quot;);
+
+  statement();
+  emitLoop(loopStart);
+}
+// compiler.c, add after expressionStatement()
+</code></pre>
+<p>顶部有一堆强制性标点符号。然后我们编译主体。就像我们对<code>while</code>循环所做的那样，我们在主体的顶部记录字节码偏移量，并发出一个循环以跳回到它之后的那个点。现在已经有了无限循环的工作实现。</p>
+<blockquote>
+<p>如果没有<code>return</code>语句，除了运行时错误之外没有任何方法可以终止它。</p>
+</blockquote>
+<h3 id="2341-for">23.4.1 for初始化子句</h3>
+<p>现在我们将添加第一个子句，初始化器。它只在主体之前执行一次，因此编译很简单。</p>
+<pre><code class="language-c">  consume(TOKEN_LEFT_PAREN, &quot;Expect '(' after 'for'.&quot;);
+  if (match(TOKEN_SEMICOLON)) {
+    // No initializer.
+  } else if (match(TOKEN_VAR)) {
+    varDeclaration();
+  } else {
+    expressionStatement();
+  }
+
+  int loopStart = currentChunk()-&gt;count;
+// compiler.c, in forStatement(), replace 1 line
+</code></pre>
+<p>语法有点复杂，因为我们允许变量声明或表达式。使用<code>var</code>关键字的存在来判断有哪些。对于表达式情况，我们调用<code>expressionStatement()</code>代替<code>expression()</code>。它寻找一个分号，在这里也需要它，并且还发出一条<code>OP_POP</code>指令来丢弃该值。我们不希望初始化器在堆栈上留下任何东西。</p>
+<p>如果一条<code>for</code>语句声明了一个变量，那么该变量的作用域应该是循环体。我们通过将整个语句包装在一个作用域内来确保这一点。</p>
+<pre><code class="language-c">static void forStatement() {
+  beginScope();
+  consume(TOKEN_LEFT_PAREN, &quot;Expect '(' after 'for'.&quot;);
+// compiler.c, in forStatement()
+</code></pre>
+<p>然后我们在最后关闭它。</p>
+<pre><code class="language-c">  emitLoop(loopStart);
+  endScope();
+}
+// compiler.c, in forStatement()
+</code></pre>
+<h3 id="2342-for">23.4.2 for 条件子句</h3>
+<p>接下来，是可用于退出循环的条件表达式。</p>
+<pre><code class="language-c">  int loopStart = currentChunk()-&gt;count;
+  int exitJump = -1;
+  if (!match(TOKEN_SEMICOLON)) {
+    expression();
+    consume(TOKEN_SEMICOLON, &quot;Expect ';' after loop condition.&quot;);
+
+    // Jump out of the loop if the condition is false.
+    exitJump = emitJump(OP_JUMP_IF_FALSE);
+    emitByte(OP_POP); // Condition.
+  }
+
+  consume(TOKEN_RIGHT_PAREN, &quot;Expect ')' after for clauses.&quot;);
+// compiler.c, in forStatement(), replace 1 line
+</code></pre>
+<p>由于该子句是可选的，我们需要查看它是否实际存在。如果该子句被省略，下一个token必须是分号，所以我们寻找它来说明。如果没有分号，则必须有一个条件表达式。</p>
+<p>在那种情况下，我们编译它。然后，就像 while 一样，如果条件为假，会发出一个退出循环的条件跳转。由于跳转将值留在堆栈上，我们在执行主体之前将其弹出。这确保我们在条件为真时丢弃该值。</p>
+<p>在循环体之后，我们需要修补那个跳转。</p>
+<pre><code class="language-c">  emitLoop(loopStart);
+
+  if (exitJump != -1) {
+    patchJump(exitJump);
+    emitByte(OP_POP); // Condition.
+  }
+
+  endScope();
+}
+// compiler.c, in forStatement()
+</code></pre>
+<p>我们仅在有条件子句时才这样做。如果没有，则不会跳转到补丁，堆栈上也不会弹出任何条件值。</p>
+<h3 id="2343-for">23.4.3 for 自增子句</h3>
+<p>我把最好的留到最后，自增子句。这很复杂。它以文本形式出现在循环体之前，但在循环体之后执行。如果我们解析为 AST 并在单独的一趟遍历中生成代码，我们可以简单地遍历并编译<code>for</code>语句 AST 的 body 字段之前的 increment 子句。</p>
+<p>不幸的是，我们不能稍后increment子句，因为编译器只对代码进行一次遍历。作为代替，我们将<em>跳过</em>增量，运行主体，跳<em>回到</em>增量，运行它，然后转到下一个迭代。</p>
+<p>我知道，有点奇怪，但是，嘿，它胜过在 C 中手动管理内存中的 AST，对吧？这是代码：</p>
+<pre><code class="language-c">  }
+
+  if (!match(TOKEN_RIGHT_PAREN)) {
+    int bodyJump = emitJump(OP_JUMP);
+    int incrementStart = currentChunk()-&gt;count;
+    expression();
+    emitByte(OP_POP);
+    consume(TOKEN_RIGHT_PAREN, &quot;Expect ')' after for clauses.&quot;);
+
+    emitLoop(loopStart);
+    loopStart = incrementStart;
+    patchJump(bodyJump);
+  }
+
+  statement();
+// compiler.c, in forStatement(), replace 1 line
+</code></pre>
+<p>同样，它是可选的。由于这是最后一个子句，因此省略时，下一个标记将是右括号。当存在增量时，现在需要编译它，但它不应该执行。因此，首先，我们发出一个无条件跳转，从increment子句的代码跳到循环体。</p>
+<p>接下来，我们编译increment表达式本身。这通常是一个赋值。不管它是什么，我们只是为了它的副作用而执行它，所以我们也发出一个 pop 来丢弃它的值。</p>
+<p>最后一部分有点棘手。首先，发出一个循环指令。这是将我们带回到<code>for</code>循环顶部的主循环——如果有的话，就在条件表达式之前。该循环紧接在increment之后发生，因为increment在每次循环迭代结束时执行。</p>
+<p>然后我们更改<code>loopStart</code>为指向increment表达式开始的偏移量。稍后，当我们在主体语句之后发出循环指令时，这将导致它跳到increment表达式而不是像没有increment时那样跳到循环顶部。这就是我们如何把increment织入在循环体之后。</p>
+<p>这很复杂，但一切都解决了。包含所有子句的完整循环编译成这样的流程：</p>
+<p><img alt="" src="../assets/efa92873fb775ef4ba7b70210c1864bc2e84d6bf.png" /></p>
+<p>与在 jlox 中实现<code>for</code>循环一样，我们不需要接触运行时。这一切都被编译为 VM 已经支持的原始控制流操作。在本章中，我们向前迈进了一大步——clox现在是图灵完备的。我们还介绍了相当多的新语法：三个语句和两个表达式形式。即便如此，也只用了三个简单的新指令。对于我们的 VM 架构来说，这是一个相当不错的努力回报率。</p>
+<blockquote>
+<p>我无法抗拒双关语。我一点儿都不后悔。</p>
+</blockquote>
+<hr />
+<h2 id="_2"><a href="http://craftinginterpreters.com/jumping-back-and-forth.html#challenges">挑战</a></h2>
+<ol>
+<li>除了<code>if</code>语句之外，大多数 C 系列语言都有多路<code>switch</code>语句。将一个添加到 clox。语法是：</li>
+</ol>
+<p><code>switchStmt     → "switch" "(" expression ")"
+                    "{" switchCase* defaultCase? "}" ;
+   switchCase     → "case" expression ":" statement* ;
+   defaultCase    → "default" ":" statement* ;</code></p>
+<p>要执行一条<code>switch</code>语句，首先计算括号内的switch表达式。然后执行case。对于每种情况，评估其值表达式。如果 case 值等于 switch 值，则执行 case 下的语句，然后退出<code>switch</code>语句。否则，尝试下一个case。如果没有 case 匹配并且有一个<code>default</code>子句，则执行它的语句。</p>
+<p>为了让事情更简单，我们省略了 失败 和<code>break</code>语句。每个 case 在其语句完成后自动跳转到 switch 语句的末尾。</p>
+<ol>
+<li>在 jlox 中，我们面临着添加对<code>break</code>语句的支持的挑战。这一次，让我们做<code>continue</code>：</li>
+</ol>
+<p><code>continueStmt   → "continue" ";" ;</code></p>
+<p><code>continue</code>语句直接跳转到最近的封闭循环的顶部，跳过循环体的其余部分。在<code>for</code>循环内<code>continue</code>，如果有的话，<code>continue</code> 跳转到增量子句。没有包含在循环中的语句是编译时错误。</p>
+<p>一定要考虑范围。执行<code>continue</code> 时，在循环体内或嵌套在循环内的块中声明的局部变量应该如何处理？</p>
+<ol>
+<li>自 Algol 68 以来，控制流结构基本没有变化。从那时起，语言的演化一直集中在使代码更具声明性和更高级别，因此命令式控制流没有得到太多关注。</li>
+</ol>
+<p>为了好玩，尝试为 Lox 发明一种有用的新颖控制流功能。它可以是现有形式的改进或全新的东西。在实践中，很难在这种低表达水平上想出足够有用的东西来抵消强迫用户学习不熟悉的符号和行为的成本，但这是练习设计技能的好机会。</p>
+<h2 id="goto"><a href="http://craftinginterpreters.com/jumping-back-and-forth.html#design-note">设计说明：思考GOTO的坏处 </a></h2>
+<p>发现我们在 Lox 中所有漂亮的结构化控制流实际上被编译为原始的非结构化跳跃，就像史酷比中怪物撕下面具的那一刻。一直都是goto！除了在这种情况下，怪物<em>在</em>面具下。我们都知道 goto 是邪恶的。但是...为什么？</p>
+<p>确实，您可以使用 goto 编写难以维护的代码。但我认为今天的大多数程序员都没有亲眼见过。这种风格已经很久没有流行了。如今，我们在篝火旁的恐怖故事中援引的是布吉人。</p>
+<p>我们很少亲自面对这个怪物的原因是因为 Edsger Dijkstra 用他发表在<em>ACM 通讯</em>（1968 年 3 月）上的著名信件“Go To Statement Considered Harmful”杀死了它。一段时间以来，围绕结构化编程的争论一直很激烈，双方的拥护者都在争论，但我认为 Dijkstra 最值得称赞的是有效地结束了它。今天的大多数新语言都没有非结构化的跳转语句。</p>
+<p>一封半页的信几乎单枪匹马地破坏了语言功能，这一定是非常令人印象深刻的东西。如果你还没有读过它，我鼓励你去读一读。这是计算机科学知识的开创性作品，是我们部落的祖传歌曲之一。此外，这是阅读学术 CS写作的一个很好的简短练习，这是一项很有用的技能。</p>
+<p>也就是说，如果你能克服 Dijkstra 令人难以忍受的假谦虚、自我夸大的写作风格：</p>
+<blockquote>
+<p>最近我发现了为什么使用 go to 语句会产生如此灾难性的后果。...当时我并没有太重视这个发现；我现在提交我的出版考虑，因为在最近出现该主题的讨论中，有人敦促我这样做。</p>
+</blockquote>
+<p>啊，又是我众多发现中的一个。在喧闹的群众求我之前，我什至懒得写。</p>
+<p>我已经通读了很多遍，还有一些批评、回应和评论。我充其量只是百感交集。在一个非常高的水平上，我和他在一起。他的一般论点是这样的：</p>
+<ol>
+<li>
+<p>作为程序员，我们编写程序——静态文本——但我们关心的是实际运行的程序——它的动态行为。</p>
+</li>
+<li>
+<p>我们更擅长推理静态事物而不是动态事物。（他没有提供任何证据来支持这一说法，但我接受了。）</p>
+</li>
+<li>
+<p>因此，我们越能使程序的动态执行反映其文本结构越好。</p>
+</li>
+</ol>
+<p>这是一个好的开始。将我们的注意力吸引到我们编写的代码与机器内部运行的代码之间的分离是一个有趣的见解。然后他试图定义程序文本和执行之间的“对应关系”。对于一个在整个职业生涯中都在提倡更严格的编程的人来说，他的定义相当随意。他说：</p>
+<blockquote>
+<p>现在让我们考虑如何表征过程的进展。（你可以非常具体地思考这个问题：假设一个过程，被认为是一个时间连续的动作，在一个任意动作之后停止，我们必须修复什么数据才能重做这个过程，直到非常相同的点？）</p>
+</blockquote>
+<p>想象一下吧。你有两台计算机，在完全相同的输入上运行相同的程序——完全确定。您可以在执行过程中的任意点暂停其中之一。您需要向另一台计算机发送什么数据才能使其与第一台计算机一样准确地停止？</p>
+<p>如果你的程序只允许像赋值这样的简单语句，那很容易。你只需要知道你执行的最后一条语句之后的点。基本上是一个断点，<code>ip</code>在我们的 VM 中，或错误消息中的行号。像这样添加分支控制流<code>if</code>并且<code>switch</code>不会再添加任何内容。即使标记指向分支内部，我们仍然可以知道我们在哪里。</p>
+<p>添加函数调用后，您还需要更多东西。您可以在某个函数执行过程中暂停第一台计算机，但可能会从多个位置调用该函数。<em>要在整个程序</em>执行的同一点暂停第二台机器，您需要在<em>正确</em>调用该函数时暂停它。</p>
+<p>因此，您不仅需要知道当前语句，而且对于尚未返回的函数调用，您还需要知道调用点的位置。换句话说，一个调用堆栈，虽然我不认为 Dijkstra 写这个的时候存在这个术语。绝妙的。</p>
+<p>他指出循环使事情变得更难。如果你在循环体的中间暂停，你不知道已经运行了多少次迭代。所以他说你还需要保持迭代计数。而且，由于循环可以嵌套，因此您需要一堆这些（可能与调用堆栈指针交错，因为您也可以在外部调用中循环）。</p>
+<p>这就是它变得奇怪的地方。所以我们现在真的在构建一些东西，你希望他解释 goto 如何打破所有这些。相反，他只是说：</p>
+<blockquote>
+<p>随意使用 go to 语句的直接后果是，很难找到一组有意义的坐标来描述流程进度。</p>
+</blockquote>
+<p>他没有证明这很难，也没有说明原因。他只是说了算。他确实说一种方法不能令人满意：</p>
+<blockquote>
+<p>当然，使用 go to 语句仍然可以通过计数器来唯一地描述进度，该计数器计算自程序启动以来执行的操作数（即一种标准化时钟）。困难在于，这样的坐标虽然独一无二，但却毫无帮助。</p>
+</blockquote>
+<p>但是...这实际上就是循环计数器所做的，他对这些很好。并不是说每个循环都是简单的“对于从 0 到 10 的每个整数”递增计数。许多是<code>while</code>具有复杂条件的循环。</p>
+<p>举一个比较接近的例子，考虑 clox 核心的核心字节码执行循环。Dijkstra 认为该循环是易于处理的，因为我们可以简单地计算循环运行了多少次来推断其进度。但是对于某些用户编译的 Lox 程序中的每条执行指令，该循环都会运行一次。知道它执行了 6,201 条字节码指令真的能告诉我们 VM 维护者关于解释器状态的<em>任何</em>启发吗？</p>
+<p>事实上，这个特殊的例子指向一个更深层次的真理。B?hm 和 Jacopini<a href="https://en.wikipedia.org/wiki/Structured_program_theorem">证明</a>，<em>任何</em>使用 goto 的控制流都可以转换为仅使用排序、循环和分支的控制流。我们的字节码解释器循环是该证明的一个活生生的例子：它实现了 clox 字节码指令集的非结构化控制流，而不使用任何 gotos 本身。</p>
+<p>这似乎反驳了 Dijkstra 的主张：您<em>可以</em>通过将 goto 转换为不使用 goto 的程序来为程序定义对应关系，然后使用该程序的对应关系，根据他的说法，这是可以接受的，因为它仅使用分支和循环。</p>
+<p>但是，老实说，我在这里的论点也很薄弱。我认为我们俩基本上都是在做假数学，并使用假逻辑来进行本应是经验主义的、以人为本的论证。Dijkstra 是对的，一些使用 goto 的代码真的很糟糕。通过使用结构化控制流，其中大部分可以而且应该变成更清晰的代码。</p>
+<p>通过从语言中完全消除 goto，您绝对可以避免使用 goto 编写错误的代码。迫使用户使用结构化控制流并使使用这些结构编写类似 goto 的代码成为一场艰苦的战斗可能是我们所有生产力的净胜利。</p>
+<p>但有时我确实想知道我们是否把婴儿连同洗澡水一起倒掉了。在没有 goto 的情况下，我们经常求助于更复杂的结构化模式。“循环内的开关”是一个经典的例子。另一个是使用保护变量退出一系列嵌套循环：</p>
+<pre><code class="language-c">// See if the matrix contains a zero.
+bool found = false;
+for (int x = 0; x &lt; xSize; x++) {
+  for (int y = 0; y &lt; ySize; y++) {
+    for (int z = 0; z &lt; zSize; z++) {
+      if (matrix[x][y][z] == 0) {
+        printf(&quot;found&quot;);
+        found = true;
+        break;
+      }
+    }
+    if (found) break;
+  }
+  if (found) break;
+}
+</code></pre>
+<p>这真的比下边的好：</p>
+<pre><code class="language-c">for (int x = 0; x &lt; xSize; x++) {
+  for (int y = 0; y &lt; ySize; y++) {
+    for (int z = 0; z &lt; zSize; z++) {
+      if (matrix[x][y][z] == 0) {
+        printf(&quot;found&quot;);
+        goto done;
+      }
+    }
+  }
+}
+done:
+</code></pre>
+<blockquote>
+<p>您可以通过在每个循环的条件子句的开头插入来在没有<code>break</code>语句的情况下执行此操作——它们本身是一个有限的 goto-ish 结构。<code>!found &amp;&amp;</code></p>
+</blockquote>
+<p>我想我真正不喜欢的是我们今天基于恐惧做出语言设计和工程决策。今天很少有人对 goto 的问题和好处有任何微妙的了解。相反，我们只是认为它“被认为是有害的”。就个人而言，我从来没有发现教条是高质量创造性工作的良好起点。</p>
+                
+              
+              
+<script src="https://giscus.app/client.js" data-repo="PKUFlyingPig/cs-self-learning" data-repo-id="R_kgDOGP67ng"
+    data-category="Announcements" data-category-id="DIC_kwDOGP67ns4COM9Q" data-mapping="title"
+    data-reactions-enabled="1" data-emit-metadata="0" data-input-position="top" data-theme="light_protanopia"
+    data-lang="zh-CN" data-loading="lazy" crossorigin="anonymous" async>
+</script>
+
+<script>
+    var palette = __get("__palette")
+    if (palette && typeof palette.color === "object") {
+        if (palette.color.scheme === "slate") {
+            const giscus = document.querySelector("script[src*=giscus]")
+            giscus.setAttribute("data-theme", "dark_protanopia")
+        }
+    }
+
+    document.addEventListener("DOMContentLoaded", function () {
+        const ref = document.querySelector("[data-md-component=palette]")
+        ref.addEventListener("change", function () {
+            var palette = __get("__palette")
+            if (palette && typeof palette.color === "object") {
+                const theme = palette.color.scheme === "slate" ? "dark_protanopia" : "light_protanopia"
+                const frame = document.querySelector(".giscus-frame")
+                frame.contentWindow.postMessage({
+                    giscus: { setConfig: { theme } }
+                }, "https://giscus.app")
+            }
+        })
+    })
+</script>
+
+            </article>
+          </div>
+        </div>
+        
+          <a href="#" class="md-top md-icon" data-md-component="top" data-md-state="hidden">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"/></svg>
+            Back to top
+          </a>
+        
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href="../../3_22.Local%20Variables/Local%20Variables/" class="md-footer__link md-footer__link--prev" aria-label="上一页: 3.22.Local Variables" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                上一页
+              </span>
+              3.22.Local Variables
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../../3_24.Calls%20and%20Functions/Calls%20and%20Functions/" class="md-footer__link md-footer__link--next" aria-label="下一页: 3.24.Calls and Functions" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                下一页
+              </span>
+              3.24.Calls and Functions
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        
+          Made with
+          <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+            Material for MkDocs
+          </a>
+        
+        
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["header.autohide", "navigation.tracking", "navigation.top", "search.highlight", "search.share", "search.suggest", "content.code.annotate"], "search": "../../../assets/javascripts/workers/search.fcfe8b6d.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\uff0c\\u3002]+", "search.placeholder": "\u641c\u7d22", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.b1047164.min.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+      
+    
+  </body>
+</html>

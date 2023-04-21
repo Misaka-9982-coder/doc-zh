@@ -1,0 +1,1526 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-7.3.6">
+    
+    
+      
+        <title>8. 文件系统 - doc-zh</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.a57b2b03.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.3f5d1f46.min.css">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font-family:"Roboto";--md-code-font-family:"Roboto Mono"}</style>
+      
+    
+    
+    
+    
+      
+
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="light-blue" data-md-color-accent="deep-purple">
+  
+    
+    <script>function __prefix(e){return new URL("../..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+    
+      <script>var palette=__get("__palette");if(null!==palette&&"object"==typeof palette.color)for(var key in palette.color)document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#8" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="doc-zh" class="md-header__button md-logo" aria-label="doc-zh" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            doc-zh
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              8. 文件系统
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="light-blue" data-md-color-accent="deep-purple"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+          
+            <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5c-.84 0-1.65.15-2.39.42L12 2M3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29L3.34 7m.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14L3.36 17M20.65 7l-1.77 3.79a7.023 7.023 0 0 0-2.38-4.15l4.15.36m-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29L20.64 17M12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44L12 22z"/></svg>
+            </label>
+          
+        
+          
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="cyan" data-md-color-accent="deep-purple"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
+          
+            <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3 3.19.09m3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95 2.06.05m-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31z"/></svg>
+            </label>
+          
+        
+      </form>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7 0-.24-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91 1.61 0 2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08z"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        
+<a href="https://github.com/Misaka-9982-coder/doc-zh" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    doc-zh
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="doc-zh" class="md-nav__button md-logo" aria-label="doc-zh" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    doc-zh
+  </label>
+  
+    <div class="md-nav__source">
+      
+<a href="https://github.com/Misaka-9982-coder/doc-zh" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    doc-zh
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1" type="checkbox" id="__nav_1" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_1">
+          xv6-book
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="xv6-book" data-md-level="1">
+        <label class="md-nav__title" for="__nav_1">
+          <span class="md-nav__icon md-icon"></span>
+          xv6-book
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../0.%20%E5%89%8D%E8%A8%80%E5%92%8C%E8%87%B4%E8%B0%A2/" class="md-nav__link">
+        0. 前言和致谢
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1.%20%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E6%8E%A5%E5%8F%A3/" class="md-nav__link">
+        1. 操作系统接口
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2.%20%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84/" class="md-nav__link">
+        2. 操作系统架构
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3.%20%E9%A1%B5%E8%A1%A8/" class="md-nav__link">
+        3. 页表
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../4.%20trap%20%E4%B8%8E%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8/" class="md-nav__link">
+        4. trap 与系统调用
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5.%20%E4%B8%AD%E6%96%AD%E5%92%8C%E8%AE%BE%E5%A4%87%E9%A9%B1%E5%8A%A8%E7%A8%8B%E5%BA%8F/" class="md-nav__link">
+        5. 中断和设备驱动程序
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../6.%20%E9%94%81/" class="md-nav__link">
+        6. 锁
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../7.%20%E8%B0%83%E5%BA%A6/" class="md-nav__link">
+        7. 调度
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          8. 文件系统
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        8. 文件系统
+      </a>
+      
+        
+
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    概述
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    缓冲区缓存层
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    代码：缓冲区缓存
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    日志层
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    日志设计
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    代码：日志
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    代码：块分配器
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#inode" class="md-nav__link">
+    Inode 层
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#inodes" class="md-nav__link">
+    代码：Inodes
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#inode_1" class="md-nav__link">
+    代码：Inode 内容
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    代码：目录层
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    代码：路径名
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    文件描述符层
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    代码：系统调用
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    现实世界
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../9.%20%E5%86%8D%E6%AC%A1%E6%8E%A2%E8%AE%A8%E5%B9%B6%E5%8F%91%E6%80%A7/" class="md-nav__link">
+        9. 再次探讨并发性
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2">
+          craftinginterpreters
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="craftinginterpreters" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          craftinginterpreters
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../craftinginterpreters/0_00.contents/contents/" class="md-nav__link">
+        0.00.contents
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../craftinginterpreters/0_01.acknowledgements/acknowledgements/" class="md-nav__link">
+        0.01.acknowledgements
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../craftinginterpreters/1_00.Welcome/Welcome/" class="md-nav__link">
+        一、WELCOME
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../craftinginterpreters/1_01.Introduction/Introduction/" class="md-nav__link">
+        1.01.Introduction
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../craftinginterpreters/1_02.A%20Map%20of%20the%20Territory/A%20Map%20of%20the%20Territory/" class="md-nav__link">
+        1.02.A Map of the Territory
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../craftinginterpreters/1_03.The%20Lox%20Language/The%20Lox%20Language/" class="md-nav__link">
+        1.03.The Lox Language
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../craftinginterpreters/2_00.A%20TREE-WALK%20INTERPRETER/A%20TREE-WALK%20INTERPRETER/" class="md-nav__link">
+        二、A TREE-WALK INTERPRETER
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../craftinginterpreters/2_04.Scanning/Scanning/" class="md-nav__link">
+        2.04.Scanning
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../craftinginterpreters/2_05.Representing%20Code/Representing%20Code/" class="md-nav__link">
+        2.05.Representing Code
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../craftinginterpreters/2_06.Parsing%20Expressions/Parsing%20Expressions/" class="md-nav__link">
+        2.06.Parsing Expressions
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../craftinginterpreters/2_07.Evaluating%20Expressions/Evaluating%20Expressions/" class="md-nav__link">
+        2.07.Evaluating Expressions
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../craftinginterpreters/2_08.Statements%20and%20State/Statements%20and%20State/" class="md-nav__link">
+        2.08.Statements and State
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../craftinginterpreters/2_09.Control%20Flow/Control%20Flow/" class="md-nav__link">
+        2.09.Control Flow
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../craftinginterpreters/2_10.Functions/Functions/" class="md-nav__link">
+        2.10.Functions
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../craftinginterpreters/2_11.Resolving%20and%20Binding/Resolving%20and%20Binding/" class="md-nav__link">
+        2.11.Resolving and Binding
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../craftinginterpreters/2_12.Classes/Classes/" class="md-nav__link">
+        2.12.Classes
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../craftinginterpreters/2_13.Inheritance/Inheritance/" class="md-nav__link">
+        2.13.Inheritance
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../craftinginterpreters/3_00.A%20BYTECODE%20VIRTUAL%20MACHINE/A%20BYTECODE%20VIRTUAL%20MACHINE/" class="md-nav__link">
+        三、A BYTECODE VIRTUAL MACHINE
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../craftinginterpreters/3_14.Chunks%20of%20Bytecode/Chunks%20of%20Bytecode/" class="md-nav__link">
+        3.14.Chunks of Bytecode
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../craftinginterpreters/3_15.A%20Virtual%20Machine/A%20Virtual%20Machine/" class="md-nav__link">
+        3.15.A Virtual Machine
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../craftinginterpreters/3_16.Scanning%20on%20Demand/Scanning%20on%20Demand/" class="md-nav__link">
+        3.16.Scanning on Demand
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../craftinginterpreters/3_17.Compiling%20Expressions/Compiling%20Expressions/" class="md-nav__link">
+        3.17.Compiling Expressions
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../craftinginterpreters/3_18.Types%20of%20Values/Types%20of%20Values/" class="md-nav__link">
+        3.18.Types of Values
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../craftinginterpreters/3_19.Strings/Strings/" class="md-nav__link">
+        3.19.Strings
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../craftinginterpreters/3_20.Hash%20Tables/Hash%20Tables/" class="md-nav__link">
+        3.20.Hash Tables
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../craftinginterpreters/3_21.Global%20Variables/Global%20Variables/" class="md-nav__link">
+        3.21.Global Variables
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../craftinginterpreters/3_22.Local%20Variables/Local%20Variables/" class="md-nav__link">
+        3.22.Local Variables
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../craftinginterpreters/3_23.Jumping%20Back%20and%20Forth/Jumping%20Back%20and%20Forth/" class="md-nav__link">
+        3.23.Jumping Back and Forth
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../craftinginterpreters/3_24.Calls%20and%20Functions/Calls%20and%20Functions/" class="md-nav__link">
+        3.24.Calls and Functions
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../craftinginterpreters/3_25.Closures/Closures/" class="md-nav__link">
+        3.25.Closures
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../craftinginterpreters/3_26.Garbage%20Collection/Garbage%20Collection/" class="md-nav__link">
+        3.26.Garbage Collection
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../craftinginterpreters/3_27.Classes%20and%20Instances/Classes%20and%20Instances/" class="md-nav__link">
+        3.27.Classes and Instances
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../craftinginterpreters/3_28.Methods%20and%20Initializers/Methods%20and%20Initializers/" class="md-nav__link">
+        3.28.Methods and Initializers
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../craftinginterpreters/3_29.Superclasses/Superclasses/" class="md-nav__link">
+        3.29.Superclasses
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../craftinginterpreters/3_30.Optimization/Optimization/" class="md-nav__link">
+        3.30.Optimization
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../craftinginterpreters/4_01.A1.Appendix%20I%20Lox%20Grammar/A1.Appendix%20I%20Lox%20Grammar/" class="md-nav__link">
+        A1.Appendix I Lox Grammar
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../craftinginterpreters/4_02.A2.Appendix%20II%20Generated%20Syntax%20Tree%20Classes/A2.Appendix%20II%20Generated%20Syntax%20Tree%20Classes/" class="md-nav__link">
+        A2.Appendix II Generated Syntax Tree Classes
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    概述
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    缓冲区缓存层
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    代码：缓冲区缓存
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    日志层
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    日志设计
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    代码：日志
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    代码：块分配器
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#inode" class="md-nav__link">
+    Inode 层
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#inodes" class="md-nav__link">
+    代码：Inodes
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#inode_1" class="md-nav__link">
+    代码：Inode 内容
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    代码：目录层
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    代码：路径名
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    文件描述符层
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    代码：系统调用
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    现实世界
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/Misaka-9982-coder/doc-zh/edit/master/docs/S081/8. 文件系统.md" title="编辑此页" class="md-content__button md-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
+                  </a>
+                
+                
+                <h1 id="8">8. 文件系统</h1>
+<p>文件系统的目的是组织和存储数据。文件系统通常支持在用户和应用程序之间共享数据，以及 <strong>持久性</strong>，以便在重新启动后数据仍然可用。</p>
+<p>xv6 文件系统提供类 Unix 的文件、目录和路径名（参见第 1 章），并将其数据存储在虚拟磁盘上以实现持久性。文件系统解决了以下几个挑战：</p>
+<ul>
+<li>文件系统需要磁盘上的数据结构来表示命名目录和文件的树，记录保存每个文件内容的块的身份，以及记录磁盘上哪些区域是空闲的。</li>
+<li>文件系统必须支持<strong>崩溃恢复</strong> (<em>crash recovery</em>)。也就是说，如果发生崩溃（例如，电源故障），文件系统在重新启动后仍然必须正常工作。风险在于崩溃可能会中断一系列更新并使磁盘上的数据结构不一致（例如，一个既用于文件又标记为空闲的块）。</li>
+<li>不同的进程可能同时在文件系统上操作，因此文件系统代码必须协同工作以维护不变量。</li>
+<li>访问磁盘比访问内存慢几个数量级，因此文件系统必须维护一个热门块的内存缓存。</li>
+</ul>
+<p>本章其余部分将解释 xv6 是如何应对这些挑战的。</p>
+<h2 id="_1">概述</h2>
+<p>xv6 文件系统的实现分为七层，如图 8.1 所示。磁盘层在虚拟硬盘上读写块。缓冲区缓存层缓存磁盘块并同步对它们的访问，确保一次只有一个内核进程可以修改存储在任何特定块中的数据。日志层允许更高层将对几个块的更新包装在一个 <strong>事务</strong> (<em>transaction</em>)中，并确保在崩溃时这些块以原子方式更新（即，全部更新或全部不更新）。inode 层提供单个文件，每个文件表示为一个具有唯一编号的 <strong>inode</strong> 和一些保存文件数据的块。目录层将每个目录实现为一种特殊类型的 inode，其内容是一系列目录条目，每个目录条目包含文件的名称和 i-number。路径名层提供类似于 <code>/usr/rtm/xv6/fs.c</code> 的分层路径名，并使用递归查找对它们进行解析。文件描述符层使用文件系统接口抽象许多 Unix 资源（例如，管道、设备、文件等），简化了应用程序编写者的工作。</p>
+<table>
+<thead>
+<tr>
+<th>文件描述符（File descriptor）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>路径名（Pathname）</td>
+</tr>
+<tr>
+<td>目录（Directory）</td>
+</tr>
+<tr>
+<td>索引结点（Inode）</td>
+</tr>
+<tr>
+<td>日志（Logging）</td>
+</tr>
+<tr>
+<td>缓冲区高速缓存（Buffer cache）</td>
+</tr>
+<tr>
+<td>磁盘（Disk）</td>
+</tr>
+</tbody>
+</table>
+<p>图8.1：xv6 文件系统的层次结构 </p>
+<p>传统磁盘硬件将磁盘上的数据呈现为编号顺序的 512 字节<strong>块</strong>(<em>blocks</em>)（也称为<strong>扇区</strong>(<em>sectors</em>)）：扇区 0 是前 512 字节，扇区 1 是接下来的字节，依此类推。操作系统用于其文件系统的块大小可能与磁盘使用的扇区大小不同，但通常块大小是扇区大小的倍数。xv6 将读取到内存中的块的副本保存在类型为 <code>struct buf</code> (kernel/buf.h:1)的对象中。此结构中存储的数据有时与磁盘不同步：可能尚未从磁盘读入（磁盘正在处理但尚未返回扇区内容），或者可能已由软件更新但尚未写入磁盘。</p>
+<p>文件系统必须计划在磁盘上存储 inode 和内容块的位置。为此，xv6 将磁盘划分为几个部分，如图8.2所示。文件系统不使用块 0（它保存了引导扇区）。块 1 称为<strong>超级块</strong>(<em>superblock</em>)；它包含有关文件系统的元数据（文件系统大小（以块为单位）、数据块数量、inode 数量以及日志中的块数量）。从 2 开始的块保存日志。日志之后是 inode，每个块有多个 inode。inode 后面是位图块，用于追踪正在使用的数据块。剩下的块是数据块；每个块要么在位图块中标记为自由，要么保存文件或目录的内容。一个单独的程序，称为 <code>mkfs</code>，填充超级块，它构建了一个初始文件系统。</p>
+<p><img alt="" src="http://xv6.dgs.zone/tranlate_books/book-riscv-rev1/images/c8/p1.png" /></p>
+<p>本章的其余部分将讨论每个层次，从缓冲区缓存开始。注意在较低层选择的抽象如何简化了较高层的设计。</p>
+<h2 id="_2">缓冲区缓存层</h2>
+<p>缓冲区缓存有两个任务：</p>
+<ul>
+<li>同步对磁盘块的访问，以确保内存中只有一个块的副本，并且一次只有一个内核线程使用该副本；</li>
+<li>缓存常用块，以便不需要从慢速磁盘重新读取它们。代码位于 <code>bio.c</code>。</li>
+</ul>
+<p>缓冲区缓存导出的主要接口包括 <code>bread</code> 和 <code>bwrite</code>；前者获取一个包含可在内存中读取或修改的块副本的缓冲区，后者将修改后的缓冲区写入磁盘上的相应块。内核线程在完成缓冲区操作时必须通过调用 <code>brelse</code> 来释放它。缓冲区缓存使用每个缓冲区的睡眠锁来确保一次只有一个线程使用每个缓冲区（因此每个磁盘块）；<code>bread</code> 返回一个锁定的缓冲区，<code>brelse</code> 释放锁。</p>
+<p>让我们回到缓冲区缓存。缓冲区缓存具有固定数量的缓冲区来保存磁盘块，这意味着如果文件系统请求一个尚未在缓存中的块，缓冲区缓存必须回收当前保存其他块的缓冲区。缓冲区缓存会将最近最少使用的缓冲区回收用于新块。这个假设是最近最少使用的缓冲区是最不可能再次使用的。</p>
+<h2 id="_3">代码：缓冲区缓存</h2>
+<p>缓冲区缓存是一个双向链表，由缓冲区组成。函数 <code>binit</code>，由 <code>main</code> 调用  (kernel/main.c:27), 使用静态数组 <code>buf</code> 中的 <code>NBUF</code> 缓冲区初始化链表 (kernel/bio.c:43-52)。对缓冲区缓存的所有其他访问都是通过 <code>bcache.head</code> 引用链表，而不是 <code>buf</code> 数组。</p>
+<p>一个缓冲区有两个与之相关的状态字段。字段 <code>valid</code> 表示缓冲区包含一个块的副本。字段 <code>disk</code> 表示缓冲区内容已交给磁盘，磁盘可能会更改缓冲区（例如，将磁盘中的数据写入 <code>data</code>）。</p>
+<p><code>bread</code> (kernel/bio.c:93)  调用 <code>bget</code> 来获取给定扇区的缓冲区 (kernel/bio.c:97) 。如果需要从磁盘读取缓冲区，<code>bread</code> 在返回缓冲区之前调用 <code>virtio_disk_rw</code> 来执行该操作。</p>
+<p><code>bget</code> (kernel/bio.c:59)  扫描缓冲区列表，寻找具有给定设备和扇区号的缓冲区(kernel/bio.c:65-73). 如果有这样的缓冲区，<code>bget</code> 获取缓冲区的睡眠锁。然后 <code>bget</code> 返回锁定的缓冲区。</p>
+<p>如果没有给定扇区的缓存缓冲区，<code>bget</code> 必须创建一个，可能会重用保存不同扇区的缓冲区。它第二次扫描缓冲区列表，寻找不在使用中的缓冲区（<code>b-&gt;refcnt = 0</code>）；可以使用任何这样的缓冲区。<code>bget</code> 编辑缓冲区元数据以记录新的设备和扇区号，并获取其睡眠锁。请注意，赋值 <code>b-&gt;valid = 0</code> 确保 <code>bread</code> 将从磁盘读取块数据，而不是错误地使用缓冲区的先前内容。</p>
+<p>确保每个磁盘扇区最多只有一个缓存缓冲区非常重要，以确保读取器看到写入，并且因为文件系统使用缓冲区上的锁进行同步。<code>bget</code> 通过持有 <code>bache.lock</code> 从第一个循环检查块是否缓存到第二个循环声明块现在已缓存（通过设置 <code>dev</code>、<code>blockno</code> 和 <code>refcnt</code>）来确保此不变式。这使得检查块的存在和（如果不存在）指定一个缓冲区来保存该块变为原子操作。</p>
+<p>对于 <code>bget</code> 在 <code>bcache.lock</code> 临界区之外获取缓冲区的睡眠锁是安全的，因为非零的 <code>b-&gt;refcnt</code> 阻止了缓冲区被用于不同的磁盘块。睡眠锁保护对块的缓冲内容的读取和写入，而 <code>bcache.lock</code> 保护关于哪些块被缓存的信息。</p>
+<p>如果所有缓冲区都忙碌，那么太多的进程正在同时执行文件系统调用；<code>bget</code> 会发生恐慌。更优雅的响应可能是睡眠，直到一个缓冲区变为空闲，尽管这样可能会出现死锁。</p>
+<p>一旦 <code>bread</code> 从磁盘读取（如果需要）并将缓冲区返回给调用者，调用者就可以独占地使用缓冲区并读取或写入数据字节。如果调用者确实修改了缓冲区，它必须在释放缓冲区之前调用 <code>bwrite</code> 将更改的数据写入磁盘。<code>bwrite</code> (kernel/bio.c:107) 调用 <code>virtio_disk_rw</code> 与磁盘硬件进行通信。</p>
+<p>当调用者完成缓冲区操作时，必须调用 <code>brelse</code> 释放它。（名称 <code>brelse</code>，即缩短的 b-release，虽然晦涩难懂，但值得学习：它起源于 Unix，并在 BSD、Linux 和 Solaris 中也有使用。）<code>brelse</code> (kernel/bio.c:117) 释放了睡眠锁，并将缓冲区移动到链接列表的前部  (kernel/bio.c:128-133)。移动缓冲区会使列表按缓冲区使用的最近程度排序（即释放的缓冲区）：列表中的第一个缓冲区是最近使用的，最后一个是最近最少使用的。 <code>bget</code> 中的两个循环利用了这一点：在最坏情况下，扫描现有缓冲区的过程必须处理整个列表，但是首先检查最近使用的缓冲区（从 <code>bcache.head</code> 开始并跟踪 <code>next</code> 指针）将在引用局部性较好时减少扫描时间。扫描选择一个缓冲区来复用，通过向后扫描（跟随 <code>prev</code> 指针）选择最近最少使用的缓冲区。</p>
+<h2 id="_4">日志层</h2>
+<p>文件系统设计中最有趣的问题之一是崩溃恢复。这个问题的出现是因为许多文件系统操作涉及对磁盘的多次写入，而在一部分写入之后发生崩溃可能会导致磁盘上的文件系统处于不一致状态。例如，假设在文件截断过程中发生崩溃（将文件长度设置为零并释放其内容块）。根据磁盘写入的顺序，崩溃可能使 inode 保留对标记为空闲的内容块的引用，或者可能使分配的但未引用的内容块。</p>
+<p>后者相对无害，但是引用已释放块的 inode 可能在重新启动后导致严重问题。重新启动后，内核可能会将该块分配给另一个文件，现在我们有两个不同的文件无意中指向相同的块。如果 xv6 支持多用户，这种情况可能是一个安全问题，因为旧文件的所有者将能够在新文件中读取和写入块，而新文件属于另一个用户。</p>
+<p>Xv6 通过简单的日志形式解决了文件系统操作过程中崩溃的问题。Xv6 系统调用不直接写入磁盘上的文件系统数据结构。相反，它将要进行的所有磁盘写入的描述放在磁盘上的一个 <strong>日志</strong> 中。一旦系统调用将所有写入都记录在日志中，它将在磁盘上写入一个特殊的 <strong>提交</strong> 记录，表示日志包含完整操作。此时，系统调用将写入复制到磁盘文件系统数据结构中。在那些写入完成后，系统调用会擦除磁盘上的日志。</p>
+<p>如果系统崩溃并重新启动，文件系统代码会在运行任何进程之前按照以下方式从崩溃中恢复。如果日志被标记为包含完整操作，则恢复代码将写入复制到磁盘文件系统中的相应位置。如果日志没有被标记为包含完整操作，恢复代码将忽略日志。恢复代码通过擦除日志来完成操作。</p>
+<p>为什么 xv6 的日志解决了文件系统操作期间崩溃的问题？如果崩溃发生在操作提交之前，那么磁盘上的日志将不会被标记为完成，恢复代码将忽略它，磁盘的状态将如同操作未开始。如果崩溃发生在操作提交之后，那么恢复将重放操作的所有写入，如果操作已开始将它们写入磁盘数据结构。在任一情况下，日志使操作相对于崩溃具有原子性：恢复后，操作的所有写入要么都出现在磁盘上，要么都不出现。</p>
+<h2 id="_5">日志设计</h2>
+<p>日志位于超级块中指定的固定位置。它包括一个头块，后面跟着一系列更新的块副本（称为“已记录块”）。头块包含一个扇区编号数组，每个已记录块一个，以及已记录块的计数。磁盘上头块中的计数值要么为零，表示日志中没有事务，要么为非零，表示日志中包含一个已提交的完整事务，包含指定数量的已记录块。在事务提交时，Xv6会写入头块，但在此之前不会写入，提交已记录块到文件系统后，将计数设置为零。因此，在事务进行中途发生崩溃会导致日志头块中的计数为零；提交后发生崩溃会导致非零计数。</p>
+<p>每个系统调用的代码都指示了必须与崩溃具有原子性的一系列写操作的开始和结束。为了允许不同进程并发执行文件系统操作，日志系统可以将多个系统调用的写操作累积到一个事务中。因此，单个提交可能涉及多个完整系统调用的写操作。为了避免在事务中拆分系统调用，日志系统仅在没有文件系统系统调用正在进行时进行提交。</p>
+<p>将多个事务一起提交的想法称为<strong>组提交</strong>。组提交减少了磁盘操作的数量，因为它将提交的固定成本分摊在多个操作上。组提交还将更多的并发写操作同时交给磁盘系统，可能允许磁盘在单个磁盘旋转过程中全部写入。Xv6 的 virtio 驱动程序不支持这种<strong>批处理</strong>，但 xv6 的文件系统设计允许它。</p>
+<p>Xv6 在磁盘上为日志分配固定大小的空间。事务中系统调用写入的块总数必须适应该空间。这有两个后果。首先，不能允许单个系统调用写入的不同块数超过日志中的空间。对于大多数系统调用，这不是问题，但有两个系统调用可能会写入很多块：<code>write</code> 和 <code>unlink</code>。大文件写入可能会写入许多数据块和许多位图块以及一个 inode 块；取消链接大文件可能会写入许多位图块和一个 inode。Xv6 的写入系统调用将大型写入分解为多个适应日志的较小写入，而 <code>unlink</code> 不会导致问题，因为实际上 xv6 文件系统只使用一个位图块。另一个后果是，日志系统不能允许系统调用开始，除非确保系统调用的写入将适应日志中剩余的空间。</p>
+<h2 id="_6">代码：日志</h2>
+<p>系统调用中典型的日志使用方式如下：</p>
+<p><code>c
+begin_op();
+...
+bp = bread(...);
+bp-&gt;data[...] = ...;
+log_write(bp);
+...
+end_op();</code></p>
+<p><code>begin_op</code>  (kernel/log.c:127) 等待日志系统当前没有在提交，并且有足够的未预留的日志空间来存储此调用的写入。<code>log.outstanding</code> 计算预留日志空间的系统调用次数；总预留空间是 <code>log.outstanding</code> 乘以 <code>MAXOPBLOCKS</code>。增加 <code>log.outstanding</code> 既预留了空间，也防止在此系统调用期间发生提交。代码保守地假设每个系统调用可能最多写入 <code>MAXOPBLOCKS</code> 个不同的块。</p>
+<p><code>log_write</code>  (kernel/log.c:215) 充当 <code>bwrite</code> 的代理。它将块的扇区号记录在内存中，在磁盘上的日志中为其预留一个槽位，并在块缓存中固定缓冲区，以防止块缓存将其逐出。该块必须在提交之前一直保留在缓存中：直到那时，缓存的副本才是修改的唯一记录；在提交之后，它不能写入磁盘上的位置；并且同一事务中的其他读取必须看到修改。<code>log_write</code> 注意到一个块在单个事务期间被多次写入，并在日志中为该块分配相同的槽位。这种优化通常称为 <strong>吸收</strong>。例如，包含多个文件的 inode 的磁盘块在一个事务中被写入多次是很常见的。通过将多个磁盘写入吸收为一个，文件系统可以节省日志空间，并获得更好的性能，因为只需将磁盘块的一个副本写入磁盘。</p>
+<p><code>end_op</code>  (kernel/log.c:147)  首先减少未完成系统调用的计数。如果计数现在为零，它通过调用 <code>commit()</code> 提交当前事务。此过程分为四个阶段。<code>write_log()</code>  (kernel/log.c:179)  将事务中修改的每个块从缓冲区缓存复制到磁盘上的日志槽位。<code>write_head()</code>  (kernel/log.c:103) 将头块写入磁盘：这是提交点，崩溃后的写入将导致从日志中恢复事务的写入。<code>install_trans</code>   (kernel/log.c:69)   从日志中读取每个块并将其写入文件系统的适当位置。最后，<code>end_op</code> 用零计数写入日志头；这必须在下一个事务开始写入已记录块之前发生，以便崩溃不会导致恢复将一个事务的头与后续事务的已记录块一起使用。</p>
+<p><code>recover_from_log</code>  (kernel/log.c:117)  是从 <code>initlog</code> (kernel/fs.c:42)  调用的，该函数在第一个用户进程运行之前的引导过程中从 <code>fsinit</code>  (kernel/proc.c:42). 调用  (kernel/proc.c:527).。它读取日志头，并模拟 <code>end\_op</code> 的操作，如果头指示日志包含已提交事务。</p>
+<p>日志的一个示例用法出现在 <code>filewrite</code>  (kernel/proc.c:135).。事务如下所示：</p>
+<pre><code class="language-c">begin_op();
+ilock(f-&gt;ip);
+r = writei(f-&gt;ip, ...);
+iunlock(f-&gt;ip);
+end_op();
+</code></pre>
+<p>此代码被包装在一个循环中，该循环将大量写入分解为一次仅有几个扇区的单个事务，以避免溢出日志。调用 <code>writei</code> 将许多块作为此事务的一部分写入：文件的 inode，一个或多个位图块以及一些数据块。</p>
+<h2 id="_7">代码：块分配器</h2>
+<p>文件和目录内容存储在磁盘块中，必须从一个空闲池中分配。Xv6 的块分配器在磁盘上维护一个空闲位图，每个块有一个位。零位表示相应的块是空闲的；一个位表示它正在使用。程序 <code>mkfs</code> 设置与引导扇区、超级块、日志块、inode 块和位图块相对应的位。</p>
+<p>块分配器提供两个功能：<code>balloc</code> 分配一个新的磁盘块，<code>bfree</code> 释放一个块。 <code>balloc</code> 在  (kernel/fs.c:72)  的循环考虑每个块，从块 0 开始到 <code>sb.size</code>，文件系统中的块数。它寻找一个位图位为零的块，表示它是空闲的。如果 <code>balloc</code> 找到这样一个块，它将更新位图并返回该块。为了提高效率，循环分为两个部分。外部循环读取每个位图块的位。内部循环检查单个位图块中的所有 Bits-Per-Block（<code>BPB</code>）位。如果两个进程尝试同时分配一个块，可能会发生竞争，但由于缓冲区缓存一次只允许一个进程使用任意一个位图块，因此可以防止这种情况发生。</p>
+<p><code>bfree</code> (kernel/fs.c:92)  找到正确的位图块并清除正确的位。同样，由 <code>bread</code> 和 <code>brelse</code> 隐含的独占使用避免了需要显式锁定。</p>
+<p>与本章后面描述的许多代码一样，<code>balloc</code> 和 <code>bfree</code> 必须在事务内部调用。</p>
+<h2 id="inode">Inode 层</h2>
+<p>术语 <strong>inode</strong> 可以具有两个相关的含义。它可能指的是包含文件大小和数据块号列表的磁盘数据结构。或者 “inode” 可能指的是内存中的 inode，其中包含磁盘 inode 的副本以及内核内部需要的额外信息。</p>
+<p>磁盘 inode 被紧凑地放入一个称为 inode 块的连续磁盘区域。每个 inode 的大小都相同，所以给定一个数字 n，很容易在磁盘上找到第 n 个 inode。实际上，这个数字 n（称为 inode 号或 i-number）就是 inode 在实现中的标识方式。</p>
+<p>磁盘 inode 由 <code>struct dinode</code>  (kernel/fs.h:32) 定义。 <code>type</code> 字段区分文件、目录和特殊文件（设备）。类型为零表示磁盘上的 inode 是空闲的。 <code>nlink</code> 字段计算引用此 inode 的目录条目数，以便识别何时应该释放磁盘上的 inode 和其数据块。 <code>size</code> 字段记录文件内容的字节数。 <code>addrs</code> 数组记录存储文件内容的磁盘块的块号。</p>
+<p>内核将一组活动 inode 保存在内存中的一个名为 <code>itable</code> 的表中； <code>struct inode</code> (kernel/file.h:17)  是磁盘上 <code>struct dinode</code> 的内存副本。内核只有在指向该 inode 的 C 指针存在时才在内存中存储一个 inode。 <code>ref</code> 字段计算指向内存 inode 的 C 指针的数量，如果引用计数降至零，内核将从内存中丢弃 inode。 <code>iget</code> 和 <code>iput</code> 函数获取和释放指向 inode 的指针，修改引用计数。指向 inode 的指针可以来自文件描述符、当前工作目录和诸如 <code>exec</code> 之类的瞬态内核代码。</p>
+<p>xv6 的 inode 代码中有四个锁或类似锁的机制。 <code>itable.lock</code> 保护的不变量是 inode 在 inode 表中最多出现一次，以及内存中 inode 的 <code>ref</code> 字段计算指向 inode 的内存指针的数量。每个内存中的 inode 都有一个包含睡眠锁的 <code>lock</code> 字段，该字段确保对 inode 的字段（如文件长度）以及对 inode 的文件或目录内容块的独占访问。inode 的 <code>ref</code>（如果大于零）会导致系统将 inode 保留在表中，并且不为其他 inode 重用表条目。最后，每个 inode 包含一个 <code>nlink</code> 字段（在磁盘上，并在内存中复制，如果在内存中），该字段计算指向文件的目录条目数；如果链接计数大于零，xv6 不会释放 inode。</p>
+<p>由 <code>iget()</code> 返回的 <code>struct inode</code> 指针在相应的 <code>iput()</code> 调用之前保证有效；inode 不会被删除，指针引用的内存不会为其他 inode 重用。 <code>iget()</code> 为 inode 提供非独占访问，因此可以有许多指向同一个 inode 的指针。文件系统代码的许多部分依赖于 <code>iget()</code> 的行为，既用于长期引用 inode（作为打开的文件和当前目录），也用于防止在处理多个 inode 的代码中避免死锁（例如路径名查找）。</p>
+<p><code>iget</code> 返回的 <code>struct</code> <code>inode</code> 可能没有任何有用的内容。为了确保它包含磁盘上的 inode 副本，代码必须调用 <code>ilock</code>。这将锁定 inode（以便其他进程不能 <code>ilock</code> 它）并从磁盘读取 inode（如果尚未读取）。 <code>iunlock</code> 释放对 inode 的锁定。将 inode 指针的获取与锁定分开有助于在某些情况下避免死锁，例如在目录查找期间。多个进程可以保持指向由 <code>iget</code> 返回的 inode 的 C 指针，但一次只能有一个进程锁定 inode。</p>
+<p>inode 表仅存储内核代码或数据结构持有 C 指针的 inode。它的主要任务是同步多个进程的访问。inode 表还会缓存经常使用的 inode，但缓存是次要的；如果 inode 经常使用，缓冲区缓存可能会将其保留在内存中。修改内存中 inode 的代码使用 `iupdate</p>
+<h2 id="inodes">代码：Inodes</h2>
+<p>为了分配一个新的 inode（例如，创建一个文件），xv6 调用 <code>ialloc</code> (kernel/fs.c:199)。<code>ialloc</code> 类似于 <code>balloc</code>：它一次一个块地遍历磁盘上的 inode 结构，寻找标记为空闲的 inode。当找到一个时，它通过将新的 <code>type</code> 写入磁盘来声明 inode，然后通过尾调用 <code>iget</code>(kernel/fs.c:213)返回 inode 表中的一个条目。<code>ialloc</code> 的正确操作取决于一次只有一个进程可以持有对 <code>bp</code> 的引用：<code>ialloc</code> 可以确保其他进程不会同时看到 inode 是可用的并尝试声明它。</p>
+<p><code>iget</code> (kernel/fs.c:247)在 inode 表中查找具有所需设备和 inode 编号的活动条目（<code>ip-&gt;ref &gt; 0</code>）。如果找到了一个，它将返回对该 inode 的新引用(kernel/fs.c:256-260)。在 <code>iget</code> 扫描过程中，它记录第一个空槽的位置(kernel/fs.c:256-260)，如果需要分配表条目，将使用该位置。</p>
+<p>在读取或写入其元数据或内容之前，代码必须使用 <code>ilock</code> 锁定 inode。<code>ilock</code>(kernel/fs.c:293) 使用睡眠锁来达到这个目的。一旦 <code>ilock</code> 获得对 inode 的独占访问权限，如果需要，它会从磁盘（更可能是缓冲区缓存）中读取 inode。函数 <code>iunlock</code>(kernel/fs.c:321) 释放睡眠锁，这可能会导致任何正在睡眠的进程被唤醒。</p>
+<p><code>iput</code>(kernel/fs.c:337) 通过递减引用计数(kernel/fs.c:360) 释放对 inode 的 C 指针。如果这是最后一个引用，inode 在 inode 表中的槽现在变为空闲，可以为不同的 inode 重用。</p>
+<p>如果 <code>iput</code> 发现没有 C 指针引用到 inode，并且 inode 没有指向它的链接（在目录中不存在），那么必须释放 inode 及其数据块。<code>iput</code> 调用 <code>itrunc</code> 将文件截断为 0 字节，释放数据块；将 inode 类型设置为 0（未分配）；并将 inode 写入磁盘(kernel/fs.c:342) 。</p>
+<p>在 <code>iput</code> 中释放 inode 的情况下，锁定协议值得仔细研究。一种危险是，并发线程可能在 <code>ilock</code> 中等待使用该 inode（例如，读取文件或列出目录），并且不准备发现 inode 不再分配。这种情况不会发生，因为如果 inode 没有指向它的链接，并且 <code>ip-&gt;ref</code> 是 1，系统调用无法获得指向内存中 inode 的指针。这个引用是调用 <code>iput</code> 的线程拥有的引用。确实，<code>iput</code> 在其 <code>itable.lock</code> 临界区之外检查引用计数是否为 1，但在那一点上，链接计数已知为零，因此没有线程会尝试获取新的引用。另一个主要危险是，对 <code>ialloc</code> 的并发调用可能选择与 <code>iput</code> 释放的相同 inode。这只能在 <code>iupdate</code> 将磁盘写入以使 inode 具有类型零之后发生。这种竞争是良性的；分配线程会在读取或写入 inode 之前等待获取 inode 的睡眠锁，此时 <code>iput</code> 已经完成。</p>
+<p><code>iput()</code> 可以写入磁盘。这意味着任何使用文件系统的系统调用都可能写入磁盘，因为系统调用可能是最后一个引用文件的调用。即使像 <code>read()</code> 这样看似只读的调用，也可能最终调用 <code>iput()</code>。反过来，这意味着即使是只读的系统调用，如果它们使用文件系统，也必须在事务中进行包装。</p>
+<p><code>iput()</code> 与崩溃之间存在一个具有挑战性的相互作用。当文件的链接计数降为零时，<code>iput()</code> 不会立即截断文件，因为某个进程可能仍然在内存中持有对 inode 的引用：进程可能仍在读写文件，因为它已成功打开它。但是，如果在最后一个进程关闭文件描述符之前发生崩溃，那么文件将在磁盘上被标记为已分配，但没有目录项指向它。</p>
+<p>文件系统以两种方式之一处理此情况。简单的解决方案是，在恢复后，在重启后，文件系统扫描整个文件系统以查找标记为已分配的文件，但没有目录项指向它们。如果存在这样的文件，那么可以释放这些文件。</p>
+<p>第二种解决方案不需要扫描文件系统。在此解决方案中，文件系统在磁盘上记录（例如，在超级块中）链接计数降为零但引用计数不为零的文件的 inode inumber。如果文件系统在引用计数达到 0 时删除文件，则通过从列表中删除该 inode 来更新磁盘上的列表。在恢复时，文件系统释放列表中的任何文件。</p>
+<p>Xv6 没有实现这两种解决方案，这意味着 inode 可能在磁盘上被标记为已分配，即使它们不再使用。这意味着随着时间的推移，xv6 有可能耗尽磁盘空间。</p>
+<h2 id="inode_1">代码：Inode 内容</h2>
+<p>磁盘上的 inode 结构，<code>struct dinode</code>，包含一个大小和一个块号数组(见图8.3)。inode 数据位于 <code>dinode</code> 的 <code>addrs</code> 数组中列出的块中。数据的前 <code>NDIRECT</code> 个块在数组的前 <code>NDIRECT</code> 个条目中列出；这些块称为<strong>直接块</strong>。下一个 <code>NINDIRECT</code> 个数据块不在 inode 中，而是在一个称为<strong>间接块</strong>的数据块中。<code>addrs</code> 数组的最后一个条目给出了间接块的地址。因此，文件的前 12 kB（<code>NDIRECT</code> x <code>BSIZE</code>）字节可以从 inode 中列出的块中加载，而接下来的 256 kB（<code>NINDIRECT</code> x <code>BSIZE</code>）字节只能在查询间接块之后加载。这是一个很好的磁盘表示，但对客户端来说是一个复杂的表示。函数 <code>bmap</code> 管理表示，以便高级例程（如我们将很快看到的 <code>readi</code> 和 <code>writei</code>）不需要处理这种复杂性。<code>bmap</code> 返回 inode <code>ip</code> 的第 <code>bn</code> 个数据块的磁盘块号。如果 <code>ip</code> 还没有这样的块，<code>bmap</code> 会分配一个。</p>
+<p>函数 <code>bmap</code>(kernel/fs.c:383) 首先处理简单情况：前 <code>NDIRECT</code> 个块在 inode 本身中列出(kernel/fs.c:388-396) 。接下来的 <code>NINDIRECT</code> 个块在 <code>ip-&gt;addrs[NDIRECT]</code> 的间接块中列出。<code>bmap</code>读取间接块 (kernel/fs.c:407) ，然后从块内正确的位置读取块号 (kernel/fs.c:408) 。如果块号超过<code>NDIRECT+NINDIRECT</code>，<code>bmap</code> 将会触发panic；<code>writei</code> 包含防止这种情况发生的检查(kernel/fs.c:513) 。</p>
+<p><code>bmap</code> 根据需要分配块。<code>ip-&gt;addrs[]</code> 或间接条目为零表示未分配块。当 <code>bmap</code> 遇到零时，它用按需分配的新块的编号替换它们 (kernel/fs.c:389-390) (kernel/fs.c:401-402).。</p>
+<p><code>itrunc</code> 释放文件的块，将 inode 的大小重置为零。<code>itrunc</code> (kernel/fs.c:426) 首先释放直接块 (kernel/fs.c:432-437)，然后释放间接块中列出的块 (kernel/fs.c:442- 445)，最后释放间接块本身 (kernel/fs.c:447-448)。</p>
+<p><code>bmap</code> 使得 <code>readi</code> 和 <code>writei</code> 更容易访问 inode 的数据。<code>readi</code> (kernel/fs.c:472)首先确保偏移量和计数不超出文件的末尾。从文件末尾开始的读取将返回错误 (kernel/fs.c:477-478)，而从文件末尾开始或跨越文件末尾的读取将返回少于请求的字节数 (kernel/fs.c:479-480)。主循环处理文件的每个块，将数据从缓冲区复制到 <code>dst</code>  (kernel/fs.c:482-494)中。<code>writei</code> (kernel/fs.c:506) 与 <code>readi</code> 相同，但有三个例外：从文件末尾开始或跨越文件末尾的写操作会增加文件的大小，直到最大文件大小 (kernel/fs.c:513-514)；循环将数据复制到缓冲区而不是从缓冲区中复制 (kernel/fs.c:36)；如果写操作已经扩展了文件，<code>writei</code> 必须更新其大小。</p>
+<p>函数 <code>stati</code>  (kernel/fs.c:458) 将 inode 元数据复制到 <code>stat</code> 结构中，该结构通过 <code>stat</code> 系统调用暴露给用户程序。</p>
+<h2 id="_8">代码：目录层</h2>
+<p>目录在内部的实现与文件非常相似。它的 inode 类型为 <code>T_DIR</code>，其数据是一系列目录条目。每个条目都是一个 <code>struct dirent</code>(kernel/fs.h:56)，其中包含一个名称和一个 inode 编号。名称最多为 <code>DIRSIZ</code>（14）个字符；如果短一些，则以空（0）字节结尾。inode 编号为零的目录条目是空闲的。</p>
+<p>函数 <code>dirlookup</code> (kernel/fs.c:552)在目录中搜索具有给定名称的条目。如果找到一个，它将返回一个指向相应 inode 的指针（未锁定），并将 <code>*poff</code> 设置为目录内条目的字节偏移量，以防调用者希望编辑它。如果 <code>dirlookup</code> 找到一个具有正确名称的条目，它会更新 <code>*poff</code> 并返回通过 <code>iget</code> 获得的未锁定的 inode。<code>dirlookup</code> 是 <code>iget</code> 返回未锁定的 inode 的原因。调用者已经锁定了 <code>dp</code>，因此如果查找是针对 <code>.</code>（当前目录的别名），在返回之前尝试锁定 inode 将尝试重新锁定 <code>dp</code> 并死锁。（涉及多个进程和 <code>..</code>（父目录的别名）的更复杂的死锁情景；<code>.</code> 不是唯一的问题。）调用者可以解锁 <code>dp</code> 然后锁定 <code>ip</code>，确保一次只持有一个锁。</p>
+<p>函数 <code>dirlink</code> (kernel/fs.c:580) 将具有给定名称和 inode 编号的新目录条目写入目录 <code>dp</code> 中。如果名称已经存在，<code>dirlink</code> 返回一个错误 (kernel/fs.c:586- 590)。主循环读取目录条目，查找未分配的条目。当找到一个时，它提前停止循环 (kernel/fs.c:563-564),，并将 <code>off</code> 设置为可用条目的偏移量。否则，循环以 <code>off</code> 设置为 <code>dp-&gt;size</code> 结束。无论哪种方式，<code>dirlink</code> 然后通过在偏移量 <code>off</code> 处写入来向目录中添加新条目。</p>
+<h2 id="_9">代码：路径名</h2>
+<p>路径名查找涉及对 <code>dirlookup</code> 的一系列调用，每个路径组件调用一次。<code>namei</code> (kernel/fs.c:687) 计算 <code>path</code> 并返回相应的 <code>inode</code>。函数 <code>nameiparent</code> 是一个变体：它在最后一个元素之前停止，返回父目录的 inode 并将最后一个元素复制到 <code>name</code> 中。两者都调用通用函数 <code>namex</code> 来完成实际工作。</p>
+<p><code>namex</code>(kernel/fs.c:652) 首先决定路径评估从哪里开始。如果路径以斜杠开头，评估将从根目录开始；否则，从当前目录开始(kernel/fs.c:656-659).。然后它使用 <code>skipelem</code> 逐个考虑路径中的每个元素(kernel/fs.c:661).。循环的每次迭代都必须在当前 inode <code>ip</code> 中查找 <code>name</code>。迭代从锁定 <code>ip</code> 开始，并检查它是否是一个目录。如果不是，查找失败(kernel/fs.c:662-666).。锁定 <code>ip</code> 是必要的，不是因为 <code>ip-&gt;type</code> 会突然改变（实际上不会），而是因为在 <code>ilock</code> 运行之前，<code>ip-&gt;type</code> 并不能保证已经从磁盘加载。如果调用是 <code>nameiparent</code> 并且这是最后一个路径元素，则根据 <code>nameiparent</code> 的定义，循环提前停止；最后一个路径元素已经复制到 <code>name</code> 中，因此 <code>namex</code> 只需返回未锁定的 <code>ip</code> (kernel/fs.c:667-671)。最后，循环使用 <code>dirlookup</code> 查找路径元素，并通过设置 <code>ip = next</code> 为下一次迭代做准备(kernel/fs.c:672-677)。当循环用完路径元素时，它返回 <code>ip</code>。</p>
+<p>程序 <code>namex</code> 可能需要很长时间才能完成：它可能涉及对路径名中遍历的目录的 i-node 和目录块进行几次磁盘操作（如果它们不在缓冲区缓存中）。Xv6 的设计非常精细，以便在一个内核线程调用 <code>namex</code> 并因磁盘 I/O 而阻塞时，另一个内核线程可以同时查找不同的路径名。<code>namex</code> 分别锁定路径中的每个目录，以便不同目录中的查找可以并行进行。</p>
+<p>这种并发引入了一些挑战。例如，当一个内核线程正在查找路径名时，另一个内核线程可能通过取消链接目录来更改目录树。一种潜在的风险是，查找可能正在搜索一个已经被另一个内核线程删除并且其块已经被用于另一个目录或文件的目录。</p>
+<p>Xv6 避免了这种竞争。例如，在 <code>namex</code> 中执行 <code>dirlookup</code> 时，查找线程持有目录上的锁，并且 <code>dirlookup</code> 返回一个使用 <code>iget</code> 获取的 inode。<code>iget</code> 增加了 inode 的引用计数。只有在从 <code>dirlookup</code> 接收 inode 之后，<code>namex</code> 才释放目录上的锁。现在，另一个线程可能会从目录中取消链接 inode，但是 xv6 不会立即删除 inode，因为 inode 的引用计数仍然大于零。</p>
+<p>另一个风险是死锁。例如，当查找 "." 时，<code>next</code> 指向与 <code>ip</code> 相同的 inode。在释放 <code>ip</code> 上的锁之前锁定 <code>next</code> 将导致死锁。为避免这种死锁，<code>namex</code> 在获取 <code>next</code> 上的锁之前解锁目录。在这里，我们再次看到为什么 <code>iget</code> 和 <code>ilock</code> 之间的分离如此重要。</p>
+<h2 id="_10">文件描述符层</h2>
+<p>Unix 接口的一个很酷的方面是，Unix 中的大多数资源都表示为文件，包括控制台等设备、管道以及实际文件。文件描述符层是实现这种一致性的层。</p>
+<p>如第 1 章所述，Xv6 为每个进程提供了一个打开文件的表，即文件描述符。每个打开的文件都由一个 <code>struct file</code> 表示，该结构位于 inode 或管道周围，以及一个 I/O 偏移量。每次调用 <code>open</code> 都会创建一个新的打开文件（一个新的 <code>struct file</code>）：如果多个进程独立地打开同一个文件，不同的实例将具有不同的 I/O 偏移量。另一方面，单个打开的文件（相同的 <code>struct</code> <code>file</code>）可以在一个进程的文件表中出现多次，并且也可以在多个进程的文件表中出现。如果一个进程使用 <code>open</code> 打开文件，然后使用 <code>dup</code> 创建别名或使用 <code>fork</code> 与子进程共享，则会发生这种情况。引用计数跟踪对特定打开文件的引用数量。文件可以用于读取、写入或同时进行读写。<code>readable</code> 和 <code>writable</code> 字段跟踪这些内容。</p>
+<p>系统中的所有打开文件都存储在一个全局文件表中，即 <code>ftable</code>。文件表有函数分配文件（<code>filealloc</code>）、创建重复引用（<code>filedup</code>）、释放引用（<code>fileclose</code>）以及读写数据（<code>fileread</code> 和 <code>filewrite</code>）。</p>
+<p>前三个遵循现在熟悉的形式。<code>filealloc</code> (kernel/file.c:30) 扫描文件表以查找未引用的文件（<code>f-&gt;ref == 0</code>）并返回新引用；<code>filedup</code> (kernel/file.c:48) 增加引用计数；<code>fileclose</code> (kernel/file.c:60) 减少引用计数。当文件的引用计数达到零时，<code>fileclose</code> 根据类型释放底层管道或 inode。</p>
+<p>函数 <code>filestat</code>、<code>fileread</code> 和 <code>filewrite</code> 实现了对文件的 <code>stat</code>、<code>read</code> 和 <code>write</code> 操作。<code>filestat</code> (kernel/file.c:88) 只允许在 inode 上执行，并调用 <code>stati</code>。<code>fileread</code> 和 <code>filewrite</code> 检查打开模式是否允许操作，然后将调用传递给管道或 inode 实现。如果文件代表一个 inode，<code>fileread</code> 和 <code>filewrite</code> 使用 I/O 偏移量作为操作的偏移量，然后前进  (kernel/file.c:122- 123) (kernel/file.c:153-154).。管道没有偏移量的概念。请回顾 inode 函数要求调用者处理锁定 (kernel/file.c:94-96) (kernel/file.c:121-124) (kernel/file.c:163-166).。inode 锁定具有方便的副作用，即读写偏移量是原子更新的，因此同时写入同一文件的多个操作不能覆盖彼此的数据，尽管它们的写操作可能会交错。</p>
+<h2 id="_11">代码：系统调用</h2>
+<p>利用较低层次提供的函数，大多数系统调用的实现非常简单（参见 <code>kernel/sysfile.c</code>）。有些调用值得更仔细地看一看。</p>
+<p>函数 <code>sys_link</code> 和 <code>sys_unlink</code> 编辑目录，创建或删除对 inode 的引用。它们是使用事务强大功能的另一个很好的例子。<code>sys_link</code> (kernel/sys- file.c:124) 首先获取其参数，两个字符串 <code>old</code> 和 <code>new</code> (kernel/sysfile.c:129)。假设 <code>old</code> 存在且不是目录(kernel/sysfile.c:133-136)，<code>sys_link</code> 增加其 <code>ip-&gt;nlink</code> 计数。然后，<code>sys_link</code> 调用 <code>nameiparent</code> 找到 <code>new</code> 的父目录和最终路径元素（ (kernel/sysfile.c:149)，并创建一个指向 <code>old</code> 的 inode 的新目录条目 (kernel/sysfile.c:152)。新的父目录必须存在且与现有 inode 位于同一设备上：inode 号在单个磁盘上才具有唯一含义。如果发生这样的错误，<code>sys_link</code> 必须返回并递减 <code>ip-&gt;nlink</code>。</p>
+<p>事务简化了实现，因为它需要更新多个磁盘块，但我们不必担心我们执行它们的顺序。它们要么全部成功，要么一个都不成功。例如，在创建链接之前更新 <code>ip-&gt;nlink</code> 而不使用事务，将使文件系统暂时处于不安全状态，之间的崩溃可能导致严重问题。使用事务，我们不必担心这个问题。</p>
+<p><code>sys_link</code> 为现有的 inode 创建一个新名称。函数 <code>create</code> (kernel/sysfile.c:246)为新 inode 创建一个新名称。它是三个文件创建系统调用的泛化：带有 <code>O_CREATE</code> 标志的 <code>open</code> 创建一个新的普通文件，<code>mkdir</code> 创建一个新目录，而 <code>mkdev</code> 创建一个新的设备文件。与 <code>sys_link</code> 类似，<code>create</code> 首先调用 <code>nameiparent</code> 获取父目录的 inode。然后调用 <code>dirlookup</code> 检查名称是否已存在 (kernel/sysfile.c:256).。如果名称确实存在，<code>create</code> 的行为取决于它用于哪个系统调用：<code>open</code> 与 <code>mkdir</code> 和 <code>mkdev</code> 的语义不同。如果 <code>create</code> 是代表 <code>open</code> 使用的（<code>type == T_FILE</code>），并且存在的名称本身是一个常规文件，那么 <code>open</code> 将其视为成功，因此 <code>create</code> 也是如此 (kernel/sysfile.c:260)。否则，它是一个错误(kernel/sysfile.c:261-262)。如果名称尚不存在，<code>create</code> 现在使用 <code>ialloc</code> 分配一个新的 inode (kernel/sysfile.c:265)。如果新的 inode 是一个目录，<code>create</code> 用 <code>.</code> 和 <code>..</code> 条目初始化它。最后，现在数据已正确初始化，<code>create</code> 可以将其链接到父目录 (kernel/sysfile.c:278)。<code>create</code> 和 <code>sys_link</code> 一样，同时保持两个 inode 锁：<code>ip</code> 和 <code>dp</code>。不存在死锁的可能性，因为 inode <code>ip</code> 是新分配的：系统中没有其他进程将保持 <code>ip</code> 的锁，然后尝试锁定 <code>dp</code>。</p>
+<p>使用 <code>create</code>，可以轻松实现 <code>sys_open</code>、<code>sys_mkdir</code> 和 <code>sys_mknod</code>。<code>sys_open</code> 是最复杂的，因为创建一个新文件只是它可以做的一小部分工作。如果 <code>open</code> 传递了 <code>O_CREATE</code> 标志，它将调用 <code>create</code> (kernel/sysfile.c:305)。否则，它调用 <code>namei</code> (kernel/sysfile.c:326)。<code>create</code> 返回一个锁定的 inode，但 <code>namei</code> 不会，因此 <code>sys_open</code> 必须自己锁定 inode。这提供了一个方便的地方来检查目录是否仅以读取方式打开，而不是写入方式。假设以某种方式获得了 inode，<code>sys_open</code> 分配一个文件和一个文件描述符 (kernel/sysfile.c:344)，然后填充文件 (kernel/sysfile.c:356-361)。请注意，由于它仅位于当前进程的表中，因此其他进程无法访问部分初始化的文件。</p>
+<p>第 7 章在我们甚至拥有文件系统之前就检查了管道的实现。函数 <code>sys_pipe</code> 通过提供创建管道对的方法将该实现连接到文件系统。它的参数是指向两个整数的空间的指针，它将在其中记录两个新的文件描述符。然后它分配管道并安装文件描述符。</p>
+<h2 id="_12">现实世界</h2>
+<p>现实世界中的操作系统的缓冲区缓存要比 xv6 的复杂得多，但它们有相同的两个目的：缓存和同步访问磁盘。Xv6 的缓冲区缓存和 V6 的一样，使用简单的最近最少使用（LRU）替换策略；还有许多更复杂的策略可以实现，每种策略对于某些工作负载很好，对于其他工作负载则不太好。一个更高效的 LRU 缓存会消除链表，而使用散列表进行查找和堆进行 LRU 替换。现代缓冲区缓存通常与虚拟内存系统集成，以支持内存映射文件。</p>
+<p>Xv6 的日志系统效率低下。提交不能与文件系统系统调用同时进行。系统记录整个块，即使只更改了块中的几个字节。它执行同步日志写入，每次一个块，每次都可能需要整个磁盘旋转时间。真正的日志系统解决了所有这些问题。</p>
+<p>日志记录并非提供崩溃恢复的唯一方法。早期的文件系统在重新启动时使用清道夫（例如 UNIX 的 <code>fsck</code> 程序）检查每个文件和目录以及块和 inode 的空闲列表，寻找并解决不一致。对于大型文件系统，清除可能需要数小时，而且在某些情况下，无法以导致原始系统调用原子性的方式解决不一致。从日志中恢复要快得多，而且在崩溃面前会导致系统调用具有原子性。</p>
+<p>Xv6 使用与早期 UNIX 相同的基本磁盘 inode 和目录布局；多年来，这种方案一直保持着惊人的持久性。BSD 的 UFS/FFS 和 Linux 的 ext2/ext3 实际上使用相同的数据结构。文件系统布局中最低效的部分是目录，在每次查找过程中都需要对所有磁盘块进行线性扫描。当目录只有几个磁盘块时，这是合理的，但是对于存储大量文件的目录来说，代价很高。仅举几个例子，Microsoft Windows 的 NTFS、macOS 的 HFS 和 Solaris 的 ZFS 将目录实现为磁盘上平衡的块树。这很复杂，但可以保证对数时间的目录查找。</p>
+<p>Xv6 对磁盘故障过于简单：如果磁盘操作失败，xv6 就会产生恐慌。这是否合理取决于硬件：如果操作系统位于使用冗余来屏蔽磁盘故障的特殊硬件之上，那么操作系统可能会很少看到故障，因此产生恐慌是可以接受的。另一方面，使用普通磁盘的操作系统应该预料到故障，并更优雅地处理它们，这样一个文件中的一个块的丢失不会影响到文件系统其余部分的使用。</p>
+<p>Xv6 要求文件系统适应一个磁盘设备且不改变大小。随着大型数据库和多媒体文件不断推动存储需求增长，操作系统正在开发消除“一个文件系统一个磁盘”的瓶颈的方法。基本方法是将多个磁盘组合成一个逻辑磁盘。硬件解决方案如 RAID 仍然最受欢迎，但当前趋势是尽可能在软件中实现这些逻辑。这些软件实现通常允许通过动态添加或删除磁盘来增大或缩小逻辑设备。当然，可以动态增长或缩小的存储层需要一个可以做到这一点的文件系统：xv6 使用的固定大小的 inode 块数组在这样的环境中效果不佳。将磁盘管理与文件系统分离可能是最干净的设计，但是两者之间复杂的接口使得一些系统，如 Sun 的 ZFS，将它们结合在一起。</p>
+<p>Xv6 的文件系统缺少许多现代文件系统的其他功能；例如，它不支持快照和增量备份。</p>
+<p>现代 Unix 系统允许许多种资源以与磁盘存储相同的系统调用进行访问：命名管道、网络连接、远程访问的网络文件系统以及监控和控制接口，如 <code>/proc</code>。这些系统通常为每个打开的文件提供一个函数指针表，每个操作一个，然后调用函数指针来调用该 inode 的调用实现。网络文件系统和用户级文件系统提供将这些调用转换为网络 RPC 的功能，并在返回之前等待响应。</p>
+                
+              
+              
+<script src="https://giscus.app/client.js" data-repo="PKUFlyingPig/cs-self-learning" data-repo-id="R_kgDOGP67ng"
+    data-category="Announcements" data-category-id="DIC_kwDOGP67ns4COM9Q" data-mapping="title"
+    data-reactions-enabled="1" data-emit-metadata="0" data-input-position="top" data-theme="light_protanopia"
+    data-lang="zh-CN" data-loading="lazy" crossorigin="anonymous" async>
+</script>
+
+<script>
+    var palette = __get("__palette")
+    if (palette && typeof palette.color === "object") {
+        if (palette.color.scheme === "slate") {
+            const giscus = document.querySelector("script[src*=giscus]")
+            giscus.setAttribute("data-theme", "dark_protanopia")
+        }
+    }
+
+    document.addEventListener("DOMContentLoaded", function () {
+        const ref = document.querySelector("[data-md-component=palette]")
+        ref.addEventListener("change", function () {
+            var palette = __get("__palette")
+            if (palette && typeof palette.color === "object") {
+                const theme = palette.color.scheme === "slate" ? "dark_protanopia" : "light_protanopia"
+                const frame = document.querySelector(".giscus-frame")
+                frame.contentWindow.postMessage({
+                    giscus: { setConfig: { theme } }
+                }, "https://giscus.app")
+            }
+        })
+    })
+</script>
+
+            </article>
+          </div>
+        </div>
+        
+          <a href="#" class="md-top md-icon" data-md-component="top" data-md-state="hidden">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"/></svg>
+            Back to top
+          </a>
+        
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href="../7.%20%E8%B0%83%E5%BA%A6/" class="md-footer__link md-footer__link--prev" aria-label="上一页: 7. 调度" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                上一页
+              </span>
+              7. 调度
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../9.%20%E5%86%8D%E6%AC%A1%E6%8E%A2%E8%AE%A8%E5%B9%B6%E5%8F%91%E6%80%A7/" class="md-footer__link md-footer__link--next" aria-label="下一页: 9. 再次探讨并发性" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                下一页
+              </span>
+              9. 再次探讨并发性
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        
+          Made with
+          <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+            Material for MkDocs
+          </a>
+        
+        
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["header.autohide", "navigation.tracking", "navigation.top", "search.highlight", "search.share", "search.suggest", "content.code.annotate"], "search": "../../assets/javascripts/workers/search.fcfe8b6d.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\uff0c\\u3002]+", "search.placeholder": "\u641c\u7d22", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.b1047164.min.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+      
+    
+  </body>
+</html>

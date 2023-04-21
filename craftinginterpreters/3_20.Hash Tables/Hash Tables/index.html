@@ -1,0 +1,2028 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-7.3.6">
+    
+    
+      
+        <title>3.20.Hash Tables - doc-zh</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.a57b2b03.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.3f5d1f46.min.css">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font-family:"Roboto";--md-code-font-family:"Roboto Mono"}</style>
+      
+    
+    
+    
+    
+      
+
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="light-blue" data-md-color-accent="deep-purple">
+  
+    
+    <script>function __prefix(e){return new URL("../../..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+    
+      <script>var palette=__get("__palette");if(null!==palette&&"object"==typeof palette.color)for(var key in palette.color)document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="doc-zh" class="md-header__button md-logo" aria-label="doc-zh" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            doc-zh
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              3.20.Hash Tables
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="light-blue" data-md-color-accent="deep-purple"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+          
+            <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5c-.84 0-1.65.15-2.39.42L12 2M3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29L3.34 7m.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14L3.36 17M20.65 7l-1.77 3.79a7.023 7.023 0 0 0-2.38-4.15l4.15.36m-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29L20.64 17M12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44L12 22z"/></svg>
+            </label>
+          
+        
+          
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="cyan" data-md-color-accent="deep-purple"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
+          
+            <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3 3.19.09m3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95 2.06.05m-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31z"/></svg>
+            </label>
+          
+        
+      </form>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7 0-.24-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91 1.61 0 2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08z"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        
+<a href="https://github.com/Misaka-9982-coder/doc-zh" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    doc-zh
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="doc-zh" class="md-nav__button md-logo" aria-label="doc-zh" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    doc-zh
+  </label>
+  
+    <div class="md-nav__source">
+      
+<a href="https://github.com/Misaka-9982-coder/doc-zh" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    doc-zh
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1" type="checkbox" id="__nav_1" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_1">
+          xv6-book
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="xv6-book" data-md-level="1">
+        <label class="md-nav__title" for="__nav_1">
+          <span class="md-nav__icon md-icon"></span>
+          xv6-book
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../S081/0.%20%E5%89%8D%E8%A8%80%E5%92%8C%E8%87%B4%E8%B0%A2/" class="md-nav__link">
+        0. 前言和致谢
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../S081/1.%20%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E6%8E%A5%E5%8F%A3/" class="md-nav__link">
+        1. 操作系统接口
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../S081/2.%20%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84/" class="md-nav__link">
+        2. 操作系统架构
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../S081/3.%20%E9%A1%B5%E8%A1%A8/" class="md-nav__link">
+        3. 页表
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../S081/4.%20trap%20%E4%B8%8E%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8/" class="md-nav__link">
+        4. trap 与系统调用
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../S081/5.%20%E4%B8%AD%E6%96%AD%E5%92%8C%E8%AE%BE%E5%A4%87%E9%A9%B1%E5%8A%A8%E7%A8%8B%E5%BA%8F/" class="md-nav__link">
+        5. 中断和设备驱动程序
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../S081/6.%20%E9%94%81/" class="md-nav__link">
+        6. 锁
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../S081/7.%20%E8%B0%83%E5%BA%A6/" class="md-nav__link">
+        7. 调度
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../S081/8.%20%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/" class="md-nav__link">
+        8. 文件系统
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../S081/9.%20%E5%86%8D%E6%AC%A1%E6%8E%A2%E8%AE%A8%E5%B9%B6%E5%8F%91%E6%80%A7/" class="md-nav__link">
+        9. 再次探讨并发性
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2">
+          craftinginterpreters
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="craftinginterpreters" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          craftinginterpreters
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../0_00.contents/contents/" class="md-nav__link">
+        0.00.contents
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../0_01.acknowledgements/acknowledgements/" class="md-nav__link">
+        0.01.acknowledgements
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1_00.Welcome/Welcome/" class="md-nav__link">
+        一、WELCOME
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1_01.Introduction/Introduction/" class="md-nav__link">
+        1.01.Introduction
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1_02.A%20Map%20of%20the%20Territory/A%20Map%20of%20the%20Territory/" class="md-nav__link">
+        1.02.A Map of the Territory
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1_03.The%20Lox%20Language/The%20Lox%20Language/" class="md-nav__link">
+        1.03.The Lox Language
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2_00.A%20TREE-WALK%20INTERPRETER/A%20TREE-WALK%20INTERPRETER/" class="md-nav__link">
+        二、A TREE-WALK INTERPRETER
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2_04.Scanning/Scanning/" class="md-nav__link">
+        2.04.Scanning
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2_05.Representing%20Code/Representing%20Code/" class="md-nav__link">
+        2.05.Representing Code
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2_06.Parsing%20Expressions/Parsing%20Expressions/" class="md-nav__link">
+        2.06.Parsing Expressions
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2_07.Evaluating%20Expressions/Evaluating%20Expressions/" class="md-nav__link">
+        2.07.Evaluating Expressions
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2_08.Statements%20and%20State/Statements%20and%20State/" class="md-nav__link">
+        2.08.Statements and State
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2_09.Control%20Flow/Control%20Flow/" class="md-nav__link">
+        2.09.Control Flow
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2_10.Functions/Functions/" class="md-nav__link">
+        2.10.Functions
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2_11.Resolving%20and%20Binding/Resolving%20and%20Binding/" class="md-nav__link">
+        2.11.Resolving and Binding
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2_12.Classes/Classes/" class="md-nav__link">
+        2.12.Classes
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2_13.Inheritance/Inheritance/" class="md-nav__link">
+        2.13.Inheritance
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3_00.A%20BYTECODE%20VIRTUAL%20MACHINE/A%20BYTECODE%20VIRTUAL%20MACHINE/" class="md-nav__link">
+        三、A BYTECODE VIRTUAL MACHINE
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3_14.Chunks%20of%20Bytecode/Chunks%20of%20Bytecode/" class="md-nav__link">
+        3.14.Chunks of Bytecode
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3_15.A%20Virtual%20Machine/A%20Virtual%20Machine/" class="md-nav__link">
+        3.15.A Virtual Machine
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3_16.Scanning%20on%20Demand/Scanning%20on%20Demand/" class="md-nav__link">
+        3.16.Scanning on Demand
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3_17.Compiling%20Expressions/Compiling%20Expressions/" class="md-nav__link">
+        3.17.Compiling Expressions
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3_18.Types%20of%20Values/Types%20of%20Values/" class="md-nav__link">
+        3.18.Types of Values
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3_19.Strings/Strings/" class="md-nav__link">
+        3.19.Strings
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          3.20.Hash Tables
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        3.20.Hash Tables
+      </a>
+      
+        
+
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#201" class="md-nav__link">
+    20.1 桶数组
+  </a>
+  
+    <nav class="md-nav" aria-label="20.1 桶数组">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#2011-key" class="md-nav__link">
+    20.1.1 负载因子 和 打包key
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#202" class="md-nav__link">
+    20.2 碰撞解决
+  </a>
+  
+    <nav class="md-nav" aria-label="20.2 碰撞解决">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#2021-separate-chaining" class="md-nav__link">
+    20.2.1 拉链法 （separate chaining）
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2022" class="md-nav__link">
+    20.2.2 开放寻址
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#203" class="md-nav__link">
+    20.3 哈希函数
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#204" class="md-nav__link">
+    20.4 构建哈希表
+  </a>
+  
+    <nav class="md-nav" aria-label="20.4 构建哈希表">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#2041" class="md-nav__link">
+    20.4.1 字符串哈希
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2042" class="md-nav__link">
+    20.4.2 插入条目
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2043" class="md-nav__link">
+    20.4.3 分配和调整大小
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2044" class="md-nav__link">
+    20.4.4 检索值
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2045" class="md-nav__link">
+    20.4.5 删除条目
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2046" class="md-nav__link">
+    20.4.6 墓碑计数
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#205-string-interning" class="md-nav__link">
+    20.5 字符串驻留 string-interning
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    挑战
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3_21.Global%20Variables/Global%20Variables/" class="md-nav__link">
+        3.21.Global Variables
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3_22.Local%20Variables/Local%20Variables/" class="md-nav__link">
+        3.22.Local Variables
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3_23.Jumping%20Back%20and%20Forth/Jumping%20Back%20and%20Forth/" class="md-nav__link">
+        3.23.Jumping Back and Forth
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3_24.Calls%20and%20Functions/Calls%20and%20Functions/" class="md-nav__link">
+        3.24.Calls and Functions
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3_25.Closures/Closures/" class="md-nav__link">
+        3.25.Closures
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3_26.Garbage%20Collection/Garbage%20Collection/" class="md-nav__link">
+        3.26.Garbage Collection
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3_27.Classes%20and%20Instances/Classes%20and%20Instances/" class="md-nav__link">
+        3.27.Classes and Instances
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3_28.Methods%20and%20Initializers/Methods%20and%20Initializers/" class="md-nav__link">
+        3.28.Methods and Initializers
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3_29.Superclasses/Superclasses/" class="md-nav__link">
+        3.29.Superclasses
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3_30.Optimization/Optimization/" class="md-nav__link">
+        3.30.Optimization
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../4_01.A1.Appendix%20I%20Lox%20Grammar/A1.Appendix%20I%20Lox%20Grammar/" class="md-nav__link">
+        A1.Appendix I Lox Grammar
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../4_02.A2.Appendix%20II%20Generated%20Syntax%20Tree%20Classes/A2.Appendix%20II%20Generated%20Syntax%20Tree%20Classes/" class="md-nav__link">
+        A2.Appendix II Generated Syntax Tree Classes
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#201" class="md-nav__link">
+    20.1 桶数组
+  </a>
+  
+    <nav class="md-nav" aria-label="20.1 桶数组">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#2011-key" class="md-nav__link">
+    20.1.1 负载因子 和 打包key
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#202" class="md-nav__link">
+    20.2 碰撞解决
+  </a>
+  
+    <nav class="md-nav" aria-label="20.2 碰撞解决">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#2021-separate-chaining" class="md-nav__link">
+    20.2.1 拉链法 （separate chaining）
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2022" class="md-nav__link">
+    20.2.2 开放寻址
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#203" class="md-nav__link">
+    20.3 哈希函数
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#204" class="md-nav__link">
+    20.4 构建哈希表
+  </a>
+  
+    <nav class="md-nav" aria-label="20.4 构建哈希表">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#2041" class="md-nav__link">
+    20.4.1 字符串哈希
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2042" class="md-nav__link">
+    20.4.2 插入条目
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2043" class="md-nav__link">
+    20.4.3 分配和调整大小
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2044" class="md-nav__link">
+    20.4.4 检索值
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2045" class="md-nav__link">
+    20.4.5 删除条目
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2046" class="md-nav__link">
+    20.4.6 墓碑计数
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#205-string-interning" class="md-nav__link">
+    20.5 字符串驻留 string-interning
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    挑战
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/Misaka-9982-coder/doc-zh/edit/master/docs/craftinginterpreters/3_20.Hash Tables/Hash Tables.md" title="编辑此页" class="md-content__button md-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
+                  </a>
+                
+                
+                <h1 id="_1">哈希表</h1>
+<blockquote>
+<p>哈希，x。这个词没有定义——没有人知道散列是什么。</p>
+<p>-- Ambrose Bierce,<em>The Unabridged Devil’s Dictionary</em></p>
+</blockquote>
+<p>在我们可以将变量添加到蓬勃发展的虚拟机之前，我们需要一些方法来查找给定名称的变量值。后边，当添加类时，还需要一种方法来存储实例上的字段。这些问题和其他问题的完美数据结构是哈希表。</p>
+<p>您可能已经知道哈希表是什么，即使您不知道它的名字。如果您是 Java 程序员，可以称它们为“HashMaps”。C# 和 Python 用户称它们为“字典(dictionaries)”。在 C++ 中，它是一个“无序映射(unordered map)”。JavaScript 中的“对象”和 Lua 中的“表”是引擎盖下的哈希表，这使它们具有灵活性。</p>
+<p>哈希表，无论您使用何种语言称呼它，都将一组<strong>键</strong>与一组<strong>值</strong>相关联。每个键/值对都是表中的一个<strong>条目</strong>。给定一个键，可以查找其对应的值。可以添加新的键/值对并按键删除条目。如果为现有键添加新值，它将替换之前的条目。</p>
+<p>哈希表出现在如此多的语言中，因为它们非常强大。这种能力大部分来自一个指标：给定一个键，哈希表会在常数时间内返回相应的值，<em>而不管哈希表中有多少个键</em>。</p>
+<blockquote>
+<p>更具体地说，<em>平均案例</em>查找时间是恒定的。最坏情况下的表现可能会更糟。在实践中，很容易避免退化的行为并保持在快乐的道路上。</p>
+</blockquote>
+<p>当你想到它时，这是非常了不起的。想象一下，你有一大叠名片，我要你找一个人。堆越大，需要的时间就越长。即使这堆已经排序并且足够的灵活性来进行二分查找，时间复杂度任然为<em>O(log n)</em>。但是对于哈希表，当堆栈中有 10 张名片时，查找名片所需的时间与堆中有 100 万张时相同。</p>
+<blockquote>
+<p>把所有这些卡片都塞进名片夹里——还有人记得那些东西吗？—每个字母都有分隔符，您可以显着提高速度。正如我们将看到的，这与哈希表使用的技巧相差无几。</p>
+</blockquote>
+<h2 id="201">20.1 桶数组</h2>
+<p>一个完整、快速的哈希表有几个活动部分。我将通过解决几个玩具问题及其解决方案来逐一介绍它们。最终，我们将建立一个数据结构，可以将任何一组名称与其值相关联。</p>
+<p>现在，想象一下如果 Lox在变量名方面受到很多限制。如果变量名只能是单个小写字母怎么办？怎样才能非常有效地表示一组变量名及其值？</p>
+<blockquote>
+<p>这个限制并<em>不太</em>牵强。Dartmouth的 BASIC 初始版本允许变量名只是一个字母后跟一个可选数字。</p>
+</blockquote>
+<p>只有 26 个可能的变量（如果你认为下划线是一个“字母”，我猜是 27 个），答案很简单。声明一个包含 26 个元素的固定大小的数组。我们将遵循传统并将每个元素称为<strong>bucket</strong>。每个代表一个变量，从字母 a开始其索引值为零，后边依次低增b为1 ,c为2 ...如果数组中某个字母的索引处有一个值，则该键与该值一起存在。否则，桶为空，并且该键/值对不在数据结构中。</p>
+<p><img alt="" src="../assets/b55ba51ebdeb248bca634fb87146b1f6ce474a1a.png" /></p>
+<p>内存使用率很高——只有一个大小合理的数组。空桶里有一些浪费，但不是很大。节点指针、填充或其他您通过链表或树获得的东西没有开销。</p>
+<p>性能甚至更好。给定一个变量名——它的字符——你可以减去<code>a</code>的 ASCII 值并使用结果直接索引到数组中。然后可以查找现有值或将新值直接存储到该槽中。没有比这更快的了。</p>
+<p>这是柏拉图式的理想数据结构。快如闪电，非常简单，内存紧凑。随着增加对更复杂键的支持，我们将不得不做出一些让步，但这正是我们的目标。即使你添加了哈希函数、动态调整大小和冲突解决，这仍然是每个哈希表的核心——一个连续的桶数组，你可以直接索引到其中。</p>
+<h3 id="2011-key">20.1.1 负载因子 和 打包key</h3>
+<p>将 Lox 限制为单字母变量会使我们作为实现者的工作变得更容易，但是用一种只给你 26 个存储位置的语言编程可能并不有趣。如果放宽一点并允许变量最多八个字符呢？</p>
+<blockquote>
+<p>同样，这个限制并不是那么疯狂。C 的早期链接器只将外部标识符的前六个字符视为有意义的。之后的一切都被忽略了。如果您曾经想知道为什么 C 标准库如此迷恋缩写—比如<code>strncmp()</code>—结果证明这不完全是因为当时的小屏幕（或电传打字机！）。</p>
+</blockquote>
+<p>它足够小，我们可以将所有八个字符打包成一个 64 位整数，并轻松地将字符串转换为数字。然后可以将它用作数组索引。或者，至少，如果能以某种方式分配一个 295,148<em>PB</em>的数组，我们就可以做到。随着时间的推移，内存变得越来越便宜，但并没有<em>那么</em>便宜。即使我们能把一个数组做成那么大，那也是一种令人发指的浪费。除非用户开始编写比我们预期的更大的 Lox 程序，否则几乎每个桶都是空的。</p>
+<p>即使我们的变量键覆盖了完整的 64 位数字范围，我们显然不需要那么大的数组。相反，我们分配一个数组，该数组的容量足以容纳我们需要的条目，但又不会过大。通过取数组大小的模值将完整的 64 位键映射到较小的范围。这样做基本上会将较大的数值范围折叠到自身上，直到它适合较小的数组元素范围。</p>
+<p>例如，假设我们要存储“bagel”。我们分配了一个包含八个元素的数组，足够存储它，以后还可以存储更多。我们将key字符串视为 64 位整数。在像英特尔这样的小端机器上，将这些字符打包成一个 64 位字，将第一个字母“b”（ASCII 值 98）放在最低有效字节中。将该整数对数组大小 (8) 取模以使其适合边界并获得桶索引 2。然后我们像往常一样将值存储在那里。</p>
+<blockquote>
+<p>我在这里对数组大小使用了 2 的幂，但它们并不需要如此。某些类型的散列表最适用于 2 的幂，包括我们将在本书中构建的散列表。其他人更喜欢质数数组大小或有其他规则。</p>
+</blockquote>
+<p>使用数组大小作为模数可以让将键的数字范围向下映射以适应任何大小的数组。因此，<strong>可以独立于键范围来控制桶的数量</strong>。这解决了浪费问题，但引入了一个新问题。键号除以数组大小时具有相同余数的任何两个变量最终将在同一个桶中。键可以<strong>碰撞</strong>。例如，如果尝试添加“jam”，它最终也会出现在桶 2 中。</p>
+<p><img alt="" src="../assets/dc89e746ee47067433e4fe634697cb97630b2760.png" /></p>
+<p>我们可以通过调整数组大小来对此进行一些控制。数组越大，映射到同一个桶的索引就越少，可能发生的冲突也就越少。哈希表实现者通过度量hash表的<strong>负载因子</strong>来跟踪这种冲突可能性。它被定义为条目数除以桶数。因此，具有 5 个条目和 16 个元素的数组的哈希表的加载因子为 0.3125。负载系数越高，发生碰撞的机会就越大。</p>
+<p>我们减轻冲突的一种方法是调整数组的大小。就像之前实现的动态数组一样，在哈希表的数组填满时重新分配和增长它。但是，与常规动态数组不同的是，我们不会等到数组<em>已满</em>。相反，我们选择一个所需的负载因子并在超过该因子时增加数组。</p>
+<h2 id="202">20.2 碰撞解决</h2>
+<p>即使负载系数非常低，碰撞仍然会发生。<a href="https://en.wikipedia.org/wiki/Birthday_problem"><em>生日悖论</em></a>告诉我们，随着哈希表中条目数量的增加，发生碰撞的几率会增加得非常快。我们可以选择一个较大的数组大小来减少它，但这是一场失败的游戏。假设我们想在哈希表中存储一百个项目。为了将碰撞的可能性保持在仍然相当高的 10% 以下，我们需要一个至少包含 47,015 个元素的数组。要获得低于 1% 的机会，需要一个包含 492,555 个元素的数组，每个使用的元素有超过 4,000 个空桶。</p>
+<p>低负载系数可以减少碰撞，但<a href="https://en.wikipedia.org/wiki/Pigeonhole_principle"><em>鸽巢原理</em></a>告诉我们，我们永远无法完全消除它们。如果你有五只宠物鸽子和四个洞可以放它们，至少有一个洞最终会出现不止一只鸽子。有 18,446,744,073,709,551,616 个不同的变量名，任何合理大小的数组都可能在同一个桶中有多个键。</p>
+<p>因此，仍然必须在碰撞发生时优雅地处理它们。用户不喜欢他们的编程语言只能在<em>大多数</em>时候正确查找变量。</p>
+<blockquote>
+<p>把这两个名字很有趣的数学规则放在一起，你会得到这样的观察结果：取一个包含 365 个鸽子笼的鸟舍，并使用每只鸽子的生日将其分配给一个鸽子笼。你只需要大约 26 只随机选择的鸽子，你就有超过 50% 的机会将两只鸽子放在同一个盒子里。</p>
+</blockquote>
+<p><img alt="" src="../assets/f3d26481c08d7d7ef881e331d13eedfb002d1a01.png" /></p>
+<h3 id="2021-separate-chaining">20.2.1 拉链法 （separate chaining）</h3>
+<p>解决冲突的技术分为两大类。第一个是<strong>拉链法(separate chaining)</strong>。我们让它包含一个集合，而不是每个桶只包含一个条目。在经典实现中，每个桶都指向一个条目链表。要查找条目，您可以找到它的存储桶，然后遍历列表，直到找到具有匹配键的条目。</p>
+<p><img alt="" src="../assets/6fec0093f0a8a4bdc0a8b8200d53892b78b310e9.png" /></p>
+<p>在每个条目都在同一个桶中发生冲突的糟糕灾难性情况下，数据结构会退化为具有O(n)查找的单个未排序链表。在实践中，通过控制负载因子以及条目如何分散在桶中很容易避免这种情况。在典型的拉链哈希表中，一个桶很少有超过一个或两个条目。</p>
+<p>拉链法在概念上很简单——它实际上是一个链表数组。大多数操作都可以直接实现，即使是删除，正如我们将看到的那样，也可能很痛苦。<strong>但它不太适合现代 CPU。它有很多来自指针的开销，并且倾向于在内存中散布小链表节点，这不利于缓存使用</strong>。</p>
+<blockquote>
+<p>有一些技巧可以优化它。许多实现将第一个条目直接存储在桶中，因此在只有一个的常见情况下，不需要额外的指针间接寻址。您还可以让每个链表节点存储一些条目以减少指针开销。</p>
+</blockquote>
+<h3 id="2022">20.2.2 开放寻址</h3>
+<p>另一种技术称为<strong>开放寻址</strong>或（令人困惑的）<strong>封闭散列</strong>。使用这种技术，所有条目都直接存在于桶数组中，每个桶一个条目。如果两个条目在同一个桶中发生冲突，会查找一个不同的空桶来代替。</p>
+<blockquote>
+<p>之所以称为“开放式”寻址，是因为条目可能最终位于其首选地址之外的地址（存储桶）。它被称为“封闭”散列，因为所有条目都保留在桶数组中。</p>
+</blockquote>
+<p>将所有条目存储在一个单一的、大的、连续的数组中对于保持内存表示的简单和快速非常有用。但它使哈希表上的所有操作更加复杂。插入条目时，它的桶可能已满，会导致查看另一个桶。那个桶本身可能被占用等等。这个寻找可用桶的过程称为<strong>探测</strong>，检查桶的顺序是<strong>探测序列</strong>。</p>
+<p>有许多算法可用于确定要探测的桶以及如何决定哪个条目进入哪个桶。这里有大量的研究，因为即使是轻微的调整也会对性能产生很大的影响。而且，在像哈希表这样被大量使用的数据结构上，这种性能影响会涉及到大量具有一系列硬件功能的现实世界程序。</p>
+<blockquote>
+<p>如果你想了解更多（你应该，因为其中一些真的很酷），请研究“双重哈希”、“布谷鸟哈希”、“罗宾汉哈希”以及任何引导你去的东西。</p>
+</blockquote>
+<p>与本书中的往常一样，我们将选择最简单的方法来高效地完成工作。那是很好的旧<strong>线性探测</strong>。在查找条目时，我们会在其键映射到的第一个存储桶中查找。如果它不在那里，我们就查看数组中的下一个元素，依此类推。如果我们到达终点，我们将回到起点。</p>
+<p><strong>线性探测的好处是它对高速缓存友好</strong>。由于直接按内存顺序遍历数组，因此它使 CPU 的高速缓存行保持完整和快乐。不好的是容易<strong>扎堆(clustering)</strong>。如果有很多具有数字相似键值的条目，最终可能会遇到很多彼此相邻的碰撞、溢出的桶。</p>
+<p>与拉链发相比，开放寻址更难理解。我认为开放寻址类似于单独的链表，除了节点“列表”是通过桶数组本身串接的。不是将它们之间的链接存储在指针中，而是根据您查看存储桶的顺序隐式计算连接。</p>
+<p>棘手的部分是这些隐式列表中的多个可能交错在一起。让我们来看一个涵盖所有有趣案例的示例。我们暂时忽略值，只关心一组键。我们从一个包含 8 个桶的空数组开始。</p>
+<p><img alt="" src="../assets/c59ae67a5f0c60e5ff1e7030bb59bb08c1f1d2bd.png" /></p>
+<p>我们决定插入“bagel”。第一个字母“b”（ASCII 值 98）以数组大小 (8) 为模将其放入桶 2。</p>
+<p><img alt="" src="../assets/42a7832f672c761dfbac1e601eb0ea86136f9ae9.png" /></p>
+<p>接下来，我们插入“jam”。这也想进入存储桶 2 (106 mod 8 = 2)，但那个存储桶已被占用。我们继续探索下一个桶。它是空的，所以我们把它放在那里。</p>
+<p><img alt="" src="../assets/50f0999d5188813f2c3e769825d6c3dc4727e5cf.png" /></p>
+<p>我们插入“fruit”，它愉快地落在桶 6 中。</p>
+<p><img alt="" src="../assets/2fd4598f483cc4c3056307080f22b95898547302.png" /></p>
+<p>同样，“migas”可以放入其首选的桶 5 中。</p>
+<p><img alt="" src="../assets/18f596a05a960f100e35dae6e43ea645b39ec954.png" /></p>
+<p>当我们尝试插入“eggs”时，它也想在桶 5 中。那是满的，所以我们跳到 6。桶 6 也满了。请注意，其中的条目<em>不是</em>同一探测序列的一部分。“Fruit”在它的首选桶 6 中。因此 5 和 6 序列发生碰撞并交错。我们跳过那个，最后将“eggs”放入桶 7 中。</p>
+<p><img alt="" src="../assets/f7825840e3dd8742adb1bb8e409fcb3b51edbd97.png" /></p>
+<p>在插入“nuts”时遇到了类似的问题。它不能像它想要的那样落在 6。也不能进入 7。所以我们继续前进。但是我们已经到了数组的末尾，所以我们回到 0 并将它放在那里。</p>
+<p><img alt="" src="../assets/34b37e82d25cc602cb1b79e5be521e9c6c5b71bb.png" /></p>
+<p>实际上，交织并不是什么大问题。即使在拉链法中，也需要遍历列表以检查每个条目的键，因为多个键可以减少到同一个桶。对于开放寻址，我们需要进行相同的检查，这也涵盖了您跨过“属于”不同原始存储桶的条目的情况。</p>
+<h2 id="203">20.3 哈希函数</h2>
+<p>现在可以为自己构建一个相当有效的表来存储最多八个字符的变量名，但这个限制仍然很烦人。为了放宽最后一个约束，需要一种方法来获取任意长度的字符串并将其转换为固定大小的整数。</p>
+<p>最后，我们到了“哈希表”的“哈希”部分。<strong>散列函数</strong>采用一些较大的数据块并将其“散列”以生成固定大小的整数散列<strong>码</strong>，其值取决于原始数据的所有位。一个好的哈希函数具有三个主要目标：</p>
+<blockquote>
+<p>哈希函数也用于密码学。在那个领域，“好”有<em>更</em>严格的定义，以避免暴露有关被散列数据的细节。值得庆幸的是，我们无需为本书担心这些问题。</p>
+</blockquote>
+<ul>
+<li>
+<p><strong>它必须是确定性的</strong>。相同的输入必须始终散列为相同的数字。如果同一个变量在不同的时间点出现在不同的桶中，就很难找到它。</p>
+</li>
+<li>
+<p><strong>它必须是均匀的</strong>。给定一组典型的输入，它应该产生范围广泛且分布均匀的输出数字，并尽可能少地出现聚集或模式。我们希望它在整个数值范围内分散值，以最大程度地减少冲突和聚类。</p>
+</li>
+<li>
+<p><strong>它必须很快</strong>。哈希表上的每个操作都需要我们先对key进行哈希处理。如果散列很慢，它可能会抵消底层数组存储的速度。</p>
+</li>
+</ul>
+<blockquote>
+<p>哈希表的原始名称之一是“分散表scatter table”，因为它获取条目并将它们分散在整个数组中。“散列”一词源于这样一种想法，即散列函数获取输入数据，将其切碎，然后将它们一起扔成一堆，以从所有这些位中得出一个数字。</p>
+</blockquote>
+<p>已经有一大堆散列函数。有些是旧的，并且针对没有人再使用的架构进行了优化。有些被设计成快速的，有些是加密安全的。一些利用特定芯片的矢量指令和高速缓存大小，另一些则旨在最大限度地提高可移植性。</p>
+<p>对有些人来说，设计和评估哈希函数就像他们的<em>难题</em>一样。我很钦佩他们，但我在数学上还不够敏锐，无法<em>成为他们中</em>的一员。因此，对于 clox，我选择了一个简单、久经考验的哈希函数，称为<a href="http://www.isthe.com/chongo/tech/comp/fnv/">FNV-1a</a>，多年来一直为我服务。考虑在您的代码中尝试不同的方法，看看它们是否有所作为。</p>
+<p>谁知道呢，也许哈希函数也能成为你的菜？</p>
+<p>好的，这是对桶、负载因子、开放寻址、冲突解决和散列函数的快速浏览。那是大量的文本，而不是大量的实际代码。如果它看起来仍然模糊，请不要担心。一旦我们完成编码，它就会全部安装到位。</p>
+<h2 id="204">20.4 构建哈希表</h2>
+<p>与平衡搜索树等其他经典技术相比，哈希表的优点在于实际数据结构非常简单。我们进入了一个新模块。</p>
+<pre><code class="language-c">#ifndef clox_table_h
+#define clox_table_h
+
+#include &quot;common.h&quot;
+#include &quot;value.h&quot;
+
+typedef struct {
+  int count;
+  int capacity;
+  Entry* entries;
+} Table;
+
+#endif
+// table.h, create new file
+</code></pre>
+<p>哈希表是一个条目数组。与之前的动态数组一样，我们跟踪数组的分配大小 (<code>capacity</code>) 和当前存储在其中的键/值对的数量 (<code>count</code>)。count与capacity的比值就是哈希表的负载因子。</p>
+<p>每个条目都是其中之一：</p>
+<pre><code class="language-c">#include &quot;value.h&quot;
+
+typedef struct {
+  ObjString* key;
+  Value value;
+} Entry;
+
+typedef struct {
+// table.h
+</code></pre>
+<p>这是一个简单的键/值对。由于键始终是一个字符串，我们直接存储 ObjString 指针而不是将其包装在一个值中。这样速度更快，体积更小。</p>
+<blockquote>
+<p>在 clox 中，我们只需要支持字符串形式的键。处理其他类型的密钥不会增加太多复杂性。只要您可以比较两个对象的相等性并将它们简化为位序列，就很容易将它们用作散列键。</p>
+</blockquote>
+<p>为了创建一个新的空哈希表，我们声明了一个类似构造函数的函数。</p>
+<pre><code class="language-c">} Table;
+
+void initTable(Table* table);
+
+#endif
+// table.h, add after struct Table
+</code></pre>
+<p>需要一个新的实现文件来定义它。当这样做的时候，把所有讨厌的include都放在一边。</p>
+<pre><code class="language-c">#include &lt;stdlib.h&gt;
+#include &lt;string.h&gt;
+
+#include &quot;memory.h&quot;
+#include &quot;object.h&quot;
+#include &quot;table.h&quot;
+#include &quot;value.h&quot;
+
+void initTable(Table* table) {
+  table-&gt;count = 0;
+  table-&gt;capacity = 0;
+  table-&gt;entries = NULL;
+}
+// table.c, create new file
+</code></pre>
+<p>与我们的动态值数组类型一样，哈希表最初以零容量和<code>NULL</code>数组开始。除非需要，否则我们不会分配任何东西。假设我们最终确实分配了一些东西，也需要能够释放它。</p>
+<pre><code class="language-c">void initTable(Table* table);
+void freeTable(Table* table);
+
+#endif
+// table.h, add after initTable()
+</code></pre>
+<p>及其伟大的实现：</p>
+<pre><code class="language-c">void freeTable(Table* table) {
+  FREE_ARRAY(Entry, table-&gt;entries, table-&gt;capacity);
+  initTable(table);
+}
+// table.c, add after initTable()
+</code></pre>
+<p>同样，它看起来就像一个动态数组。事实上，您可以将哈希表基本上看作是一个动态数组，它具有非常奇怪的插入项策略。我们不需要检查<code>NULL</code>这里，因为<code>FREE_ARRAY()</code>已经优雅地处理了。</p>
+<h3 id="2041">20.4.1 字符串哈希</h3>
+<p>在开始将条目放入表中之前，需要对它们进行哈希处理。为了确保条目在整个数组中均匀分布，需要一个好的哈希函数来查看密钥字符串的所有位。如果它只查看前几个字符，那么一系列共享相同前缀的字符串最终会在同一个桶中发生冲突。</p>
+<p>另一方面，遍历整个字符串来计算哈希有点慢。如果每次在表中查找键时都必须遍历字符串，将失去哈希表的一些性能优势。所以会做一件显而易见的事情：缓存它。</p>
+<p>在 ObjString 的“对象”模块中，我们添加：</p>
+<pre><code class="language-c">  char* chars;
+  uint32_t hash;
+};
+// object.h, in struct ObjString 
+</code></pre>
+<p>每个 ObjString 存储其字符串的哈希码。由于字符串在 Lox 中是不可变的，可以预先计算一次哈希码并确保它永远不会失效。急切地缓存它是有道理的：分配字符串并复制它的字符已经是一个O(n)操作，所以现在是对字符串的哈希进行O(n)计算的好时机。</p>
+<p>每当我们调用内部函数分配一个字符串时，我们都会传入它的哈希码。</p>
+<pre><code class="language-c">static ObjString* allocateString(char* chars, int length,
+                                 uint32_t hash) {
+  ObjString* string = ALLOCATE_OBJ(ObjString, OBJ_STRING);
+// object.c, function allocateString(), replace 1 line
+</code></pre>
+<p>该函数只是将散列存储在结构中。</p>
+<pre><code class="language-c">  string-&gt;chars = chars;
+  string-&gt;hash = hash;
+  return string;
+}
+// object.c, in allocateString() 
+</code></pre>
+<p>有趣的地方发生在调用者身上。从两个地方调用<code>allocateString()</code>：复制字符串的函数和获取现有动态分配字符串的所有权的函数。我们将从第一个开始。</p>
+<pre><code class="language-c">ObjString* copyString(const char* chars, int length) {
+  uint32_t hash = hashString(chars, length);
+  char* heapChars = ALLOCATE(char, length + 1);
+// object.c, in copyString()
+</code></pre>
+<p>这里没有魔法。我们计算哈希码，然后传递它。</p>
+<pre><code class="language-c">  memcpy(heapChars, chars, length);
+  heapChars[length] = '\0';
+  return allocateString(heapChars, length, hash);
+}
+// object.c, in copyString(), replace 1 line
+</code></pre>
+<p>其他字符串函数类似。</p>
+<pre><code class="language-c">ObjString* takeString(char* chars, int length) {
+  uint32_t hash = hashString(chars, length);
+  return allocateString(chars, length, hash);
+}
+// object.c, in takeString(), replace 1 line
+</code></pre>
+<p>有趣的代码在这里：</p>
+<pre><code class="language-c">static uint32_t hashString(const char* key, int length) {
+  uint32_t hash = 2166136261u;
+  for (int i = 0; i &lt; length; i++) {
+    hash ^= (uint8_t)key[i];
+    hash *= 16777619;
+  }
+  return hash;
+}
+// object.c, add after allocateString()
+</code></pre>
+<p>这是 clox 中真正的“哈希函数”。该算法称为“FNV-1a”，是我所知道的最短的体面哈希函数。在一本旨在向您展示每一行代码的书中，简洁无疑是一种美德。</p>
+<p>基本思想非常简单，许多哈希函数都遵循相同的模式。您从一些初始哈希值开始，通常是具有某些精心选择的数学属性的常数。然后你遍历要散列的数据。对于每个字节（或有时是单词），您以某种方式将这些位混合到哈希值中，然后将生成的位围绕某些位打乱。</p>
+<p>“混合”和“打乱”的含义可能非常复杂。不过，最终的基本目标是均匀分布 (uniformity)——我们希望生成的哈希值尽可能广泛地分散在数值范围内，以避免冲突和聚集。</p>
+<h3 id="2042">20.4.2 插入条目</h3>
+<p>现在知道字符串对象哈希码，可以开始将它们放入哈希表中。</p>
+<pre><code class="language-c">void freeTable(Table* table);
+bool tableSet(Table* table, ObjString* key, Value value);
+
+#endif
+// table.h, add after freeTable()
+</code></pre>
+<p>此函数将给定的键/值对添加到给定的哈希表中。如果该键的条目已经存在，则新值将覆盖旧值。如果添加了新条目，该函数将返回<code>true</code>。这是实现：</p>
+<pre><code class="language-c">bool tableSet(Table* table, ObjString* key, Value value) {
+  Entry* entry = findEntry(table-&gt;entries, table-&gt;capacity, key);
+  bool isNewKey = entry-&gt;key == NULL;
+  if (isNewKey) table-&gt;count++;
+
+  entry-&gt;key = key;
+  entry-&gt;value = value;
+  return isNewKey;
+}
+// table.c, add after freeTable()
+</code></pre>
+<p>大多数有趣的逻辑都在<code>findEntry()</code>其中，我们很快就会讲到。该函数的工作是获取一个键并确定它应该进入数组中的哪个桶。它返回一个指向该桶的指针——数组中 Entry 的地址。</p>
+<p>一旦我们有了一个桶，插入就很简单了。我们更新哈希表的大小，注意不要在我们覆盖已经存在的键的值时增加计数。然后我们将键和值复制到条目中的相应字段中。</p>
+<p>不过，我们在这里遗漏了一些东西。我们实际上还没有分配 Entry 数组。哎呀！在我们可以插入任何东西之前，我们需要确保我们有一个数组，并且它足够大。</p>
+<pre><code class="language-c">bool tableSet(Table* table, ObjString* key, Value value) {
+  if (table-&gt;count + 1 &gt; table-&gt;capacity * TABLE_MAX_LOAD) {
+    int capacity = GROW_CAPACITY(table-&gt;capacity);
+    adjustCapacity(table, capacity);
+  }
+
+  Entry* entry = findEntry(table-&gt;entries, table-&gt;capacity, key);
+// table.c, in tableSet()
+</code></pre>
+<p>这类似于我们之前编写的用于增长动态数组的代码。如果我们没有足够的容量来插入一个项目，我们会重新分配并扩大数组。宏采用<code>GROW_CAPACITY()</code>现有容量并将其增长成倍数，以确保我们在一系列插入中获得摊销的恒定性能。</p>
+<p>这里有趣的区别是那个<code>TABLE_MAX_LOAD</code>常数。</p>
+<pre><code class="language-c">#include &quot;value.h&quot;
+
+#define TABLE_MAX_LOAD 0.75
+
+void initTable(Table* table) {
+// table.c
+</code></pre>
+<p>这就是我们管理表的负载因子的方式。我们不会等到 容量完全满时才增长。取而代之的是，我们在容量满之前增长，此时数组至少已满 75%。</p>
+<blockquote>
+<p>理想的最大加载因子 根据 散列函数、冲突处理策略和您将看到的典型键集而异。由于像 Lox 这样的玩具语言没有“真实世界”的数据集，因此很难对其进行优化，我随意选择了 75%。当您构建自己的哈希表时，对其进行基准测试和调整。</p>
+</blockquote>
+<p>很快就会开始实现<code>adjustCapacity()</code>。首先，让我们看看<code>findEntry()</code>您一直想知道的那个函数。</p>
+<pre><code class="language-c">static Entry* findEntry(Entry* entries, int capacity,
+                        ObjString* key) {
+  uint32_t index = key-&gt;hash % capacity;
+  for (;;) {
+    Entry* entry = &amp;entries[index];
+    if (entry-&gt;key == key || entry-&gt;key == NULL) {
+      return entry;
+    }
+
+    index = (index + 1) % capacity;
+  }
+}
+// table.c, add after freeTable()
+</code></pre>
+<p>这个函数才是哈希表真正的核心。它负责获取一个键和一个桶数组，并确定条目属于哪个桶。此功能也是线性探测和碰撞处理发挥作用的地方。我们将使用<code>findEntry()</code>两者来查找哈希表中的现有条目并决定在何处插入新条目。</p>
+<p>尽管如此，它并没有太多。首先，使用模数将键的哈希码映射到数组边界内的索引。这返回一个桶索引，理想情况下，我们将能够在其中找到或放置条目。</p>
+<p>有几种情况需要检查：</p>
+<ul>
+<li>
+<p>如果该数组索引处的 Entry 键为<code>NULL</code>，则该桶为空。如果我们要<code>findEntry()</code>在哈希表中查找某些内容，这意味着它不存在。如果我们使用它来插入，这意味着我们已经找到了添加新条目的地方。</p>
+</li>
+<li>
+<p>如果桶中的键等于我们正在寻找的键，那么该键已经存在于表中。如果我们正在进行查找，那很好——我们已经找到了我们要查找的键。如果我们正在执行插入，这意味着我们将替换该键的值而不是添加新条目。</p>
+</li>
+</ul>
+<blockquote>
+<p>看起来我们正在使用<code>==</code>来查看两个字符串是否相等。那行不通，是吗？同一个字符串在内存中的不同位置可能有两个副本。不要害怕，精明的读者。我们将进一步解决这个问题。而且，奇怪的是，它是一个哈希表，提供了我们需要的工具。</p>
+</blockquote>
+<ul>
+<li>否则，桶中有一个条目，但具有不同的键。这是一次碰撞。在这种情况下，我们开始探索。这就是那个<code>for</code>循环所做的。我们从条目理想的位置开始。如果那个桶是空的或者有相同的键，我们就完成了。否则，我们前进到下一个元素——这是“线性探测”的<em>线性</em>部分——并在那里检查。如果我们越过数组的末尾，第二个模运算符会将我们绕回到开头。</li>
+</ul>
+<p>当我们找到一个空桶或一个与我们正在寻找的桶具有相同键的桶时，我们就退出循环。您可能想知道无限循环。如果我们与<em>每个</em>桶相撞怎么办？幸运的是，<strong>由于我们的负载系数，这不会发生。因为我们在数组接近满时立即增长数组，所以我们知道总会有空桶</strong>。</p>
+<p>我们直接从循环内返回，产生指向找到的 Entry 的指针，因此调用者可以向其中插入内容或从中读取内容。回到<code>tableSet()</code>第一个启动它的函数，我们将新条目存储在返回的桶中，我们就完成了。</p>
+<h3 id="2043">20.4.3 分配和调整大小</h3>
+<p>在可以将条目放入哈希表之前，我们确实需要一个地方来实际存储它们。需要分配一个桶数组。这发生在这个函数中：</p>
+<pre><code class="language-c">static void adjustCapacity(Table* table, int capacity) {
+  Entry* entries = ALLOCATE(Entry, capacity);
+  for (int i = 0; i &lt; capacity; i++) {
+    entries[i].key = NULL;
+    entries[i].value = NIL_VAL;
+  }
+
+  table-&gt;entries = entries;
+  table-&gt;capacity = capacity;
+}
+// table.c, add after findEntry()
+</code></pre>
+<p>我们创建一个包含<code>capacity</code>条目的桶数组。分配数组后，我们将每个元素初始化为一个空桶，然后将数组（及其容量）存储在哈希表的主结构中。当我们将第一个条目插入表中时，这段代码很好，我们需要数组的第一次分配。但是，当我们已经拥有一个并且需要扩容它时怎么办？</p>
+<p>回到做动态数组的时候，可以使用<code>realloc()</code>并让 C 标准库复制所有内容。这不适用于哈希表。请记住，要为每个条目选择存储桶，我们将其散列键<em>对数组大小取模</em>。这意味着当数组大小发生变化时，条目可能会在不同的桶中结束。</p>
+<p>那些新的桶可能有我们需要处理的新碰撞。因此，获取每个条目所属位置的最简单方法是通过将每个条目重新插入新的空数组来从头开始重建表。</p>
+<pre><code class="language-c">    entries[i].value = NIL_VAL;
+  }
+
+  for (int i = 0; i &lt; table-&gt;capacity; i++) {
+    Entry* entry = &amp;table-&gt;entries[i];
+    if (entry-&gt;key == NULL) continue;
+
+    Entry* dest = findEntry(entries, capacity, entry-&gt;key);
+    dest-&gt;key = entry-&gt;key;
+    dest-&gt;value = entry-&gt;value;
+  }
+
+  table-&gt;entries = entries;
+// table.c, in adjustCapacity()
+</code></pre>
+<p>我们从前到后遍历旧数组。每当我们找到一个非空桶时，我们就将该条目插入到新数组中。我们使用<code>findEntry()</code>，传入<em>新</em>数组而不是当前存储在表中的数组。（这就是为什么<code>findEntry()</code>将指针直接指向 Entry 数组而不是整个<code>Table</code>结构。这样，我们可以在将新数组和容量存储到结构中之前传递它们。）</p>
+<p>完成后，我们可以释放旧数组的内存。</p>
+<pre><code class="language-c">    dest-&gt;value = entry-&gt;value;
+  }
+
+  FREE_ARRAY(Entry, table-&gt;entries, table-&gt;capacity);
+  table-&gt;entries = entries;
+// table.c, in adjustCapacity()
+</code></pre>
+<p>有了它，我们就有了一个哈希表，可以根据需要向其中填充尽可能多的条目。它处理所有现有key并根据需要自行扩展以维持所需的负载能力。</p>
+<p>当我们这样做时，让我们还定义一个辅助函数，用于将一个哈希表的所有条目复制到另一个哈希表中。</p>
+<pre><code class="language-c">bool tableSet(Table* table, ObjString* key, Value value);
+void tableAddAll(Table* from, Table* to);
+
+#endif
+// table.h, add after tableSet()
+</code></pre>
+<p>到以后我们支持方法继承时，才需要它，但是最好现在就实现它，因为我们已经对所有哈希表的东西都记忆犹新。</p>
+<pre><code class="language-c">void tableAddAll(Table* from, Table* to) {
+  for (int i = 0; i &lt; from-&gt;capacity; i++) {
+    Entry* entry = &amp;from-&gt;entries[i];
+    if (entry-&gt;key != NULL) {
+      tableSet(to, entry-&gt;key, entry-&gt;value);
+    }
+  }
+}
+// table.c, add after tableSet()
+</code></pre>
+<p>这个没什么好说的。它遍历源哈希表的桶数组。每当它找到一个非空桶时，它就会使用我们最近定义的函数<code>tableSet()</code>将条目添加到目标哈希表中。</p>
+<h3 id="2044">20.4.4 检索值</h3>
+<p>现在我们的哈希表包含了一些东西，让我们开始把东西找出来。给定一个键，可以用这个函数查找对应的值，如果有的话：</p>
+<pre><code class="language-c">void freeTable(Table* table);
+bool tableGet(Table* table, ObjString* key, Value* value);
+bool tableSet(Table* table, ObjString* key, Value value);
+// table.h, add after freeTable()
+</code></pre>
+<p>你传入一个表和一个键。如果找到具有该键的条目，则返回<code>true</code>，否则返回<code>false</code>。如果条目存在，则输出参数<code>value</code>指向结果值。</p>
+<p>既然<code>findEntry()</code>已经做了很多工作，实现起来还不麻烦。</p>
+<pre><code class="language-c">bool tableGet(Table* table, ObjString* key, Value* value) {
+  if (table-&gt;count == 0) return false;
+
+  Entry* entry = findEntry(table-&gt;entries, table-&gt;capacity, key);
+  if (entry-&gt;key == NULL) return false;
+
+  *value = entry-&gt;value;
+  return true;
+}
+// table.c, add after findEntry()
+</code></pre>
+<p>如果表完全是空的，肯定找不到该条目，所以首先检查它。这不仅仅是一种优化——它还确保我们不会在数组为<code>NULL</code>.否则，就让<code>findEntry()</code>发挥它的魔力。这会返回一个指向桶的指针。如果桶是空的，我们通过查看键是否为<code>NULL</code>来检测没有找到带有我们键的条目。如果<code>findEntry()</code>确实返回一个非空条目，那么这就是匹配项。获取 Entry 的值并将其复制到输出参数，以便调用者可以获取它。小菜一碟。</p>
+<h3 id="2045">20.4.5 删除条目</h3>
+<p>全功能哈希表还需要支持一项更基本的操作：删除条目。这看起来很明显，如果你可以添加东西，你应该可以<em>取消</em>添加它们，对吧？但是您会惊讶于有多少关于哈希表的教程忽略了这一点。</p>
+<p>我也可以走那条路。事实上，我们仅在 VM 中的极小边缘情况下使用 clox 中的删除。但是如果你想真正理解如何完整地实现一个哈希表，这感觉很重要。我可以同情他们想要忽视它的愿望。正如我们将看到的，从使用开放寻址的哈希表中删除 是很棘手的。</p>
+<blockquote>
+<p>使用拉链法，删除就像从链表中删除节点一样简单。</p>
+</blockquote>
+<p>至少声明很简单。</p>
+<pre><code class="language-c">bool tableSet(Table* table, ObjString* key, Value value);
+bool tableDelete(Table* table, ObjString* key);
+void tableAddAll(Table* from, Table* to);
+// table.h, add after tableSet()
+</code></pre>
+<p>显而易见的实现方法是和插入类似。用<code>findEntry()</code>查找条目的桶。然后清理桶。完毕！</p>
+<p>在没有碰撞的情况下，效果很好。但是如果发生了冲突，那么条目所在的桶可能是一个或多个隐式探测序列的一部分。例如，这是一个包含三个键的哈希表，它们都具有相同的首选存储桶 2：</p>
+<p><img alt="" src="../assets/6293e26fd662145acc5e6ba16b1c8eb16308d4d8.png" /></p>
+<p>请记住，当我们遍历探测序列以查找条目时，我们知道已经到达序列的末尾并且当遇到空桶时该条目不存在。这就像探测序列是一个条目列表，一个空条目终止该列表。</p>
+<p>如果我们通过简单地清除条目来删除“biscuit”，那么会在中间破坏该探测序列，从而使尾随条目成为孤立的且无法访问。有点像从链表中删除一个节点而不将指针从前一个节点重新链接到下一个节点。</p>
+<p>如果稍后尝试寻找“jam”，将从“bagel”开始，停在下一个空条目处，并且永远找不到它。</p>
+<p><img alt="" src="../assets/a9c7f8d9eabfa5d861f46a16eafa0e94a4bb970a.png" /></p>
+<p>为了解决这个问题，大多数实现都使用了一种叫做<strong>tombstones</strong>的技巧。我们没有在删除时清除条目，而是用一个称为“墓碑”的特殊哨兵条目替换它。当在查找期间跟踪探测序列时，我们遇到了墓碑，我们<em>不会</em>将其视为空槽并停止循环。相反，会继续前进，以便删除条目不会破坏任何隐式碰撞链，我们仍然可以在它之后找到条目。</p>
+<p><img alt="" src="../assets/aa5a1cac9742fcaa461b7f53888d0d034b723a8e.png" /></p>
+<p>代码如下所示：</p>
+<pre><code class="language-c">bool tableDelete(Table* table, ObjString* key) {
+  if (table-&gt;count == 0) return false;
+
+  // Find the entry.
+  Entry* entry = findEntry(table-&gt;entries, table-&gt;capacity, key);
+  if (entry-&gt;key == NULL) return false;
+
+  // Place a tombstone in the entry.
+  entry-&gt;key = NULL;
+  entry-&gt;value = BOOL_VAL(true);
+  return true;
+}
+// table.c, add after tableSet()
+</code></pre>
+<p>首先，找到包含我们要删除的条目的桶。（如果我们没有找到它，就没有什么可删除的，所以我们放弃了。）我们用墓碑替换条目。在 clox 中，使用一个<code>NULL</code>键和一个<code>true</code>值来表示它，但任何不会与空桶或有效条目混淆的表示都有效。</p>
+<p><img alt="" src="../assets/500d1d6a691a5f33be7ec0908ad791bcec08cd6c.png" /></p>
+<p>这就是我们删除条目所需要做的全部工作。简单快捷。但是所有其他操作也需要正确处理墓碑。墓碑是一种“半”条目。它既有现在条目的一些特征，也有空条目的一些特征。</p>
+<p>当我们在查找过程中跟踪探测序列时，我们遇到了墓碑，我们注意到它并继续前进。</p>
+<pre><code class="language-c">for (;;) {
+    Entry* entry = &amp;entries[index];
+    if (entry-&gt;key == NULL) {
+      if (IS_NIL(entry-&gt;value)) {
+        // Empty entry.
+        return tombstone != NULL ? tombstone : entry;
+      } else {
+        // We found a tombstone.
+        if (tombstone == NULL) tombstone = entry;
+      }
+    } else if (entry-&gt;key == key) {
+      // We found the key.
+      return entry;
+    }
+
+    index = (index + 1) % capacity;
+// table.c, in findEntry(), replace 3 lines
+</code></pre>
+<p>// 第一次传递墓碑时，我们将其存储在这个局部变量中：</p>
+<pre><code class="language-c">uint32_t index = key-&gt;hash % capacity;
+  Entry* tombstone = NULL;
+
+  for (;;) {
+// table.c, in findEntry()  
+</code></pre>
+<p>如果我们到达一个真正空的条目，那么key不存在。在那种情况下，如果我们传递了一个墓碑，我们返回它的桶而不是后来的空桶。如果我们调用<code>findEntry()</code>是为了插入一个节点，那么我们就可以将逻辑删除桶视为空的，并将其重新用于新条目。</p>
+<p>像这样自动重用墓碑插槽有助于减少桶阵列中浪费空间的墓碑数量。在混合插入和删除的典型用例中，墓碑的数量会增长一段时间，然后趋于稳定。</p>
+<p>即便如此，也不能保证大量删除不会导致数组充满墓碑。在最坏的情况下，我们最终可能<em>没有</em>空桶。那会很糟糕，因为请记住，唯一阻止无限循环的<code>findEntry()</code>是假设我们最终会碰到一个空桶。</p>
+<p>因此，我们需要考虑墓碑如何与表的负载因子和调整大小交互。关键问题是，在计算负载因子时，我们应该把墓碑当成满桶还是空桶？</p>
+<h3 id="2046">20.4.6 墓碑计数</h3>
+<p>如果我们将墓碑视为满桶，那么我们最终可能会得到一个比我们可能需要的更大的数组，因为它人为地增加了负载因子。我们可以重复使用墓碑，但它们不会被视为未使用，因此我们最终会过早地扩容数组。</p>
+<p>但是，如果我们将墓碑视为空桶并且<em>不</em>将它们包含在负载因子中，那么我们将面临最终<em>没有</em>实际空桶来终止查找的风险。无限循环比一些额外的数组槽更糟糕，因此对于负载因子，我们认为墓碑是满桶。</p>
+<p>这就是为什么我们在前面的代码中删除条目时不减少count的原因。count不再是哈希表中的条目数，而是条目数加上墓碑。这意味着只有当新条目进入一个完全空的桶时，我们才会在插入期间增加计数。</p>
+<pre><code class="language-c">bool isNewKey = entry-&gt;key == NULL;
+  if (isNewKey &amp;&amp; IS_NIL(entry-&gt;value)) table-&gt;count++;
+
+  entry-&gt;key = key;
+// table.c, in tableSet(), replace 1 line  
+</code></pre>
+<p>如果我们用新条目替换墓碑，则桶已经被计算在内并且计数不会改变。</p>
+<p>当我们调整数组大小时，我们分配一个新数组并将所有现有条目重新插入其中。在此过程中，我们<em>不会</em>将墓碑复制过来。它们不会增加任何价值，因为我们无论如何都要重建探测序列，只会减慢查找速度。这意味着我们需要重新计算count，因为它可能会在调整大小时发生变化。所以我们清除它：</p>
+<pre><code class="language-c">  }
+
+  table-&gt;count = 0;
+  for (int i = 0; i &lt; table-&gt;capacity; i++) {
+// table.c, in adjustCapacity()
+</code></pre>
+<p>然后每次我们找到一个非墓碑条目时，我们都会增加它。</p>
+<pre><code class="language-c">    dest-&gt;value = entry-&gt;value;
+    table-&gt;count++;
+  }
+// table.c, in adjustCapacity()
+</code></pre>
+<p>这意味着当我们增加容量时，我们最终可能会在生成的更大数组中得到<em>更少的</em>条目，因为所有的墓碑都被丢弃了。这有点浪费，但不是一个大的实际问题。</p>
+<p>我发现有趣的是，支持删除条目的大部分工作都在<code>findEntry()</code>和<code>adjustCapacity()</code>中。实际的删除逻辑非常简单和快速。在实践中，删除往往很少见，因此您希望哈希表在删除函数中完成尽可能多的工作，而让其他函数保持更快的速度。使用我们的墓碑方法，删除速度很快，但查找会受到惩罚。</p>
+<p>我做了一些基准测试，以在几个不同的删除场景中对此进行测试。我惊讶地发现，与在删除期间完成所有工作以重新插入受影响的条目相比，逻辑删除最终确实更快。</p>
+<p>但是仔细想想，并不是墓碑方式把完全删除一个条目的工作推给了其他操作，更多的是让删除变得<em>懒惰</em>了。起初，它做了最少的工作将条目变成墓碑。当以后的查找必须跳过它时，这可能会导致惩罚。但它也允许该墓碑桶被以后的插入重复使用。这种重用是避免重新排列以下所有受影响条目的成本的一种非常有效的方法。您基本上回收了探测条目链中的一个节点。这是一个巧妙的技巧。</p>
+<h2 id="205-string-interning">20.5 字符串驻留 string-interning</h2>
+<p>我们已经得到了一个基本上可用的哈希表，尽管它的中心有一个严重的缺陷。此外，我们还没有将它用于任何事情。是时候解决这两个问题了，并在此过程中学习解释器使用的经典技术。</p>
+<p>哈希表不能完全工作的原因是当<code>findEntry()</code>检查现有键是否与它正在寻找的键匹配时，它用于<code>==</code>比较两个字符串是否相等。仅当两个键在内存中是完全相同的字符串时才返回 true。具有相同字符的两个单独的字符串应该被认为是相等的，但事实并非如此。</p>
+<p>请记住，当我们在上一章中添加字符串时，我们添加了<a href="http://craftinginterpreters.com/strings.html#operations-on-strings">显式支持以逐个字符地比较字符串</a>以获得真正的值相等性。我们可以在 中做到这一点<code>findEntry()</code>，但那很慢。</p>
+<blockquote>
+<p>实际上，我们会先比较两个字符串的哈希码。它可以快速检测到几乎所有不同的字符串——如果没有，它就不是一个很好的哈希函数。但是当两个哈希值相同时，我们仍然需要比较字符以确保我们没有在不同的字符串上发生哈希冲突。</p>
+</blockquote>
+<p>相反，我们将使用一种称为<strong>string interning</strong>的技术。核心问题是内存中可能存在具有相同字符的不同字符串。即使它们是不同的对象，它们也需要表现得像  等值。它们本质上是重复的，必须比较它们的所有字节才能检测到。</p>
+<p>字符串驻留是一个重复数据删除的过程。我们创建了一个“interned”字符串的集合。该集合中的任何字符串都保证在文本上与所有其他字符串不同。当你驻留(intern)一个字符串时，你会在集合中寻找一个匹配的字符串。如果找到，则使用原来的那个。否则，您拥有的字符串是唯一的，因此您将其添加到集合中。</p>
+<blockquote>
+<p>我猜“intern”是“internal”的缩写。我认为这个想法是语言的运行时保留这些字符串自己的“内部”集合，而其他字符串可以由用户创建并在内存中浮动。当你intern一个字符串时，你要求运行时将字符串添加到该内部集合并返回一个指向它的指针。</p>
+<p>语言在它们进行多少字符串intern以及如何向用户公开这些方面有所不同。Lua intern<em>所有</em>的字符串，这也是 clox 会做的。Lisp、Scheme、Smalltalk、Ruby 和其他语言有一个单独的类似字符串的类型，称为“symbol”，它是隐式intern的。（这就是为什么他们说符号在 Ruby 中“更快”。）默认情况下，Java 会保留常量字符串，并提供一个 API 来让您显式地保留给它的任何字符串。</p>
+</blockquote>
+<p>这样，您就知道每个字符序列在内存中仅由一个字符串表示。这使得 相等比较 变得很轻量级。如果两个字符串在内存中指向同一个地址，那么它们显然是同一个字符串，必须相等。而且，因为我们知道字符串是唯一的，所以如果两个字符串指向不同的地址，它们必须是不同的字符串。</p>
+<p>因此，指针相等性与值相等性完全匹配。这反过来意味着我们在<code>findEntry()</code>使用<code>==</code>是正确的。或者，至少，一旦我们intern了所有的字符串，它就会。为了可靠地删除所有字符串的重复数据，VM 需要能够找到创建的每个字符串。我们通过给它一个哈希表来存储它们来做到这一点。</p>
+<pre><code class="language-c">  Value* stackTop;
+  Table strings;
+  Obj* objects;
+// vm.h, in struct VM 
+</code></pre>
+<p>像往常一样，我们需要一个包含。</p>
+<pre><code class="language-c">#include &quot;chunk.h&quot;
+#include &quot;table.h&quot;
+#include &quot;value.h&quot;
+// vm.h
+</code></pre>
+<p>当我们启动一个新的 VM 时，字符串表是空的。</p>
+<pre><code class="language-c">  vm.objects = NULL;
+  initTable(&amp;vm.strings);
+}
+// vm.c, in initVM() 
+</code></pre>
+<p>当我们关闭 VM 时，我们会清理该表使用的所有资源。</p>
+<pre><code class="language-c">void freeVM() {
+  freeTable(&amp;vm.strings);
+  freeObjects();
+// vm.c, in freeVM()
+</code></pre>
+<p>一些语言有一个单独的类型或一个明确的步骤来intern一个字符串。对于 clox，我们会自动intern每个字符串。这意味着每当我们创建一个新的唯一字符串时，都会将其添加到表中。</p>
+<pre><code class="language-c">  string-&gt;hash = hash;
+  tableSet(&amp;vm.strings, string, NIL_VAL);
+  return string;
+// object.c, in allocateString()
+</code></pre>
+<p>我们使用的表更像是哈希<em>集</em>而不是哈希<em>表</em>。键是字符串，我们只关心这些，所以我们只使用<code>nil</code>值。</p>
+<p>这会在表中获取一个字符串，假设它是唯一的，但我们需要在到达这里之前实际检查重复项。我们在调用<code>allocateString()</code>.这是一个：</p>
+<pre><code class="language-c">  uint32_t hash = hashString(chars, length);
+  ObjString* interned = tableFindString(&amp;vm.strings, chars, length,
+                                        hash);
+  if (interned != NULL) return interned;
+
+  char* heapChars = ALLOCATE(char, length + 1);
+// object.c, in copyString() 
+</code></pre>
+<p>当将一个字符串复制到一个新的 LoxString 中时，首先在字符串表中查找它。如果找到它，而不是“复制”，只是返回对该字符串的引用。否则，我们会失败，分配一个新的字符串，并将其存储在字符串表中。</p>
+<p>取得字符串的所有权有点不同。</p>
+<pre><code class="language-c">  uint32_t hash = hashString(chars, length);
+  ObjString* interned = tableFindString(&amp;vm.strings, chars, length,
+                                        hash);
+  if (interned != NULL) {
+    FREE_ARRAY(char, chars, length + 1);
+    return interned;
+  }
+
+  return allocateString(chars, length, hash);
+// object.c, in takeString()
+</code></pre>
+<p>同样，我们首先在字符串表中查找字符串。如果我们找到它，在返回它之前，我们会为传入的字符串释放内存。由于所有权已传递给此函数并且我们不再需要重复的字符串，因此由我们来释放它。</p>
+<p>在开始我们需要编写的新函数之前，还有一个 include。</p>
+<pre><code class="language-c">#include &quot;object.h&quot;
+#include &quot;table.h&quot;
+#include &quot;value.h&quot;
+// object.c
+</code></pre>
+<p>要在表中查找字符串，我们不能使用普通<code>tableGet()</code>函数，因为它会调用<code>findEntry()</code>，这与我们现在正在尝试修复的重复字符串存在确切问题。相反，我们使用这个新函数：</p>
+<pre><code class="language-c">void tableAddAll(Table* from, Table* to);
+ObjString* tableFindString(Table* table, const char* chars,
+                           int length, uint32_t hash);
+
+#endif
+// table.h, add after tableAddAll()
+</code></pre>
+<p>实现看起来像这样：</p>
+<pre><code class="language-c">ObjString* tableFindString(Table* table, const char* chars,
+                           int length, uint32_t hash) {
+  if (table-&gt;count == 0) return NULL;
+
+  uint32_t index = hash % table-&gt;capacity;
+  for (;;) {
+    Entry* entry = &amp;table-&gt;entries[index];
+    if (entry-&gt;key == NULL) {
+      // Stop if we find an empty non-tombstone entry.
+      if (IS_NIL(entry-&gt;value)) return NULL;
+    } else if (entry-&gt;key-&gt;length == length &amp;&amp;
+        entry-&gt;key-&gt;hash == hash &amp;&amp;
+        memcmp(entry-&gt;key-&gt;chars, chars, length) == 0) {
+      // We found it.
+      return entry-&gt;key;
+    }
+
+    index = (index + 1) % table-&gt;capacity;
+  }
+}
+// table.c, add after tableAddAll()
+</code></pre>
+<p>看来我们已经复制粘贴了<code>findEntry()</code>。有很多冗余，但也有一些关键差异。首先，我们传入要查找的键的原始字符数组，而不是 ObjString。在我们调用它时，我们还没有创建 ObjString。</p>
+<p>其次，在检查是否找到key时，我们会查看实际的字符串。首先查看它们是否具有匹配的长度和哈希值。这些可以快速检查，如果它们不相等，则字符串肯定不相同。</p>
+<p>如果存在哈希冲突，将进行实际的逐个字符的字符串比较。这是 VM 中我们实际测试字符串文本相等性的一个地方。我们在这里这样做是为了删除重复的字符串，然后 VM 的其余部分可以理所当然地认为内存中不同地址的任何两个字符串必须具有不同的内容。</p>
+<p>事实上，既然我们已经interned了所有的字符串，就可以在字节码解释器中利用它了。当用户对两个恰好是字符串的对象进行<code>==</code>操作时，不再需要测试字符。</p>
+<pre><code class="language-c">    case VAL_NUMBER: return AS_NUMBER(a) == AS_NUMBER(b);
+    case VAL_OBJ:    return AS_OBJ(a) == AS_OBJ(b);
+    default:         return false; // Unreachable.
+// value.c, in valuesEqual(), replace 7 lines
+</code></pre>
+<p>在创建字符串时来intern它们时增加了一些开销。但作为回报，在运行时，字符串上的相等运算符要快得多。这样，我们就有了一个功能齐全的哈希表，可供我们用于跟踪变量、实例或任何其他可能出现的键值对。</p>
+<p>我们还加快了测试字符串的相等性。当用户对字符串进行<code>==</code>操作时，这很好。但它在像 Lox 这样的动态类型语言中更为重要，在 Lox 中，方法调用和实例字段在运行时按名称查找。如果测试字符串的相等性很慢，那么这意味着通过名称查找方法很慢。如果在你的面向对象语言中这很慢，那么一切都很慢。</p>
+<hr />
+<h2 id="_2"><a href="http://craftinginterpreters.com/hash-tables.html#challenges">挑战</a></h2>
+<ol>
+<li>在 clox 中，我们碰巧只需要字符串形式的键，因此我们构建的哈希表针对该键类型进行了硬编码。如果我们将哈希表作为一流的集合向 Lox 用户公开，那么支持不同类型的键将会很有用。</li>
+</ol>
+<p>添加对其他基本类型键的支持：数字、布尔值和<code>nil</code>.稍后，clox 将支持用户定义的类。如果我们想要支持作为这些类实例的键，那会增加什么样的复杂性？</p>
+<ol>
+<li>哈希表有很多旋钮，您可以调整这些旋钮来影响它们的性能。您决定是使用拉链法还是开放寻址。根据您选择的那条路的分支，您可以调整每个节点中存储的条目数，或者您使用的探测策略。您可以控制散列函数、负载因子和增长率。</li>
+</ol>
+<p>所有这些多样性的创建不仅仅是为了给 CS 博士候选人一些发表论文的东西：每一种都有其在散列发挥作用的许多不同领域和硬件场景中的用途。在不同的开源系统中查找一些哈希表实现，研究他们做出的选择，并尝试找出他们这样做的原因。</p>
+<p>好吧，至少那不是创建它们的唯一原因。<em>这是否是</em>主要原因还有待商榷。</p>
+<ol>
+<li>对哈希表进行基准测试是出了名的困难。哈希表实现可能对某些键集执行良好而对其他键集执行不佳。它可能在小尺寸时工作良好，但随着它的增长而退化，反之亦然。当删除很常见时它可能会窒息，但当删除不常见时它会飞起来。创建能够准确表示您的用户将如何使用哈希表的基准是一项挑战。</li>
+</ol>
+<p>编写一些不同的基准程序来验证我们的哈希表实现。它们之间的性能有何不同？你为什么选择你选择的特定测试用例？</p>
+                
+              
+              
+<script src="https://giscus.app/client.js" data-repo="PKUFlyingPig/cs-self-learning" data-repo-id="R_kgDOGP67ng"
+    data-category="Announcements" data-category-id="DIC_kwDOGP67ns4COM9Q" data-mapping="title"
+    data-reactions-enabled="1" data-emit-metadata="0" data-input-position="top" data-theme="light_protanopia"
+    data-lang="zh-CN" data-loading="lazy" crossorigin="anonymous" async>
+</script>
+
+<script>
+    var palette = __get("__palette")
+    if (palette && typeof palette.color === "object") {
+        if (palette.color.scheme === "slate") {
+            const giscus = document.querySelector("script[src*=giscus]")
+            giscus.setAttribute("data-theme", "dark_protanopia")
+        }
+    }
+
+    document.addEventListener("DOMContentLoaded", function () {
+        const ref = document.querySelector("[data-md-component=palette]")
+        ref.addEventListener("change", function () {
+            var palette = __get("__palette")
+            if (palette && typeof palette.color === "object") {
+                const theme = palette.color.scheme === "slate" ? "dark_protanopia" : "light_protanopia"
+                const frame = document.querySelector(".giscus-frame")
+                frame.contentWindow.postMessage({
+                    giscus: { setConfig: { theme } }
+                }, "https://giscus.app")
+            }
+        })
+    })
+</script>
+
+            </article>
+          </div>
+        </div>
+        
+          <a href="#" class="md-top md-icon" data-md-component="top" data-md-state="hidden">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"/></svg>
+            Back to top
+          </a>
+        
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href="../../3_19.Strings/Strings/" class="md-footer__link md-footer__link--prev" aria-label="上一页: 3.19.Strings" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                上一页
+              </span>
+              3.19.Strings
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../../3_21.Global%20Variables/Global%20Variables/" class="md-footer__link md-footer__link--next" aria-label="下一页: 3.21.Global Variables" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                下一页
+              </span>
+              3.21.Global Variables
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        
+          Made with
+          <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+            Material for MkDocs
+          </a>
+        
+        
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["header.autohide", "navigation.tracking", "navigation.top", "search.highlight", "search.share", "search.suggest", "content.code.annotate"], "search": "../../../assets/javascripts/workers/search.fcfe8b6d.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\uff0c\\u3002]+", "search.placeholder": "\u641c\u7d22", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.b1047164.min.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+      
+    
+  </body>
+</html>

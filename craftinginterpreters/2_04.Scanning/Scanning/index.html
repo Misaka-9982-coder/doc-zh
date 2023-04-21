@@ -1,0 +1,2114 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-7.3.6">
+    
+    
+      
+        <title>2.04.Scanning - doc-zh</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.a57b2b03.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.3f5d1f46.min.css">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font-family:"Roboto";--md-code-font-family:"Roboto Mono"}</style>
+      
+    
+    
+    
+    
+      
+
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="light-blue" data-md-color-accent="deep-purple">
+  
+    
+    <script>function __prefix(e){return new URL("../../..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+    
+      <script>var palette=__get("__palette");if(null!==palette&&"object"==typeof palette.color)for(var key in palette.color)document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="doc-zh" class="md-header__button md-logo" aria-label="doc-zh" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            doc-zh
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              2.04.Scanning
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="light-blue" data-md-color-accent="deep-purple"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+          
+            <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5c-.84 0-1.65.15-2.39.42L12 2M3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29L3.34 7m.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14L3.36 17M20.65 7l-1.77 3.79a7.023 7.023 0 0 0-2.38-4.15l4.15.36m-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29L20.64 17M12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44L12 22z"/></svg>
+            </label>
+          
+        
+          
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="cyan" data-md-color-accent="deep-purple"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
+          
+            <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3 3.19.09m3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95 2.06.05m-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31z"/></svg>
+            </label>
+          
+        
+      </form>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7 0-.24-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91 1.61 0 2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08z"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        
+<a href="https://github.com/Misaka-9982-coder/doc-zh" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    doc-zh
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="doc-zh" class="md-nav__button md-logo" aria-label="doc-zh" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    doc-zh
+  </label>
+  
+    <div class="md-nav__source">
+      
+<a href="https://github.com/Misaka-9982-coder/doc-zh" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    doc-zh
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1" type="checkbox" id="__nav_1" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_1">
+          xv6-book
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="xv6-book" data-md-level="1">
+        <label class="md-nav__title" for="__nav_1">
+          <span class="md-nav__icon md-icon"></span>
+          xv6-book
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../S081/0.%20%E5%89%8D%E8%A8%80%E5%92%8C%E8%87%B4%E8%B0%A2/" class="md-nav__link">
+        0. 前言和致谢
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../S081/1.%20%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E6%8E%A5%E5%8F%A3/" class="md-nav__link">
+        1. 操作系统接口
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../S081/2.%20%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84/" class="md-nav__link">
+        2. 操作系统架构
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../S081/3.%20%E9%A1%B5%E8%A1%A8/" class="md-nav__link">
+        3. 页表
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../S081/4.%20trap%20%E4%B8%8E%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8/" class="md-nav__link">
+        4. trap 与系统调用
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../S081/5.%20%E4%B8%AD%E6%96%AD%E5%92%8C%E8%AE%BE%E5%A4%87%E9%A9%B1%E5%8A%A8%E7%A8%8B%E5%BA%8F/" class="md-nav__link">
+        5. 中断和设备驱动程序
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../S081/6.%20%E9%94%81/" class="md-nav__link">
+        6. 锁
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../S081/7.%20%E8%B0%83%E5%BA%A6/" class="md-nav__link">
+        7. 调度
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../S081/8.%20%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/" class="md-nav__link">
+        8. 文件系统
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../S081/9.%20%E5%86%8D%E6%AC%A1%E6%8E%A2%E8%AE%A8%E5%B9%B6%E5%8F%91%E6%80%A7/" class="md-nav__link">
+        9. 再次探讨并发性
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2">
+          craftinginterpreters
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="craftinginterpreters" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          craftinginterpreters
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../0_00.contents/contents/" class="md-nav__link">
+        0.00.contents
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../0_01.acknowledgements/acknowledgements/" class="md-nav__link">
+        0.01.acknowledgements
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1_00.Welcome/Welcome/" class="md-nav__link">
+        一、WELCOME
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1_01.Introduction/Introduction/" class="md-nav__link">
+        1.01.Introduction
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1_02.A%20Map%20of%20the%20Territory/A%20Map%20of%20the%20Territory/" class="md-nav__link">
+        1.02.A Map of the Territory
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1_03.The%20Lox%20Language/The%20Lox%20Language/" class="md-nav__link">
+        1.03.The Lox Language
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2_00.A%20TREE-WALK%20INTERPRETER/A%20TREE-WALK%20INTERPRETER/" class="md-nav__link">
+        二、A TREE-WALK INTERPRETER
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          2.04.Scanning
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        2.04.Scanning
+      </a>
+      
+        
+
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#41" class="md-nav__link">
+    4.1 解释器框架
+  </a>
+  
+    <nav class="md-nav" aria-label="4.1 解释器框架">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#411" class="md-nav__link">
+    4.1.1 错误处理
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#42-lexemes-tokens" class="md-nav__link">
+    4.2  Lexemes 和Tokens
+  </a>
+  
+    <nav class="md-nav" aria-label="4.2  Lexemes 和Tokens">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#421-token" class="md-nav__link">
+    4.2.1 token类型
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#422" class="md-nav__link">
+    4.2.2 字面值
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#423" class="md-nav__link">
+    4.2.3 定位信息
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#43" class="md-nav__link">
+    4.3 正则和表达式
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#44-scanner" class="md-nav__link">
+    4.4 Scanner类
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#45-lexemes" class="md-nav__link">
+    4.5 识别lexemes
+  </a>
+  
+    <nav class="md-nav" aria-label="4.5 识别lexemes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#451" class="md-nav__link">
+    4.5.1  词法错误
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#452-operators" class="md-nav__link">
+    4.5.2 操作符 operators
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#46-lexemes" class="md-nav__link">
+    4.6 更长lexemes
+  </a>
+  
+    <nav class="md-nav" aria-label="4.6 更长lexemes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#461" class="md-nav__link">
+    4.6.1  字符串字面量
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#462" class="md-nav__link">
+    4.6.2 数字字面量
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#47" class="md-nav__link">
+    4.7 保留关键字和标识符
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    挑战
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    设计说明：隐式分号
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2_05.Representing%20Code/Representing%20Code/" class="md-nav__link">
+        2.05.Representing Code
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2_06.Parsing%20Expressions/Parsing%20Expressions/" class="md-nav__link">
+        2.06.Parsing Expressions
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2_07.Evaluating%20Expressions/Evaluating%20Expressions/" class="md-nav__link">
+        2.07.Evaluating Expressions
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2_08.Statements%20and%20State/Statements%20and%20State/" class="md-nav__link">
+        2.08.Statements and State
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2_09.Control%20Flow/Control%20Flow/" class="md-nav__link">
+        2.09.Control Flow
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2_10.Functions/Functions/" class="md-nav__link">
+        2.10.Functions
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2_11.Resolving%20and%20Binding/Resolving%20and%20Binding/" class="md-nav__link">
+        2.11.Resolving and Binding
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2_12.Classes/Classes/" class="md-nav__link">
+        2.12.Classes
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2_13.Inheritance/Inheritance/" class="md-nav__link">
+        2.13.Inheritance
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3_00.A%20BYTECODE%20VIRTUAL%20MACHINE/A%20BYTECODE%20VIRTUAL%20MACHINE/" class="md-nav__link">
+        三、A BYTECODE VIRTUAL MACHINE
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3_14.Chunks%20of%20Bytecode/Chunks%20of%20Bytecode/" class="md-nav__link">
+        3.14.Chunks of Bytecode
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3_15.A%20Virtual%20Machine/A%20Virtual%20Machine/" class="md-nav__link">
+        3.15.A Virtual Machine
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3_16.Scanning%20on%20Demand/Scanning%20on%20Demand/" class="md-nav__link">
+        3.16.Scanning on Demand
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3_17.Compiling%20Expressions/Compiling%20Expressions/" class="md-nav__link">
+        3.17.Compiling Expressions
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3_18.Types%20of%20Values/Types%20of%20Values/" class="md-nav__link">
+        3.18.Types of Values
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3_19.Strings/Strings/" class="md-nav__link">
+        3.19.Strings
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3_20.Hash%20Tables/Hash%20Tables/" class="md-nav__link">
+        3.20.Hash Tables
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3_21.Global%20Variables/Global%20Variables/" class="md-nav__link">
+        3.21.Global Variables
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3_22.Local%20Variables/Local%20Variables/" class="md-nav__link">
+        3.22.Local Variables
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3_23.Jumping%20Back%20and%20Forth/Jumping%20Back%20and%20Forth/" class="md-nav__link">
+        3.23.Jumping Back and Forth
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3_24.Calls%20and%20Functions/Calls%20and%20Functions/" class="md-nav__link">
+        3.24.Calls and Functions
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3_25.Closures/Closures/" class="md-nav__link">
+        3.25.Closures
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3_26.Garbage%20Collection/Garbage%20Collection/" class="md-nav__link">
+        3.26.Garbage Collection
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3_27.Classes%20and%20Instances/Classes%20and%20Instances/" class="md-nav__link">
+        3.27.Classes and Instances
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3_28.Methods%20and%20Initializers/Methods%20and%20Initializers/" class="md-nav__link">
+        3.28.Methods and Initializers
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3_29.Superclasses/Superclasses/" class="md-nav__link">
+        3.29.Superclasses
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3_30.Optimization/Optimization/" class="md-nav__link">
+        3.30.Optimization
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../4_01.A1.Appendix%20I%20Lox%20Grammar/A1.Appendix%20I%20Lox%20Grammar/" class="md-nav__link">
+        A1.Appendix I Lox Grammar
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../4_02.A2.Appendix%20II%20Generated%20Syntax%20Tree%20Classes/A2.Appendix%20II%20Generated%20Syntax%20Tree%20Classes/" class="md-nav__link">
+        A2.Appendix II Generated Syntax Tree Classes
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#41" class="md-nav__link">
+    4.1 解释器框架
+  </a>
+  
+    <nav class="md-nav" aria-label="4.1 解释器框架">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#411" class="md-nav__link">
+    4.1.1 错误处理
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#42-lexemes-tokens" class="md-nav__link">
+    4.2  Lexemes 和Tokens
+  </a>
+  
+    <nav class="md-nav" aria-label="4.2  Lexemes 和Tokens">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#421-token" class="md-nav__link">
+    4.2.1 token类型
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#422" class="md-nav__link">
+    4.2.2 字面值
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#423" class="md-nav__link">
+    4.2.3 定位信息
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#43" class="md-nav__link">
+    4.3 正则和表达式
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#44-scanner" class="md-nav__link">
+    4.4 Scanner类
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#45-lexemes" class="md-nav__link">
+    4.5 识别lexemes
+  </a>
+  
+    <nav class="md-nav" aria-label="4.5 识别lexemes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#451" class="md-nav__link">
+    4.5.1  词法错误
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#452-operators" class="md-nav__link">
+    4.5.2 操作符 operators
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#46-lexemes" class="md-nav__link">
+    4.6 更长lexemes
+  </a>
+  
+    <nav class="md-nav" aria-label="4.6 更长lexemes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#461" class="md-nav__link">
+    4.6.1  字符串字面量
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#462" class="md-nav__link">
+    4.6.2 数字字面量
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#47" class="md-nav__link">
+    4.7 保留关键字和标识符
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    挑战
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    设计说明：隐式分号
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/Misaka-9982-coder/doc-zh/edit/master/docs/craftinginterpreters/2_04.Scanning/Scanning.md" title="编辑此页" class="md-content__button md-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
+                  </a>
+                
+                
+                <h1 id="_1">扫描</h1>
+<blockquote>
+<p>大咬一口。任何值得做的事情都值得过度努力。</p>
+<p>-- Robert A. Heinlein,<em>Time Enough for Love</em></p>
+</blockquote>
+<p>任何编译器或解释器的第一步都是扫描。扫描器将原始源代码作为一系列字符，并将其分组为一系列称为<strong>tokens</strong>的块。这些是构成语言语法的有意义的“单词”和“标点符号”。</p>
+<blockquote>
+<p>多年来，这项任务被称为“扫描(scanning)”和“分词(lexing)”（“词法分析”的缩写）。回到过去，当计算机和 Winnebagos 一样大但内存比手表还少时，有些人使用“扫描器(scanner)”只是指处理从磁盘读取原始源代码字符并将其缓冲在内存中的代码段。然后“lexing”是对字符做有用的事情的下一个阶段。</p>
+<p>如今，将源文件读入内存是微不足道的，因此它(scanner)很少成为编译器中的一个独立阶段。因此，这两个术语基本上可以互换。</p>
+</blockquote>
+<p>扫描对我们来说也是一个很好的起点，因为代码不是很难，基本结构是一个庞大的<code>switch</code>语句。在我们稍后处理一些更有趣的材料之前，它会帮助我们热身。到本章结束时，我们将拥有一个功能齐全、快速的扫描器(scanner)，它读取任意 Lox 源代码字符串并生成将在下一章中输入解析器的tokens。</p>
+<h2 id="41">4.1 解释器框架</h2>
+<p>由于这是第一个真正的章节，在开始实际扫描一些代码之前，我们需要勾勒出我们的解释器 jlox 的基本框架。一切都从 Java 中的类开始。</p>
+<pre><code class="language-java">package com.craftinginterpreters.lox;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.nio.charset.Charset;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.List;
+
+public class Lox {
+  public static void main(String[] args) throws IOException {
+    if (args.length &gt; 1) {
+      System.out.println(&quot;Usage: jlox [script]&quot;);
+      System.exit(64); 
+    } else if (args.length == 1) {
+      runFile(args[0]);
+    } else {
+      runPrompt();
+    }
+  }
+}
+
+// lox/Lox.java, create new file
+</code></pre>
+<blockquote>
+<p>对于退出代码，我使用了 UNIX <a href="https://www.freebsd.org/cgi/man.cgi?query=sysexits&amp;apropos=0&amp;sektion=0&amp;manpath=FreeBSD+4.3-RELEASE&amp;format=html">“sysexits.h”</a>头文件中定义的约定。这是我能找到的最接近标准的东西。</p>
+</blockquote>
+<p>将其粘贴到文本文件中，然后设置好您的 IDE 或 Makefile 文件。当你准备好时，我会在这里。好吗？好的！</p>
+<p>Lox 是一种脚本语言，这意味着它直接从源代码执行。我们的解释器支持两种运行代码的方式。如果你从命令行启动 jlox 并给它一个文件路径，它会读取文件并执行它。</p>
+<pre><code class="language-java">private static void runFile(String path) throws IOException {
+   byte[] bytes = Files.readAllBytes(Paths.get(path));
+   run(new String(bytes, Charset.defaultCharset()));
+}
+
+// lox/Lox.java, add after main()
+</code></pre>
+<p>如果想与解释器进行更亲密的交流对话，还可以以交互方式运行它。在没有任何参数的情况下启动 jlox，它会启动一个命令提示符中，可以在其中一次输入一行代码并执行。</p>
+<blockquote>
+<p>交互式提示也称为“REPL”（发音像“rebel”但带有“p”）。这个名字来自 Lisp，其中实现一个就像围绕一些内置函数包装一个循环一样简单：</p>
+<p>(print (eval (read)))</p>
+<p>从最内存嵌套的调用向外工作，<strong>R</strong>ead一行输入，<strong>E</strong>valuate它，<strong>P</strong>rint结果，然后<strong>L</strong>oop再来一遍。</p>
+</blockquote>
+<pre><code class="language-java">  private static void runPrompt() throws IOException {
+    InputStreamReader input = new InputStreamReader(System.in);
+    BufferedReader reader = new BufferedReader(input);
+
+    for (;;) { 
+      System.out.print(&quot;&gt; &quot;);
+      String line = reader.readLine();
+      if (line == null) break;
+      run(line);
+    }
+  }
+// lox/Lox.java, add after runFile()
+</code></pre>
+<p><code>readLine()</code>顾名思义，该函数从命令行读取用户的一行输入作为结果返回。要终止交互式命令行应用程序，通常键入 Control-D。这样做会向程序发出“end-of-file”信号。当这种情况发生时<code>readLine()</code>返回<code>null</code>，所以用它检查是否退出循环。</p>
+<p>提示符和文件运行器都是这个核心功能的简单封装：</p>
+<pre><code class="language-java">private static void run(String source) {
+    Scanner scanner = new Scanner(source);
+    List&lt;Token&gt; tokens = scanner.scanTokens();
+
+    // For now, just print the tokens.
+    for (Token token : tokens) {
+      System.out.println(token);
+    }
+  }
+// lox/Lox.java, add after runPrompt() 
+</code></pre>
+<p>它不是非常有用，因为还没有编写解释器，但是你知道吗？现在，它会打印出接下来编写的扫描器(scanner)产出的tokens，以便可以查看我们是否取得了进展。</p>
+<h3 id="411">4.1.1 错误处理</h3>
+<p>在我们进行设置时，基础设施的另一个关键部分是<em>错误处理</em>。教科书有时会掩饰这一点，因为它更像是一个实际问题，而不是正式的计算机科学问题。但是，如果您关心创建一种实际<em>可用</em>的语言，那么优雅地处理错误是至关重要的。</p>
+<p>语言提供的用于处理错误的工具构成了其用户界面的很大一部分。当用户的代码正常工作时，他们根本不会考虑我们的语言，他们的脑子里全是关于<em>他们的程序</em>。通常只有当出现问题时，他们才会注意到我们的错误处理。</p>
+<p>当发生这种情况时，我们有责任向用户提供他们需要的所有信息，以了解出了什么问题，并温和地引导他们回到他们试图去的地方。做好这件事意味着从现在开始，在解释器的整个实现过程中考虑错误处理。</p>
+<blockquote>
+<p>说了这么多，对于<em>这个</em>解释器，我们将构建的是非常简单的框架。我很想谈论交互式调试器、静态分析器和其他有趣的东西，但是笔里只有这么多墨水。</p>
+</blockquote>
+<pre><code class="language-java">  static void error(int line, String message) {
+    report(line, &quot;&quot;, message);
+  }
+
+  private static void report(int line, String where,
+                             String message) {
+    System.err.println(
+        &quot;[line &quot; + line + &quot;] Error&quot; + where + &quot;: &quot; + message);
+    hadError = true;
+  }
+// lox/Lox.java, add after run()
+</code></pre>
+<p>这个<code>error()</code>函数和<code>report()</code>辅助函数告诉用户在确定的行上发生了一些语法错误。这确实是能够声称您甚至<em>有</em>错误报告的最低限度。想象一下，如果你不小心在某个函数调用中留下了一个悬空的逗号，并且解释器打印出来：</p>
+<pre><code class="language-java">Error: Unexpected &quot;,&quot; somewhere in your code. Good luck finding it!
+</code></pre>
+<p>那不是很有帮助。我们至少需要将它们指向正确的行号。更好的是开始和结束列，这样用户就知道<em>该</em>行的位置。<em>比这</em>更好的是向用户<em>显示</em>违规行，例如：</p>
+<pre><code class="language-java">Error: Unexpected &quot;,&quot; in argument list.
+
+    15 | function(first, second,);
+                               ^-- Here.
+</code></pre>
+<p>我很想在本书中实现类似的东西，但老实说它有很多蹩脚的字符串操作代码。对用户非常有用，但读起来不是很有趣，技术上也不是很有趣。所以我们只使用行号。在你自己的解释器中，请照我说的做，而不是像我做的那样。</p>
+<p>我们在主 Lox 类中保留此错误报告功能的主要原因是因为该<code>hadError</code>字段在这里定义：</p>
+<pre><code class="language-java">public class Lox {
+  static boolean hadError = false;
+// lox/Lox.java, in class Lox
+</code></pre>
+<p>我们将使用它来确保我们不会尝试执行具有已知错误的代码。此外，它还允许我们以非零代码退出，就像一个好的命令行公民应该做的那样。</p>
+<pre><code class="language-java"> run(new String(bytes, Charset.defaultCharset()));
+
+    // Indicate an error in the exit code.
+    if (hadError) System.exit(65);
+  }
+// lox/Lox.java, in runFile()
+</code></pre>
+<p>我们需要在交互式循环中重置此标志。如果用户犯了错误，它不应该终止他们的整个会话。</p>
+<pre><code class="language-java">   run(line);
+      hadError = false;
+    }
+// lox/Lox.java, in runPrompt()
+</code></pre>
+<p>我在此处提取错误报告而不是将其塞入扫描器和其他可能发生错误的阶段的另一个原因是提醒您，将<em>生成</em>错误的代码与<em>报告</em>错误的代码分开是一种很好的工程实践。</p>
+<p>前端的各个阶段会检测错误，但知道如何将错误呈现给用户并不是他们的工作。在功能齐全的语言实现中，您可能会通过多种方式显示错误：在 stderr 上、在 IDE 的错误窗口中、记录到文件中等。您不希望代码在扫描器和解析器中到处都是。</p>
+<p>理想情况下，我们会有一个实际的抽象，某种传递给扫描器和解析器的“ErrorReporter”接口，这样我们就可以替换不同的报告策略。对于这里的简单解释器，我没有这样做，但我至少将错误报告代码移到了另一个类中。</p>
+<blockquote>
+<p>当我第一次实现jlox 时，我就是这样。我最终把它去掉了，因为它感觉对于本书中的最小解释器来说是过度设计的。</p>
+</blockquote>
+<p>有了一些基本的错误处理，我们的应用程序外壳就准备好了。一旦有了一个带有<code>scanTokens()</code>方法的 Scanner 类，就可以开始运行它了。在开始之前，让更进一步地了解tokens是什么。</p>
+<h2 id="42-lexemes-tokens">4.2  Lexemes 和Tokens</h2>
+<p>这是一行 Lox 代码：</p>
+<pre><code class="language-c">var language = &quot;lox&quot;;
+</code></pre>
+<p>这里的<code>var</code>是声明变量的关键字。三个字符序列“v-a-r”有确定的意义。但是如果我们从<code>language</code> 的中间抽出三个字母，比如“gua”，它们本身就没有任何意义。</p>
+<p>这就是词法分析的意义所在。我们的工作是扫描字符列表并将它们组合成仍然代表某些东西的最小序列。这些字符块中的每一个都称为<strong>词素(lexeme)</strong>。在该示例代码行中，词素(lexeme)是：</p>
+<p><img alt="" src="../assets/1bf290fc6c584d858c62344809f64ae0934a5a1b.png" /></p>
+<p>词素(lexeme)只是<strong>源代码的原始子串</strong>。然而，在将字符序列分组为词素(lexeme)的过程中，我们也偶然发现了一些其他有用的信息。当获取词素(lexeme)并将其与其他数据捆绑在一起时，结果就是一个标记(token)。它包括有用的东西，例如：</p>
+<h3 id="421-token">4.2.1 token类型</h3>
+<p>关键字是语言语法结构的一部分，所以解析器通常有这样的代码，“如果下一个token是<code>while</code>那么做...” , 这意味着解析器不仅想知道它有某个标识符的词素，而且想知道它有一个<em>保留</em>字，以及它是<em>哪个</em>关键字。</p>
+<p>解析器可以通过比较字符串对原始词素中的标记进行分类，但这很慢而且有点难看。相反，当我们识别出一个词素时，我们也会记住它代表的是哪种词素<em>。</em>对于每个关键字、运算符、标点符号和文字类型，我们都有不同的类型。</p>
+<blockquote>
+<p>毕竟，字符串比较最终会查看单个字符，这不是扫描器的工作吗？</p>
+</blockquote>
+<pre><code class="language-java">package com.craftinginterpreters.lox;
+
+enum TokenType {
+  // Single-character tokens.
+  LEFT_PAREN, RIGHT_PAREN, LEFT_BRACE, RIGHT_BRACE,
+  COMMA, DOT, MINUS, PLUS, SEMICOLON, SLASH, STAR,
+
+  // One or two character tokens.
+  BANG, BANG_EQUAL,
+  EQUAL, EQUAL_EQUAL,
+  GREATER, GREATER_EQUAL,
+  LESS, LESS_EQUAL,
+
+  // Literals.
+  IDENTIFIER, STRING, NUMBER,
+
+  // Keywords.
+  AND, CLASS, ELSE, FALSE, FUN, FOR, IF, NIL, OR,
+  PRINT, RETURN, SUPER, THIS, TRUE, VAR, WHILE,
+
+  EOF
+}
+// lox/TokenType.java, create new file
+</code></pre>
+<h3 id="422">4.2.2 字面值</h3>
+<p>字面值有词素——数字和字符串等。由于扫描器必须遍历文字中的每个字符才能正确识别它，它还可以将值的文本表示转换为稍后将由解释器使用的实时运行时对象。</p>
+<h3 id="423">4.2.3 定位信息</h3>
+<p>在之前我在宣扬错误处理的好处时，我们看到需要告诉用户<em>哪里</em>发生了错误。并从这里开始跟踪。在简单的解释器中，我们只注意token出现在哪一行，但更复杂的实现也包括列和长度。</p>
+<blockquote>
+<p>一些token实现将位置存储为两个数字：从源文件开头到词素开头的偏移量，以及词素的长度。扫描器无论如何都需要知道这些，所以没有额外的开销来计算它们。</p>
+<p>通过回头查看源文件并计算前面的换行符，可以稍后将偏移量转换为行和列位置。这听起来很慢，而且确实如此。<em>但是，只有在需要实际向用户显示一行和一列时才</em>需要这样做。大多数标记永远不会出现在错误消息中。对于那些，提前计算位置信息的时间越少越好。</p>
+</blockquote>
+<p>我们获取所有这些数据并将其包装在一个类中。</p>
+<pre><code class="language-java">package com.craftinginterpreters.lox;
+
+class Token {
+  final TokenType type;
+  final String lexeme;
+  final Object literal;
+  final int line; 
+
+  Token(TokenType type, String lexeme, Object literal, int line) {
+    this.type = type;
+    this.lexeme = lexeme;
+    this.literal = literal;
+    this.line = line;
+  }
+
+  public String toString() {
+    return type + &quot; &quot; + lexeme + &quot; &quot; + literal;
+  }
+}
+// lox/Token.java, create new file
+</code></pre>
+<p>现在我们有一个具有足够结构的对象，可用于解释器的所有后续阶段。</p>
+<h2 id="43">4.3 正则和表达式</h2>
+<p>既然我们知道要产出什么，那么让我们生产它。扫描器的核心是一个循环。从源代码的第一个字符开始，扫描器找出该字符属于哪个词素(lexeme)，并使用它和属于该词素(lexeme)的任何后续字符。当它到达该词素(lexeme)的末尾时，它会产出一个token。</p>
+<p>然后它循环并再次执行，从源代码中的下一个字符开始。它一直这样做，吃字符，偶尔，呃，产出标记，直到它到达输入的末尾。</p>
+<p><img alt="" src="../assets/59656726271a04ab7f4a6bf03c59838860062ce6.png" /></p>
+<blockquote>
+<p>词法分析器。</p>
+</blockquote>
+<p>在循环中，我们通过查看一些字符来确定它“匹配”了哪种词素(lexeme)，这部分听起来很熟悉。如果您知道正则表达式，可能会考虑为每种词素(lexeme)定义一个正则表达式并使用它们来匹配字符。例如，对于标识符（变量名等），Lox 具有与 C 相同的规则。用下边这个正则表达式匹配：</p>
+<pre><code>[a-zA-Z_][a-zA-Z_0-9]*
+</code></pre>
+<p>如果您确实想到了正则表达式，那么您的直觉是很深刻的。确定特定语言如何将字符分组为词素(lexeme)的规则称为其<strong>词法</strong>。在 Lox 中，与在大多数编程语言中一样，词法的规则非常简单，足以将语言归类为<strong><a href="https://en.wikipedia.org/wiki/Regular_language">regular language</a></strong>。这与正则表达式中的“正则”相同。</p>
+<blockquote>
+<p>如此掩饰这个理论让我很痛苦，尤其是当它像我认为的<a href="https://en.wikipedia.org/wiki/Chomsky_hierarchy">乔姆斯基层次结构</a>和<a href="https://en.wikipedia.org/wiki/Finite-state_machine">有限状态机</a>一样有趣时 。但老实说，其他书籍比我能更好地介绍这一点。<a href="https://en.wikipedia.org/wiki/Compilers:_Principles,_Techniques,_and_Tools"><em>Compilers: Principles, Techniques, and Tools</em></a>（俗称“龙书”）是规范参考。</p>
+</blockquote>
+<p>如果愿意，可以使用正则表达式非常精确地<em>识别</em>Lox 的所有不同词素(lexeme)，并且有一堆有趣的理论支持为什么会这样以及它意味着什么。像<a href="http://dinosaur.compilertools.net/lex/">Lex</a>或<a href="https://github.com/westes/flex">Flex</a>这样的工具就是专门为让你这样做而设计的——向它们扔一些正则表达式，它们就会给你一个完整的扫描器。</p>
+<blockquote>
+<p>Lex 由 Mike Lesk 和 Eric Schmidt 创建。是的，就是谷歌执行主席埃里克施密特。我并不是说编程语言是通往财富和名望的必经之路，但我们至少<em>可以算出一位超级亿万富翁。</em></p>
+</blockquote>
+<p>由于我们的目标是了解扫描器如何执行其操作，因此我们不会委托该任务。我们是关于手工制品的。</p>
+<h2 id="44-scanner">4.4 Scanner类</h2>
+<p>事不宜迟，让我们自己完成一个扫描器。</p>
+<pre><code class="language-java">package com.craftinginterpreters.lox;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import static com.craftinginterpreters.lox.TokenType.*; 
+
+class Scanner {
+  private final String source;
+  private final List&lt;Token&gt; tokens = new ArrayList&lt;&gt;();
+
+  Scanner(String source) {
+    this.source = source;
+  }
+}
+// lox/Scanner.java, create new file
+</code></pre>
+<blockquote>
+<p>我知道有些人认为静态导入是糟糕的风格，但它们使我不必在扫描器和解析器上到处乱扔<code>TokenType.</code>。原谅我，但书中的每个字符都很重要。</p>
+</blockquote>
+<p>我们将原始源代码存储为一个简单的字符串，并且准备好一个列表来填充将要生成的token。前面提到的循环看起来像这样：</p>
+<pre><code class="language-java">  List&lt;Token&gt; scanTokens() {
+    while (!isAtEnd()) {
+      // We are at the beginning of the next lexeme.
+      start = current;
+      scanToken();
+    }
+
+    tokens.add(new Token(EOF, &quot;&quot;, null, line));
+    return tokens;
+  }
+// lox/Scanner.java, add after Scanner() 
+</code></pre>
+<p>扫描器通过遍历源代码，添加token，直到用完所有字符。然后它附加一个最后的“文件结束”标记。这不是严格需要的，但它使解析器更干净一些。</p>
+<p>这个循环依赖于几个字段来跟踪扫描器在源代码中的位置。</p>
+<pre><code class="language-java">  private final List&lt;Token&gt; tokens = new ArrayList&lt;&gt;();
+  private int start = 0;
+  private int current = 0;
+  private int line = 1;
+
+  Scanner(String source) {
+// lox/Scanner.java, in class Scanner  
+</code></pre>
+<p><code>start</code>和<code>current</code>字段是索引到字符串中的偏移量。该<code>start</code>字段指向正在扫描的词素(lexeme)中的第一个字符，且<code>current</code>指向当前正在考虑的字符。<code>line</code>字段跟踪<code>current</code>所在的源码行号位置，因此可以生成知道其位置的标记。</p>
+<p>然后我们有一个小辅助函数，它告诉我们是否已经消耗了所有字符。</p>
+<pre><code class="language-java"> private boolean isAtEnd() {
+    return current &gt;= source.length();
+  }
+// lox/Scanner.java, add after scanTokens() 
+</code></pre>
+<h2 id="45-lexemes">4.5 识别lexemes</h2>
+<p>在每一轮循环中，扫描一个token。这是扫描器的真正核心。我们将从简单的开始。想象一下，如果每个词素(lexeme)只有一个字符长。您需要做的就是使用下一个字符并为其选择一个token类型。某些词素(lexeme)在 Lox<em>中</em>只是一个字符，所以让我们从这些开始。</p>
+<pre><code class="language-java">  private void scanToken() {
+    char c = advance();
+    switch (c) {
+      case '(': addToken(LEFT_PAREN); break;
+      case ')': addToken(RIGHT_PAREN); break;
+      case '{': addToken(LEFT_BRACE); break;
+      case '}': addToken(RIGHT_BRACE); break;
+      case ',': addToken(COMMA); break;
+      case '.': addToken(DOT); break;
+      case '-': addToken(MINUS); break;
+      case '+': addToken(PLUS); break;
+      case ';': addToken(SEMICOLON); break;
+      case '*': addToken(STAR); break; 
+    }
+  }
+// lox/Scanner.java, add after scanTokens() 
+</code></pre>
+<blockquote>
+<p>想知道为什么<code>/</code>不在这里？别担心，我们会解决的。</p>
+</blockquote>
+<p>同样，我们需要一些辅助方法。</p>
+<pre><code class="language-java">  private char advance() {
+    return source.charAt(current++);
+  }
+
+  private void addToken(TokenType type) {
+    addToken(type, null);
+  }
+
+  private void addToken(TokenType type, Object literal) {
+    String text = source.substring(start, current);
+    tokens.add(new Token(type, text, literal, line));
+  }
+// lox/Scanner.java, add after isAtEnd() 
+</code></pre>
+<p>该<code>advance()</code>方法使用源文件中的下一个字符并将其返回。哪里<code>advance()</code>是输入，哪里是<code>addToken()</code>输出。它获取当前词素的文本并为其创建一个新的标记。我们将很快使用其他重载来处理具有文字值的标记。</p>
+<h3 id="451">4.5.1  词法错误</h3>
+<p>在深入之前，让我们花点时间考虑一下词法层面的错误。如果用户向解释器抛出一个包含 Lox 不使用的某些字符的源文件，比如 <code>@#^</code>, 会发生什么？目前，这些字符被默默地丢弃了。Lox 语言不使用它们，但这并不意味着解释器可以假装它们不存在。相反，我们报告一个错误。</p>
+<pre><code class="language-java">      case '*': addToken(STAR); break; 
+
+      default:
+        Lox.error(line, &quot;Unexpected character.&quot;);
+        break;
+    }
+// lox/Scanner.java, in scanToken()
+</code></pre>
+<p>请注意，错误字符仍会被之前对<code>advance()</code> 的调用所<em>消耗</em>。这很重要，这样我们就不会陷入无限循环。</p>
+<p>请注意，我们将接着<em>继续扫描</em>。程序后面可能还有其他错误。如果我们一次检测到尽可能多的这些，它会给用户带来更好的体验。否则，他们看到一个小错误并修复它，又会出现下一个错误，依此类推。语法错误 Whac-A-Mole 一点都不好玩。</p>
+<p>（别担心。因为<code>hadError</code>设置了，我们永远不会尝试<em>执行</em>任何代码，即使我们继续扫描它的其余部分。）</p>
+<blockquote>
+<p>该代码分别报告每个无效字符，因此如果用户不小心粘贴了一大块奇怪的文本，这会给用户带来大量错误。将一系列无效字符合并为一个错误会提供更好的用户体验。</p>
+</blockquote>
+<h3 id="452-operators">4.5.2 操作符 operators</h3>
+<p>现在单字符词素(lexeme)已经处理，但这并没有涵盖 Lox 的所有运算符。<code>!</code>怎么处理？<code>!</code>是单个字符，对吧？有时，但如果下一个字符是等号，那么我们应该创建一个<code>!=</code>词素。请注意，<code>!</code>和<code>=</code> 不是两个独立的运算符。您不能在 Lox 中编写<code>! =</code>并使其表现得像不等式运算符。这就是为什么我们需要将其扫描为单个词素(lexeme)。同样，<code>&lt;,&gt;</code>和<code>=</code>后面都可以跟上<code>=</code>用于创建其他相等和比较运算符，比如<code>&gt;= ,&lt;=, ==</code>。</p>
+<p>对于所有这些，我们需要看第二个字符。</p>
+<pre><code class="language-java">      case '*': addToken(STAR); break; 
+      case '!':
+        addToken(match('=') ? BANG_EQUAL : BANG);
+        break;
+      case '=':
+        addToken(match('=') ? EQUAL_EQUAL : EQUAL);
+        break;
+      case '&lt;':
+        addToken(match('=') ? LESS_EQUAL : LESS);
+        break;
+      case '&gt;':
+        addToken(match('=') ? GREATER_EQUAL : GREATER);
+        break;
+
+      default:
+// lox/Scanner.java, in scanToken()
+</code></pre>
+<p>这些case 使用这个新方法：</p>
+<pre><code class="language-java"> private boolean match(char expected) {
+    if (isAtEnd()) return false;
+    if (source.charAt(current) != expected) return false;
+
+    current++;
+    return true;
+  }
+// lox/Scanner.java, add after scanToken()
+</code></pre>
+<p>这就像一个条件<code>advance()</code>.如果它是我们正在寻找的，只会消耗当前字符。</p>
+<p>使用<code>match()</code>，分两个阶段识别这些词素。例如，当我们到达时<code>!</code>，我们跳转到它的 switch case。这意味着我们知道词位<em>以</em>?<code>!</code>然后查看下一个字符以确定是在  <code>!=</code>上还是仅仅在 <code>!</code>上。</p>
+<h2 id="46-lexemes">4.6 更长lexemes</h2>
+<p>我们仍然缺少一个运算符：<code>/</code>用于除法。该字符需要一些特殊处理，因为注释也以斜杠开头。</p>
+<pre><code class="language-java">        break;
+      case '/':
+        if (match('/')) {
+          // A comment goes until the end of the line.
+          while (peek() != '\n' &amp;&amp; !isAtEnd()) advance();
+        } else {
+          addToken(SLASH);
+        }
+        break;
+
+      default:
+// lox/Scanner.java, in scanToken()
+</code></pre>
+<p>这类似于其他双字符运算符，只是当找到第二个时<code>/</code>，还没有结束token。相反，会一直消耗字符，直到到达行尾。</p>
+<p>这是我们处理较长词素的一般策略。在检测到一个开始之后，分流到一些特定于词素的代码，这些代码一直在消耗字符直到它看到结束。</p>
+<p>我们还需要另一个辅助函数：</p>
+<pre><code class="language-java"> private char peek() {
+    if (isAtEnd()) return '\0';
+    return source.charAt(current);
+  }
+// lox/Scanner.java, add after match() 
+</code></pre>
+<p>有点像<code>advance()</code>，但不消耗字符。这称为<strong>前瞻lookahead</strong>。由于它只查看当前未使用的字符，因此我们有<em>一个 lookahead 字符</em>。通常，这个数字越小，扫描器运行得越快。词法规则决定了需要多少前瞻性。幸运的是，大多数广泛使用的语言只能看到前面的一两个字符。</p>
+<blockquote>
+<p>从技术上讲，<code>match()</code>也在做前瞻。<code>advance()</code>并且<code>peek()</code>是基本运算符并将<code>match()</code>它们组合在一起。</p>
+</blockquote>
+<p>注释是词素(lexeme)，但它们没有意义，解析器不想处理它们。所以当我们到达注释的末尾时，我们<em>不会</em>调用<code>addToken()</code>.当我们循环回去开始下一个词素时，<code>start</code>它被重置并且注释的词素消失在一阵烟雾中。</p>
+<p>当这样做的时候，现在是跳过其他无意义字符的好时机：换行符和空格。</p>
+<pre><code class="language-java">         break;
+
+      case ' ':
+      case '\r':
+      case '\t':
+        // Ignore whitespace.
+        break;
+
+      case '\n':
+        line++;
+        break;
+
+      default:
+        Lox.error(line, &quot;Unexpected character.&quot;);
+// lox/Scanner.java, in scanToken()
+</code></pre>
+<p>当遇到空格时，简单地回到扫描循环的开头。在空白字符<em>之后</em>开始一个新的词素。对于换行，做同样的事情，但我们也增加行计数器。（这就是为什么我们过去常常<code>peek()</code>找到注释结尾的换行符而不是<code>match()</code>。我们希望换行符将我们带到这里，以便我们可以更新<code>line</code>。）</p>
+<p>我们的扫描器变得越来越智能。它可以处理相当自由格式的代码，例如：</p>
+<pre><code>// this is a comment
+(( )){} // grouping stuff
+!*+-/=&lt;&gt; &lt;= == // operators
+</code></pre>
+<h3 id="461">4.6.1  字符串字面量</h3>
+<p>现在我们已经习惯了更长的词素，我们准备好处理文字了。将首先处理字符串，因为它们总是以特定字符开头<code>"</code>。</p>
+<pre><code class="language-java">        break;
+
+      case '&quot;': string(); break;
+
+      default:
+// lox/Scanner.java, in scanToken()
+</code></pre>
+<p>它调用：</p>
+<pre><code class="language-java">   private void string() {
+    while (peek() != '&quot;' &amp;&amp; !isAtEnd()) {
+      if (peek() == '\n') line++;
+      advance();
+    }
+
+    if (isAtEnd()) {
+      Lox.error(line, &quot;Unterminated string.&quot;);
+      return;
+    }
+
+    // The closing &quot;.
+    advance();
+
+    // Trim the surrounding quotes.
+    String value = source.substring(start + 1, current - 1);
+    addToken(STRING, value);
+  }
+// lox/Scanner.java, add after scanToken()  
+</code></pre>
+<p>与注释一样，消耗字符，直到我们碰到<code>"</code>结束字符串。我们还优雅地处理了在字符串关闭之前用完输入并报告错误的情况。</p>
+<p>没有特别的原因，Lox 支持多行字符串。这有利也有弊，但禁止它们比允许它们复杂一点，所以我保留了它们。这确实意味着我们还需要<code>line</code>在字符串中遇到换行符时进行更新。</p>
+<p>最后一点有趣的是，当我们创建token时，还会生成实际的字符串<em>值</em>，稍后将由解释器使用。在这里，该转换只需要 <code>substring()</code>去除周围的引号。如果 Lox 支持转义序列，如<code>\n</code>，我们将在此处取消转义。</p>
+<h3 id="462">4.6.2 数字字面量</h3>
+<p>Lox 中的所有数字在运行时都是浮点数，但支持整数和小数。数字字面量是一系列数字，可选地后跟一个<code>.</code>和一个或多个尾随数字。</p>
+<pre><code class="language-c">1234 
+12.34
+</code></pre>
+<blockquote>
+<p>由于我们只寻找一个数字来开始一个数字，这意味着<code>-123</code>不是数字字面量。相反，<code>-123</code>, 是一个应用于数字字面量的<em>表达式</em>。在实践中，结果是相同的，尽管如果我们要添加对数字的方法调用，它有一个有趣的边缘情况。考虑：<code>-``123</code></p>
+<p><code>print -123.abs();</code></p>
+<p>之所以打印<code>-123</code>，是因为否定的优先级低于方法调用。我们可以通过使<code>-</code>数字的一部分成为文字来解决这个问题。但请考虑：</p>
+<p><code>var n = 123;
+print -n.abs();</code></p>
+<p>这仍然会产生<code>-123</code>，所以现在语言似乎不一致。不管你做什么，有些例子最终会变得很奇怪。</p>
+</blockquote>
+<p>我们不允许前导或尾随小数点，因此这些都是无效的：</p>
+<pre><code class="language-c">.1234
+1234.
+</code></pre>
+<p>可以很容易地支持前者，但为了简单起见，我将其省略了。如果我们想要允许像 . 这样的数字上的方法，后者会变得很奇怪<code>123.sqrt()</code>。</p>
+<p>为了识别数字词素的开头，我们寻找任何数字。为每个十进制数字添加大小写有点乏味，因此我们将其填充为默认大小写。</p>
+<pre><code class="language-java">  default:
+        if (isDigit(c)) {
+          number();
+        } else {
+          Lox.error(line, &quot;Unexpected character.&quot;);
+        }
+        break;
+// lox/Scanner.java, in scanToken(), replace 1 line
+</code></pre>
+<p>这依赖于这个辅助函数：</p>
+<pre><code class="language-java">  private boolean isDigit(char c) {
+    return c &gt;= '0' &amp;&amp; c &lt;= '9';
+  } 
+// lox/Scanner.java, add after peek()
+</code></pre>
+<blockquote>
+<p>Java 标准库提供了<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Character.html#isDigit(char)"><code>Character.isDigit()</code></a>，这看起来很合适。然而，该方法允许诸如 Devanagari 数字、全角数字和其他我们不想要的有趣内容。</p>
+</blockquote>
+<p>一旦知道在一个数字中，就会分支到一个单独的方法来使用其余的文字，就像我们处理字符串一样。</p>
+<pre><code class="language-java">  private void number() {
+    while (isDigit(peek())) advance();
+
+    // Look for a fractional part.
+    if (peek() == '.' &amp;&amp; isDigit(peekNext())) {
+      // Consume the &quot;.&quot;
+      advance();
+
+      while (isDigit(peek())) advance();
+    }
+
+    addToken(NUMBER,
+        Double.parseDouble(source.substring(start, current)));
+  }
+// lox/Scanner.java, add after scanToken()
+</code></pre>
+<p>对于文字的整数部分，消耗了尽可能多的数字。然后我们寻找小数部分，即小数点 (<code>.</code>) 后跟至少一位数字。如果我们确实有小数部分，同样，会消耗尽可能多的数字。</p>
+<p>越过小数点需要第二个字符 lookahead，因为我们不想消耗<code>.</code>直到我们确定它<em>后面</em>有一个数字。所以我们添加：</p>
+<pre><code class="language-java">  private char peekNext() {
+    if (current + 1 &gt;= source.length()) return '\0';
+    return source.charAt(current + 1);
+  } 
+// lox/Scanner.java, add after peek()
+</code></pre>
+<blockquote>
+<p>我本可以<code>peek()</code>为要查看的字符数设置为一个参数，而不是定义两个函数，但这将允许<em>任意</em>远的前瞻。提供这两个函数可以让代码的读者更清楚我们的扫描器最多向前看两个字符。</p>
+</blockquote>
+<p>最后，将词素转换成它的数值。我们的解释器使用 Java 的<code>Double</code>类型来表示数字，因此我们生成该类型的值。我们正在使用 Java 自己的解析方法将词素转换为真正的 Java 双精度数。我们可以自己实现它，但是老实说，除非你想为即将到来的编程面试补习，否则不值得你花时间。</p>
+<p>其余的文字是布尔值和<code>nil</code>，但我们将它们作为关键字来处理，下边轮到了...</p>
+<h2 id="47">4.7 保留关键字和标识符</h2>
+<p>扫描器差不多完成了。唯一剩下的要实现的词法部分是标识符和它们的近亲，保留字。您可能认为可以 匹配关键字 比如<code>or</code>可以像处理多字符运算符比如如<code>&lt;=</code>一样.</p>
+<pre><code class="language-java"> case 'o':
+  if (match('r')) {
+    addToken(OR);
+  }
+  break;
+</code></pre>
+<p>考虑一下如果用户命名一个变量会发生什么<code>orchid</code>。扫描器会看到前两个字母<code>or</code>，并立即发出<code>or</code>关键字token。这让我们得到了一个重要的原则，称为<strong>Maximal munch 最大咀嚼</strong>。当两个词法规则都可以匹配扫描器正在查看的一段代码时，<em>匹配最多字符的那个将获胜</em>。</p>
+<p>该规则规定，如果我们可以<code>orchid</code>作为标识符和<code>or</code>关键字进行匹配，则前者获胜。这也是我们之前默认的原因，即<code>&lt;=</code>应该作为单个<code>&lt;=</code>标记进行扫描，而不是<code>&lt;</code>后跟<code>=</code>.</p>
+<blockquote>
+<p>考虑这段令人讨厌的 C 代码：</p>
+<p>---a;</p>
+<p>有效吗？这取决于扫描器如何拆分词位。如果扫描仪看到它是这样的怎么办：</p>
+<p><code>- --a;</code></p>
+<p>然后就可以解析了。但这需要扫描器了解周围代码的语法结构，这比我们想要的更复杂。相反，最大咀嚼规则说它<em>总是</em>像这样扫描：</p>
+<p><code>-- -a;</code></p>
+<p>它以这种方式扫描它，即使这样做会导致稍后在解析器中出现语法错误。</p>
+</blockquote>
+<p>Maximal munch 意味着我们无法轻易检测到保留字，直到我们到达可能是标识符的结尾。毕竟，保留字是一种标识符，它只是一种被语言声明为自己使用的标识符。这就是术语<strong>保留字</strong>的来源。</p>
+<p>因此，我们首先假设任何以字母或下划线开头的词素都是标识符</p>
+<pre><code class="language-java">      default:
+        if (isDigit(c)) {
+          number();
+        } else if (isAlpha(c)) {
+          identifier();
+        } else {
+          Lox.error(line, &quot;Unexpected character.&quot;);
+        }
+// lox/Scanner.java, in scanToken()
+</code></pre>
+<p>其余代码都在这里：</p>
+<pre><code class="language-java">  private void identifier() {
+    while (isAlphaNumeric(peek())) advance();
+
+    addToken(IDENTIFIER);
+  }
+// lox/Scanner.java, add after scanToken()
+</code></pre>
+<p>我们根据这些辅助函数来定义：</p>
+<pre><code class="language-java">  private boolean isAlpha(char c) {
+    return (c &gt;= 'a' &amp;&amp; c &lt;= 'z') ||
+           (c &gt;= 'A' &amp;&amp; c &lt;= 'Z') ||
+            c == '_';
+  }
+
+  private boolean isAlphaNumeric(char c) {
+    return isAlpha(c) || isDigit(c);
+  }
+// lox/Scanner.java, add after peekNext()
+</code></pre>
+<p>这使标识符可以工作。为了处理关键字，我们查看标识符的词素是否是保留字之一。如果是，将使用特定于该关键字的token类型。在映射中定义了一组保留字。</p>
+<pre><code class="language-java">  private static final Map&lt;String, TokenType&gt; keywords;
+
+  static {
+    keywords = new HashMap&lt;&gt;();
+    keywords.put(&quot;and&quot;,    AND);
+    keywords.put(&quot;class&quot;,  CLASS);
+    keywords.put(&quot;else&quot;,   ELSE);
+    keywords.put(&quot;false&quot;,  FALSE);
+    keywords.put(&quot;for&quot;,    FOR);
+    keywords.put(&quot;fun&quot;,    FUN);
+    keywords.put(&quot;if&quot;,     IF);
+    keywords.put(&quot;nil&quot;,    NIL);
+    keywords.put(&quot;or&quot;,     OR);
+    keywords.put(&quot;print&quot;,  PRINT);
+    keywords.put(&quot;return&quot;, RETURN);
+    keywords.put(&quot;super&quot;,  SUPER);
+    keywords.put(&quot;this&quot;,   THIS);
+    keywords.put(&quot;true&quot;,   TRUE);
+    keywords.put(&quot;var&quot;,    VAR);
+    keywords.put(&quot;while&quot;,  WHILE);
+  }
+// lox/Scanner.java, in class Scanner
+</code></pre>
+<p>然后，在扫描一个标识符之后，检查它是否与Map中的任何东西相匹配。</p>
+<pre><code class="language-java">while (isAlphaNumeric(peek())) advance();
+
+    String text = source.substring(start, current);
+    TokenType type = keywords.get(text);
+    if (type == null) type = IDENTIFIER;
+    addToken(type);
+  }
+// lox/Scanner.java, in identifier(), replace 1 line
+</code></pre>
+<p>如果是这样，将使用该关键字的token类型。否则，它是一个常规的用户定义标识符。</p>
+<p>这样，我们现在就有了一个完整的 Lox 词法扫描器。启动 REPL 并输入一些有效和无效的代码。它会产生您期望的token吗？尝试提出一些有趣的边缘情况，看看它是否能按应有的方式处理它们。</p>
+<hr />
+<h2 id="_2"><a href="http://craftinginterpreters.com/scanning.html#challenges">挑战</a></h2>
+<ol>
+<li>
+<p>Python 和 Haskell 的词法语法是<em>不规则</em>的。那是什么意思，为什么不是呢？</p>
+</li>
+<li>
+<p>除了分隔token——区别于<code>print foo</code>和<code>printfoo</code>之外，空格在大多数语言中用处不大。然而，在一些黑暗的角落，空格<em>确实</em>会影响代码在 CoffeeScript、Ruby 和 C 预处理器中的解析方式。它在每种语言中的位置和影响是什么？</p>
+</li>
+<li>
+<p>与大多数扫描器一样，我们这里的扫描器会丢弃注释和空格，因为解析器不需要它们。你为什么要写一个<em>不</em>丢弃那些的扫描器？它有什么用？</p>
+</li>
+<li>
+<p>为 Lox 的扫描器添加对 C 样式<code>/* ... */</code>块注释的支持。确保处理其中的换行符。考虑让它们嵌套。添加对嵌套的支持是否比您预期的要多？为什么？</p>
+</li>
+</ol>
+<h2 id="_3"><a href="http://craftinginterpreters.com/scanning.html#design-note">设计说明：隐式分号</a></h2>
+<p>今天的程序员被语言的选择宠坏了，并且对语法变得挑剔。他们希望语言看起来干净和现代。几乎每一种新语言（以及一些古老的语言，如 BASIC 从未有过的）都被刮掉的一点句法地衣是<code>;</code>作为显式语句终止符。</p>
+<p>相反，他们将换行符视为语句终止符，这样做是有意义的。“有意义的地方”部分是具有挑战性的部分。虽然<em>大多数</em>语句都在自己的行中，但有时您需要将单个语句分散在几行中。那些混合的换行符不应被视为终止符。</p>
+<p>大多数应该忽略换行符的明显情况很容易检测到，但也有一些令人讨厌的情况：</p>
+<ul>
+<li>下一行的返回值：</li>
+</ul>
+<p><code>c
+  if (condition) return
+  "value"</code></p>
+<p>“value”是被返回的值，还是我们有一个<code>return</code>没有值的语句后跟一个包含字符串文字的表达式语句？</p>
+<ul>
+<li>下一行带括号的表达式：</li>
+</ul>
+<p><code>c
+  func
+  (parenthesized)</code></p>
+<p>这是对 的调用<code>func(parenthesized)</code>，还是两个表达式语句，一个用于<code>func</code>括号内的表达式，一个用于括号内的表达式？</p>
+<ul>
+<li>在下一行有一个<code>-</code>：</li>
+</ul>
+<p><code>c
+  first
+  -second</code></p>
+<p>这是一个<code>first - second</code>中缀减法，还是两个表达式语句，一个用于，一个用于<code>first</code>求反<code>second</code>？</p>
+<p>在所有这些中，无论是否将换行符视为分隔符都会产生有效代码，但可能不是用户想要的代码。在各种语言中，用于决定哪些换行符是分隔符的规则种类繁多，令人不安。这里有一对：</p>
+<ul>
+<li><a href="https://www.lua.org/pil/1.1.html">Lua</a>完全忽略换行符，但仔细控制其语法，以便在大多数情况下根本不需要语句之间的分隔符。这是完全合法的：</li>
+</ul>
+<p><code>a = 1 b = 2</code></p>
+<p>Lua<code>return</code>通过要求<code>return</code>语句是块中的最后一条语句来避免这个问题。<code>return</code>如果关键字之前有值<code>end</code>，则它<em>必须</em>是<code>return</code>。对于其他两种情况，它们允许显式<code>;</code>并期望用户使用它。实际上，这几乎永远不会发生，因为带括号的或一元否定表达式语句没有意义。</p>
+<ul>
+<li>
+<p><a href="https://golang.org/ref/spec#Semicolons">Go</a>在扫描器中处理换行符。如果换行符出现在已知可能结束语句的少数标记类型之一之后，则换行符将被视为分号。否则将被忽略。Go 团队提供了一个规范的代码格式化程序<a href="https://golang.org/cmd/gofmt/">gofmt</a>，并且生态系统对它的使用非常热衷，这确保了惯用风格的代码可以很好地适应这个简单的规则。</p>
+</li>
+<li>
+<p><a href="https://docs.python.org/3.5/reference/lexical_analysis.html#implicit-line-joining">Python</a>将所有换行符都视为重要的，除非在一行的末尾使用显式反斜杠将其继续到下一行。但是，忽略一对方括号（ 、 或 ）<code>()</code>内<code>[]</code>任何位置的换行符。<code>{}</code>惯用风格强烈倾向于后者。</p>
+</li>
+</ul>
+<p>这条规则适用于 Python，因为它是一种高度面向语句的语言。特别是，Python 的语法确保语句永远不会出现在表达式中。C 做同样的事情，但许多其他具有“lambda”或函数文字语法的语言却没有。</p>
+<p>JavaScript 中的一个示例：</p>
+<p><code>js
+  console.log(function() {
+    statement();
+  });</code></p>
+<p>这里，<code>console.log()</code><em>表达式</em>包含一个函数字面量，而函数字面量又包含<em>语句</em><code>statement();</code>。</p>
+<p>如果您可以返回<em>到</em>换行符应该变得有意义但仍嵌套在括号内的语句，Python 将需要一组不同的规则来隐式连接行。</p>
+<p>现在你知道为什么 Python<code>lambda</code>只允许一个表达式主体了。</p>
+<ul>
+<li>JavaScript 的“<a href="https://www.ecma-international.org/ecma-262/5.1/#sec-7.9">自动分号插入</a>”规则是真正的奇葩。其他语言假设大多数换行符<em>是</em>有意义的，而在多行语句中只有少数应该被忽略，而 JS 假设相反。<em>除非</em>遇到解析错误，否则它将所有换行符视为无意义的空格。如果是这样，它会返回并尝试将之前的换行符转换为分号以获得语法上有效的内容。</li>
+</ul>
+<p><em>如果我详细介绍它是如何工作</em>的，那么这个设计说明将变成设计诽谤，更不用说 JavaScript 的“解决方案”是一个坏主意的所有各种方式。一团糟。JavaScript 是我所知道的唯一一种语言，许多风格指南要求在每个语句后明确分号，即使该语言理论上允许您省略它们。</p>
+<p>如果您正在设计一种新语言，您几乎肯定<em>应该</em>避免使用显式语句终止符。程序员和其他人一样都是追求时尚的生物，分号和全大写关键字一样已经过时了。只需确保您选择了一组对您的语言的特定语法和习语有意义的规则。并且不要做 JavaScript 做过的事情。</p>
+                
+              
+              
+<script src="https://giscus.app/client.js" data-repo="PKUFlyingPig/cs-self-learning" data-repo-id="R_kgDOGP67ng"
+    data-category="Announcements" data-category-id="DIC_kwDOGP67ns4COM9Q" data-mapping="title"
+    data-reactions-enabled="1" data-emit-metadata="0" data-input-position="top" data-theme="light_protanopia"
+    data-lang="zh-CN" data-loading="lazy" crossorigin="anonymous" async>
+</script>
+
+<script>
+    var palette = __get("__palette")
+    if (palette && typeof palette.color === "object") {
+        if (palette.color.scheme === "slate") {
+            const giscus = document.querySelector("script[src*=giscus]")
+            giscus.setAttribute("data-theme", "dark_protanopia")
+        }
+    }
+
+    document.addEventListener("DOMContentLoaded", function () {
+        const ref = document.querySelector("[data-md-component=palette]")
+        ref.addEventListener("change", function () {
+            var palette = __get("__palette")
+            if (palette && typeof palette.color === "object") {
+                const theme = palette.color.scheme === "slate" ? "dark_protanopia" : "light_protanopia"
+                const frame = document.querySelector(".giscus-frame")
+                frame.contentWindow.postMessage({
+                    giscus: { setConfig: { theme } }
+                }, "https://giscus.app")
+            }
+        })
+    })
+</script>
+
+            </article>
+          </div>
+        </div>
+        
+          <a href="#" class="md-top md-icon" data-md-component="top" data-md-state="hidden">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"/></svg>
+            Back to top
+          </a>
+        
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href="../../2_00.A%20TREE-WALK%20INTERPRETER/A%20TREE-WALK%20INTERPRETER/" class="md-footer__link md-footer__link--prev" aria-label="上一页: 二、A TREE-WALK INTERPRETER" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                上一页
+              </span>
+              二、A TREE-WALK INTERPRETER
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../../2_05.Representing%20Code/Representing%20Code/" class="md-footer__link md-footer__link--next" aria-label="下一页: 2.05.Representing Code" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                下一页
+              </span>
+              2.05.Representing Code
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        
+          Made with
+          <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+            Material for MkDocs
+          </a>
+        
+        
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["header.autohide", "navigation.tracking", "navigation.top", "search.highlight", "search.share", "search.suggest", "content.code.annotate"], "search": "../../../assets/javascripts/workers/search.fcfe8b6d.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\uff0c\\u3002]+", "search.placeholder": "\u641c\u7d22", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.b1047164.min.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+      
+    
+  </body>
+</html>

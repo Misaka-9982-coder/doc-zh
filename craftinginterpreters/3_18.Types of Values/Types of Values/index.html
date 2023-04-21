@@ -1,0 +1,1790 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-7.3.6">
+    
+    
+      
+        <title>3.18.Types of Values - doc-zh</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.a57b2b03.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.3f5d1f46.min.css">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font-family:"Roboto";--md-code-font-family:"Roboto Mono"}</style>
+      
+    
+    
+    
+    
+      
+
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="light-blue" data-md-color-accent="deep-purple">
+  
+    
+    <script>function __prefix(e){return new URL("../../..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+    
+      <script>var palette=__get("__palette");if(null!==palette&&"object"==typeof palette.color)for(var key in palette.color)document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="doc-zh" class="md-header__button md-logo" aria-label="doc-zh" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            doc-zh
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              3.18.Types of Values
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="light-blue" data-md-color-accent="deep-purple"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+          
+            <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5c-.84 0-1.65.15-2.39.42L12 2M3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29L3.34 7m.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14L3.36 17M20.65 7l-1.77 3.79a7.023 7.023 0 0 0-2.38-4.15l4.15.36m-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29L20.64 17M12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44L12 22z"/></svg>
+            </label>
+          
+        
+          
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="cyan" data-md-color-accent="deep-purple"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
+          
+            <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3 3.19.09m3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95 2.06.05m-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31z"/></svg>
+            </label>
+          
+        
+      </form>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7 0-.24-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91 1.61 0 2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08z"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        
+<a href="https://github.com/Misaka-9982-coder/doc-zh" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    doc-zh
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="doc-zh" class="md-nav__button md-logo" aria-label="doc-zh" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    doc-zh
+  </label>
+  
+    <div class="md-nav__source">
+      
+<a href="https://github.com/Misaka-9982-coder/doc-zh" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    doc-zh
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1" type="checkbox" id="__nav_1" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_1">
+          xv6-book
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="xv6-book" data-md-level="1">
+        <label class="md-nav__title" for="__nav_1">
+          <span class="md-nav__icon md-icon"></span>
+          xv6-book
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../S081/0.%20%E5%89%8D%E8%A8%80%E5%92%8C%E8%87%B4%E8%B0%A2/" class="md-nav__link">
+        0. 前言和致谢
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../S081/1.%20%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E6%8E%A5%E5%8F%A3/" class="md-nav__link">
+        1. 操作系统接口
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../S081/2.%20%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84/" class="md-nav__link">
+        2. 操作系统架构
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../S081/3.%20%E9%A1%B5%E8%A1%A8/" class="md-nav__link">
+        3. 页表
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../S081/4.%20trap%20%E4%B8%8E%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8/" class="md-nav__link">
+        4. trap 与系统调用
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../S081/5.%20%E4%B8%AD%E6%96%AD%E5%92%8C%E8%AE%BE%E5%A4%87%E9%A9%B1%E5%8A%A8%E7%A8%8B%E5%BA%8F/" class="md-nav__link">
+        5. 中断和设备驱动程序
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../S081/6.%20%E9%94%81/" class="md-nav__link">
+        6. 锁
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../S081/7.%20%E8%B0%83%E5%BA%A6/" class="md-nav__link">
+        7. 调度
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../S081/8.%20%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/" class="md-nav__link">
+        8. 文件系统
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../S081/9.%20%E5%86%8D%E6%AC%A1%E6%8E%A2%E8%AE%A8%E5%B9%B6%E5%8F%91%E6%80%A7/" class="md-nav__link">
+        9. 再次探讨并发性
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2">
+          craftinginterpreters
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="craftinginterpreters" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          craftinginterpreters
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../0_00.contents/contents/" class="md-nav__link">
+        0.00.contents
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../0_01.acknowledgements/acknowledgements/" class="md-nav__link">
+        0.01.acknowledgements
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1_00.Welcome/Welcome/" class="md-nav__link">
+        一、WELCOME
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1_01.Introduction/Introduction/" class="md-nav__link">
+        1.01.Introduction
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1_02.A%20Map%20of%20the%20Territory/A%20Map%20of%20the%20Territory/" class="md-nav__link">
+        1.02.A Map of the Territory
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1_03.The%20Lox%20Language/The%20Lox%20Language/" class="md-nav__link">
+        1.03.The Lox Language
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2_00.A%20TREE-WALK%20INTERPRETER/A%20TREE-WALK%20INTERPRETER/" class="md-nav__link">
+        二、A TREE-WALK INTERPRETER
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2_04.Scanning/Scanning/" class="md-nav__link">
+        2.04.Scanning
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2_05.Representing%20Code/Representing%20Code/" class="md-nav__link">
+        2.05.Representing Code
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2_06.Parsing%20Expressions/Parsing%20Expressions/" class="md-nav__link">
+        2.06.Parsing Expressions
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2_07.Evaluating%20Expressions/Evaluating%20Expressions/" class="md-nav__link">
+        2.07.Evaluating Expressions
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2_08.Statements%20and%20State/Statements%20and%20State/" class="md-nav__link">
+        2.08.Statements and State
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2_09.Control%20Flow/Control%20Flow/" class="md-nav__link">
+        2.09.Control Flow
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2_10.Functions/Functions/" class="md-nav__link">
+        2.10.Functions
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2_11.Resolving%20and%20Binding/Resolving%20and%20Binding/" class="md-nav__link">
+        2.11.Resolving and Binding
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2_12.Classes/Classes/" class="md-nav__link">
+        2.12.Classes
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2_13.Inheritance/Inheritance/" class="md-nav__link">
+        2.13.Inheritance
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3_00.A%20BYTECODE%20VIRTUAL%20MACHINE/A%20BYTECODE%20VIRTUAL%20MACHINE/" class="md-nav__link">
+        三、A BYTECODE VIRTUAL MACHINE
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3_14.Chunks%20of%20Bytecode/Chunks%20of%20Bytecode/" class="md-nav__link">
+        3.14.Chunks of Bytecode
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3_15.A%20Virtual%20Machine/A%20Virtual%20Machine/" class="md-nav__link">
+        3.15.A Virtual Machine
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3_16.Scanning%20on%20Demand/Scanning%20on%20Demand/" class="md-nav__link">
+        3.16.Scanning on Demand
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3_17.Compiling%20Expressions/Compiling%20Expressions/" class="md-nav__link">
+        3.17.Compiling Expressions
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          3.18.Types of Values
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        3.18.Types of Values
+      </a>
+      
+        
+
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#181-union-tagged-unions" class="md-nav__link">
+    18.1  带标签的 union （Tagged Unions）
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#182-lox-c" class="md-nav__link">
+    18.2 Lox 值和 C 值
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#183" class="md-nav__link">
+    18.3 动态类型的数字
+  </a>
+  
+    <nav class="md-nav" aria-label="18.3 动态类型的数字">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1831" class="md-nav__link">
+    18.3.1 一元取反和运行时错误
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1832" class="md-nav__link">
+    18.3.2 二元算术运算符
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#184" class="md-nav__link">
+    18.4 两种新类型
+  </a>
+  
+    <nav class="md-nav" aria-label="18.4 两种新类型">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1841" class="md-nav__link">
+    18.4.1 逻辑非和假
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1842" class="md-nav__link">
+    18.4.2 相等和比较运算符
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    挑战
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3_19.Strings/Strings/" class="md-nav__link">
+        3.19.Strings
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3_20.Hash%20Tables/Hash%20Tables/" class="md-nav__link">
+        3.20.Hash Tables
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3_21.Global%20Variables/Global%20Variables/" class="md-nav__link">
+        3.21.Global Variables
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3_22.Local%20Variables/Local%20Variables/" class="md-nav__link">
+        3.22.Local Variables
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3_23.Jumping%20Back%20and%20Forth/Jumping%20Back%20and%20Forth/" class="md-nav__link">
+        3.23.Jumping Back and Forth
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3_24.Calls%20and%20Functions/Calls%20and%20Functions/" class="md-nav__link">
+        3.24.Calls and Functions
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3_25.Closures/Closures/" class="md-nav__link">
+        3.25.Closures
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3_26.Garbage%20Collection/Garbage%20Collection/" class="md-nav__link">
+        3.26.Garbage Collection
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3_27.Classes%20and%20Instances/Classes%20and%20Instances/" class="md-nav__link">
+        3.27.Classes and Instances
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3_28.Methods%20and%20Initializers/Methods%20and%20Initializers/" class="md-nav__link">
+        3.28.Methods and Initializers
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3_29.Superclasses/Superclasses/" class="md-nav__link">
+        3.29.Superclasses
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3_30.Optimization/Optimization/" class="md-nav__link">
+        3.30.Optimization
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../4_01.A1.Appendix%20I%20Lox%20Grammar/A1.Appendix%20I%20Lox%20Grammar/" class="md-nav__link">
+        A1.Appendix I Lox Grammar
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../4_02.A2.Appendix%20II%20Generated%20Syntax%20Tree%20Classes/A2.Appendix%20II%20Generated%20Syntax%20Tree%20Classes/" class="md-nav__link">
+        A2.Appendix II Generated Syntax Tree Classes
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#181-union-tagged-unions" class="md-nav__link">
+    18.1  带标签的 union （Tagged Unions）
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#182-lox-c" class="md-nav__link">
+    18.2 Lox 值和 C 值
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#183" class="md-nav__link">
+    18.3 动态类型的数字
+  </a>
+  
+    <nav class="md-nav" aria-label="18.3 动态类型的数字">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1831" class="md-nav__link">
+    18.3.1 一元取反和运行时错误
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1832" class="md-nav__link">
+    18.3.2 二元算术运算符
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#184" class="md-nav__link">
+    18.4 两种新类型
+  </a>
+  
+    <nav class="md-nav" aria-label="18.4 两种新类型">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1841" class="md-nav__link">
+    18.4.1 逻辑非和假
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1842" class="md-nav__link">
+    18.4.2 相等和比较运算符
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    挑战
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/Misaka-9982-coder/doc-zh/edit/master/docs/craftinginterpreters/3_18.Types of Values/Types of Values.md" title="编辑此页" class="md-content__button md-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
+                  </a>
+                
+                
+                <h1 id="_1">值的类型</h1>
+<blockquote>
+<p>当你是一只脑袋很小的熊时，当你思考事物时，有时你会发现一个在你内心看起来很像事物的事物当它公开并让其他人看到它时是完全不同的。</p>
+<p>-- A. A. Milne,<em>Winnie-the-Pooh</em></p>
+</blockquote>
+<p>过去的几章篇幅很大，充满了复杂的技术和一页页的代码。在本章中，只有一个新概念需要学习，并且散布着一些简单明了的代码。你获得了喘息的机会。</p>
+<p>Lox 是动态类型的。单个变量可以在不同时间保存布尔值、数字或字符串。到目前，这只是想法。现在，在 clox 中，所有值都是数字。到本章结束时，它还将支持布尔值和<code>nil</code>.虽然这些不是很有趣，但它们迫使我们弄清楚我们的值表示如何动态处理不同的类型。</p>
+<blockquote>
+<p>除了静态类型和动态类型之外还有第三类：<strong>unityped</strong>。在该范例中，所有变量都具有单一类型，通常是机器寄存器整数。Unityped 语言在今天并不常见，但一些 Forths 和 BCPL（启发 C 的语言）是这样工作的。</p>
+<p>截至目前，clox 是统一类型的。</p>
+</blockquote>
+<h2 id="181-union-tagged-unions">18.1  带标签的 union （Tagged Unions）</h2>
+<p>在 C 中工作的好处是可以从原始位开始构建数据结构。糟糕的是<em>必须</em>这样做。C 在编译时并没有给你太多免费的东西，在运行时就更少了。就 C 而言，所有的数据是一个无差别的字节数组。由我们决定使用多少字节以及它们的含义。</p>
+<p>为了选择值表示，我们需要回答两个关键问题：</p>
+<ol>
+<li>
+<p><strong>如何表示值的类型？</strong> 例如，如果您尝试将一个数字乘以<code>true</code>，需要在运行时检测该错误并报告它。所以，需要知道值的类型是什么。</p>
+</li>
+<li>
+<p><strong>如何存储值本身?</strong>   不仅需要能够分辨出3是一个数字，而且需要知道它与数字4不同。我知道，看起来很明显，对吧？但我们的思维水平可以很好地说明这些事情。</p>
+</li>
+</ol>
+<p>由于我们不只是设计这种语言，而是需要自己实现它，因此在回答这两个问题时，我们还必须牢记实现者永恒的追求：<em>高效</em>地完成它。</p>
+<p>多年来，语言黑客想出了各种巧妙的方法，将上述信息打包成尽可能少的比特。现在，我们将从最简单、经典的解决方案开始：带<strong>标签的 union</strong>。值包含两部分：类型“标签”和实际值的有效负载。为了存储值的类型，我们为 VM 支持的每种值定义了一个枚举。</p>
+<pre><code class="language-c">#include &quot;common.h&quot;
+
+typedef enum {
+  VAL_BOOL,
+  VAL_NIL, 
+  VAL_NUMBER,
+} ValueType;
+
+// typedef double Value;
+</code></pre>
+<blockquote>
+<p>这里的案例涵盖<em>了 VM 中内置支持的</em>各种值。当我们开始向语言添加类时，用户定义的每个类都不需要在此枚举中有自己的条目。就虚拟机而言，类的每个实例都是同一类型：“实例”。</p>
+<p>换句话说，这是 VM 的“类型”概念，而不是用户的。</p>
+</blockquote>
+<p>目前，我们只有几个ValueType，但随着向 clox 添加字符串、函数和类，ValueType会越来越多。除了类型之外，我们还需要存储值的数据——数字<code>double</code>或<code>true</code>布尔<code>false</code>值。我们可以为每种可能的类型定义一个包含字段的结构。</p>
+<p><img alt="" src="../assets/837dbe1be1d4fab7eaad5b0ffb24dad0f0043375.png" /></p>
+<p>但这是浪费内存。一个值不能同时是数字和布尔值。因此在任何时间点，只会使用其中一个字段。C 允许您通过定义union来优化它。联合看起来像一个结构，除了它的所有字段在内存中重叠。</p>
+<blockquote>
+<p>如果您熟悉 ML 家族中的语言，C 中的结构和联合大致反映了乘积和求和类型之间、元组和代数数据类型之间的区别。</p>
+</blockquote>
+<p><img alt="" src="../assets/4b9d61e0ad227840a1c99401d71aa6217488390a.png" /></p>
+<p>Union的大小是其最大字段的大小。由于这些字段都重复使用相同的位，因此在使用它们时必须非常小心。如果您使用一个字段存储数据，然后使用另一个字段访问它，您将重新解释底层位的含义。</p>
+<blockquote>
+<p>使用联合将位解释为不同类型是 C 的精髓。它开启了许多巧妙的优化，并允许您以内存安全语言不允许的方式对内存的每个字节进行切片和切块。但它也非常不安全，如果你不小心，它会很高兴地把你的手指锯掉。</p>
+</blockquote>
+<p>正如名称“tagged union”所暗示的那样，我们的新值表示将这两个部分组合到一个结构中。</p>
+<pre><code class="language-c">} ValueType;
+
+typedef struct {
+  ValueType type;
+  union {
+    bool boolean;
+    double number;
+  } as; 
+} Value;
+
+typedef struct {
+// value.h, add after enum ValueType, replace 1 line
+</code></pre>
+<p>Value中有一个type字段，然后是包含所有基础值的union的第二个字段。在具有典型 C 编译器的 64 位机器上，布局如下所示：</p>
+<blockquote>
+<p>一位聪明的语言黑客给了我使用“as”作为联合字段名称的想法，因为当您提取各种值时，它读起来很好，几乎就像一个强制转换。</p>
+</blockquote>
+<p><img alt="" src="../assets/69e5a1ac43ab472b345d7f7dda0cf5b1fd755daf.png" /></p>
+<p>四字节type  tag在前，然后是union。大多数架构更喜欢将值与其大小对齐。由于联合字段包含一个八字节双精度数，因此编译器在类型字段后添加四个字节的填充，以将该双精度数保持在最近的八字节边界上。这意味着我们实际上在类型tag上花费了 8 个字节，它只需要表示 0 到 3 之间的数字。我们可以将枚举填充到更小的大小，但所做的只是增加对齐填充(padding)。</p>
+<blockquote>
+<p><em>我们可以在 union之后</em>移动 tag 字段，但这也无济于事。每当我们创建一个 Values 数组时——这是我们对 Values 的大部分内存使用的地方——C编译器将在每个 Value<em>之间</em>插入相同的填充以保持双精度对齐。</p>
+</blockquote>
+<p>所以我们的Values是16个字节，看起来有点大。我们稍后会改进<a href="http://craftinginterpreters.com/optimization.html">它</a>。与此同时，它们仍然足够小，可以<strong>存储在 C 堆栈中并按值传递</strong>。Lox 的语义允许这样做，因为到目前为止我们支持的唯一类型是<strong>不可变</strong>的。如果我们将包含数字 3 的 Value 的副本传递给某个函数，就不必担心调用者会看到对该值的修改。你不能“修改”3。它永远是3。</p>
+<h2 id="182-lox-c">18.2 Lox 值和 C 值</h2>
+<p>这是我们新的值表示，但还没有完成。现在，clox 的其余部分假定 Value 是<code>double</code>的别名。我们有代码可以直接从一个 C 转换到另一个。该代码现在已全部不能用了。好悲催。</p>
+<p>使用新的表示形式，一个值可以<em>包含</em>一个双精度值，但它不<em>等同</em>于它。从一个到另一个有一个强制性的转换步骤。需要检查代码并插入这些转换以使 clox 再次工作。</p>
+<p>我们将把这些转换实现为一些宏，每个宏对应一种类型和操作。首先，将原生 C 值提升为 clox 值：</p>
+<pre><code class="language-c">} Value;
+
+#define BOOL_VAL(value)   ((Value){VAL_BOOL, {.boolean = value}})
+#define NIL_VAL           ((Value){VAL_NIL, {.number = 0}})
+#define NUMBER_VAL(value) ((Value){VAL_NUMBER, {.number = value}})
+
+typedef struct {
+// value.h, add after struct Value
+</code></pre>
+<p>其中每一个都采用适当类型的 C 值，并生成具有正确type tag并包含基础值的值。这将静态类型的值提升到 clox 的动态类型的宇宙中。但是，为了对 Value<em>做</em>任何事情，我们需要将其解包并取回 C 值。</p>
+<pre><code class="language-c">} Value;
+
+#define AS_BOOL(value)    ((value).as.boolean)
+#define AS_NUMBER(value)  ((value).as.number)
+
+#define BOOL_VAL(value)   ((Value){VAL_BOOL, {.boolean = value}})
+// value.h, add after struct Value
+</code></pre>
+<blockquote>
+<p>没有<code>AS_NIL</code>宏，因为只有一个<code>nil</code>值，所以类型为 Value<code>VAL_NIL</code>不携带任何额外数据。</p>
+</blockquote>
+<p>这些宏的方向相反。给定一个正确类型的值，他们将其解包并返回相应的原始 C 值。“正确类型”部分很重要！这些宏直接访问联合字段。如果我们要做类似的事情：</p>
+<pre><code class="language-c">Value value = BOOL_VAL(true);
+double number = AS_NUMBER(value);
+</code></pre>
+<p>然后我们就可以打开一个通向影子王国的穿梭门。除非知道值包含适当的类型，否则使用任何<code>AS_</code>宏都是不安全的。为此，我们定义了几个宏来检查值的类型。</p>
+<pre><code class="language-c">} Value;
+
+#define IS_BOOL(value)    ((value).type == VAL_BOOL)
+#define IS_NIL(value)     ((value).type == VAL_NIL)
+#define IS_NUMBER(value)  ((value).type == VAL_NUMBER)
+
+#define AS_BOOL(value)    ((value).as.boolean)
+// value.h, add after struct Value
+</code></pre>
+<p>如果 Value 具有该类型，则这些宏返回<code>true</code>。任何时候我们调用其中一个<code>AS_</code>宏，都需要首先调用其中一个<code>IS__</code>宏来保证它是正确类型。有了这八个宏，现在可以安全地在 Lox 的动态世界和 C 的静态世界之间穿梭数据。</p>
+<p><img alt="" src="../assets/41b6623fc41071d651ff2bca5d3a26fb7894af1c.png" /></p>
+<blockquote>
+<p><code>_VAL</code>宏将C 值提升到天堂。<code>AS_</code>宏将其恢复。</p>
+</blockquote>
+<h2 id="183">18.3 动态类型的数字</h2>
+<p>已经有了值表示和转换它的工具。让 clox 再次运行所剩下的就是仔细研究代码并修复数据跨过该边界的每个地方。这是本书中并不完全令人兴奋的部分之一，但我保证我会向您展示每一行代码，现在开始吧。</p>
+<p>我们创建的第一个值是编译数字时生成的常量。将词素转换为 C double 后，我们只需将其包装在一个 Value 中，然后再将其存储在常量表中。</p>
+<pre><code class="language-c">  double value = strtod(parser.previous.start, NULL);
+  emitConstant(NUMBER_VAL(value));
+}
+// compiler.c, in number(), replace 1 line
+</code></pre>
+<p>在运行时，我们有一个打印值的函数。</p>
+<pre><code class="language-c">void printValue(Value value) {
+ printf(&quot;%g&quot;, AS_NUMBER(value));
+}
+// value.c, in printValue(), replace 1 line
+</code></pre>
+<p>就在我们将值发送到<code>printf()</code>之前，解包并提取双精度值。我们将很快重新访问此函数以添加其他类型，但让我们先让现有代码运行。</p>
+<h3 id="1831">18.3.1 一元取反和运行时错误</h3>
+<p>下一个最简单的操作是一元取反。它从堆栈中弹出一个值，取反，然后压入结果。现在我们有了其他类型的值，我们不能再假设操作数是数字了。用户也可以这样做：</p>
+<pre><code>print -false; // Uh...
+</code></pre>
+<p>我们需要优雅地处理它，这意味着是时候出现<em>运行时错误</em>了。在执行需要特定类型的操作之前，我们需要确保 Value<em>是</em>该类型。</p>
+<p>对于一元取反，检查如下所示：</p>
+<pre><code class="language-c">      case OP_DIVIDE:   BINARY_OP(/); break;
+      case OP_NEGATE:
+        if (!IS_NUMBER(peek(0))) {
+          runtimeError(&quot;Operand must be a number.&quot;);
+          return INTERPRET_RUNTIME_ERROR;
+        }
+        push(NUMBER_VAL(-AS_NUMBER(pop())));
+        break;
+      case OP_RETURN: {
+// vm.c, in run(), replace 1 line
+</code></pre>
+<p>首先，我们检查堆栈顶部的值是否为数字。如果不是，报告运行时错误并停止解释器。否则，接着执行。只有在这个验证之后，才会打开操作数，取反，包装结果并push它。</p>
+<blockquote>
+<p>Lox 的错误处理方法相当...<em>备用</em>。所有错误都是致命错误并立即停止解释器。用户代码无法从错误中恢复。如果 Lox 是一种真正的语言，这是我首先要补救的事情之一。</p>
+</blockquote>
+<p>为了访问值，我们使用了一个新的小函数。</p>
+<pre><code class="language-c">static Value peek(int distance) {
+  return vm.stackTop[-1 - distance];
+}
+// vm.c, add after pop()
+</code></pre>
+<p>它从堆栈返回一个值但不弹出它。参数<code>distance</code>是从堆栈顶部向下看多远：0 是顶部，1 是向下一个槽，等等。</p>
+<blockquote>
+<p>为什么不弹出操作数然后验证它呢？我们可以做到。在后面的章节中，重要的是将操作数留在堆栈中，以确保如果在操作中间触发收集，垃圾收集器可以找到它们。我在这里做同样的事情主要是出于习惯。</p>
+</blockquote>
+<p>我们使用一个新函数报告运行时错误，我们将从本书的其余部分中受益匪浅。</p>
+<pre><code class="language-c">static void runtimeError(const char* format, ...) {
+  va_list args;
+  va_start(args, format);
+  vfprintf(stderr, format, args);
+  va_end(args);
+  fputs(&quot;\n&quot;, stderr);
+
+  size_t instruction = vm.ip - vm.chunk-&gt;code - 1;
+  int line = vm.chunk-&gt;lines[instruction];
+  fprintf(stderr, &quot;[line %d] in script\n&quot;, line);
+  resetStack();
+}
+// vm.c, add after resetStack()
+</code></pre>
+<p>你之前肯定在 C 中<em>调用</em>过可变参数函数——那些接受不同数量参数的函数：<code>printf()</code>是一个。但是您可能没有<em>定义</em>过自己的。这本书不是 C教程，所以我会在这里略过，但基本上<code>...</code>和<code>va_list</code>东西让我们可以将任意数量的参数传递给<code>runtimeError()</code>.它将那些参数转发到<code>vfprintf()</code>，这是<code>printf()</code>需要显式<code>va_list</code>基本风格.</p>
+<blockquote>
+<p>如果您正在寻找 C 教程，我喜欢<em><a href="https://www.cs.princeton.edu/~bwk/cbook.html">The C Programming Language</a></em>，通常称为“K&amp;R”以纪念其作者。它不完全是最新的，但写作的质量足以弥补它。</p>
+</blockquote>
+<p>调用者可以将格式字符串传递给<code>runtimeError()</code>后跟多个参数，就像<code>printf()</code>直接调用时一样。然后<code>runtimeError()</code>格式化并打印这些参数。我们不会在本章中利用它，但后面的章节将生成包含其他数据的格式化运行时错误消息。</p>
+<p>在我们希望显示有用的错误消息后，告诉用户错误发生时正在执行他们的代码的哪一行。由于我们在编译器中留下了token，因此我们在编译到块中的调试信息中查找该行。如果编译器正确完成了它的工作，那么它对应于从中编译字节码的源代码行。</p>
+<p>我们使用当前字节码指令索引<em>减一</em>来查看块的调试行数组。那是因为解释器在执行每条指令之前先通过了它。所以，在我们调用的那一点，<code>runtimeError()</code>失败的指令就是前一条指令。</p>
+<blockquote>
+<p>仅显示发生错误的直接行并不能提供太多上下文。最好是完整的堆栈跟踪。但是我们甚至还没有函数可以调用，所以没有调用堆栈可以跟踪。</p>
+</blockquote>
+<p>为了使用<code>va_list</code>和处理它的宏，我们需要引入一个标准的头文件。</p>
+<pre><code class="language-c">#include &lt;stdarg.h&gt;
+#include &lt;stdio.h&gt;
+// vm.c, add to top of file
+</code></pre>
+<p>有了这个，我们的 VM 不仅可以在我们取反数字时做正确的事情（就像我们破坏它之前那样），而且它还可以优雅地处理错误的尝试来取反其他类型（我们还没有，但仍然） .</p>
+<h3 id="1832">18.3.2 二元算术运算符</h3>
+<p>我们现在有了运行时错误机制，因此修复二元运算符更容易，虽然它们更复杂。我们目前支持四种二元运算符：<code>+</code>、<code>-</code>、<code>*</code>和<code>/</code>。它们之间的唯一区别是它们使用哪个底层 C 运算符。为了最大限度地减少四个运算符之间的冗余代码，我们将通用性封装在一个将运算符token作为参数的大型预处理器宏中。</p>
+<p><a href="http://craftinginterpreters.com/a-virtual-machine.html#binary-operators">那个宏在几章前</a>看起来有点矫枉过正，但今天我们从中受益。它让我们可以在一个地方添加必要的类型检查和转换。</p>
+<pre><code class="language-c">#define READ_CONSTANT() (vm.chunk-&gt;constants.values[READ_BYTE()])
+#define BINARY_OP(valueType, op) \
+    do { \
+      if (!IS_NUMBER(peek(0)) || !IS_NUMBER(peek(1))) { \
+        runtimeError(&quot;Operands must be numbers.&quot;); \
+        return INTERPRET_RUNTIME_ERROR; \
+      } \
+      double b = AS_NUMBER(pop()); \
+      double a = AS_NUMBER(pop()); \
+      push(valueType(a op b)); \
+    } while (false)
+
+  for (;;) {
+// vm.c, in run(), replace 6 lines
+</code></pre>
+<p>是的，我意识到那是个很大的宏。这不是我通常认为的良好 C 实践，但让我们开始吧。这些更改类似于我们对一元取反所做的更改。首先，我们检查两个操作数是否都是数字。如果两者都不是，我们会报告运行时错误并拉动弹射座椅杆。</p>
+<p>如果操作数没问题，将它们都pop并解包。然后应用给定的运算符，包装结果，并将其push堆栈。注意，我们不会直接使用<code>NUMBER_VAL()</code>.相反，要使用的包装器作为宏参数传入。对于我们现有的算术运算符，结果是一个数字，所以我们传入<code>NUMBER_VAL</code>宏。</p>
+<blockquote>
+<p>您知道可以将宏作为参数传递给宏吗？你现在办到了！</p>
+</blockquote>
+<pre><code class="language-c">}
+      case OP_ADD:      BINARY_OP(NUMBER_VAL, +); break;
+      case OP_SUBTRACT: BINARY_OP(NUMBER_VAL, -); break;
+      case OP_MULTIPLY: BINARY_OP(NUMBER_VAL, *); break;
+      case OP_DIVIDE:   BINARY_OP(NUMBER_VAL, /); break;
+      case OP_NEGATE:
+// vm.c, in run(), replace 4 lines
+</code></pre>
+<p>很快，我将向您展示为什么将包装宏作为参数。</p>
+<h2 id="184">18.4 两种新类型</h2>
+<p>我们所有现有的 clox 代码都恢复正常工作。最后，是时候添加一些新类型了。我们有一个可以运行的数字计算器，它现在可以执行一些毫无意义的偏执运行时类型检查。我们可以在内部表示其他类型，但用户的程序无法创建其中一种类型的值。</p>
+<p>现在，就是这样。我们将从添加对三个字面值的编译器支持开始：<code>true</code>、<code>false</code>和<code>nil</code>。它们都很简单，所以将在一个批次中完成所有三个。</p>
+<p>对于数字，我们必须处理存在数十亿种可能数值的事实。我们通过将字面值存储在块的常量表中并发出一条简单地加载该常量的字节码指令来解决这个问题。我们可以为新类型做同样的事情。我们会在常量表中存储，比方说<code>true</code>，并使用 an<code>OP_CONSTANT</code>将其读出。</p>
+<p>但是考虑到这些新类型实际上（嘿）只有三个可能的值我们需要关心，这是没有必要的——而且很慢！——在它们上面浪费一条两字节的指令和一个常量表条目。相反，我们将定义三个专用指令来将这些字面值中的每一个压入堆栈。</p>
+<blockquote>
+<p>我不是在开玩笑说某些常量值的专用操作会更快。字节码 VM 花费大部分执行时间来读取和解码指令。对于给定的行为，你需要的指令越少、越简单，它就会越快。专用于常见操作的简短指令是经典的优化。</p>
+<p>例如，Java 字节码指令集有专门的指令用于加载 0.0、1.0、2.0 和从 -1 到 5 的整数值。（鉴于大多数成熟的 JVM 现在将字节码 JIT 编译为机器，这最终成为一种残留的优化无论如何执行之前的代码。）</p>
+</blockquote>
+<pre><code class="language-c">  OP_CONSTANT,
+  OP_NIL,
+  OP_TRUE,
+  OP_FALSE,
+  OP_ADD,
+// chunk.h, in enum OpCode
+</code></pre>
+<p>我们的扫描器已经将<code>true</code>、<code>false</code>和<code>nil</code>视为关键字，因此我们可以直接跳到解析器。使用我们基于表的 Pratt 解析器，只需要将解析器函数插入与这些关键字token类型关联的行中。我们将在所有三个插槽中使用相同的函数。这里：</p>
+<pre><code class="language-c">  [TOKEN_ELSE]          = {NULL,     NULL,   PREC_NONE},
+  [TOKEN_FALSE]         = {literal,  NULL,   PREC_NONE},
+  [TOKEN_FOR]           = {NULL,     NULL,   PREC_NONE},
+// compiler.c, replace 1 line 
+</code></pre>
+<p>这里：</p>
+<pre><code class="language-c">  [TOKEN_THIS]          = {NULL,     NULL,   PREC_NONE},
+  [TOKEN_TRUE]          = {literal,  NULL,   PREC_NONE},
+  [TOKEN_VAR]           = {NULL,     NULL,   PREC_NONE},
+// compiler.c, replace 1 line 
+</code></pre>
+<p>和这里：</p>
+<pre><code class="language-c">  [TOKEN_IF]            = {NULL,     NULL,   PREC_NONE},
+  [TOKEN_NIL]           = {literal,  NULL,   PREC_NONE},
+  [TOKEN_OR]            = {NULL,     NULL,   PREC_NONE},
+// compiler.c, replace 1 line 
+</code></pre>
+<p>当解析器在前缀位置遇到<code>false</code>,<code>nil</code>, 或<code>true</code>, 时，它会调用这个新的解析器函数：</p>
+<pre><code class="language-c">static void literal() {
+  switch (parser.previous.type) {
+    case TOKEN_FALSE: emitByte(OP_FALSE); break;
+    case TOKEN_NIL: emitByte(OP_NIL); break;
+    case TOKEN_TRUE: emitByte(OP_TRUE); break;
+    default: return; // Unreachable.
+  }
+}
+// compiler.c, add after binary()
+</code></pre>
+<p>既然<code>parsePrecedence()</code>已经消费了关键字token，那么我们需要做的就是输出正确的指令。我们根据解析的token类型来计算。前端现在可以将 Boolean 和 nil 字面值编译为字节码。沿着执行管道向下移动，我们到达解释器。</p>
+<blockquote>
+<p>我们本可以为每个文字使用单独的解析器函数，并为自己节省一个开关，但对我来说，这感觉不必要地冗长。我认为这主要是品味问题。</p>
+</blockquote>
+<pre><code class="language-c">     case OP_CONSTANT: {
+        Value constant = READ_CONSTANT();
+        push(constant);
+        break;
+      }
+      case OP_NIL: push(NIL_VAL); break;
+      case OP_TRUE: push(BOOL_VAL(true)); break;
+      case OP_FALSE: push(BOOL_VAL(false)); break;
+      case OP_ADD:      BINARY_OP(NUMBER_VAL, +); break;
+// vm.c, in run()
+</code></pre>
+<p>这很容易明白。每条指令都会调用适当的值并将其压入堆栈。我们也不应该忘记反汇编程序。</p>
+<pre><code class="language-c">   case OP_CONSTANT:
+      return constantInstruction(&quot;OP_CONSTANT&quot;, chunk, offset);
+    case OP_NIL:
+      return simpleInstruction(&quot;OP_NIL&quot;, offset);
+    case OP_TRUE:
+      return simpleInstruction(&quot;OP_TRUE&quot;, offset);
+    case OP_FALSE:
+      return simpleInstruction(&quot;OP_FALSE&quot;, offset);
+    case OP_ADD:
+// debug.c, in disassembleInstruction()
+</code></pre>
+<p>有了这个，我们就可以运行这个惊天动地的程序了：</p>
+<pre><code class="language-c">true
+</code></pre>
+<p>除了当解释器试图打印结果时，它会爆炸。我们也需要扩展<code>printValue()</code>以处理新类型：</p>
+<pre><code class="language-c">void printValue(Value value) {
+  switch (value.type) {
+    case VAL_BOOL:
+      printf(AS_BOOL(value) ? &quot;true&quot; : &quot;false&quot;);
+      break;
+    case VAL_NIL: printf(&quot;nil&quot;); break;
+    case VAL_NUMBER: printf(&quot;%g&quot;, AS_NUMBER(value)); break;
+  }
+}
+// value.c, in printValue(), replace 1 line
+</code></pre>
+<p>现在可以了！现在有了一些新类型。它们还不是很有用。除了字面值之外，您不能对它们<em>做</em>任何事情。还需要一段时间才能发挥作用，但我们可以开始将布尔值用于逻辑运算符。</p>
+<h3 id="1841">18.4.1 逻辑非和假</h3>
+<p>最简单的逻辑运算符是一元取反。</p>
+<pre><code class="language-c">print !true; // &quot;false&quot;
+</code></pre>
+<p>这个新操作得到一个新指令。</p>
+<pre><code class="language-c">  OP_DIVIDE,
+  OP_NOT,
+  OP_NEGATE,
+// chunk.h, in enum OpCode  
+</code></pre>
+<p>我们可以重用<code>unary()</code>为一元取反编写的解析器函数来编译一个非表达式。只需要将它放入解析表中即可。</p>
+<pre><code class="language-c">  [TOKEN_STAR]          = {NULL,     binary, PREC_FACTOR},
+  [TOKEN_BANG]          = {unary,    NULL,   PREC_NONE},
+  [TOKEN_BANG_EQUAL]    = {NULL,     NULL,   PREC_NONE},
+// compiler.c, replace 1 line 
+</code></pre>
+<p>因为我知道要这样做，所以该<code>unary()</code>函数已经有一个token类型的switch来确定输出哪个字节码指令。我们只是添加另一个case。</p>
+<pre><code class="language-c"> switch (operatorType) {
+    case TOKEN_BANG: emitByte(OP_NOT); break;
+    case TOKEN_MINUS: emitByte(OP_NEGATE); break;
+    default: return; // Unreachable.
+  }
+// compiler.c, in unary()  
+</code></pre>
+<p>这就是前端。让我们转到 VM 并将这条指令变为现实。</p>
+<pre><code class="language-c">      case OP_DIVIDE:   BINARY_OP(NUMBER_VAL, /); break;
+      case OP_NOT:
+        push(BOOL_VAL(isFalsey(pop())));
+        break;
+      case OP_NEGATE:
+// vm.c, in run()
+</code></pre>
+<p>就像我们之前的一元运算符一样，它pop一个操作数，执行操作，然后push结果。而且，正如我们在那里所做的那样，我们不得不担心动态类型。获取<code>true</code>的逻辑非很容易，但是没有什么能阻止不守规矩的程序员写出这样的东西：</p>
+<pre><code class="language-c">print !nil;
+</code></pre>
+<p>对于一元取反，对任何非数字的东西取反将是错误。但是，与大多数脚本语言一样，Lox在涉及布尔值和其他需要布尔值的上下文时更为宽松。处理其他类型的规则称为“falsiness”，我们在这里实现它：</p>
+<blockquote>
+<p>现在我忍不住想弄清楚否定其他类型的值意味着什么。<code>nil</code>可能是它自己的否定，有点像一个奇怪的伪零。否定一个字符串可以，呃，反转它？</p>
+</blockquote>
+<pre><code class="language-c">static bool isFalsey(Value value) {
+  return IS_NIL(value) || (IS_BOOL(value) &amp;&amp; !AS_BOOL(value));
+}
+// vm.c, add after peek()
+</code></pre>
+<p>Lox 在这方面遵循 Ruby，<code>nil</code>和<code>false</code>为假，其他值都是<code>true</code>.我们有一条可以生成的新指令，因此还需要能够在反汇编器中反汇编。</p>
+<pre><code class="language-c">case OP_DIVIDE:
+      return simpleInstruction(&quot;OP_DIVIDE&quot;, offset);
+    case OP_NOT:
+      return simpleInstruction(&quot;OP_NOT&quot;, offset);
+    case OP_NEGATE:
+// debug.c, in disassembleInstruction()
+</code></pre>
+<h3 id="1842">18.4.2 相等和比较运算符</h3>
+<p>那还不错。让我们继续，并搞定相等和比较运算符：<code>==</code>,<code>!=</code>,<code>&lt;</code>,<code>&gt;</code>,<code>&lt;=</code>, 和<code>&gt;=</code>。这涵盖了除逻辑运算符<code>and</code>和<code>or</code>之外的所有返回布尔结果的运算符。因为那些需要短路（基本上做一点控制流程）我们还没有准备好。</p>
+<p>以下是针对这些操作员的新说明：</p>
+<pre><code class="language-c">  OP_FALSE,
+  OP_EQUAL,
+  OP_GREATER,
+  OP_LESS,
+  OP_ADD,
+// chunk.h, in enum OpCode  
+</code></pre>
+<p>等等，怎么只有三个?怎么没有<code>!=</code>、<code>&lt;=</code>和<code>&gt;=</code>？ 我们也可以为这些创建指令。老实说，如果我们这样做，VM 会执行得更快，所以如果目标是性能，我们应该这样做。</p>
+<p>但我的主要目标是教您有关字节码编译器的知识。我希望您开始认识到字节码指令不需要紧跟用户源代码。VM 可以完全自由地使用它想要的任何指令集和代码序列，只要它们具有正确的用户可见行为。</p>
+<p><code>a != b</code>该表达式与 <code>!(a == b)</code>具有相同的语义，因此编译器可以像编译后者一样自由地编译前者。代替专用<code>OP_NOT_EQUAL</code>指令，它可以输出一个<code>OP_EQUAL</code>后跟一个<code>OP_NOT</code>.同样，<code>a &lt;= b</code>与<code>!(a &gt; b)</code>相同，<code>a &gt;= b</code>与<code>!(a &lt; b)</code>相同。因此，我们只需要三个新指令。</p>
+<blockquote>
+<p><code>a &lt;= b</code>总是与<code>!(a &gt; b)</code>一样吗？根据<a href="https://en.wikipedia.org/wiki/IEEE_754">IEEE 754</a>，当操作数为 NaN 时，所有比较运算符都返回 false。那意味着<code>NaN &lt;= 1</code>是假的，<code>NaN &gt; 1</code>也是假的。但是我们的脱糖假设后者始终是前者的否定。</p>
+<p>对于这本书，我们不会太关注这些，但这些细节在您的真实语言实现中很重要。</p>
+</blockquote>
+<p>不过，在解析器中，我们确实有六个新的运算符可以放入解析表中。我们使用与之前相同的解析器函数<code>binary()</code>。这是<code>!=</code>的行：</p>
+<pre><code class="language-c">  [TOKEN_BANG]          = {unary,    NULL,   PREC_NONE},
+  [TOKEN_BANG_EQUAL]    = {NULL,     binary, PREC_EQUALITY},
+  [TOKEN_EQUAL]         = {NULL,     NULL,   PREC_NONE},
+// compiler.c, replace 1 line
+</code></pre>
+<p>其余五名操作符在后边。</p>
+<pre><code class="language-c">  [TOKEN_EQUAL]         = {NULL,     NULL,   PREC_NONE},
+  [TOKEN_EQUAL_EQUAL]   = {NULL,     binary, PREC_EQUALITY},
+  [TOKEN_GREATER]       = {NULL,     binary, PREC_COMPARISON},
+  [TOKEN_GREATER_EQUAL] = {NULL,     binary, PREC_COMPARISON},
+  [TOKEN_LESS]          = {NULL,     binary, PREC_COMPARISON},
+  [TOKEN_LESS_EQUAL]    = {NULL,     binary, PREC_COMPARISON},
+  [TOKEN_IDENTIFIER]    = {NULL,     NULL,   PREC_NONE},
+// compiler.c, replace 5 lines 
+</code></pre>
+<p>在<code>binary()</code>内部，我们已经有一个switch可以为每种token类型生成正确的字节码。我们为六个操作符添加了case。</p>
+<pre><code class="language-c">switch (operatorType) {
+    case TOKEN_BANG_EQUAL:    emitBytes(OP_EQUAL, OP_NOT); break;
+    case TOKEN_EQUAL_EQUAL:   emitByte(OP_EQUAL); break;
+    case TOKEN_GREATER:       emitByte(OP_GREATER); break;
+    case TOKEN_GREATER_EQUAL: emitBytes(OP_LESS, OP_NOT); break;
+    case TOKEN_LESS:          emitByte(OP_LESS); break;
+    case TOKEN_LESS_EQUAL:    emitBytes(OP_GREATER, OP_NOT); break;
+    case TOKEN_PLUS:          emitByte(OP_ADD); break;
+// compiler.c, in binary() 
+</code></pre>
+<p><code>==</code>,<code>&lt;</code>和<code>&gt;</code>运算符输出一条指令。其他输出一对指令，一个用于评估逆运算，然后一个<code>OP_NOT</code>对结果取反。六个操作符只需要三个指令！</p>
+<p>这意味着在 VM 中，我们的工作更简单。相等是最一般的操作。</p>
+<pre><code class="language-c">      case OP_FALSE: push(BOOL_VAL(false)); break;
+      case OP_EQUAL: {
+        Value b = pop();
+        Value a = pop();
+        push(BOOL_VAL(valuesEqual(a, b)));
+        break;
+      }
+      case OP_ADD:      BINARY_OP(NUMBER_VAL, +); break;
+// vm.c, in run()
+</code></pre>
+<p>您可以用<code>==</code>评估任何一对对象，甚至是不同类型的对象。这比较复杂，所以将逻辑分流到一个单独的函数是有意义的。该函数总是返回一个 C <code>bool</code>，所以我们可以安全地将结果包装在一个<code>BOOL_VAL</code>.该函数与 Values 相关，因此它存在于“value”模块中。</p>
+<pre><code class="language-c">} ValueArray;
+
+bool valuesEqual(Value a, Value b);
+void initValueArray(ValueArray* array);
+// value.h, add after struct ValueArray
+</code></pre>
+<p>这是实现：</p>
+<pre><code class="language-c">bool valuesEqual(Value a, Value b) {
+  if (a.type != b.type) return false;
+  switch (a.type) {
+    case VAL_BOOL:   return AS_BOOL(a) == AS_BOOL(b);
+    case VAL_NIL:    return true;
+    case VAL_NUMBER: return AS_NUMBER(a) == AS_NUMBER(b);
+    default:         return false; // Unreachable.
+  }
+}
+// value.c, add after printValue()
+</code></pre>
+<p>首先，我们检查类型。如果 Values 有不同的类型，它们肯定是不相等的。否则，我们解包两个值并直接比较它们。</p>
+<blockquote>
+<p>某些语言具有“隐式转换”，其中如果一个可以转换为另一个类型，则不同类型的值可能被认为是相等的。例如，数字 0 等同于 JavaScript 中的字符串“0”。这种松散是一个足够大的痛苦来源，以至于 JS 添加了一个单独的“严格相等”运算符，<code>===</code>.</p>
+<p>PHP 认为字符串“1”和“01”是等价的，因为它们都可以转换为等价的数字，尽管最终的原因是因为 PHP 是由 Lovecraftian eldritch god 设计来摧毁思想的。</p>
+<p>大多数具有独立整数和浮点数类型的动态类型语言认为，如果数值相同（例如，1.0 等于 1），则不同数字类型的值相等.</p>
+</blockquote>
+<p>对于每个值类型，我们都有一个单独的case来处理比较值本身。考虑到case的相似程度，您可能想知道为什么我们不能简单地<code>memcmp()</code>使用两个 Value 结构并完成它。问题是由于填充和不同大小的联合字段，值包含未使用的位。C 不保证其中的内容，因此两个相等的值可能在未使用的内存中实际上不同。</p>
+<p><img alt="" src="../assets/807f8a1a27a7be7714dd2f3c475151eaf70137e1.png" /></p>
+<p>（你不会相信在得知这个事实之前我经历了多少痛苦。）</p>
+<p>无论如何，随着我们向 clox 添加更多类型，此函数将增加新的case。目前，这三个就足够了。其他比较运算符更容易，因为它们仅适用于数字</p>
+<pre><code class="language-c">        push(BOOL_VAL(valuesEqual(a, b)));
+        break;
+      }
+      case OP_GREATER:  BINARY_OP(BOOL_VAL, &gt;); break;
+      case OP_LESS:     BINARY_OP(BOOL_VAL, &lt;); break;
+      case OP_ADD:      BINARY_OP(NUMBER_VAL, +); break;
+// vm.c, in run()
+</code></pre>
+<p>我们已经扩展了<code>BINARY_OP</code>宏来处理返回非数字类型的运算符。现在我们开始使用它。我们传入是<code>BOOL_VAL</code>因为结果值类型是布尔值。否则，它与加号或减号没有区别。</p>
+<p>一如既往，今天咏叹调的结尾是反编译新指令。</p>
+<pre><code class="language-c">    case OP_FALSE:
+      return simpleInstruction(&quot;OP_FALSE&quot;, offset);
+    case OP_EQUAL:
+      return simpleInstruction(&quot;OP_EQUAL&quot;, offset);
+    case OP_GREATER:
+      return simpleInstruction(&quot;OP_GREATER&quot;, offset);
+    case OP_LESS:
+      return simpleInstruction(&quot;OP_LESS&quot;, offset);
+    case OP_ADD:
+// debug.c, in disassembleInstruction()
+</code></pre>
+<p>这样，我们的数值计算器就更接近于通用表达式求值器了。启动 clox 并输入：</p>
+<pre><code class="language-c">!(5 - 4 &gt; 3 * 2 == !nil)
+</code></pre>
+<p>好吧，我承认这可能不是最<em>有用</em>的表达方式，但我们正在取得进展。我们缺少一种具有自己的字符形式的内置类型：字符串。这些要复杂得多，因为字符串的大小可能不同。事实证明，这种微小的差异会产生如此巨大的影响，以至于我们为字符串单独写<a href="http://craftinginterpreters.com/strings.html">了一章</a>。</p>
+<hr />
+<h2 id="_2"><a href="http://craftinginterpreters.com/types-of-values.html#challenges">挑战</a></h2>
+<ol>
+<li>
+<p>我们可以更进一步地减少二元运算符。您还可以删除哪些其他指令，编译器将如何处理它们的缺失？</p>
+</li>
+<li>
+<p>相反，我们可以通过添加与更高级别操作相对应的更具体的指令来提高字节码 VM 的速度。你会定义什么指令来加速我们在本章中添加支持的那种用户代码？</p>
+</li>
+</ol>
+                
+              
+              
+<script src="https://giscus.app/client.js" data-repo="PKUFlyingPig/cs-self-learning" data-repo-id="R_kgDOGP67ng"
+    data-category="Announcements" data-category-id="DIC_kwDOGP67ns4COM9Q" data-mapping="title"
+    data-reactions-enabled="1" data-emit-metadata="0" data-input-position="top" data-theme="light_protanopia"
+    data-lang="zh-CN" data-loading="lazy" crossorigin="anonymous" async>
+</script>
+
+<script>
+    var palette = __get("__palette")
+    if (palette && typeof palette.color === "object") {
+        if (palette.color.scheme === "slate") {
+            const giscus = document.querySelector("script[src*=giscus]")
+            giscus.setAttribute("data-theme", "dark_protanopia")
+        }
+    }
+
+    document.addEventListener("DOMContentLoaded", function () {
+        const ref = document.querySelector("[data-md-component=palette]")
+        ref.addEventListener("change", function () {
+            var palette = __get("__palette")
+            if (palette && typeof palette.color === "object") {
+                const theme = palette.color.scheme === "slate" ? "dark_protanopia" : "light_protanopia"
+                const frame = document.querySelector(".giscus-frame")
+                frame.contentWindow.postMessage({
+                    giscus: { setConfig: { theme } }
+                }, "https://giscus.app")
+            }
+        })
+    })
+</script>
+
+            </article>
+          </div>
+        </div>
+        
+          <a href="#" class="md-top md-icon" data-md-component="top" data-md-state="hidden">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"/></svg>
+            Back to top
+          </a>
+        
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href="../../3_17.Compiling%20Expressions/Compiling%20Expressions/" class="md-footer__link md-footer__link--prev" aria-label="上一页: 3.17.Compiling Expressions" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                上一页
+              </span>
+              3.17.Compiling Expressions
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../../3_19.Strings/Strings/" class="md-footer__link md-footer__link--next" aria-label="下一页: 3.19.Strings" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                下一页
+              </span>
+              3.19.Strings
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        
+          Made with
+          <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+            Material for MkDocs
+          </a>
+        
+        
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["header.autohide", "navigation.tracking", "navigation.top", "search.highlight", "search.share", "search.suggest", "content.code.annotate"], "search": "../../../assets/javascripts/workers/search.fcfe8b6d.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\uff0c\\u3002]+", "search.placeholder": "\u641c\u7d22", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.b1047164.min.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+      
+    
+  </body>
+</html>

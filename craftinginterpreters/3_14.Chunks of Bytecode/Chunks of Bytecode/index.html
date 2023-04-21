@@ -1,0 +1,2224 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-7.3.6">
+    
+    
+      
+        <title>3.14.Chunks of Bytecode - doc-zh</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.a57b2b03.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.3f5d1f46.min.css">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font-family:"Roboto";--md-code-font-family:"Roboto Mono"}</style>
+      
+    
+    
+    
+    
+      
+
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="light-blue" data-md-color-accent="deep-purple">
+  
+    
+    <script>function __prefix(e){return new URL("../../..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+    
+      <script>var palette=__get("__palette");if(null!==palette&&"object"==typeof palette.color)for(var key in palette.color)document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="doc-zh" class="md-header__button md-logo" aria-label="doc-zh" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            doc-zh
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              3.14.Chunks of Bytecode
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="light-blue" data-md-color-accent="deep-purple"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+          
+            <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5c-.84 0-1.65.15-2.39.42L12 2M3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29L3.34 7m.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14L3.36 17M20.65 7l-1.77 3.79a7.023 7.023 0 0 0-2.38-4.15l4.15.36m-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29L20.64 17M12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44L12 22z"/></svg>
+            </label>
+          
+        
+          
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="cyan" data-md-color-accent="deep-purple"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
+          
+            <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3 3.19.09m3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95 2.06.05m-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31z"/></svg>
+            </label>
+          
+        
+      </form>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7 0-.24-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91 1.61 0 2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08z"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        
+<a href="https://github.com/Misaka-9982-coder/doc-zh" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    doc-zh
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="doc-zh" class="md-nav__button md-logo" aria-label="doc-zh" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    doc-zh
+  </label>
+  
+    <div class="md-nav__source">
+      
+<a href="https://github.com/Misaka-9982-coder/doc-zh" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    doc-zh
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1" type="checkbox" id="__nav_1" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_1">
+          xv6-book
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="xv6-book" data-md-level="1">
+        <label class="md-nav__title" for="__nav_1">
+          <span class="md-nav__icon md-icon"></span>
+          xv6-book
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../S081/0.%20%E5%89%8D%E8%A8%80%E5%92%8C%E8%87%B4%E8%B0%A2/" class="md-nav__link">
+        0. 前言和致谢
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../S081/1.%20%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E6%8E%A5%E5%8F%A3/" class="md-nav__link">
+        1. 操作系统接口
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../S081/2.%20%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84/" class="md-nav__link">
+        2. 操作系统架构
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../S081/3.%20%E9%A1%B5%E8%A1%A8/" class="md-nav__link">
+        3. 页表
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../S081/4.%20trap%20%E4%B8%8E%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8/" class="md-nav__link">
+        4. trap 与系统调用
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../S081/5.%20%E4%B8%AD%E6%96%AD%E5%92%8C%E8%AE%BE%E5%A4%87%E9%A9%B1%E5%8A%A8%E7%A8%8B%E5%BA%8F/" class="md-nav__link">
+        5. 中断和设备驱动程序
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../S081/6.%20%E9%94%81/" class="md-nav__link">
+        6. 锁
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../S081/7.%20%E8%B0%83%E5%BA%A6/" class="md-nav__link">
+        7. 调度
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../S081/8.%20%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/" class="md-nav__link">
+        8. 文件系统
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../S081/9.%20%E5%86%8D%E6%AC%A1%E6%8E%A2%E8%AE%A8%E5%B9%B6%E5%8F%91%E6%80%A7/" class="md-nav__link">
+        9. 再次探讨并发性
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2">
+          craftinginterpreters
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="craftinginterpreters" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          craftinginterpreters
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../0_00.contents/contents/" class="md-nav__link">
+        0.00.contents
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../0_01.acknowledgements/acknowledgements/" class="md-nav__link">
+        0.01.acknowledgements
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1_00.Welcome/Welcome/" class="md-nav__link">
+        一、WELCOME
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1_01.Introduction/Introduction/" class="md-nav__link">
+        1.01.Introduction
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1_02.A%20Map%20of%20the%20Territory/A%20Map%20of%20the%20Territory/" class="md-nav__link">
+        1.02.A Map of the Territory
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1_03.The%20Lox%20Language/The%20Lox%20Language/" class="md-nav__link">
+        1.03.The Lox Language
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2_00.A%20TREE-WALK%20INTERPRETER/A%20TREE-WALK%20INTERPRETER/" class="md-nav__link">
+        二、A TREE-WALK INTERPRETER
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2_04.Scanning/Scanning/" class="md-nav__link">
+        2.04.Scanning
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2_05.Representing%20Code/Representing%20Code/" class="md-nav__link">
+        2.05.Representing Code
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2_06.Parsing%20Expressions/Parsing%20Expressions/" class="md-nav__link">
+        2.06.Parsing Expressions
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2_07.Evaluating%20Expressions/Evaluating%20Expressions/" class="md-nav__link">
+        2.07.Evaluating Expressions
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2_08.Statements%20and%20State/Statements%20and%20State/" class="md-nav__link">
+        2.08.Statements and State
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2_09.Control%20Flow/Control%20Flow/" class="md-nav__link">
+        2.09.Control Flow
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2_10.Functions/Functions/" class="md-nav__link">
+        2.10.Functions
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2_11.Resolving%20and%20Binding/Resolving%20and%20Binding/" class="md-nav__link">
+        2.11.Resolving and Binding
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2_12.Classes/Classes/" class="md-nav__link">
+        2.12.Classes
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2_13.Inheritance/Inheritance/" class="md-nav__link">
+        2.13.Inheritance
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3_00.A%20BYTECODE%20VIRTUAL%20MACHINE/A%20BYTECODE%20VIRTUAL%20MACHINE/" class="md-nav__link">
+        三、A BYTECODE VIRTUAL MACHINE
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          3.14.Chunks of Bytecode
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        3.14.Chunks of Bytecode
+      </a>
+      
+        
+
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#141" class="md-nav__link">
+    14.1 字节码？
+  </a>
+  
+    <nav class="md-nav" aria-label="14.1 字节码？">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1411-ast" class="md-nav__link">
+    14.1.1 为什么不走 AST？
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1412" class="md-nav__link">
+    14.1.2 为什么不编译成本地代码？
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1413" class="md-nav__link">
+    14.1.3 什么是字节码？
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#142" class="md-nav__link">
+    14.2  入门
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#143" class="md-nav__link">
+    14.3 指令块
+  </a>
+  
+    <nav class="md-nav" aria-label="14.3 指令块">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1431" class="md-nav__link">
+    14.3.1 指令的动态数组
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#144" class="md-nav__link">
+    14.4 反汇编指令块
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#145" class="md-nav__link">
+    14.5 常量
+  </a>
+  
+    <nav class="md-nav" aria-label="14.5 常量">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1451" class="md-nav__link">
+    14.5.1 表示值
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1452" class="md-nav__link">
+    14.5.2 值数组
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1453" class="md-nav__link">
+    14.5.3 常量指令
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#146" class="md-nav__link">
+    14.6 行号信息
+  </a>
+  
+    <nav class="md-nav" aria-label="14.6 行号信息">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1461" class="md-nav__link">
+    14.6.1 反汇编行号
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    挑战
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    设计笔记：测试你的语言
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3_15.A%20Virtual%20Machine/A%20Virtual%20Machine/" class="md-nav__link">
+        3.15.A Virtual Machine
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3_16.Scanning%20on%20Demand/Scanning%20on%20Demand/" class="md-nav__link">
+        3.16.Scanning on Demand
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3_17.Compiling%20Expressions/Compiling%20Expressions/" class="md-nav__link">
+        3.17.Compiling Expressions
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3_18.Types%20of%20Values/Types%20of%20Values/" class="md-nav__link">
+        3.18.Types of Values
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3_19.Strings/Strings/" class="md-nav__link">
+        3.19.Strings
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3_20.Hash%20Tables/Hash%20Tables/" class="md-nav__link">
+        3.20.Hash Tables
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3_21.Global%20Variables/Global%20Variables/" class="md-nav__link">
+        3.21.Global Variables
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3_22.Local%20Variables/Local%20Variables/" class="md-nav__link">
+        3.22.Local Variables
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3_23.Jumping%20Back%20and%20Forth/Jumping%20Back%20and%20Forth/" class="md-nav__link">
+        3.23.Jumping Back and Forth
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3_24.Calls%20and%20Functions/Calls%20and%20Functions/" class="md-nav__link">
+        3.24.Calls and Functions
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3_25.Closures/Closures/" class="md-nav__link">
+        3.25.Closures
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3_26.Garbage%20Collection/Garbage%20Collection/" class="md-nav__link">
+        3.26.Garbage Collection
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3_27.Classes%20and%20Instances/Classes%20and%20Instances/" class="md-nav__link">
+        3.27.Classes and Instances
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3_28.Methods%20and%20Initializers/Methods%20and%20Initializers/" class="md-nav__link">
+        3.28.Methods and Initializers
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3_29.Superclasses/Superclasses/" class="md-nav__link">
+        3.29.Superclasses
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3_30.Optimization/Optimization/" class="md-nav__link">
+        3.30.Optimization
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../4_01.A1.Appendix%20I%20Lox%20Grammar/A1.Appendix%20I%20Lox%20Grammar/" class="md-nav__link">
+        A1.Appendix I Lox Grammar
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../4_02.A2.Appendix%20II%20Generated%20Syntax%20Tree%20Classes/A2.Appendix%20II%20Generated%20Syntax%20Tree%20Classes/" class="md-nav__link">
+        A2.Appendix II Generated Syntax Tree Classes
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#141" class="md-nav__link">
+    14.1 字节码？
+  </a>
+  
+    <nav class="md-nav" aria-label="14.1 字节码？">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1411-ast" class="md-nav__link">
+    14.1.1 为什么不走 AST？
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1412" class="md-nav__link">
+    14.1.2 为什么不编译成本地代码？
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1413" class="md-nav__link">
+    14.1.3 什么是字节码？
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#142" class="md-nav__link">
+    14.2  入门
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#143" class="md-nav__link">
+    14.3 指令块
+  </a>
+  
+    <nav class="md-nav" aria-label="14.3 指令块">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1431" class="md-nav__link">
+    14.3.1 指令的动态数组
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#144" class="md-nav__link">
+    14.4 反汇编指令块
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#145" class="md-nav__link">
+    14.5 常量
+  </a>
+  
+    <nav class="md-nav" aria-label="14.5 常量">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1451" class="md-nav__link">
+    14.5.1 表示值
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1452" class="md-nav__link">
+    14.5.2 值数组
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1453" class="md-nav__link">
+    14.5.3 常量指令
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#146" class="md-nav__link">
+    14.6 行号信息
+  </a>
+  
+    <nav class="md-nav" aria-label="14.6 行号信息">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1461" class="md-nav__link">
+    14.6.1 反汇编行号
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    挑战
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    设计笔记：测试你的语言
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/Misaka-9982-coder/doc-zh/edit/master/docs/craftinginterpreters/3_14.Chunks of Bytecode/Chunks of Bytecode.md" title="编辑此页" class="md-content__button md-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
+                  </a>
+                
+                
+                <h1 id="_1">字节码块</h1>
+<blockquote>
+<p>如果你发现你几乎所有的时间都花在了理论上，那就开始关注实际的事情吧；它会改进你的理论。如果你发现你几乎把所有的时间都花在了练习上，那就开始把注意力转移到理论上的事情上；它会改善你的练习。</p>
+<p>-- 唐纳德高德纳</p>
+</blockquote>
+<p>我们已经用 jlox 完成了 Lox 的完整实现，那么为什么这本书还没有结束呢？部分原因是 jlox 依赖JVM为我们做很多事情。如果想了解解释器是如何工作的，需要自己构建这些点点滴滴。</p>
+<blockquote>
+<p>当然，我们的第二个解释器依赖于 C 标准库来实现内存分配等基础，并且 C 编译器使我们摆脱了运行它的底层机器代码的细节。哎呀，该机器代码可能是根据芯片上的微代码实现的。而 C 运行时依赖操作系统来分发内存页面。但是如果这本书要放在你的书架上，我们必须在<em>某个地方</em>停下来。</p>
+</blockquote>
+<p>jlox 不足的一个更根本的原因是它太慢了。树遍历解释器适用于某些高级声明性语言。但对于一种通用的命令式语言——即使是像 Lox 这样的“脚本”语言——它也不会飞起来。拿这个小脚本：</p>
+<pre><code class="language-js">fun fib(n) {
+  if (n &lt; 2) return n;
+  return fib(n - 1) + fib(n - 2); 
+}
+
+var before = clock();
+print fib(40);
+var after = clock();
+print after - before;
+</code></pre>
+<blockquote>
+<p>这是一种实际计算斐波那契数列的低效方式。我们的目标是看<em>解释器</em>运行多快，而不是看我们能写多快的程序。一个执行大量工作的缓慢程序——无论是否无意义——都是一个很好的测试用例。</p>
+</blockquote>
+<p>在我的笔记本电脑上，执行 jlox 大约需要 72 秒。而等效的 C 程序在半秒内完成。我们的动态类型脚本语言永远不会像手动内存管理的静态类型语言一样快，但我们不能忍受慢<em>两个数量级</em>以上 。</p>
+<p>我们可以采用 jlox 并在分析器中运行它，然后开始调整和优化热点，但这只会让我们走到这一步。执行模型——遍历 AST——从根本上说是错误的设计。无法将其微优化到我们想要的性能，就像您无法将 AMC Gremlin 打磨成 SR-71 Blackbird 一样。</p>
+<p>我们需要重新考虑核心模型。本章介绍该模型、字节码，并开始介绍我们的新解释器 clox。</p>
+<h2 id="141">14.1 字节码？</h2>
+<p>在工程中，很少有选择是没有权衡的。为了最好地理解我们为什么要使用字节码，让我们将它与几个备选方案进行比较。</p>
+<h3 id="1411-ast">14.1.1 为什么不走 AST？</h3>
+<p>我们现有的解释器有几个优点：</p>
+<ul>
+<li>
+<p>好吧，首先，我们已经写好了。完成。这样做的主要原因是这种解释器的<em>实现方式非常简单</em>。代码的运行时表示直接映射到语法。在运行时从解析器获取我们需要的数据结构几乎毫不费力。</p>
+</li>
+<li>
+<p>它是<em>便以移植</em>的。我们当前的解释器是用 Java 编写的，可以在 Java 支持的任何平台上运行。我们可以使用相同的方法在 C 语言中编写一个新的实现，并在几乎所有平台上编译和运行我们的语言。</p>
+</li>
+</ul>
+<p>这些都是真正的优势。但是，另一方面，它的<em>内存效率不高</em>。每一段语法解析成为一个 AST 节点。一个微小的 Lox 表达式<code>1 + 2</code>变成了一系列对象，它们之间有很多指针，比如：</p>
+<blockquote>
+<p>“(header)”部分是 Java 虚拟机用来支持内存管理和存储对象类型的簿记信息。那些也占空间！</p>
+</blockquote>
+<p><img alt="" src="../assets/7f5efeb0fe660a754a41e9037368994313fae0ae.png" /></p>
+<p>这些指针中的每一个都会向对象添加额外的 32 或 64 位开销。更糟糕的是，以松散连接的对象网的方式将我们的数据散布在堆中,  会对<em>空间局部性</em>造成不利影响。</p>
+<blockquote>
+<p><em>我在我的第一本书Game Programming Patterns</em>中写<a href="http://gameprogrammingpatterns.com/data-locality.html">了一整章</a>来讨论这个确切的问题，如果你想深入了解的话。</p>
+</blockquote>
+<p>现代 CPU 处理数据的速度比从 RAM 中提取数据的速度快得多。为了弥补这一点，芯片具有多层缓存。如果它需要的一块内存已经在缓存中，它可以更快地加载。我们的谈话速度快了 100<em>倍以上</em>。</p>
+<p>数据如何进入该缓存？机器推测性地为您填充东西。它的启发式非常简单。每当 CPU 从 RAM 中读取一点数据时，它都会拉入一小块相邻字节并将它们填充到缓存中。</p>
+<p>如果我们的程序接下来请求一些数据，这些数据足够接近以位于该缓存行内，我们的 CPU 就像工厂中润滑良好的传送带一样运行。我们<em>真的</em>很想利用这一点。为了有效地使用缓存，我们在内存中表示代码的方式应该像读取时一样密集和有序。</p>
+<p>现在抬头看看那AST树。这些子对象可以在<em>任何地方</em>。tree-walker 在它遍历对子节点的引用的地方采取的每一步都可能超出缓存的范围并强制 CPU 停止，直到可以从 RAM 中插入新的数据块。只是这些树节点及其所有指针字段和对象标头的<em>开销</em>往往会将对象彼此推开并推出缓存。</p>
+<blockquote>
+<p>即使当解析器第一次生成对象时对象恰好分配在顺序内存中，在几轮垃圾收集之后——这可能会在内存中移动对象——也不知道它们会在哪里。</p>
+</blockquote>
+<p>我们的 AST walker 在接口派发和访问者模式方面也有其他开销，但仅局部性问题就足以证明更好的代码表示是合理的。</p>
+<h3 id="1412">14.1.2 为什么不编译成本地代码？</h3>
+<p>如果你想<em>真正</em>快速地进行，你想要摆脱所有这些间接层。一直到裸机。机器代码。它甚至<em>听起来</em>很快。<em>机器代码。</em></p>
+<p>最快的语言所做的就是直接编译为芯片支持的本机指令集。自从早期工程师实际用机器代码手写程序以来，以本机代码为目标一直是最有效的选择。</p>
+<blockquote>
+<p>是的，他们实际上是手工编写机器代码。在穿孔卡片上。据推测，他们用拳头打孔。</p>
+</blockquote>
+<p>如果您以前从未编写过任何机器代码，或者是之前更易于人类接受的同类汇编代码，我将为您提供最温和的介绍。本机代码是一系列密集的操作，直接以二进制编码。每条指令的长度在一到几个字节之间，而且几乎是令人麻木的低级指令。“将一个值从这个地址移到这个寄存器。“将这两个寄存器中的整数相加。”类似的东西。</p>
+<p>CPU 快速处理指令，按顺序解码和执行每条指令。没有像我们的 AST 这样的树结构，控制流是通过从代码中的一个点直接跳到另一个点来处理的。没有中间层，没有开销，没有不必要的跳过或追逐指针。</p>
+<p>快如闪电，但这种性能是有代价的。首先，编译为本机代码并不容易。今天广泛使用的大多数芯片都具有庞大的Byzantine架构，其中包含数十年来积累的大量指令。它们需要复杂的寄存器分配、流水线和指令调度。</p>
+<p>而且，当然，您已经放弃了可移植性。花几年时间掌握一些架构，这仍然只会让你进入几种流行的指令集<em>之一</em>。要掌握所有这些语言，您需要学习它们的所有指令集并为每个指令集编写一个单独的后端。</p>
+<blockquote>
+<p>情况并不完全糟糕。一个架构良好的编译器可以让你在你支持的不同架构之间共享前端和大部分中间层优化传递。主要是代码生成和指令选择的一些细节，您每次都需要重新编写。</p>
+<p><a href="https://llvm.org/">LLVM</a>项目为您提供了一些开箱即用的功能。如果您的编译器输出 LLVM 自己的特殊中间语言，LLVM 会依次将其编译为适用于过多体系结构的本机代码。</p>
+</blockquote>
+<h3 id="1413">14.1.3 什么是字节码？</h3>
+<p>牢记这两点。一方面，树遍历解释器简单、易移植且速度慢。另一方面，本机代码复杂且特定于平台但速度很快。字节码位于中间。它保留了 tree-walker 的可移植性——我们不会在本书中动手处理汇编代码。它牺牲<em>了一些</em>简单性来换取性能提升，尽管速度不如完全原生。</p>
+<p>在结构上，字节码类似于机器码。它是一个密集的线性二进制指令序列。这样可以保持<strong>低开销并且与缓存配合得很好</strong>。然而，它是一个比任何真正的芯片都简单得多、级别更高的指令集。（在许多字节码格式中，<strong>每条指令只有一个字节长，因此称为“字节码</strong>”。）</p>
+<p>想象一下，您正在使用某种源语言编写本机编译器，并且您可以全权定义最简单的目标架构。字节码有点像那样。这是一个理想化的假想指令集，让您作为编译器编写者的生活更轻松。</p>
+<p>当然，假想架构的问题在于它不存在。我们通过编写一个<em>模拟器来解决这个问题</em>——一个用软件编写的模拟芯片，一次解释一条指令的字节码。虚拟<em>机 (VM)</em>，如果您愿意的话。</p>
+<p>该仿真层增加了开销，这是字节码比本机代码慢的一个关键原因。但作为回报，它给了我们可移植性。用我们关心的所有机器都支持的语言（如 C）编写我们的 VM，可以在我们喜欢的任何硬件上运行我们的模拟器。</p>
+<blockquote>
+<p>最早的字节码格式之一是<a href="https://en.wikipedia.org/wiki/P-code_machine">p-code</a>，它是为 Niklaus Wirth 的 Pascal 语言开发的。您可能认为以 15MHz 运行的 PDP-11 无法承受模拟虚拟机的开销。但那时候，计算机正处于寒武纪大爆发时期，每天都有新的架构出现。跟上最新的芯片比从每个芯片中榨取最大性能更有价值。这就是为什么 p-code 中的“p”不代表“Pascal”，而是“portable”。</p>
+</blockquote>
+<p>这是我们的新解释器 clox 将采用的路径。我们将跟随 Python、Ruby、Lua、OCaml、Erlang 和其他语言的主要实现的脚步。在许多方面，我们的 VM 的设计将与之前的解释器的结构平行：</p>
+<p><img alt="" src="../assets/5d5086143510bc56d79cd5de1e40350a5862b850.png" /></p>
+<p>当然，我们不会严格按顺序执行。就像之前的解释器一样，我们会四处跳动，一次构建一个语言特性的实现。在本章中，我们将准备好应用程序的框架并创建存储和表示字节码块所需的数据结构。</p>
+<h2 id="142">14.2  入门</h2>
+<p>从哪里开始，但在<code>main()</code>？启动您可信赖的文本编辑器并开始输入。</p>
+<blockquote>
+<p>现在是伸展身体的好时机，或许可以锻炼指关节。一点蒙太奇音乐也不会受到伤害。</p>
+</blockquote>
+<pre><code class="language-c">#include &quot;common.h&quot;
+
+int main(int argc, const char* argv[]) {
+  return 0;
+}
+// main.c, create new file
+</code></pre>
+<p>从这个微小的种子，我们将发展我们的整个 VM。既然C给我们提供的东西太少，我们首先要花点时间改良一下土壤。其中一些进入这个header 文件：</p>
+<pre><code class="language-c">#ifndef clox_common_h
+#define clox_common_h
+
+#include &lt;stdbool.h&gt;
+#include &lt;stddef.h&gt;
+#include &lt;stdint.h&gt;
+
+#endif
+// common.h, create new file
+</code></pre>
+<p>我们将在整个解释器中使用一些类型和常量，这是放置它们的一个方便的地方。现在，它是古老的<code>NULL</code>,<code>size_t</code>漂亮的 C99 Boolean<code>bool</code>和显式大小的整数类型-<code>uint8_t</code>和它的朋友们。</p>
+<h2 id="143">14.3 指令块</h2>
+<p>接下来，我们需要一个模块来定义代码表示。我一直使用“块”来指代字节码序列，所以让我们将其作为该模块的正式名称。</p>
+<pre><code class="language-c">#ifndef clox_chunk_h
+#define clox_chunk_h
+
+#include &quot;common.h&quot;
+
+#endif
+// chunk.h, create new file
+</code></pre>
+<p>在字节码格式中，每条指令都有一个单字节<strong>操作码</strong>（通常简称为<strong>opcode</strong>）。这个数字控制着正在处理的指令类型——加、减、查找变量等。在这里定义它们：</p>
+<pre><code class="language-c">#include &quot;common.h&quot;
+
+typedef enum {
+  OP_RETURN,
+} OpCode;
+
+#endif
+// chunk.h
+</code></pre>
+<p>现在，我们从一条指令开始，<code>OP_RETURN</code>.当我们有一个全功能的 VM 时，这条指令将意味着“从当前函数返回”。我承认这还不是很有用，但我们必须从某个地方开始，这是一个特别简单的指令，原因稍后会谈到。</p>
+<h3 id="1431">14.3.1 指令的动态数组</h3>
+<p>字节码是一系列指令。最终，我们将存储一些其他数据以及指令，所以让我们继续创建一个结构来保存所有这些数据。</p>
+<pre><code class="language-c">} OpCode;
+
+typedef struct {
+  uint8_t* code;
+} Chunk;
+
+#endif
+// chunk.h, add after enum OpCode
+</code></pre>
+<p>目前，这只是一个字节数组的包装器。由于在开始编译块之前我们不知道数组需要多大，因此它必须是动态的。动态数组是我最喜欢的数据结构之一。这听起来像是在声称香草是我最喜欢的冰淇淋口味，但请听我说完。动态数组提供：</p>
+<blockquote>
+<p>黄油山核桃实际上是我的最爱。</p>
+</blockquote>
+<ul>
+<li>
+<p>缓存友好的密集存储</p>
+</li>
+<li>
+<p>恒定时间索引元素查找</p>
+</li>
+<li>
+<p>恒定时间附加到数组的末尾</p>
+</li>
+</ul>
+<p>这些特性正是我们一直在 jlox 中打着 Java 的 ArrayList 类的幌子使用动态数组的原因。既然在 C 中，我们就可以自己动手了。如果您对动态数组生疏了，这个想法很简单。除了数组本身，我们还保留两个数字：数组中已分配的元素数（“capacity”）以及实际使用的分配条目数（“count”）。</p>
+<pre><code class="language-c">typedef struct {
+  int count;
+  int capacity;
+  uint8_t* code;
+} Chunk;
+// chunk.h, in struct Chunk
+</code></pre>
+<p>当添加一个元素时，如果count小于capacity，那么数组中有可用空间。我们将新元素存储在那里并增加count。</p>
+<p><img alt="" src="../assets/86fa46422ca64bc3a1e336c9ce96c459af524c2d.png" /></p>
+<p>如果我们没有多余的capacity，那么这个过程就会复杂一些。</p>
+<p><img alt="" src="../assets/17cb6effe7801c5380874f5f72dc3f37543245de.png" /></p>
+<ol>
+<li>分配一个capacity更大的新数组。</li>
+<li>将现有元素从旧数组复制到新数组。</li>
+<li>存储新的<code>capacity</code>.</li>
+<li>删除旧数组。</li>
+<li>更新<code>code</code>以指向新数组。</li>
+<li>既然有空间，就将元素存储在新数组中。</li>
+<li>更新<code>count</code>.</li>
+</ol>
+<blockquote>
+<p>在增长数组时复制现有元素使得附加元素看起来像是<em>O(n)</em>，而不是像我上面说的那样O(1) 。<em>但是，您只需要对</em>某些附加项执行此复制步骤。大多数时候，已经有额外的容量，所以你不需要复制。</p>
+<p>要了解这是如何工作的，我们需要<a href="https://en.wikipedia.org/wiki/Amortized_analysis"><strong>摊销分析</strong></a>。这向我们表明，只要我们将数组增长为其当前大小的倍数，当我们平均计算<em>一系列</em>追加的成本时，每个追加都是<em>O(1)</em>。</p>
+</blockquote>
+<p>已经准备好结构，所以让我们实现使用它的功能。C 没有构造函数，所以我们声明一个函数来初始化一个新块。</p>
+<p>块；</p>
+<pre><code class="language-c">} Chunk;
+
+void initChunk(Chunk* chunk);
+
+#endif
+// chunk.h, add after struct Chunk
+</code></pre>
+<p>并如此实现：</p>
+<pre><code class="language-c">#include &lt;stdlib.h&gt;
+
+#include &quot;chunk.h&quot;
+
+void initChunk(Chunk* chunk) {
+  chunk-&gt;count = 0;
+  chunk-&gt;capacity = 0;
+  chunk-&gt;code = NULL;
+}
+// chunk.c, create new file
+</code></pre>
+<p>动态数组开始时完全是空的。我们甚至还没有分配原始数组。为了将一个字节添加到块的末尾，使用了一个新函数。</p>
+<pre><code class="language-c">void initChunk(Chunk* chunk);
+void writeChunk(Chunk* chunk, uint8_t byte);
+
+#endif
+// chunk.h, add after initChunk()
+</code></pre>
+<p>这是有趣的工作发生的地方。</p>
+<pre><code class="language-c">void writeChunk(Chunk* chunk, uint8_t byte) {
+  if (chunk-&gt;capacity &lt; chunk-&gt;count + 1) {
+    int oldCapacity = chunk-&gt;capacity;
+    chunk-&gt;capacity = GROW_CAPACITY(oldCapacity);
+    chunk-&gt;code = GROW_ARRAY(uint8_t, chunk-&gt;code,
+        oldCapacity, chunk-&gt;capacity);
+  }
+
+  chunk-&gt;code[chunk-&gt;count] = byte;
+  chunk-&gt;count++;
+}
+// chunk.c, add after initChunk()
+</code></pre>
+<p>我们需要做的第一件事是查看当前数组是否已经具有容纳新字节的capacity。如果没有，那么首先需要扩大数组来创建空间。（当数组为<code>NULL</code> 且<code>capacity</code>为 0时，我们在第一次写入时也遇到了这种情况。）</p>
+<p>要扩大数组，首先计算出新容量并将数组增加到该大小。这两个较低级别的内存操作都在一个新模块中定义。</p>
+<pre><code class="language-c">#include &quot;chunk.h&quot;
+#include &quot;memory.h&quot;
+
+void initChunk(Chunk* chunk) {
+// chunk.c
+</code></pre>
+<p>这足以让我们开始。</p>
+<pre><code class="language-c">#ifndef clox_memory_h
+#define clox_memory_h
+
+#include &quot;common.h&quot;
+
+#define GROW_CAPACITY(capacity) \
+    ((capacity) &lt; 8 ? 8 : (capacity) * 2)
+
+#endif
+// memory.h, create new file
+</code></pre>
+<p>该宏根据给定的当前容量计算新容量。为了获得我们想要的性能，重要的部分是它基于旧容量进行放大。我们增长了两倍，这是非常典型的。1.5× 是另一个常见的选择。</p>
+<p>当当前容量为零时，我们也会处理。在那种情况下，我们直接跳到八个元素而不是从一个开始。当数组非常小时，这避免了一点额外的内存流失，代价是在非常小的块上浪费了几个字节。</p>
+<blockquote>
+<p>我为这本书选择了数字八。大多数动态数组实现都有这样的最小阈值。为此选择一个值的正确方法是根据实际使用情况进行分析，并查看哪个常量在额外增长与浪费空间之间做出最佳性能权衡。</p>
+</blockquote>
+<p>一旦我们知道了所需的容量，我们就可以使用<code>GROW_ARRAY()</code>.</p>
+<pre><code class="language-c">#define GROW_CAPACITY(capacity) \
+    ((capacity) &lt; 8 ? 8 : (capacity) * 2)
+
+#define GROW_ARRAY(type, pointer, oldCount, newCount) \
+    (type*)reallocate(pointer, sizeof(type) * (oldCount), \
+        sizeof(type) * (newCount))
+
+void* reallocate(void* pointer, size_t oldSize, size_t newSize);
+
+#endif
+// memory.h
+</code></pre>
+<p>这个宏实际调用到<code>reallocate()</code>。宏本身负责获取数组元素类型的大小并将结果转换<code>void*</code>回正确类型的指针。</p>
+<p>这个<code>reallocate()</code>函数是我们将用于 clox 中所有动态内存管理的单一函数——分配内存、释放内存以及更改现有分配的大小。当我们添加一个需要跟踪正在使用的内存量的垃圾收集器时，通过单个函数路由所有这些操作将很重要。</p>
+<p>两个size参数 传递给<code>reallocate()</code> 用以控制执行哪个操作的：</p>
+<table>
+<thead>
+<tr>
+<th>oldSize</th>
+<th>newSize</th>
+<th>Operation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>Non?zero</td>
+<td>Allocate new block.</td>
+</tr>
+<tr>
+<td>Non?zero</td>
+<td>0</td>
+<td>Free allocation.</td>
+</tr>
+<tr>
+<td>Non?zero</td>
+<td>Smaller than oldSize</td>
+<td>Shrink existing allocation.</td>
+</tr>
+<tr>
+<td>Non?zero</td>
+<td>Larger than oldSize</td>
+<td>Grow existing allocation.</td>
+</tr>
+</tbody>
+</table>
+<p>这听起来像是要处理好多情况，但这里是实现：</p>
+<pre><code class="language-c">#include &lt;stdlib.h&gt;
+
+#include &quot;memory.h&quot;
+
+void* reallocate(void* pointer, size_t oldSize, size_t newSize) {
+  if (newSize == 0) {
+    free(pointer);
+    return NULL;
+  }
+
+  void* result = realloc(pointer, newSize);
+  return result;
+}
+// memory.c, create new file
+</code></pre>
+<p>当<code>newSize</code>为零时，我们通过调用<code>free()</code>处理释放情况。否则，我们依赖于 C 标准库的<code>realloc()</code>函数。该功能方便地支持我们策略的其他三个方面。当<code>oldSize</code>为零时，<code>realloc()</code>相当于调用<code>malloc()</code>.</p>
+<p>有趣的情况是<code>oldSize</code>和<code>newSize</code>都不为零。那些告诉<code>realloc()</code>调整先前分配的块的size。如果新的size小于现有的内存块，它只是更新块的size并返回你给它的相同指针。如果新的size更大，它会尝试增加现有的内存块。</p>
+<p>仅当该块之后的内存尚未使用时，它才能执行此操作。如果没有空间来增加块，<code>realloc()</code>则分配一个所需大小的<em>新</em>内存块，复制旧字节，释放旧块，然后返回指向新块的指针。请记住，这正是我们想要的动态数组的行为。</p>
+<p>因为计算机是有限的资源，而不是计算机科学理论让我们相信的完美数学抽象，如果没有足够的内存，分配可能会失败并<code>realloc()</code>返回<code>NULL</code>。我们应该处理那个。</p>
+<pre><code class="language-c">  void* result = realloc(pointer, newSize);
+  if (result == NULL) exit(1);
+  return result;
+// memory.c, in reallocate() 
+</code></pre>
+<p>如果我们的 VM 无法获得所需的内存，那么它实际上没有任何<em>用处</em>，但我们至少检测到这一点并立即中止进程，而不是返回一个<code>NULL</code>指针并让它稍后脱离轨道。</p>
+<blockquote>
+<p>由于我们传入的只是指向内存第一个字节的裸指针，“更新”块的大小意味着什么？在引擎盖下，内存分配器为每个堆分配的内存块维护额外的簿记信息，包括它的大小。</p>
+<p>给定一个指向一些先前分配的内存的指针，它可以找到这个簿记信息，这是能够干净地释放它所必需的。更新的正是这种大小的元数据<code>realloc()</code>。</p>
+<p>许多实现<code>malloc()</code>将分配的大小存储 在返回地址<em>之前的内存中。</em></p>
+</blockquote>
+<p>好的，我们可以创建新的块并向它们写入指令。我们完成了吗？没有！我们现在在 C 中，记住，必须自己管理内存，就像在 Ye Olden Times 中一样，这也意味着<em>释放</em>它。</p>
+<pre><code class="language-c">void initChunk(Chunk* chunk);
+void freeChunk(Chunk* chunk);
+void writeChunk(Chunk* chunk, uint8_t byte);
+// chunk.h, add after initChunk()
+</code></pre>
+<p>实现是：</p>
+<pre><code class="language-c">void freeChunk(Chunk* chunk) {
+  FREE_ARRAY(uint8_t, chunk-&gt;code, chunk-&gt;capacity);
+  initChunk(chunk);
+}
+// chunk.c, add after initChunk()
+</code></pre>
+<p>我们释放所有内存，然后调用<code>initChunk()</code>将字段清零，使块处于明确定义的空状态。为了释放内存，我们再添加一个宏。</p>
+<pre><code class="language-c">#define GROW_ARRAY(type, pointer, oldCount, newCount) \
+    (type*)reallocate(pointer, sizeof(type) * (oldCount), \
+        sizeof(type) * (newCount))
+
+#define FREE_ARRAY(type, pointer, oldCount) \
+    reallocate(pointer, sizeof(type) * (oldCount), 0)
+
+void* reallocate(void* pointer, size_t oldSize, size_t newSize);
+// memory.h
+</code></pre>
+<p>就像<code>GROW_ARRAY()</code>，这是对<code>reallocate()</code>调用的包装。这一个通过为新大小传递零来释放内存。我知道，这是很多无聊的低级内容。别担心，我们会在后面的章节中大量使用这些，并且会在更高层次上进行编程。但是，在我们这样做之前，我们必须奠定自己的基础。</p>
+<h2 id="144">14.4 反汇编指令块</h2>
+<p>现在我们有一个用于创建字节码块的小模块。让我们通过手动构建示例块来尝试一下。</p>
+<pre><code class="language-c">int main(int argc, const char* argv[]) {
+  Chunk chunk;
+  initChunk(&amp;chunk);
+  writeChunk(&amp;chunk, OP_RETURN);
+  freeChunk(&amp;chunk);
+  return 0;
+// main.c, in main()
+</code></pre>
+<p>不要忘记包含头文件。</p>
+<pre><code class="language-c">#include &quot;common.h&quot;
+#include &quot;chunk.h&quot;
+
+int main(int argc, const char* argv[]) {
+// main.c
+</code></pre>
+<p>运行它并尝试一下。有用吗？呃...谁知道？我们所做的只是在内存中推送一些字节。我们没有人性化的方式来查看我们制作的那个块里面到底有什么。</p>
+<p>为了解决这个问题，我们将创建一个<strong>反汇编</strong>程序。<strong>汇编程序</strong>是一种老式程序，它获取一个包含 CPU 指令（如“ADD”和“MULT”）的人类可读助记名称的文件，并将它们翻译成等效的二进制机器代码。<em>反</em>汇编程序则相反——给定一团机器代码，它会产出指令的文本列表。</p>
+<p>我们将实现类似的东西。给定一个块，它将打印出其中的所有指令。Lox<em>用户</em>不会使用它，但我们 Lox<em>维护者</em>肯定会受益，因为它为我们提供了一个了解解释器内部代码表示的窗口。</p>
+<blockquote>
+<p>在 jlox 中，我们的类似工具是<a href="http://craftinginterpreters.com/representing-code.html#a-not-very-pretty-printer">AstPrinter 类</a>。</p>
+</blockquote>
+<p>在<code>main()</code>中，创建块后，我们将其传递给反汇编程序。</p>
+<pre><code class="language-c">  initChunk(&amp;chunk);
+  writeChunk(&amp;chunk, OP_RETURN);
+
+  disassembleChunk(&amp;chunk, &quot;test chunk&quot;);
+  freeChunk(&amp;chunk);
+// main.c, in main() 
+</code></pre>
+<p>同样，我们启动了另一个模块。</p>
+<blockquote>
+<p>我向你保证我们不会在后面的章节中创建这么多新文件。</p>
+</blockquote>
+<pre><code class="language-c">#include &quot;chunk.h&quot;
+#include &quot;debug.h&quot;
+
+int main(int argc, const char* argv[]) {
+// main.c
+</code></pre>
+<p>这是头文件debug.h：</p>
+<pre><code class="language-c">#ifndef clox_debug_h
+#define clox_debug_h
+
+#include &quot;chunk.h&quot;
+
+void disassembleChunk(Chunk* chunk, const char* name);
+int disassembleInstruction(Chunk* chunk, int offset);
+
+#endif
+// debug.h, create new file
+</code></pre>
+<p>在<code>main()</code>中，调用<code>disassembleChunk()</code>反汇编整个块中的所有指令。这是根据另一个函数实现的，它只是反汇编一条指令。它显示在标题中，因为我们将在后面的章节中从 VM 调用它。</p>
+<p>下面是实现文件的开始：</p>
+<pre><code class="language-c">#include &lt;stdio.h&gt;
+
+#include &quot;debug.h&quot;
+
+void disassembleChunk(Chunk* chunk, const char* name) {
+  printf(&quot;== %s ==\n&quot;, name);
+
+  for (int offset = 0; offset &lt; chunk-&gt;count;) {
+    offset = disassembleInstruction(chunk, offset);
+  }
+}
+// debug.c, create new file
+</code></pre>
+<p>要反汇编一个块，我们打印一个小标题（这样我们就可以知道我们正在查看<em>哪个</em>块）然后遍历字节码，反汇编每条指令。我们遍历代码的方式有点奇怪。我们不是在循环中递增<code>offset</code>，而是让我们<code>disassembleInstruction()</code>自己做。当我们调用该函数时，在反汇编给定偏移量的指令后，它返回<em>下一</em>条指令的偏移量。这是因为，正如我们稍后将看到的，指令可以有不同的大小。</p>
+<p>“调试”模块的核心是这个函数：</p>
+<pre><code class="language-c">int disassembleInstruction(Chunk* chunk, int offset) {
+  printf(&quot;%04d &quot;, offset);
+
+  uint8_t instruction = chunk-&gt;code[offset];
+  switch (instruction) {
+    case OP_RETURN:
+      return simpleInstruction(&quot;OP_RETURN&quot;, offset);
+    default:
+      printf(&quot;Unknown opcode %d\n&quot;, instruction);
+      return offset + 1;
+  }
+}
+// debug.c, add after disassembleChunk()
+</code></pre>
+<p>首先，它打印给定指令的字节偏移量——告诉我们这条指令在块中的位置。当我们开始控制流并在字节码中跳转时，这将是一个有用的路标。</p>
+<p>接下来，它从给定偏移量的字节码中读取一个字节。那是我们的操作码。我们打开它。对于每一种指令，我们都会分配一个小的实用函数来显示它。如果给定的字节看起来根本不像一条指令——我们编译器中的一个错误——我们也打印它。对于我们确实有的一条指令<code>OP_RETURN</code>，显示函数是：</p>
+<blockquote>
+<p>我们现在只有一个指令，但是这个开关将贯穿本书的其余部分。</p>
+</blockquote>
+<pre><code class="language-c">static int simpleInstruction(const char* name, int offset) {
+  printf(&quot;%s\n&quot;, name);
+  return offset + 1;
+}
+// debug.c, add after disassembleChunk()
+</code></pre>
+<p>return指令没有太多内容，所以它所做的只是打印操作码的名称，然后返回该指令之后的下一个字节偏移量。其他说明会有更多内容。</p>
+<p>如果我们现在运行我们的初始解释器，它实际上会打印一些东西：</p>
+<pre><code>== test chunk ==
+0000 OP_RETURN
+</code></pre>
+<p>可以工作了！这有点像我们代码表示的“Hello, world！”。我们可以创建一个块，向其写入一条指令，然后将该指令提取出来。我们对二进制字节码的编码和解码工作正常。</p>
+<h2 id="145">14.5 常量</h2>
+<p>现在有了一个基本的块结构，让我们开始让它更有用。我们可以将<em>代码</em>存储在块中，但是<em>数据</em>呢？解释器使用的许多值都是在运行时作为操作结果创建的。</p>
+<pre><code>1 + 2 ;
+</code></pre>
+<p>值 3 在此处的代码中无法体现。然而，文字<code>1</code>和<code>2</code>也一样。要将该语句编译为字节码，我们需要某种表示“产生常量”的指令，并且这些文字值需要存储在块中的某个地方。在 jlox 中，Expr.Literal AST 节点保存该值。现在没有语法树，需要一个不同的解决方案。</p>
+<h3 id="1451">14.5.1 表示值</h3>
+<p>我们不会在本章中<em>运行</em>任何代码，但是由于常量在我们的解释器的静态和动态世界中都有影响，它们迫使我们至少开始思考 VM 应该如何表示值。</p>
+<p>现在，我们将尽可能简单地开始——将只支持双精度、浮点数。这显然会随着时间的推移而扩展，因此我们设置了一个新模块来给自己成长的空间。</p>
+<pre><code class="language-c">#ifndef clox_value_h
+#define clox_value_h
+
+#include &quot;common.h&quot;
+
+typedef double Value;
+
+#endif
+// value.h, create new file
+</code></pre>
+<p>这个 typedef 抽象了 Lox 值在 C 中的具体表示方式。这样，我们就可以更改该表示，而无需返回并修复传递值的现有代码。</p>
+<p>回到块中常量存储位置的问题。对于像整数这样的<strong>固定大小的小值</strong>，许多指令集将值直接存储在操作码之后的代码流中。这些被称为<strong>立即指令</strong>，因为值的bits紧跟在操作码之后。</p>
+<p>这对于像字符串这样的大型或可变大小的常量来说效果不佳。在机器代码的本机编译器中，那些较大的常量存储在二进制可执行文件中的单独“常量数据”区域中。然后，加载常量的指令有一个地址或偏移量，指向该部分中存储该值的位置。</p>
+<p>大多数虚拟机做类似的事情。例如，Java 虚拟机<a href="https://docs.oracle.com/javase/specs/jvms/se7/html/jvms-4.html#jvms-4.4">将一个<strong>常量池</strong></a>与每个已编译的类相关联。对我来说，这听起来对 clox 来说已经足够好了。每个块都带有一个值列表，这些值在程序中显示为文字。为了让事情更简单，我们将把<em>所有</em>常量放在那里，甚至是简单的整数。</p>
+<blockquote>
+<p>除了需要两种常量指令——一种用于立即值，一种用于常量表中的常量——立即数还迫使我们担心对齐、填充和字节序。如果您尝试说，将一个 4 字节整数填充到一个奇数地址，某些体系结构会不高兴。</p>
+</blockquote>
+<h3 id="1452">14.5.2 值数组</h3>
+<p>常量池是一个值数组。加载常量的指令在该数组中按索引查找值。与字节码数组一样，编译器不知道数组需要提前多大。因此，再次需要一个动态的。由于 C 没有通用数据结构，将编写另一个动态数组数据结构，这次是用于值。</p>
+<blockquote>
+<p>每次我们需要一个不同类型的动态数组时，定义一个新的结构和操作函数是一件苦差事。我们可以拼凑一些预处理器宏来伪造泛型，但这对 clox 来说太过分了。我们不需要更多这些。</p>
+</blockquote>
+<pre><code class="language-c">typedef double Value;
+
+typedef struct {
+  int capacity;
+  int count;
+  Value* values;
+} ValueArray;
+
+#endif
+// value.h
+</code></pre>
+<p>与 Chunk 中的字节码数组一样，该结构包装了一个指向数组的指针及其分配的容量和使用中的元素数量。我们还需要相同的三个函数来处理值数组。</p>
+<pre><code class="language-c">} ValueArray;
+
+void initValueArray(ValueArray* array);
+void writeValueArray(ValueArray* array, Value value);
+void freeValueArray(ValueArray* array);
+
+#endif
+// value.h, add after struct ValueArray
+</code></pre>
+<p>这些实现可能会给您似曾相识的感觉。首先，创建一个新的：</p>
+<pre><code class="language-c">#include &lt;stdio.h&gt;
+
+#include &quot;memory.h&quot;
+#include &quot;value.h&quot;
+
+void initValueArray(ValueArray* array) {
+  array-&gt;values = NULL;
+  array-&gt;capacity = 0;
+  array-&gt;count = 0;
+}
+// value.c, create new file
+</code></pre>
+<p>一旦我们有了一个初始化的数组，我们就可以开始向它添加值。</p>
+<p>幸运的是，我们不需要插入和删除等其他操作。</p>
+<pre><code class="language-c">void writeValueArray(ValueArray* array, Value value) {
+  if (array-&gt;capacity &lt; array-&gt;count + 1) {
+    int oldCapacity = array-&gt;capacity;
+    array-&gt;capacity = GROW_CAPACITY(oldCapacity);
+    array-&gt;values = GROW_ARRAY(Value, array-&gt;values,
+                               oldCapacity, array-&gt;capacity);
+  }
+
+  array-&gt;values[array-&gt;count] = value;
+  array-&gt;count++;
+}
+// value.c, add after initValueArray()
+</code></pre>
+<p>我们之前编写的内存管理宏确实让我们可以重用代码数组中的一些逻辑，所以这还不错。最后，释放数组使用的所有内存：</p>
+<pre><code class="language-c">void freeValueArray(ValueArray* array) {
+  FREE_ARRAY(Value, array-&gt;values, array-&gt;capacity);
+  initValueArray(array);
+}
+// value.c, add after writeValueArray()
+</code></pre>
+<p>现在我们有了可增长的值数组，我们可以将一个值添加到 Chunk 以存储块的常量。</p>
+<pre><code class="language-c">  uint8_t* code;
+  ValueArray constants;
+} Chunk;
+// chunk.h, in struct Chunk
+</code></pre>
+<p>不要忘记包含value.h。</p>
+<pre><code class="language-c">#include &quot;common.h&quot;
+#include &quot;value.h&quot;
+
+typedef enum {
+// chunk.h
+</code></pre>
+<p>啊，C 和它的石器时代模块化故事。我们刚刚说到哪了？对了，当我们初始化一个新块时，我们也初始化它的常量列表。</p>
+<pre><code class="language-c">  chunk-&gt;code = NULL;
+  initValueArray(&amp;chunk-&gt;constants);
+}
+// chunk.c, in initChunk() 
+</code></pre>
+<p>同样，我们在释放块时释放常量。</p>
+<pre><code class="language-c">  FREE_ARRAY(uint8_t, chunk-&gt;code, chunk-&gt;capacity);
+  freeValueArray(&amp;chunk-&gt;constants);
+  initChunk(chunk);
+// chunk.c, in freeChunk() 
+</code></pre>
+<p>接下来，我们定义一个方便的方法来向块中添加一个新常量。我们尚未编写的编译器可以直接写入 Chunk 中的常量数组——这不像 C 有私有字段或任何东西——但添加一个显式函数会更好一些。</p>
+<pre><code class="language-c">void writeChunk(Chunk* chunk, uint8_t byte);
+int addConstant(Chunk* chunk, Value value);
+
+#endif
+// chunk.h, add after writeChunk()
+</code></pre>
+<p>然后实现它。</p>
+<pre><code class="language-c">int addConstant(Chunk* chunk, Value value) {
+  writeValueArray(&amp;chunk-&gt;constants, value);
+  return chunk-&gt;constants.count - 1;
+}
+// chunk.c, add after writeChunk()
+</code></pre>
+<p>添加常量后，返回刚添加常量的索引，以便我们稍后可以找到相同的常量。</p>
+<h3 id="1453">14.5.3 常量指令</h3>
+<p>我们可以<em>将</em>常量存储在块中，但我们也需要<em>执行</em>它们。在一段代码中，如：</p>
+<pre><code class="language-c">print 1;
+print 2;
+</code></pre>
+<p>编译后的块不仅需要包含值 1 和 2，还需要知道<em>何时</em>生成它们，以便它们以正确的顺序打印。因此，我们需要一条产生特定常量的指令。</p>
+<pre><code class="language-c">typedef enum {
+  OP_CONSTANT,
+  OP_RETURN,
+// chunk.h, in enum OpCode
+</code></pre>
+<p>当 VM 执行常量指令时，它会“loads”该常量以供使用。这条新指令比<code>OP_RETURN</code>稍微复杂.在上面的例子中，我们加载了两个不同的常量。一个简单的操作码不足以知道要加载<em>哪个常量。</em></p>
+<blockquote>
+<p>我对“load”或“produce”常量的含义含糊不清，因为我们还没有了解虚拟机如何在运行时实际执行代码。为此，您必须等到（或者我想是跳到）?<a href="http://craftinginterpreters.com/a-virtual-machine.html">下一章</a>。</p>
+</blockquote>
+<p>为了处理这样的情况，我们的字节码——和大多数其他字节码一样——允许指令有<strong>操作数</strong>。这些在指令流中的操作码之后立即存储为二进制数据，让我们参数化指令的作用。</p>
+<p><img alt="" src="../assets/858b45a387944cf36ea7936919489d48ed12b869.png" /></p>
+<p>每个操作码确定它有多少个操作数字节以及它们的含义。例如，像“return”这样的简单操作可能没有操作数，而“加载局部变量”的指令需要一个操作数来标识要加载的变量。每次向 clox 添加一个新的操作码时，我们都会指定它的操作数是什么样的——它的<strong>指令格式</strong>。</p>
+<p>字节码指令操作数<em>与</em>传递给算术运算符的操作数不同。当我们到达表达式时，您会看到单独跟踪算术操作数值。指令操作数是一个较低级别的概念，它修改字节码指令本身的行为方式。</p>
+<p>在这种情况下，<code>OP_CONSTANT</code>采用一个单字节操作数来指定要从块的常量数组中加载哪个常量。由于我们还没有编译器，我们在测试块中“手动编译”一条指令。</p>
+<pre><code class="language-c">  initChunk(&amp;chunk);
+
+  int constant = addConstant(&amp;chunk, 1.2);
+  writeChunk(&amp;chunk, OP_CONSTANT);
+  writeChunk(&amp;chunk, constant);
+
+  writeChunk(&amp;chunk, OP_RETURN);
+// main.c, in main()
+</code></pre>
+<p>我们将常量值本身添加到块的常量池中。这将返回数组中常量的索引。然后我们编写常量指令，从它的操作码开始。之后，我们写入一字节常量索引操作数。注意<code>writeChunk()</code>可以写操作码或操作数。就该功能而言，它都是原始字节。</p>
+<p>如果我们现在尝试运行它，反汇编程序就会对我们大喊大叫，因为它不知道如何解码新指令。让我们解决这个问题。</p>
+<pre><code class="language-c"> switch (instruction) {
+    case OP_CONSTANT:
+      return constantInstruction(&quot;OP_CONSTANT&quot;, chunk, offset);
+    case OP_RETURN:
+// debug.c, in disassembleInstruction()  
+</code></pre>
+<p>这条指令有不同的指令格式，所以我们写了一个新的辅助函数来反汇编它。</p>
+<pre><code class="language-c">static int constantInstruction(const char* name, Chunk* chunk,
+                               int offset) {
+  uint8_t constant = chunk-&gt;code[offset + 1];
+  printf(&quot;%-16s %4d '&quot;, name, constant);
+  printValue(chunk-&gt;constants.values[constant]);
+  printf(&quot;'\n&quot;);
+}
+// debug.c, add after disassembleChunk()
+</code></pre>
+<p>这里还有更多事情要做。与<code>OP_RETURN</code> 一样，我们打印出操作码的名称。然后我们从块中的后续字节中提取常量索引。我们打印该索引，但这对我们人类读者来说并不是很有用。所以我们也查找实际的常量值——因为毕竟常量在编译时<em>是已知的</em>——并且也显示值本身。</p>
+<p>这需要某种方式来打印 clox 值。该功能将存在于“价值”模块中，因此我们将其包括在内。</p>
+<pre><code class="language-c">#include &quot;debug.h&quot;
+#include &quot;value.h&quot;
+
+void disassembleChunk(Chunk* chunk, const char* name) {
+// debug.c
+</code></pre>
+<p>在该头文件中，我们声明：</p>
+<pre><code class="language-c">void freeValueArray(ValueArray* array);
+void printValue(Value value);
+
+#endif
+// value.h, add after freeValueArray()
+</code></pre>
+<p>这是实现：</p>
+<pre><code class="language-c">void printValue(Value value) {
+  printf(&quot;%g&quot;, value);
+}
+// value.c, add after freeValueArray()
+</code></pre>
+<p>壮观，对吧？可以想象，一旦我们将动态类型添加到 Lox 并具有不同类型的值，这将变得更加复杂。</p>
+<p>回到 中<code>constantInstruction()</code>，唯一剩下的就是返回值。</p>
+<pre><code class="language-c">  printf(&quot;'\n&quot;);
+  return offset + 2;
+}
+// debug.c, in constantInstruction() 
+</code></pre>
+<p>请记住，它<code>disassembleInstruction()</code>还会返回一个数字来告诉调用者<em>下一</em>条指令开始的偏移量。<code>OP_RETURN</code>只有一个字节的地方<code>OP_CONSTANT</code>是两个——一个用于操作码，一个用于操作数。</p>
+<h2 id="146">14.6 行号信息</h2>
+<p>块包含运行时从用户源代码中需要的几乎所有信息。认为我们可以将我们在 jlox 中创建的所有不同的 AST 类简化为一个字节数组和一个常量数组，这有点疯狂。我们只缺少一项数据。但需要它，即使用户希望永远看不到它。</p>
+<p>当发生运行时错误时，我们会向用户显示有问题的源代码的行号。在 jlox 中，这些数字存在于token中，我们又将其存储在 AST 节点中。既然我们已经放弃了语法树以支持字节码，那么我们需要一个不同的 clox 解决方案。给定任何字节码指令，我们需要能够确定它是从用户源程序的哪一行编译而来的。</p>
+<p>有很多巧妙的方法可以对此进行编码。我采用了我能想到的绝对最简单的方法，尽管它的内存效率低得令人尴尬。在块中，我们存储一个与字节码平行的单独整数数组。数组中的每个数字都是字节码中相应字节的行号。当发生运行时错误时，我们在与当前指令在代码数组中的偏移量相同的索引处查找行号。</p>
+<blockquote>
+<p>这种 braindead 编码确实做了一件正确的事情：它将行信息保存在一个<em>单独</em>的数组中，而不是将其交织在字节码本身中。由于行信息仅在发生运行时错误时使用，我们不希望它出现在指令之间，占用 CPU 缓存中的宝贵空间并导致更多缓存未命中，因为解释器跳过它以获取它关心的操作码和操作数。</p>
+</blockquote>
+<p>为了实现这一点，我们向 Chunk 添加了另一个数组。</p>
+<pre><code class="language-c">  uint8_t* code;
+  int* lines;
+  ValueArray constants;
+// chunk.h, in struct Chunk 
+</code></pre>
+<p>因为它与字节码数组完全平行，所以我们不需要单独的计数或容量。每次我们触摸代码数组时，我们都会对行号数组进行相应的更改，从初始化开始。</p>
+<pre><code class="language-c">  chunk-&gt;code = NULL;
+  chunk-&gt;lines = NULL;
+  initValueArray(&amp;chunk-&gt;constants);
+// chunk.c, in initChunk()
+</code></pre>
+<p>同样释放分配：</p>
+<pre><code class="language-c">  FREE_ARRAY(uint8_t, chunk-&gt;code, chunk-&gt;capacity);
+  FREE_ARRAY(int, chunk-&gt;lines, chunk-&gt;capacity);
+  freeValueArray(&amp;chunk-&gt;constants);
+// chunk.c, in freeChunk() 
+</code></pre>
+<p>当我们向块中写入一个字节的代码时，我们需要知道它来自源代码哪一行，因此我们在 . 的声明<code>writeChunk()</code>中添加了一个额外的参数。</p>
+<pre><code class="language-c">void freeChunk(Chunk* chunk);
+void writeChunk(Chunk* chunk, uint8_t byte, int line);
+int addConstant(Chunk* chunk, Value value);
+// chunk.h, function writeChunk(), replace 1 line
+</code></pre>
+<p>并在实现中：</p>
+<pre><code class="language-c">void writeChunk(Chunk* chunk, uint8_t byte, int line) {
+  if (chunk-&gt;capacity &lt; chunk-&gt;count + 1) {
+// chunk.c, function writeChunk(), replace 1 line
+</code></pre>
+<p>当我们分配或增长代码数组时，我们对行信息也做同样的事情。</p>
+<pre><code class="language-c">    chunk-&gt;code = GROW_ARRAY(uint8_t, chunk-&gt;code,
+        oldCapacity, chunk-&gt;capacity);
+    chunk-&gt;lines = GROW_ARRAY(int, chunk-&gt;lines,
+        oldCapacity, chunk-&gt;capacity);
+  }
+// chunk.c, in writeChunk()
+</code></pre>
+<p>最后，我们将行号存储在数组中。</p>
+<pre><code class="language-c">  chunk-&gt;code[chunk-&gt;count] = byte;
+  chunk-&gt;lines[chunk-&gt;count] = line;
+  chunk-&gt;count++;
+// chunk.c, in writeChunk()
+</code></pre>
+<h3 id="1461">14.6.1 反汇编行号</h3>
+<p>好吧，让我们用我们小的，呃，手工块来试试这个。首先，由于我们向 <code>writeChunk()</code>中添加了一个新参数，因此我们需要修复这些调用以传入一些（此时为任意）行号。</p>
+<pre><code class="language-c">  int constant = addConstant(&amp;chunk, 1.2);
+  writeChunk(&amp;chunk, OP_CONSTANT, 123);
+  writeChunk(&amp;chunk, constant, 123);
+
+  writeChunk(&amp;chunk, OP_RETURN, 123);
+
+  disassembleChunk(&amp;chunk, &quot;test chunk&quot;);
+// main.c, in main(), replace 4 lines 
+</code></pre>
+<p>当然，一旦我们有了一个真正的前端，编译器就会在解析并将其传入时跟踪当前行。</p>
+<p>现在有了每条指令的行信息，让我们好好利用它。在我们的反汇编器中，显示每条指令是从哪一行源代码编译的很有帮助。当我们试图弄清楚一些字节码应该做什么时，这为提供了一种映射回原始代码的方法。在打印出指令的偏移量（从块开头开始的字节数）之后，我们显示了它的源代码行。</p>
+<pre><code class="language-c">int disassembleInstruction(Chunk* chunk, int offset) {
+  printf(&quot;%04d &quot;, offset);
+  if (offset &gt; 0 &amp;&amp;
+      chunk-&gt;lines[offset] == chunk-&gt;lines[offset - 1]) {
+    printf(&quot;   | &quot;);
+  } else {
+    printf(&quot;%4d &quot;, chunk-&gt;lines[offset]);
+  }
+
+  uint8_t instruction = chunk-&gt;code[offset];
+// debug.c, in disassembleInstruction()
+</code></pre>
+<p>字节码指令往往非常细粒度。一行源代码通常会编译成一串指令。为了使它在视觉上更加清晰，我们为来自与前一个源代码行相同的任何指令显示一个<code>|</code>。我们的手写块的结果输出如下所示：</p>
+<pre><code>== test chunk ==
+0000  123 OP_CONSTANT         0 '1.2'
+0002    | OP_RETURN
+</code></pre>
+<p>我们有一个三字节的块。前两个字节是从块的常量池中加载 1.2 的常量指令。第一个字节是<code>OP_CONSTANT</code>操作码，第二个字节是常量池中的索引。第三个字节（在偏移量 2 处）是单字节返回指令。</p>
+<p>在剩下的章节中，我们将用更多种类的指令充实它。但是基本结构就在这里，我们现在拥有在虚拟机中运行时完全表示一段可执行代码所需的一切。还记得我们在 jlox 中定义的整个 AST 类家族吗？在 clox 中，我们将其简化为三个数组：代码字节、常量值和用于调试的行信息。</p>
+<p>这种减少是我们的新解释器比 jlox 更快的关键原因。您<strong>可以将字节码视为 AST 的一种紧凑序列化</strong>，针对解释器如何按照执行时所需的顺序对其进行反序列化进行了高度优化。在<a href="http://craftinginterpreters.com/a-virtual-machine.html">下一章</a>中，我们将看到虚拟机是如何做到这一点的。</p>
+<hr />
+<h2 id="_2"><a href="http://craftinginterpreters.com/chunks-of-bytecode.html#challenges">挑战</a></h2>
+<ol>
+<li>我们对行信息的编码非常浪费内存。鉴于一系列指令通常对应于同一源代码行，自然的解决方案类似于行号的<a href="https://en.wikipedia.org/wiki/Run-length_encoding">运行长度编码</a>。</li>
+</ol>
+<p>设计一种编码，为同一行上的一系列指令压缩行信息。更改<code>writeChunk()</code>为编写此压缩形式，并实现一个<code>getLine()</code>函数，该函数在给定指令索引的情况下确定指令出现的行。</p>
+<p><em>提示：没有必要<code>getLine()</code>特别高效。由于它仅在发生运行时错误时被调用，因此它远离性能至关重要的关键路径。</em></p>
+<ol>
+<li>因为<code>OP_CONSTANT</code>它的操作数只使用一个字节，所以一个块最多只能包含 256 个不同的常量。这足够小，以至于编写现实世界代码的人会达到这个极限。我们可以使用两个或更多字节来存储操作数，但这会使<em>每个</em>常量指令占用更多空间。大多数块不需要那么多唯一常量，因此会浪费空间并在常见情况下牺牲一些局部性来支持罕见情况。</li>
+</ol>
+<p>为了平衡这两个相互竞争的目标，许多指令集都包含执行相同操作但操作数大小不同的多条指令。保留我们现有的单字节<code>OP_CONSTANT</code>指令，定义第二<code>OP_CONSTANT_LONG</code>条指令。它将操作数存储为 24 位数字，这应该足够了。</p>
+<p>实现这个功能：</p>
+<p><code>c
+   void writeConstant(Chunk* chunk, Value value, int line) {
+     // Implement me...
+   }</code></p>
+<p>它添加<code>value</code>到<code>chunk</code>的常量数组，然后编写适当的指令来加载常量。还添加了对反汇编程序的支持以获取<code>OP_CONSTANT_LONG</code>指令。</p>
+<p>定义两条指令似乎是两全其美的方法。它迫使我们做出什么牺牲（如果有的话）？</p>
+<ol>
+<li>我们的<code>reallocate()</code>函数依赖于 C 标准库来进行动态内存分配和释放。<code>malloc()</code>并且<code>free()</code>不是魔术。找到它们的几个开源实现并解释它们是如何工作的。他们如何跟踪哪些字节已分配，哪些是空闲的？分配一块内存需要什么？免费吗？他们如何提高效率？他们对碎片化做了什么？</li>
+</ol>
+<p><em>硬核模式：</em><code>reallocate()</code>无需调用<code>realloc()</code>、<code>malloc()</code>或即可实现<code>free()</code>。您可以在解释器执行开始时调用<code>malloc()</code><em>一次</em>，以分配一个大的内存块，您的<code>reallocate()</code>函数可以访问该内存块。它从单个区域（您自己的个人堆）中分配内存块。定义它如何做到这一点是您的工作。</p>
+<h2 id="_3"><a href="http://craftinginterpreters.com/chunks-of-bytecode.html#design-note">设计笔记：测试你的语言</a></h2>
+<p>我们几乎读完了本书的一半，但还没有谈到的一件事是<em>测试</em>您的语言实现。那不是因为测试不重要。为您的语言拥有一个良好、全面的测试套件是多么重要，我怎么强调都不为过。</p>
+<p>在我写本书的一个字之前，我为 Lox编写了一个<a href="https://github.com/munificent/craftinginterpreters/tree/master/test">测试套件（欢迎您在自己的 Lox 实现中使用它）。</a>这些测试在我的实现中发现了无数错误。</p>
+<p>测试在所有软件中都很重要，但至少出于以下几个原因，它们对于编程语言更为重要：</p>
+<ul>
+<li>
+<p><strong>用户希望他们的编程语言坚如磐石</strong>。我们已经习惯了成熟、稳定的编译器和解释器，以至于“这是你的代码，而不是编译器”是<a href="https://blog.codinghorror.com/the-first-rule-of-programming-its-always-your-fault/">软件文化中根深蒂固的一部分</a>。如果您的语言实现中存在错误，用户将经历完整的五个悲伤阶段，然后才能弄清楚发生了什么，而您不想让他们经历所有这些。</p>
+</li>
+<li>
+<p><strong>语言实现是一种深度互连的软件</strong>。一些代码库广泛而浅薄。如果文件加载代码在您的文本编辑器中被破坏，它——希望如此！—不会导致屏幕上的文本呈现失败。语言实现更窄更深，尤其是处理语言实际语义的解释器的核心。这使得由于系统各部分之间奇怪的交互而导致的细微错误很容易潜入。需要进行良好的测试才能将其清除。</p>
+</li>
+<li>
+<p><strong>语言实现的输入在设计上是组合的</strong>。用户可以编写无数种可能的程序，而您的实现需要正确运行它们。您显然无法详尽地测试它，但您需要努力工作以覆盖尽可能多的输入空间。</p>
+</li>
+<li>
+<p><strong>语言实现通常是复杂的、不断变化的，并且充满了优化</strong>。这会导致粗糙的代码带有许多可以隐藏错误的黑暗角落。</p>
+</li>
+</ul>
+<p>所有这些都意味着您需要进行大量测试。但是<em>什么</em>测试？我见过的项目主要集中在端到端的“语言测试”上。每个测试都是用该语言编写的程序及其预期产生的输出或错误。然后你有一个测试运行器，它通过你的语言实现推动测试程序并验证它做了它应该做的事情。用语言本身编写测试有一些很好的优点：</p>
+<ul>
+<li>
+<p>这些测试不与任何特定的 API 或实施的内部架构决策相关联。这使您可以自由地重新组织或重写解释器或编译器的某些部分，而无需更新大量测试。</p>
+</li>
+<li>
+<p>您可以对语言的多个实现使用相同的测试。</p>
+</li>
+<li>
+<p>测试通常很简洁，易于阅读和维护，因为它们只是用您的语言编写的脚本。</p>
+</li>
+</ul>
+<p>不过，也不全是美好的：</p>
+<ul>
+<li>
+<p>端到端测试可以帮助您确定<em>是否</em>存在错误，但不能确定错误<em>在哪里</em>。可能更难找出实现中错误代码的位置，因为所有测试都告诉您没有出现正确的输出。</p>
+</li>
+<li>
+<p>编写一个有效的程序来触及实现中一些晦涩的角落可能是一件苦差事。对于高度优化的编译器尤其如此，您可能需要编写复杂的代码以确保您最终找到可能隐藏错误的正确优化路径。</p>
+</li>
+<li>
+<p>启动解释器、解析、编译和运行每个测试脚本的开销可能很高。对于一大套测试——记住，你<em>确实想要</em>——这可能意味着要花费大量时间等待测试完成运行。</p>
+</li>
+</ul>
+<p>我可以继续，但我不希望这变成布道。另外，我不会假装自己是<em>如何</em>测试语言的专家。我只想让您内化<em>测试</em>自己的重要性。严重地。测试你的语言。你会为此感谢我的。</p>
+                
+              
+              
+<script src="https://giscus.app/client.js" data-repo="PKUFlyingPig/cs-self-learning" data-repo-id="R_kgDOGP67ng"
+    data-category="Announcements" data-category-id="DIC_kwDOGP67ns4COM9Q" data-mapping="title"
+    data-reactions-enabled="1" data-emit-metadata="0" data-input-position="top" data-theme="light_protanopia"
+    data-lang="zh-CN" data-loading="lazy" crossorigin="anonymous" async>
+</script>
+
+<script>
+    var palette = __get("__palette")
+    if (palette && typeof palette.color === "object") {
+        if (palette.color.scheme === "slate") {
+            const giscus = document.querySelector("script[src*=giscus]")
+            giscus.setAttribute("data-theme", "dark_protanopia")
+        }
+    }
+
+    document.addEventListener("DOMContentLoaded", function () {
+        const ref = document.querySelector("[data-md-component=palette]")
+        ref.addEventListener("change", function () {
+            var palette = __get("__palette")
+            if (palette && typeof palette.color === "object") {
+                const theme = palette.color.scheme === "slate" ? "dark_protanopia" : "light_protanopia"
+                const frame = document.querySelector(".giscus-frame")
+                frame.contentWindow.postMessage({
+                    giscus: { setConfig: { theme } }
+                }, "https://giscus.app")
+            }
+        })
+    })
+</script>
+
+            </article>
+          </div>
+        </div>
+        
+          <a href="#" class="md-top md-icon" data-md-component="top" data-md-state="hidden">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"/></svg>
+            Back to top
+          </a>
+        
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href="../../3_00.A%20BYTECODE%20VIRTUAL%20MACHINE/A%20BYTECODE%20VIRTUAL%20MACHINE/" class="md-footer__link md-footer__link--prev" aria-label="上一页: 三、A BYTECODE VIRTUAL MACHINE" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                上一页
+              </span>
+              三、A BYTECODE VIRTUAL MACHINE
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../../3_15.A%20Virtual%20Machine/A%20Virtual%20Machine/" class="md-footer__link md-footer__link--next" aria-label="下一页: 3.15.A Virtual Machine" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                下一页
+              </span>
+              3.15.A Virtual Machine
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        
+          Made with
+          <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+            Material for MkDocs
+          </a>
+        
+        
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["header.autohide", "navigation.tracking", "navigation.top", "search.highlight", "search.share", "search.suggest", "content.code.annotate"], "search": "../../../assets/javascripts/workers/search.fcfe8b6d.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\uff0c\\u3002]+", "search.placeholder": "\u641c\u7d22", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.b1047164.min.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+      
+    
+  </body>
+</html>
